@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
 
 const makeSales = (sequelize) => {
-  const model = sequelize.define('sales', {
+  const Sales = sequelize.define('Sales', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -36,7 +36,29 @@ const makeSales = (sequelize) => {
       },
     });
 
-    return model;
+    Sales.associate((model) => {
+      Sales.belongsTo(model.Users,
+        { 
+          foreignKey: 'id',
+          as: 'user',
+          onDelete: 'CASCADE',
+          onUpdate: 'CASCADE',
+        }
+      )
+    })
+
+    Sales.associate((model) => {
+      Sales.belongsTo(model.Users,
+        {
+          foreignKey: 'id',
+          as: 'seller',
+          onDelete: 'CASCADE',
+          onUpdate: 'CASCADE',
+        }
+      )
+    })
+
+    return Sales;
 }
 
 export default makeSales;

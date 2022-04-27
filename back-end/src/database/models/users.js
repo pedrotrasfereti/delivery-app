@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
 
 const makeUsers = (sequelize) => {
-  const model = sequelize.define('users', {
+  const Users = sequelize.define('Users', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -26,7 +26,15 @@ const makeUsers = (sequelize) => {
       },
     });
 
-    return model;
+    Users.associate((model) => {
+      Users.hasMany(model.Sales, { foreignKey: 'userId', as: 'user' })
+    })
+
+    Users.associate((model) => {
+      Users.hasMany(model.Sales, { foreignKey: 'sellerId', as: 'seller' })
+    })
+
+    return Users;
 }
 
 export default makeUsers;

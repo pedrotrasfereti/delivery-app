@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
 
 const makeProducts = (sequelize) => {
-  const model = sequelize.define('products', {
+  const Products = sequelize.define('Products', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -22,7 +22,7 @@ const makeProducts = (sequelize) => {
       }   
     });
 
-    return model;
+    return Products;
 }
 
 export default makeProducts;
