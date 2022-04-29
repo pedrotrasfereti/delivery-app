@@ -144,6 +144,11 @@ describe('Counter component', () => {
 
 - **"get"**, **"find"** and **"query"** are types of queries in RTL. The difference between them is whether the query will throw an error if no element is found or if it will return a Promise and retry;
 
+#### <ins>Jest DOM</ins>:
+**`jest-dom`** is a companion library for Testing Library that provides custom DOM element matchers for Jest.
+
+- The **"toBeInTheDocument"** matcher can be used to assert that an element is in the body of the document, or not; 
+
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [react-testing-overview-url]: https://reactjs.org/docs/testing.html
