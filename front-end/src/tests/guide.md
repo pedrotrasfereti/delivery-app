@@ -172,7 +172,8 @@ describe('Counter component', () => {
 
 - The **"screen"** object provides methods for querying the rendered elements of the DOM;
 
-- **"get"**, **"find"** and **"query"** are types of queries in RTL. The difference between them is whether the query will throw an error if no element is found or if it will return a Promise and retry;
+- **"get"**, **"find"** and **"query"** are types of [queries in RTL][rtl-queries].
+  - For a short tutorial on the difference between them, click [here][rtl-queries-diff].
 
 #### <ins>Jest DOM</ins>:
 [`jest-dom`][jest-dom-url] is a companion library for Testing Library that provides custom DOM element matchers for Jest.
@@ -231,5 +232,7 @@ export default function ExampleComponent() {
 [npm-ts-node]: https://www.npmjs.com/package/ts-node
 [npm-types-jest]: https://www.npmjs.com/package/@types/jest
 [react-testing-overview-url]: https://reactjs.org/docs/testing.html
+[rtl-queries]: https://testing-library.com/docs/queries/about/
+[rtl-queries-diff]: https://www.designcise.com/web/tutorial/whats-the-difference-between-findby-getby-and-queryby-in-react-testing-library
 [rtl-url]: https://testing-library.com/docs/react-testing-library/intro/
 [ts-jest-url]: https://github.com/kulshekhar/ts-jest
