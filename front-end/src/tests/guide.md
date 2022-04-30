@@ -3,7 +3,7 @@
 ## Resources
 
 ### React Docs
-[**"You can test React components similar to testing other JavaScript code."**][react-testing-overview-url]
+["You can test React components similar to testing other JavaScript code."][react-testing-overview-url]
 
 <br />
 
@@ -43,7 +43,7 @@ The three most common types of testing include:
 
 To get started, we will need to install the essencial tools:
 
-- ### 🐙 [**React Testing Library**][rtl-url]
+- ### 🐙 [React Testing Library][rtl-url]
   **React Testing Library** is a very light-weight solution for testing React components. It provides light utility functions on top of react-dom and react-dom/test-utils, in a way that encourages better testing practices.
 
   To get it, run:
@@ -51,7 +51,7 @@ To get started, we will need to install the essencial tools:
 
 <br />
 
-- ### 🃏 [**Jest**][jest-url]
+- ### 🃏 [Jest][jest-url]
   **Jest** is a delightful JavaScript Testing Framework with a focus on simplicity. It works with projects using: Babel, TypeScript, Node, React, Angular, Vue, and more!
 
   To get it, run:
@@ -81,13 +81,43 @@ Once you're finished answering, a new **jest.config.js** file should appear in y
 
 ---
 
+### Babel
+
+In order for Jest to understand your React code, we will need to transform it into common JS.
+
+Luckily, we can use [Babel][jest-babel-url] to do that job for us:
+
+1. Make sure you have the following Babel presets installed:
+
+    - [`@babel/preset-env`][npm-babel-preset-env]
+    - [`@babel/preset-react`][npm-babel-preset-react]
+
+2. Create a new "babel.config.js" file in your project directory.
+
+3. Add the following code to your "babel.config.js" file:
+    ```
+    module.exports = {
+      presets: ['@babel/preset-env', '@babel/preset-react'],
+    };
+    ```
+4. Voilà! You can now stop worrying about ".jsx" syntax errors.
+
+<br />
+
+---
+
 ### TypeScript
 
 Support for TypeScript syntax:
 
-- If your configuration file uses TypeScript, you will need the `ts-node` package installed.
+- If your configuration file uses TypeScript, you will need the [`ts-node`][npm-ts-node] package installed.
 
-- If your test files use TypeScript, you will need the `@types/jest` package installed.
+- If your test files use TypeScript, you will need the [`@types/jest`][npm-types-jest] package installed.
+
+- If your project uses TypeScript, you have two options:
+  - Install and add [`@babel/preset-typescript`][npm-babel-preset-ts] to your Babel's configuration "presets" section. All this will do is transpile your TS code.
+
+  - Add [`ts-jest`][ts-jest-url] to your project. This is ideal if you want Jest to type-check your tests as they run.
 
 <br />
 
@@ -142,12 +172,20 @@ describe('Counter component', () => {
 - **"get"**, **"find"** and **"query"** are types of queries in RTL. The difference between them is whether the query will throw an error if no element is found or if it will return a Promise and retry;
 
 #### <ins>Jest DOM</ins>:
-**`jest-dom`** is a companion library for Testing Library that provides custom DOM element matchers for Jest.
+[`jest-dom`][jest-dom-url] is a companion library for Testing Library that provides custom DOM element matchers for Jest.
 
 - The **"toBeInTheDocument"** matcher can be used to assert that an element is in the body of the document, or not; 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[jest-url]: https://jestjs.io/
+[jest-babel-url]: https://jestjs.io/docs/getting-started#using-babel
+[jest-dom-url]: https://testing-library.com/docs/ecosystem-jest-dom/
+[npm-babel-preset-env]: https://www.npmjs.com/package/@babel/preset-env
+[npm-babel-preset-react]: https://www.npmjs.com/package/@babel/preset-react
+[npm-babel-preset-ts]: https://www.npmjs.com/package/@babel/preset-typescript
+[npm-ts-node]: https://www.npmjs.com/package/ts-node
+[npm-types-jest]: https://www.npmjs.com/package/@types/jest
 [react-testing-overview-url]: https://reactjs.org/docs/testing.html
 [rtl-url]: https://testing-library.com/docs/react-testing-library/intro/
-[jest-url]: https://jestjs.io/
+[ts-jest-url]: https://github.com/kulshekhar/ts-jest
