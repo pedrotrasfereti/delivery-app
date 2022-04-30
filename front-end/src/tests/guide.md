@@ -179,11 +179,52 @@ describe('Counter component', () => {
 
 - The **"toBeInTheDocument"** matcher can be used to assert that an element is in the body of the document, or not; 
 
+<br />
+
+---
+
+### Example #2: Introducting Data Attributes
+The [`data-*`][mdn-data-att] global attributes allow us to store extra information on standard, semantic HTML elements without other hacks such as non-standard attributes, or extra properties on DOM.
+
+#### **React Component**:
+```
+export default function ExampleComponent() {
+  return (
+    <form>
+      <input type="text">
+
+      <button type="submit" data-testid="example-btn">
+        Submit
+      </button>
+    </form>
+  )
+}
+```
+  - Here, we are giving the `data-testid` attribute on our button the "example-btn" value.
+
+#### **Test**:
+```
+  ...
+
+  test('Button is present in the document', () => {
+    // Arrange
+    render(<ExampleComponent />);
+
+    // Act
+    const btn = screen.getByTestId('example-btn');
+
+    // Assert
+    expect(btn).toBeInTheDocument();
+  });
+```
+  - The **"getByTestId"** matcher is used to find and return the node that has a matching `data-testid`. This way, we can use the **"btn"** variable to make assertions.
+
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [jest-url]: https://jestjs.io/
 [jest-babel-url]: https://jestjs.io/docs/getting-started#using-babel
 [jest-dom-url]: https://testing-library.com/docs/ecosystem-jest-dom/
+[mdn-data-att]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*
 [npm-babel-preset-env]: https://www.npmjs.com/package/@babel/preset-env
 [npm-babel-preset-react]: https://www.npmjs.com/package/@babel/preset-react
 [npm-babel-preset-ts]: https://www.npmjs.com/package/@babel/preset-typescript
