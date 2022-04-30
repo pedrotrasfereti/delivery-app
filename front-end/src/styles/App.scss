@@ -1,1 +1,15 @@
-/* reset */
+.App {
+  position: relative;
+}
+
+/* Common Styles */
+.FullCenterContainer {
+  align-items: center;
+  background: none;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Style Components */

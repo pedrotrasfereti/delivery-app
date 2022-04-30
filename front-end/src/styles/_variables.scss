@@ -1,0 +1,37 @@
+/* Color Variables */
+$white: rgb(255, 255, 255);
+$solitude: rgb(249, 251, 252);
+$porcelain: rgb(236, 240, 241);
+$whisper: rgb(229, 232, 235);
+$mischka: rgb(221, 223, 228);
+$link-water: rgb(208, 213, 218);
+$clay: rgb(198, 204, 210);
+$light: rgba(255, 255, 255, 0.122);
+$light-softer: rgba(255, 255, 255, 0.063);
+$shadow: rgba(0, 0, 0, 0.169);
+$shadow-softer: rgba(0, 0, 0, 0.059);
+
+/* Dimensions */
+$header-height: 5rem;
+$home-min-height: calc(100vh - $header-height);
+$section-min-height: 100vh;
+
+/* Margins */
+
+/* Paddings */
+
+/* Borders */
+$border-radius: .3rem;
+$border-radius-circle: 50%;
+
+/* Gaps */
+$gap-x-large: 2rem;
+$gap-large: 1.75rem;
+$gap-medium: 1.5rem;
+$gap-small: 1rem;
+$gap-tiny: .5rem;
+
+/* Fonts */
+
+/* Other */
+$dim-filter: 95%;
