@@ -44,7 +44,6 @@ The three most common types of testing include:
 To get started, we will need to install the essencial tools:
 
 - ### 🐙 [**React Testing Library**][rtl-url]
-
   **React Testing Library** is a very light-weight solution for testing React components. It provides light utility functions on top of react-dom and react-dom/test-utils, in a way that encourages better testing practices.
 
   To get it, run:
@@ -53,7 +52,7 @@ To get started, we will need to install the essencial tools:
 <br />
 
 - ### 🃏 [**Jest**][jest-url]
-    Jest is a delightful JavaScript Testing Framework with a focus on simplicity. It works with projects using: Babel, TypeScript, Node, React, Angular, Vue, and more!
+  **Jest** is a delightful JavaScript Testing Framework with a focus on simplicity. It works with projects using: Babel, TypeScript, Node, React, Angular, Vue, and more!
 
   To get it, run:
   > `npm install --save-dev jest`
@@ -62,7 +61,7 @@ To get started, we will need to install the essencial tools:
 
 > **Note:** The `--save-dev` (or `-D`) flag is used to save a package as a development dependency, that is, a package whose absence will not affect the work of an application.
 
-</br>
+<br />
 
 ---
 
@@ -129,7 +128,6 @@ describe('Counter component', () => {
 ```
 
 #### <ins>Jest</ins>:
-
 - The **"describe"** global is used to create a group of related tests. The name parameter should specify what component is being tested;
 
 - The **"test"** (or **"it"**) global is to used to create a single test. The name parameter should specify what behavior is being tested;
@@ -137,7 +135,6 @@ describe('Counter component', () => {
 - The **"expect"** method can be used to make assertions and determine whether or not a condition was met;
 
 #### <ins>RTL</ins>: 
-
 - The **"render"** method renders a React element into the DOM;
 
 - The **"screen"** object provides methods for querying the rendered elements of the DOM;
