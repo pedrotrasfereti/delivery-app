@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 /* Utils */
-import EMAIL_REGEX from '../utils/emailRegex';
+import EMAIL_REGEX from '../../utils/emailRegex';
 
 function LoginForm() {
   const [emailInputText, setEmailInputText] = useState('');
