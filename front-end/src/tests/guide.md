@@ -137,6 +137,9 @@ Your test files names can either use the *.test* sufix or the *.spec* sufix. The
 // import dependencies
 import React from 'react'
 
+// import custom matchers
+import '@testing-library/jest-dom'
+
 // import react-testing methods
 import { render, screen } from '@testing-library/react'
 
