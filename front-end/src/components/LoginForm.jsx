@@ -20,7 +20,7 @@ function LoginForm() {
       <div>
         <input
           id="login-email-input"
-          type="text"
+          type="email"
           data-testid="common_login__input-email"
           value={ emailInputText }
           onChange={ (e) => setEmailInputText(e.target.value) }
@@ -40,7 +40,7 @@ function LoginForm() {
 
       <input
         id="login-password-input"
-        type="text"
+        type="password"
         data-testid="common_login__input-password"
       />
 
