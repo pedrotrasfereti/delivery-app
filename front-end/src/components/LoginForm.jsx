@@ -32,7 +32,7 @@ function LoginForm() {
               id="invalid-email-message"
               data-testid="common_login__element-invalid-email"
             >
-              Problem!!!
+              This email is invalid. Make sure it&apos;s written like example@email.com
             </span>
           )
         }
