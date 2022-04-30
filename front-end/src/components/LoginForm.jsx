@@ -1,13 +1,42 @@
-import * as React from 'react';
+import React, { useState } from 'react';
+
+/* Utils */
+import EMAIL_REGEX from '../utils/emailRegex';
 
 function LoginForm() {
+  const [emailInputText, setEmailInputText] = useState('');
+  const [emailErrVisible, setEmailErrVisible] = useState(false);
+
+  const validateEmail = () => {
+    if (emailInputText && !EMAIL_REGEX.test(emailInputText)) {
+      setEmailErrVisible(true);
+    } else {
+      setEmailErrVisible(false);
+    }
+  };
+
   return (
     <form id="login-form" action="">
-      <input
-        id="login-email-input"
-        type="text"
-        data-testid="common_login__input-email"
-      />
+      <div>
+        <input
+          id="login-email-input"
+          type="text"
+          data-testid="common_login__input-email"
+          value={ emailInputText }
+          onChange={ (e) => setEmailInputText(e.target.value) }
+          onBlur={ validateEmail }
+        />
+        {
+          emailErrVisible && (
+            <span
+              id="invalid-email-message"
+              data-testid="common_login__element-invalid-email"
+            >
+              Problem!!!
+            </span>
+          )
+        }
+      </div>
 
       <input
         id="login-password-input"
@@ -16,12 +45,12 @@ function LoginForm() {
       />
 
       <button id="login-btn" type="submit" data-testid="common_login__button-login">
-        Login
+        Log in
       </button>
 
-      <button id="sign-in-btn" type="button" data-testid="common_login__button-register">
+      <button id="sign-up-btn" type="button" data-testid="common_login__button-register">
         <a href="https://">
-          Sign In
+          Sign up
         </a>
       </button>
     </form>
