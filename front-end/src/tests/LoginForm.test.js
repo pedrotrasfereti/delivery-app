@@ -74,5 +74,18 @@ describe('Login Form Component', () => {
       );
       expect(errMessage).toBeInTheDocument();
     });
+
+    test('Invalid email error message has correct text', () => {
+      render(<LoginForm />);
+      const emailInput = screen.getByTestId('common_login__input-email');
+      fireEvent.change(emailInput, { target: { value: 'abc' } });
+      fireEvent.focusOut(emailInput);
+      const errMessage = screen.getByTestId(
+        'common_login__element-invalid-email',
+      );
+      expect(errMessage).toHaveTextContent(
+        /this email is invalid. make sure it's written like example@email.com$/i,
+      );
+    });
   });
 });
