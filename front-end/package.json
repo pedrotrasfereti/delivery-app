@@ -11,7 +11,7 @@
     "start": "react-scripts start",
     "start:build": "PORT=3000 ./node_modules/.bin/serve -s build",
     "build": "react-scripts build",
-    "test": "react-scripts test -- --runInBand --detectOpenHandles --verbose",
+    "test": "jest",
     "test:coverage": "react-scripts test -- --coverage",
     "test:coverage:json": "react-scripts test -- --coverage --coverageReporters=\"json-summary\" --watchAll=false --testFailureExitCode=0 --detectOpenHandles --runInBand --forceExit",
     "eject": "react-scripts eject",
@@ -55,18 +55,6 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
-    ]
-  },
-  "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx}"
-    ],
-    "coveragePathIgnorePatterns": [
-      "index.js",
-      "serviceWorker.js",
-      "reportWebVitals.js",
-      "./services/renderWithRouter",
-      "./services/history"
     ]
   }
 }
