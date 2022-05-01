@@ -1,27 +1,33 @@
 /* Color Variables */
+$swamp: rgb(0, 24, 19);
+$watercourse: rgb(3, 107, 82);
+$shamrock: rgb(46, 194, 140);
+$persian-indigo: rgb(67, 26, 130);
+$blue-ribbon: rgb(5, 108, 249);
+$crimson: rgb(220, 20, 60);
+$clear-day: rgb(242, 255, 252);
 $white: rgb(255, 255, 255);
 $solitude: rgb(249, 251, 252);
-$porcelain: rgb(236, 240, 241);
-$whisper: rgb(229, 232, 235);
-$mischka: rgb(221, 223, 228);
-$link-water: rgb(208, 213, 218);
-$clay: rgb(198, 204, 210);
+$mercury: rgb(229, 229, 229);
+$alto: rgb(221, 221, 221);
+$gray: rgb(128, 128, 128);
 $light: rgba(255, 255, 255, 0.122);
 $light-softer: rgba(255, 255, 255, 0.063);
 $shadow: rgba(0, 0, 0, 0.169);
 $shadow-softer: rgba(0, 0, 0, 0.059);
 
 /* Dimensions */
-$header-height: 5rem;
-$home-min-height: calc(100vh - $header-height);
+$height-header: 5rem;
+$home-min-height: calc(100vh - $height-header);
 $section-min-height: 100vh;
 
 /* Margins */
 
 /* Paddings */
+$padding-input: .375rem .75rem;
 
 /* Borders */
-$border-radius: .3rem;
+$border-radius: .25rem;
 $border-radius-circle: 50%;
 
 /* Gaps */
@@ -32,6 +38,8 @@ $gap-small: 1rem;
 $gap-tiny: .5rem;
 
 /* Fonts */
+$font-input: 400 1em 'Source Sans Pro', sans-serif;
+$font-message: 400 .9em 'Source Sans Pro', sans-serif;
 
 /* Other */
-$dim-filter: 95%;
+$dim: 95%;

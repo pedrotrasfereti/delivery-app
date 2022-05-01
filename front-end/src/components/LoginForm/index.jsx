@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 
+/* Children */
+import ErrorMessage from '../ErrorMessage';
+
 /* Utils */
 import EMAIL_REGEX from '../../utils/emailRegex';
+import messages from '../../utils/messages';
 
 function LoginForm() {
   const [emailInputText, setEmailInputText] = useState('');
@@ -25,15 +29,15 @@ function LoginForm() {
           value={ emailInputText }
           onChange={ (e) => setEmailInputText(e.target.value) }
           onBlur={ validateEmail }
+          className="InputBox"
         />
         {
           emailErrVisible && (
-            <span
+            <ErrorMessage
               id="invalid-email-message"
-              data-testid="common_login__element-invalid-email"
-            >
-              This email is invalid. Make sure it&apos;s written like example@email.com
-            </span>
+              dataTestId="common_login__element-invalid-email"
+              message={ messages.email.invalid }
+            />
           )
         }
       </div>
@@ -42,16 +46,25 @@ function LoginForm() {
         id="login-password-input"
         type="password"
         data-testid="common_login__input-password"
+        className="InputBox"
       />
 
-      <button id="login-btn" type="submit" data-testid="common_login__button-login">
+      <button
+        id="login-btn"
+        type="submit"
+        data-testid="common_login__button-login"
+        className="ButtonPrimary"
+      >
         Log in
       </button>
 
-      <button id="sign-up-btn" type="button" data-testid="common_login__button-register">
-        <a href="https://">
-          Sign up
-        </a>
+      <button
+        id="sign-up-btn"
+        type="button"
+        data-testid="common_login__button-register"
+        className="ButtonLink"
+      >
+        <a href="https://">Sign up</a>
       </button>
     </form>
   );
