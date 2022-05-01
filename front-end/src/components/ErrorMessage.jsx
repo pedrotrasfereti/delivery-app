@@ -1,10 +1,13 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 
+/* Assets */
+import { BsExclamationCircleFill as AlertIcon } from 'react-icons/bs';
+
 function ErrorMessage({ id, dataTestId, message }) {
   return (
     <div className="ErrorMessage">
-      <div className="Icon" />
+      <AlertIcon className="Icon" />
       <span id={ id } dataTestId={ dataTestId }>
         { message }
       </span>

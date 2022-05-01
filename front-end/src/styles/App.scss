@@ -71,16 +71,19 @@
 }
 
 .ErrorMessage {
-  display: block;
+  align-items: center;
+  display: flex;
+  gap: .25rem;
+  height: 2rem;
 
   &>.Icon {
-    color: blue;
+    fill: $crimson;
+    font-size: .9rem;
   }
 
   &>span {
     font: $font-message;
     color: $crimson;
-    display: block;
   }
 }
 
