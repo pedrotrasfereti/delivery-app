@@ -8,7 +8,7 @@ function ErrorMessage({ id, dataTestId, message }) {
   return (
     <div className="ErrorMessage">
       <AlertIcon className="Icon" />
-      <span id={ id } dataTestId={ dataTestId }>
+      <span id={ id } data-testid={ dataTestId }>
         { message }
       </span>
     </div>
