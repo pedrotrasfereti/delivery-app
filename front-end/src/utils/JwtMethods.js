@@ -16,4 +16,10 @@ class JwtMethods {
 
     return verifying;
   }
+
+  static decodeToken(token) {
+    const decode = jwt.decode(token);
+
+    return decode;
+  }
 };
