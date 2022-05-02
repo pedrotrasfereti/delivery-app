@@ -1,5 +1,5 @@
-import jwt from 'jsonwebtoken';
-import * as fs from 'fs';
+const jwt =  require('jsonwebtoken');
+const fs =  require('fs');
 
 class JwtMethods {
   static jwtSign(payload) {
