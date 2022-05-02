@@ -74,7 +74,7 @@ function Login() {
       <div className="Teaser" />
       <div className="ContainerFullCenter">
         <div className="Headings">
-          <h1 id="title">Sign In</h1>
+          <h1 id="title">Sign In to Deliveree</h1>
           <h2 id="subtitle">
             Enter your information below to continue
           </h2>
