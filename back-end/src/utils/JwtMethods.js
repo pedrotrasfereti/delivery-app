@@ -24,4 +24,4 @@ class JwtMethods {
   }
 };
 
-export { JwtMethods };
+module.exports = { JwtMethods };
