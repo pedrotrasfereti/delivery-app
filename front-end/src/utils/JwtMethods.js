@@ -10,4 +10,10 @@ class JwtMethods {
 
     return sign;
   }
+
+  static verifyToken(token) {
+    const verifying = jwt.verify(token, JWT_SECRET, { algorithms: ['HS256'] });
+
+    return verifying;
+  }
 };
