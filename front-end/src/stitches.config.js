@@ -15,6 +15,7 @@ export const {
       /* contrast colors */
       hiContrast: 'hsl(168, 100%, 5%)',
       loContrast: 'hsl(166, 100%, 97%)',
+      white: 'hsl(0, 100%, 100%)',
 
       /* main and accent colors */
       primary: 'hsl(166, 95%, 22%)',
@@ -31,12 +32,13 @@ export const {
       gray300: 'hsl(0, 0%, 88%)',
       gray200: 'hsl(0, 0%, 93%)',
       gray100: 'hsl(0, 0%, 96%)',
+      gray50: 'hsl(0, 0%, 98%)',
 
       /* feedback colors */
       error: 'hsl(348, 83%, 47%)',
 
       /* aliases */
-      background: '$gray100',
+      background: '$gray50',
       buttonPrimary: '$tertiary',
       textLight: '$loContrast',
       textDark: '$hiContrast',
@@ -48,7 +50,7 @@ export const {
       4: '32px',
       5: '64px',
       6: '128px',
-      btnPadding: '.375rem .75rem',
+      btnPadding: '.625rem 1rem',
     },
     fontSizes: {
       1: '12px',
@@ -90,7 +92,8 @@ export const {
       3: '16px',
       4: '32px',
       5: '64px',
-      6: '128px',
+      6: '96px',
+      7: '128px',
       headerHeight: '5rem',
       sectionMinHeight: '100vh',
     },
@@ -99,7 +102,9 @@ export const {
       round: '9999px',
     },
     zIndices: {},
-    transitions: {},
+    transitions: {
+      default: '.25s',
+    },
   },
   media: {
     bp1: '(min-width: 480px)',
