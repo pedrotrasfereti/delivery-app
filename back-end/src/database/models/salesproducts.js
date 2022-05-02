@@ -1,36 +1,32 @@
-import { DataTypes } from 'sequelize';
-
-const makeSalesProducts = (sequelize) => {
+const makeSalesProducts = (sequelize, DataTypes) => {
   const SalesProducts = sequelize.define('SalesProducts', {
-      quantity: {
-        type: DataTypes.INTEGER,
-        allowNull:false
-      },
-    });
+    quantity: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+  }, {
+    timestamps: false,
+  });
 
-    SalesProducts.associate((model) => {
-      model.Sales.belongsToMany(
-        model.Products, {
-          as: 'products',
-          through: SalesProducts,
-          foreignKey: 'salesId',
-          otherKey: 'productsId',
-        }
-      );
-    })
-
-    SalesProducts.associate((model) => {
-      model.Products.belongsToMany(
-        model.Sales, {
-          as: 'sales',
-          through: SalesProducts,
-          foreignKey: 'productsId',
-          otherKey: 'salesId',
-        }
-      );
-    })
-
-    return SalesProducts;
+  SalesProducts.associate = (models) => {
+    models.Sales.belongsToMany(
+      models.Products, {
+      as: 'products',
+      through: SalesProducts,
+      foreignKey: 'saleId',
+      otherKey: 'productId',
+    }
+    );
+    models.Products.belongsToMany(
+      models.Sales, {
+      as: 'sales',
+      through: SalesProducts,
+      foreignKey: 'productId',
+      otherKey: 'saleId',
+    }
+    );
+  };
+  return SalesProducts;
 }
 
-export default makeSalesProducts;
+module.exports = makeSalesProducts;
