@@ -19,7 +19,6 @@ const LoginPage = styled('main', {
     backgroundImage: `url(${DeliveryMan})`,
     backgroundPosition: 'center',
     backgroundSize: 'cover',
-    minHeight: '$sectionMinHeight',
     width: '100%',
     opacity: '.9',
     position: 'relative',
@@ -49,6 +48,21 @@ const LoginPage = styled('main', {
         fontSize: '$3',
         fontWeight: '$5',
         margin: '10px 0 $2',
+      },
+    },
+  },
+
+  '@bp3': {
+    gridTemplateColumns: '1fr',
+    gridTemplateRows: '.84fr 1.4fr',
+
+    '&>.ContainerFullCenter': {
+      padding: '$5 $4',
+
+      '&>.Headings': {
+        '&>h1': {
+          fontSize: '$6',
+        },
       },
     },
   },
