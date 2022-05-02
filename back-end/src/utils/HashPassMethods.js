@@ -8,6 +8,12 @@ class HashPassMethods {
 
     return encrypt;
   }
+
+  static comparePass(password, dbPassword) {
+    const compare = password === dbPassword ? true : false;
+
+    return compare;
+  }
 }
 
 module.exports = { HashPassMethods };
