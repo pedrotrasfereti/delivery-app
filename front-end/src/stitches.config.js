@@ -49,8 +49,9 @@ export const {
       3: '16px',
       4: '32px',
       5: '64px',
-      6: '128px',
-      btnPadding: '.625rem 1rem',
+      6: '96px',
+      7: '128px',
+      btnPadding: '.7rem 1rem',
     },
     fontSizes: {
       1: '12px',
@@ -58,7 +59,8 @@ export const {
       3: '16px',
       4: '20px',
       5: '24px',
-      6: '32px',
+      6: '28px',
+      7: '32px',
     },
     fonts: {
       sans: 'Inter, sans-serif',
@@ -101,7 +103,14 @@ export const {
       default: '.25rem',
       round: '9999px',
     },
-    zIndices: {},
+    zIndices: {
+      0: 0,
+      1: 1,
+      2: 2,
+      3: 3,
+      4: 4,
+      5: 5,
+    },
     transitions: {
       default: '.25s',
     },

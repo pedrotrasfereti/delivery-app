@@ -6,9 +6,9 @@ const Button = styled('button', {
   cursor: 'pointer',
   fontFamily: '$sans',
   fontSize: '$3',
-  fontWeight: '$4',
+  fontWeight: '$5',
   lineHeight: '$default',
-  transition: '.25s',
+  transition: '$default',
   padding: '$btnPadding',
   textAlign: 'center',
   userSelect: 'none',
@@ -28,9 +28,13 @@ const Button = styled('button', {
     },
     link: {
       true: {
+        padding: '0',
         background: 'transparent',
         '&>a': {
-          color: '$textDark',
+          color: '$tertiary',
+          fontFamily: '$sans',
+          fontSize: '$2',
+          fontWeight: '$6',
         },
         '&:hover>a': {
           textDecorationLine: 'underline',

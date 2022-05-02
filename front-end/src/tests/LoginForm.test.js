@@ -48,7 +48,7 @@ describe('Login Form Component', () => {
   test('Login button has the correct text', () => {
     render(<LoginForm />);
     const loginButton = screen.getByTestId('common_login__button-login');
-    expect(loginButton).toHaveTextContent(/log in$/i);
+    expect(loginButton).toHaveTextContent(/login$/i);
   });
 
   test('Sign up button is present in the document', () => {
