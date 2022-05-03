@@ -1,13 +1,27 @@
 const { Users } = require('../../database/models');
-const { encryptPass } = require('../utils/HashPassMethods');
+const { HashPassMethods } = require('../utils/HashPassMethods');
 
 module.exports = {
+  async getOne(data) {
+    const user = await Users.findOne({
+      where: { email: data.email },
+      raw: true,
+    });
+
+    if (!user) {
+      return null;
+    }
+    
+    return user;
+  },
+
   async create(user) {
-    const criptoPassword = encryptPass(user.password);
+    const criptoPassword = HashPassMethods.encryptPass(user.password);
   
     const userCreated = await Users.create({
       ...user,
-      password: criptoPassword, 
+      role: 'customer',
+      password: criptoPassword,
     });
     
     return userCreated;
