@@ -6,7 +6,7 @@ const instanceApi = axios.create({
 });
 
 const loginRequest = (endpoint, body) => {
-  const { data } = await instance.post(endpoint, body);
+  const { data } = await instanceApi.post(endpoint, body);
 
   return data;
 };
