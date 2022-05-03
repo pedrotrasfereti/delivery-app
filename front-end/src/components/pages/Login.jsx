@@ -4,6 +4,7 @@ import * as React from 'react';
 import { DeliveryMan } from '../../assets';
 
 /* Children */
+import Teaser from '../atoms/Teaser';
 import LoginForm from '../organisms/LoginForm';
 import DuoGeneric from '../templates';
 
@@ -51,17 +52,6 @@ const ContentWrapper = styled('div', {
   },
 });
 
-const Teaser = styled('div', {
-  backgroundImage: `url(${DeliveryMan})`,
-  backgroundPosition: 'center',
-  backgroundSize: 'cover',
-  display: 'flex',
-  justifyContent: 'space-between',
-  position: 'relative',
-  width: '100%',
-  zIndex: '$0',
-});
-
 const DecorOne = styled('div', {
   background: '$primary',
   alignSelf: 'flex-end',
@@ -81,7 +71,7 @@ const DecorTwo = styled('div', {
 function Login() {
   return (
     <DuoGeneric id="login-page">
-      <Teaser id="teaser">
+      <Teaser id="teaser" image={ DeliveryMan }>
         <DecorOne />
         <DecorTwo />
       </Teaser>
