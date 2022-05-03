@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 /* Assets */
-import DeliveryMan from '../../assets';
+import { DeliveryMan } from '../../assets';
 
 /* Children */
 import LoginForm from '../organisms/LoginForm';
