@@ -1,6 +1,10 @@
 import * as React from 'react';
 
+/* Assets */
+import { Packages } from '../../assets';
+
 /* Children */
+import Teaser from '../atoms/Teaser';
 import DuoGeneric from '../templates';
 
 function Register() {
@@ -12,7 +16,7 @@ function Register() {
         {/* Here goes the sign up form */}
       </div>
 
-      {/* <Teaser id="teaser" /> */}
+      <Teaser id="teaser" image={ Packages } />
     </DuoGeneric>
   );
 }
