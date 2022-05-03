@@ -35,7 +35,7 @@ describe('Testing user model', () => {
     })
   })
 
-  describe("Testing findOne method", () => {
+  describe("Testing getOne method", () => {
     const mockDatabase = {
       id: "5",
       name: "joao",
@@ -47,30 +47,34 @@ describe('Testing user model', () => {
       email: "jvitor.spaula@gmail.com",
       password: "123456"
     }
-    // before(() => {});
     afterEach(() => {
       sinon.restore();
     });
-    it("Return one object of database", async () => {
-      const findOneStub = sinon.stub(Users, "findOne").resolves(mockDatabase);
-      const user = await userModelApp.getOne(mockApp);
-      sinon.assert.calledWithMatch(findOneStub, {
-        where: {
-          email: mockDatabase.email,
-        },
-        raw: true
+    describe('If user exists', () => {
+      it("getOne method return user", async () => {
+        const findOneStub = sinon.stub(Users, "findOne").resolves(mockDatabase);
+        const user = await userModelApp.getOne(mockApp);
+        sinon.assert.calledWith(findOneStub, {
+          where: {
+            email: mockDatabase.email,
+          },
+          raw: true
+        });
+        expect(user).to.be.a("object");
+        expect(user).to.have.a.property("id");
+        expect(user).to.have.a.property("name");
+        expect(user).to.have.a.property("email");
+        expect(user).to.have.a.property("role");
+        expect(user).to.be.equal(mockDatabase);
       });
-      expect(user).to.be.a("object");
-      expect(user).to.have.a.property("id");
-      expect(user).to.have.a.property("name");
-      expect(user).to.have.a.property("email");
-      expect(user).to.have.a.property("role");
-      expect(user).to.be.equal(mockDatabase);
-    });
-    it ("If not exists user with email return null", async () => {
-      const findOneStub = sinon.stub(Users, "findOne").resolves(null);
-      const user = await userModelApp.getOne(mockApp);
-      expect(user).to.be.equal(null);
+    })
+    describe('If user does not exists', () => {
+      it("getOne method return null", async () => {
+        const findOneStub = sinon.stub(Users, "findOne").resolves(null);
+        const user = await userModelApp.getOne(mockApp);
+        sinon.assert.calledWith(findOneStub, { where: { email: mockApp.email }, raw: true });
+        expect(user).to.be.equal(null);
+      })
     })
   })
 })
