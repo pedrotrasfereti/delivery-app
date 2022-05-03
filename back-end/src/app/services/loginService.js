@@ -6,13 +6,10 @@ module.exports = {
   async login(data) {
     try {
       const user = await userModel.getOne(data);
-
       if (!user) throw Error;
-
       const { name, email, role, password } = user;
       const cryptoPassword = HashPassMethods.encryptPass(data.password);
       const compare = HashPassMethods.comparePass(cryptoPassword, password);
-
       if (!compare) throw Error;
       const token = JwtMethods.jwtSign({ email, role });
       return { name, email, role, token };
