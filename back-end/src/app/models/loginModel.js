@@ -1,15 +1,15 @@
 const { Users } = require('../../database/models');
-const { encryptPass, comparePass } = require('../utils/HashPassMethods');
+const { HashPassMethods } = require('../utils/HashPassMethods');
 
 module.exports = {
   async login(data) {
-    const cryptoPassword = encryptPass(data.password);
+    const cryptoPassword = HashPassMethods.encryptPass(data.password);
     const user = await Users.findOne({
       where: { email: data.email },
       raw: true,
     });
 
-    const compare = comparePass(cryptoPassword, user.password);
+    const compare = HashPassMethods.comparePass(cryptoPassword, user.password);
 
     if (!compare) {
       const err = new Error('password incorret');
@@ -17,8 +17,14 @@ module.exports = {
 
       throw err;
     }
+
+    const { email, role, name, } = user;
     
-    return user.email;
+    return {
+      email,
+      role,
+      name,
+    };
   },
 
 };
