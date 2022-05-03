@@ -5,10 +5,11 @@ const DuoGeneric = styled('main', {
   gridTemplateColumns: '1fr 1fr',
   gridTemplateRows: '$sectionMinHeight',
   width: '100%',
+  height: '100vh',
 
   '@bp3': {
     gridTemplateColumns: '1fr',
-    gridTemplateRows: '40vh 100%',
+    gridTemplateRows: '1fr 1fr',
   },
 });
 
