@@ -1,10 +1,10 @@
-const jwt =  require('jsonwebtoken');
-const fs =  require('fs');
+const jwt = require('jsonwebtoken');
+const fs = require('fs');
 
 const JWT_SECRET = fs.readFileSync('./jwt.evaluation.key', 'utf-8');
 
-class JwtMethods {
-  static jwtSign(payload) {
+// class JwtMethods {
+  function jwtSign(payload) {
     const sign = jwt.sign(payload, JWT_SECRET, {
       expiresIn: '5h',
       algorithm: 'HS256',
@@ -13,17 +13,17 @@ class JwtMethods {
     return sign;
   }
 
-  static verifyToken(token) {
+  function verifyToken(token) {
     const verifying = jwt.verify(token, JWT_SECRET, { algorithms: ['HS256'] });
 
     return verifying;
   }
 
-  static decodeToken(token) {
+  function decodeToken(token) {
     const decode = jwt.decode(token);
 
     return decode;
   }
-};
+// }
 
-module.exports = { JwtMethods };
+module.exports = { jwtSign, verifyToken, decodeToken };
