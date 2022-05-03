@@ -39,9 +39,19 @@ const ContentWrapper = styled('div', {
   },
 });
 
+// Place Teaser at the top at breakpoint
+const invertRows = {
+  '& #form-content': {
+    order: '2',
+  },
+};
+
 function Register() {
   return (
-    <DuoGeneric id="register-page">
+    <DuoGeneric
+      id="register-page"
+      css={ { '@bp3': invertRows } }
+    >
       <ContentWrapper id="form-content">
         <h1 id="title">Sign Up to Deliveree</h1>
 
