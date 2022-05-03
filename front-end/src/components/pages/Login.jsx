@@ -37,7 +37,7 @@ const LoginPage = styled('main', {
     '&>.Headings': {
       '&>h1': {
         color: '$textDark',
-        fontFamily: '$sans',
+        fontFamily: '$sans2',
         fontSize: '$7',
         fontWeight: '$7',
       },

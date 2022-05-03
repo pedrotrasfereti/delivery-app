@@ -64,6 +64,7 @@ export const {
     },
     fonts: {
       sans: 'Inter, sans-serif',
+      sans2: 'Space Grotesk, sans-serif',
     },
     fontWeights: {
       1: '100',

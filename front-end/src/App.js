@@ -9,7 +9,7 @@ import { globalCss } from './stitches.config';
 const globalStyles = globalCss({
   /* Reference: https://accessibility.digital.gov */
   '@import': [
-    'url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap")',
+    'url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700")',
   ],
   '*': {
     margin: 0,
