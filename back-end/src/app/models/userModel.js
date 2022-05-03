@@ -26,9 +26,4 @@ module.exports = {
     
     return userCreated;
   },
-
-  async getAll() {
-    const users = await Users.findAll({ raw: true });
-    return users;
-  },
 };
