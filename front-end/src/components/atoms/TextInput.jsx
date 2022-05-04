@@ -13,6 +13,7 @@ const TextInput = styled('input', {
   fontWeight: '$4',
   lineHeight: '$default',
   padding: '$btnPadding',
+  width: '100%',
 
   '&:hover:not(:focus)': {
     boxShadow:
