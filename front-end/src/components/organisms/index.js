@@ -1,3 +1,2 @@
-import LoginForm from './LoginForm';
-
-export default LoginForm;
+export { default as LoginForm } from './LoginForm';
+export { default as RegisterForm } from './RegisterForm';
