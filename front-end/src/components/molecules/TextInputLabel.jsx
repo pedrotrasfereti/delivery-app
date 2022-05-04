@@ -7,7 +7,7 @@ import { TextInput, Label } from '../atoms';
 /* Styles */
 import { styled } from '../../stitches.config';
 
-const Container = styled('div', {
+const StitchesComponent = styled('div', {
   display: 'flex',
   flexFlow: 'column nowrap',
   gap: '$2',
@@ -28,7 +28,7 @@ function TextInputLabel({
   handleOnBlur,
 }) {
   return (
-    <Container id="label-input-wrapper">
+    <StitchesComponent>
       <Label htmlFor={ id }>{ label }</Label>
 
       <TextInput
@@ -40,7 +40,7 @@ function TextInputLabel({
         onChange={ (e) => handleOnChange(e.target.value) }
         onBlur={ handleOnBlur }
       />
-    </Container>
+    </StitchesComponent>
   );
 }
 
