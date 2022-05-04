@@ -5,8 +5,8 @@ const instanceApi = axios.create({
   baseURL: `http://localhost:${process.env.REACT_APP_BACKEND_PORT || '3001'}`,
 });
 
-const loginRequest = async (endpoint, body) => {
-  const { data } = await instanceApi.post(endpoint, body);
+const loginRequest = async (body) => {
+  const { data } = await instanceApi.post('login', body);
 
   return data;
 };
