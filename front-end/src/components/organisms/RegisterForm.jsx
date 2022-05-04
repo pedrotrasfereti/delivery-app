@@ -26,6 +26,7 @@ function RegisterForm() {
   const [password, setPassword] = useState('');
   const [passwordErrVisible, setPasswordErrVisible] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [matchErrVisible, setMatchErrVisible] = useState(false);
 
   const validateName = () => {
     const minLength = 12;
@@ -52,6 +53,14 @@ function RegisterForm() {
       setPasswordErrVisible(true);
     } else {
       setPasswordErrVisible(false);
+    }
+  };
+
+  const validateMatch = () => {
+    if (confirmPassword !== password) {
+      setMatchErrVisible(true);
+    } else {
+      setMatchErrVisible(false);
     }
   };
 
@@ -125,15 +134,27 @@ function RegisterForm() {
             }
           </div>
 
-          <TextInputLabel
-            id="register-name-input"
-            type="password"
-            dataTestId="common_register__input-confirm-password"
-            label="Confirm password"
-            placeholder="Confirm password"
-            value={ confirmPassword }
-            handleOnChange={ setConfirmPassword }
-          />
+          <div>
+            <TextInputLabel
+              id="register-name-input"
+              type="password"
+              dataTestId="common_register__input-confirm-password"
+              label="Confirm password"
+              placeholder="Confirm password"
+              value={ confirmPassword }
+              handleOnChange={ setConfirmPassword }
+              handleOnBlur={ validateMatch }
+            />
+            {
+              matchErrVisible && (
+                <ErrorMessage
+                  id="invalid-password-message"
+                  dataTestId="common_register__element-invalid_register"
+                  message={ messages.password.mismatch }
+                />
+              )
+            }
+          </div>
         </PasswordSection>
       </Fieldset>
 
