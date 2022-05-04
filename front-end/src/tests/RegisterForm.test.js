@@ -65,18 +65,6 @@ describe('Register Form Component', () => {
     expect(loginButton).toHaveTextContent(/create account$/i);
   });
 
-  test('Sign up button is present in the document', () => {
-    render(<RegisterForm />);
-    const signUpButton = screen.getByTestId('common_login__button-register');
-    expect(signUpButton).toBeInTheDocument();
-  });
-
-  test('Sign up button has the correct text', () => {
-    render(<RegisterForm />);
-    const signUpButton = screen.getByTestId('common_login__button-register');
-    expect(signUpButton).toHaveTextContent(/sign up$/i);
-  });
-
   describe('When the name input has an invalid value', () => {
     test('Invalid name error message is present in the document', () => {
       render(<RegisterForm />);
