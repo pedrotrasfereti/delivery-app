@@ -9,8 +9,8 @@ module.exports = {
             deliveryAddress: obj.deliveryAddress,
             deliveryNumber: obj.deliveryNumber,
             saleDate: new Date(),
-            status: obj.status
+            status: obj.status,
         });
         return sale;
     },
-}
+};

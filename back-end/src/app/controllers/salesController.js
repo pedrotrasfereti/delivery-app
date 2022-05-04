@@ -6,5 +6,5 @@ module.exports = {
         const obj = req.body;
         const saleCreated = await salesService.createSale(obj);
         return res.status(201).json(saleCreated);
-    }
-}
+    },
+};

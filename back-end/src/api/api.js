@@ -12,7 +12,7 @@ api.use(express.json());
 api.use('/register', userRouter);
 api.use('/login', loginRouter);
 api.use('/customer/product', productRouter);
-api.use('/customer/checkout', salesRouter)
+api.use('/customer/checkout', salesRouter);
 
 api.use(errorHandler);
 
