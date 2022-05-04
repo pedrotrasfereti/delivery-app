@@ -117,7 +117,7 @@ describe('Register Form Component', () => {
 
     test('Invalid email error message has correct text', () => {
       render(<RegisterForm />);
-      const emailInput = screen.getByTestId('common_login__input-email');
+      const emailInput = screen.getByTestId('common_register__input-email');
       fireEvent.change(emailInput, { target: { value: 'abc' } });
       fireEvent.focusOut(emailInput);
       const errMessage = screen.getByTestId(
