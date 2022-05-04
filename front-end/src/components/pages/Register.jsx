@@ -4,7 +4,8 @@ import * as React from 'react';
 import { Packages } from '../../assets';
 
 /* Children */
-import Teaser from '../atoms/Teaser';
+import { Teaser } from '../atoms';
+import { RegisterForm } from '../organisms';
 import DuoGeneric from '../templates';
 
 /* Styles */
@@ -55,7 +56,7 @@ function Register() {
       <ContentWrapper id="form-content">
         <h1 id="title">Sign Up to Deliveree</h1>
 
-        {/* Here goes the sign up form */}
+        <RegisterForm id="register-form" />
       </ContentWrapper>
 
       <Teaser id="teaser" image={ Packages } />
