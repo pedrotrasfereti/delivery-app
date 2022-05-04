@@ -1,7 +1,7 @@
 const sinon = require("sinon");
 const chai = require("chai");
-const { JwtMethods } = require('../utils/JwtMethods');
-const { HashPassMethods } = require('../utils/HashPassMethods');
+const { JwtMethods } = require('../app/utils/JwtMethods');
+const { HashPassMethods } = require('../app/utils/HashPassMethods');
 const { jwtPayload, fakeToken } = require("./mocks/Utils");
 
 const { expect } = chai;

@@ -8,7 +8,7 @@ const api = express();
 api.use(express.json());
 
 api.use('/login', loginRouter);
-api.use('/user', userRouter);
+api.use('/register', userRouter);
 
 api.use(errorHandler);
 

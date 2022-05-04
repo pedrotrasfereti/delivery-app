@@ -23,7 +23,6 @@ module.exports = {
         name: Joi.string().min(3),
         email: Joi.string().email().required(),
         password: Joi.string().min(6).required(),
-        role: Joi.string().valid('customer', 'seller').required(),
       });
       const result = await userSchema.validateAsync(value);
       return result;
