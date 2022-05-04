@@ -28,7 +28,14 @@ function Teaser({ image, children }) {
 
 Teaser.propTypes = {
   image: PropTypes.string.isRequired,
-  children: PropTypes.func.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
+};
+
+Teaser.defaultProps = {
+  children: '',
 };
 
 export default Teaser;
