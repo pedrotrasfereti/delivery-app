@@ -4,8 +4,8 @@ import * as React from 'react';
 import { DeliveryMan } from '../../assets';
 
 /* Children */
-import Teaser from '../atoms/Teaser';
-import LoginForm from '../organisms/LoginForm';
+import { Teaser } from '../atoms';
+import { LoginForm } from '../organisms';
 import DuoGeneric from '../templates';
 
 /* Styles */
