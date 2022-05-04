@@ -47,6 +47,22 @@ const invertRows = {
   },
 };
 
+const DecorOne = styled('div', {
+  background: '$primary',
+  alignSelf: 'flex-end',
+  padding: 'calc($3 + 15px)',
+
+  '@bp3': {
+    padding: '$3',
+  },
+});
+
+const DecorTwo = styled('div', {
+  background: '$quaternary',
+  alignSelf: 'flex-start',
+  padding: 'calc($4 - 10px)',
+});
+
 function Register() {
   return (
     <DuoGeneric
@@ -59,7 +75,10 @@ function Register() {
         <RegisterForm id="register-form" />
       </ContentWrapper>
 
-      <Teaser id="teaser" image={ Packages } />
+      <Teaser id="teaser" image={ Packages }>
+        <DecorOne />
+        <DecorTwo />
+      </Teaser>
     </DuoGeneric>
   );
 }
