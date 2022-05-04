@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 /* Children */
 import BaseForm from './BaseForm';
@@ -85,7 +86,7 @@ function LoginForm() {
             data-testid="common_login__button-register"
             link
           >
-            <a href="https://">Sign up</a>
+            <Link to="/register">Sign up</Link>
           </Button>
         </span>
       </div>
