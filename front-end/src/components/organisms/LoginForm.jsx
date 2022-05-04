@@ -61,7 +61,9 @@ function LoginForm() {
             placeholder="Enter your email"
             value={ email }
             handleOnChange={ setEmail }
-            handleOnBlur={ validateEmail(email, setEmailErrVisible) }
+            handleOnBlur={
+              () => validateEmail(email, setEmailErrVisible)
+            }
           />
           {
             emailErrVisible && (
