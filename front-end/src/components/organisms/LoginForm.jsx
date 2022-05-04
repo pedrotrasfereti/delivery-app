@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 
 /* Children */
 import BaseForm from './BaseForm';
@@ -17,16 +17,43 @@ import TextInputLabel from '../molecules';
 import EMAIL_REGEX from '../../utils/emailRegex';
 import messages from '../../utils/messages';
 
+/* Services */
+import { loginRequest } from '../../services/request';
+
 function LoginForm() {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [emailErrVisible, setEmailErrVisible] = useState(false);
+  const [shouldRedirect, setShouldRedirect] = useState(false);
 
   const validateEmail = () => {
     if (email && !EMAIL_REGEX.test(email)) {
       setEmailErrVisible(true);
     } else {
       setEmailErrVisible(false);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const data = await loginRequest({ email, password });
+
+      if (data) {
+        // save data
+        localStorage.setItem('user', JSON.stringify({
+          email,
+          name: data.name,
+          role: data.role,
+          token: data.token,
+        }));
+
+        // redirect to home
+        setShouldRedirect(true);
+      }
+    } catch (err) {
+      console.log(err);
     }
   };
 
@@ -71,6 +98,7 @@ function LoginForm() {
           id="login-btn"
           type="submit"
           data-testid="common_login__button-login"
+          onClick={ (e) => handleSubmit(e) }
         >
           Login
         </Button>
@@ -90,6 +118,11 @@ function LoginForm() {
           </Button>
         </span>
       </div>
+
+      {/* Redirect to Home page */}
+      {
+        shouldRedirect && <Navigate replace to="/home" />
+      }
     </BaseForm>
   );
 }
