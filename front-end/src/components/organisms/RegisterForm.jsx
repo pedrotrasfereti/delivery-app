@@ -7,7 +7,7 @@ import { Button, ErrorMessage, Fieldset, HorizontalRule } from '../atoms';
 import TextInputLabel from '../molecules';
 
 /* Utils */
-import EMAIL_REGEX from '../../utils/emailRegex';
+import validateEmail from '../../utils/validateEmail';
 import messages from '../../utils/messages';
 
 /* Services */
@@ -39,14 +39,6 @@ function RegisterForm() {
       setNameErrVisible(true);
     } else {
       setNameErrVisible(false);
-    }
-  };
-
-  const validateEmail = () => {
-    if (email && !EMAIL_REGEX.test(email)) {
-      setEmailErrVisible(true);
-    } else {
-      setEmailErrVisible(false);
     }
   };
 
@@ -122,7 +114,7 @@ function RegisterForm() {
             placeholder="Enter your email"
             value={ email }
             handleOnChange={ setEmail }
-            handleOnBlur={ validateEmail }
+            handleOnBlur={ validateEmail(email, setEmailErrVisible) }
           />
           {
             emailErrVisible && (

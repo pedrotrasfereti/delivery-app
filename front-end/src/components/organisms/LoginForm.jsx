@@ -14,7 +14,7 @@ import {
 import TextInputLabel from '../molecules';
 
 /* Utils */
-import EMAIL_REGEX from '../../utils/emailRegex';
+import validateEmail from '../../utils/validateEmail';
 import messages from '../../utils/messages';
 
 /* Services */
@@ -25,14 +25,6 @@ function LoginForm() {
   const [email, setEmail] = useState('');
   const [emailErrVisible, setEmailErrVisible] = useState(false);
   const [shouldRedirect, setShouldRedirect] = useState(false);
-
-  const validateEmail = () => {
-    if (email && !EMAIL_REGEX.test(email)) {
-      setEmailErrVisible(true);
-    } else {
-      setEmailErrVisible(false);
-    }
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -69,7 +61,7 @@ function LoginForm() {
             placeholder="Enter your email"
             value={ email }
             handleOnChange={ setEmail }
-            handleOnBlur={ validateEmail }
+            handleOnBlur={ validateEmail(email, setEmailErrVisible) }
           />
           {
             emailErrVisible && (
