@@ -8,7 +8,7 @@ import '@testing-library/jest-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
 
 // the component to test
-import { RegisterForm } from '../components';
+import { RegisterForm } from '../components/organisms';
 
 describe('Register Form Component', () => {
   test('Signup name input is present in the document', () => {
