@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 /* Children */
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import BaseForm from './BaseForm';
 import { Button, ErrorMessage, Fieldset, HorizontalRule } from '../atoms';
 import TextInputLabel from '../molecules';
@@ -9,6 +9,9 @@ import TextInputLabel from '../molecules';
 /* Utils */
 import EMAIL_REGEX from '../../utils/emailRegex';
 import messages from '../../utils/messages';
+
+/* Services */
+import { registerRequest } from '../../services/request';
 
 /* Styles */
 import { styled } from '../../stitches.config';
@@ -27,6 +30,7 @@ function RegisterForm() {
   const [passwordErrVisible, setPasswordErrVisible] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState('');
   const [matchErrVisible, setMatchErrVisible] = useState(false);
+  const [shouldRedirect, setShouldRedirect] = useState(false);
 
   const validateName = () => {
     const minLength = 12;
@@ -61,6 +65,26 @@ function RegisterForm() {
       setMatchErrVisible(true);
     } else {
       setMatchErrVisible(false);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const data = await registerRequest({
+        email,
+        password,
+        name,
+      });
+
+      // implement save data step
+      localStorage.setItem('user', JSON.stringify(data));
+
+      // redirect to home
+      setShouldRedirect(true);
+    } catch (err) {
+      console.log(err);
     }
   };
 
@@ -163,6 +187,7 @@ function RegisterForm() {
           id="login-btn"
           type="submit"
           data-testid="common_register__button-register"
+          onClick={ handleSubmit }
         >
           Create account
         </Button>
@@ -182,6 +207,11 @@ function RegisterForm() {
           </Button>
         </span>
       </div>
+
+      {/* Redirect to Home page */}
+      {
+        shouldRedirect && <Navigate replace to="/home" />
+      }
     </BaseForm>
   );
 }
