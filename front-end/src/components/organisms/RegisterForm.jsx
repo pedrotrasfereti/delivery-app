@@ -10,6 +10,7 @@ import TextInputLabel from '../molecules';
 import validateName from '../../utils/validateName';
 import validateEmail from '../../utils/validateEmail';
 import validatePassword from '../../utils/validatePassword';
+import validateMatch from '../../utils/validateMatch';
 import messages from '../../utils/messages';
 
 /* Services */
@@ -33,14 +34,6 @@ function RegisterForm() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [matchErrVisible, setMatchErrVisible] = useState(false);
   const [shouldRedirect, setShouldRedirect] = useState(false);
-
-  const validateMatch = () => {
-    if (confirmPassword !== password) {
-      setMatchErrVisible(true);
-    } else {
-      setMatchErrVisible(false);
-    }
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -147,7 +140,9 @@ function RegisterForm() {
               placeholder="Confirm password"
               value={ confirmPassword }
               handleOnChange={ setConfirmPassword }
-              handleOnBlur={ validateMatch }
+              handleOnBlur={
+                () => validateMatch(confirmPassword, password, setMatchErrVisible)
+              }
             />
             {
               matchErrVisible && (
