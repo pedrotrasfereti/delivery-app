@@ -5,9 +5,4 @@ module.exports = {
     const userCreated = await userModel.create(user);
     return userCreated;
   },
-
-    async getAll() {
-    const users = await userModel.getAll();
-    return users;
-  },
 };

@@ -8,9 +8,4 @@ module.exports = {
 
     return res.status(201).json(userCreated);
   },
-
-  async getAll(_req, res) {
-    const users = await userService.getAll();
-    return res.status(200).json(users);
-  },
 };
