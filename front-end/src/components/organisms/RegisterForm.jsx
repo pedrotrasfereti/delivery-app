@@ -9,6 +9,7 @@ import TextInputLabel from '../molecules';
 /* Utils */
 import validateName from '../../utils/validateName';
 import validateEmail from '../../utils/validateEmail';
+import validatePassword from '../../utils/validatePassword';
 import messages from '../../utils/messages';
 
 /* Services */
@@ -32,16 +33,6 @@ function RegisterForm() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [matchErrVisible, setMatchErrVisible] = useState(false);
   const [shouldRedirect, setShouldRedirect] = useState(false);
-
-  const validatePassword = () => {
-    const minLength = 6;
-
-    if (password.length < minLength) {
-      setPasswordErrVisible(true);
-    } else {
-      setPasswordErrVisible(false);
-    }
-  };
 
   const validateMatch = () => {
     if (confirmPassword !== password) {
@@ -132,7 +123,9 @@ function RegisterForm() {
               placeholder="Set a password"
               value={ password }
               handleOnChange={ setPassword }
-              handleOnBlur={ validatePassword }
+              handleOnBlur={
+                () => validatePassword(password, setPasswordErrVisible)
+              }
             />
             {
               passwordErrVisible && (
