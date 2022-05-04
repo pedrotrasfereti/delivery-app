@@ -17,7 +17,7 @@ import messages from '../../utils/messages';
 /* Styles */
 import { styled } from '../../stitches.config';
 
-const Container = styled('div', {
+const StitchesComponent = styled('form', {
   display: 'flex',
   flexFlow: 'column nowrap',
   gap: '$4',
@@ -55,7 +55,7 @@ function LoginForm() {
   };
 
   return (
-    <Container id="login-form-wrapper" action="">
+    <StitchesComponent id="login-form-wrapper" action="">
       <Fieldset id="control-group">
         <div>
           <TextInputLabel
@@ -114,7 +114,7 @@ function LoginForm() {
           </Button>
         </span>
       </div>
-    </Container>
+    </StitchesComponent>
   );
 }
 
