@@ -8,7 +8,7 @@ import '@testing-library/jest-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
 
 // the component to test
-import LoginForm from '../components/organisms';
+import { LoginForm } from '../components/organisms';
 
 describe('Login Form Component', () => {
   test('Login email input is present in the document', () => {
