@@ -11,7 +11,14 @@ const loginRequest = async (body) => {
   return data;
 };
 
+const registerRequest = async (body) => {
+  const { data } = await instanceApi.post('/register', body);
+
+  return data;
+};
+
 export {
   instanceApi,
   loginRequest,
+  registerRequest,
 };
