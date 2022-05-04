@@ -39,7 +39,7 @@ const ContentWrapper = styled('div', {
   },
 });
 
-// Place Teaser at the top at breakpoint
+// Place form content at the bottom and teaser at the top
 const invertRows = {
   '& #form-content': {
     order: '2',
