@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 /* Children */
+import { Link } from 'react-router-dom';
 import BaseForm from './BaseForm';
 import { Button, ErrorMessage, Fieldset, HorizontalRule } from '../atoms';
 import TextInputLabel from '../molecules';
@@ -156,7 +157,7 @@ function RegisterForm() {
             data-testid="common_login__button-register"
             link
           >
-            <a href="https://">Login</a>
+            <Link to="/login">Login</Link>
           </Button>
         </span>
       </div>
