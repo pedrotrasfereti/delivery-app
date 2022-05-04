@@ -7,6 +7,7 @@ import { Button, ErrorMessage, Fieldset, HorizontalRule } from '../atoms';
 import TextInputLabel from '../molecules';
 
 /* Utils */
+import validateName from '../../utils/validateName';
 import validateEmail from '../../utils/validateEmail';
 import messages from '../../utils/messages';
 
@@ -31,16 +32,6 @@ function RegisterForm() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [matchErrVisible, setMatchErrVisible] = useState(false);
   const [shouldRedirect, setShouldRedirect] = useState(false);
-
-  const validateName = () => {
-    const minLength = 12;
-
-    if (name.length < minLength) {
-      setNameErrVisible(true);
-    } else {
-      setNameErrVisible(false);
-    }
-  };
 
   const validatePassword = () => {
     const minLength = 6;
@@ -92,7 +83,9 @@ function RegisterForm() {
             placeholder="Enter your full name"
             value={ name }
             handleOnChange={ setName }
-            handleOnBlur={ validateName }
+            handleOnBlur={
+              () => validateName(name, setNameErrVisible)
+            }
           />
           {
             nameErrVisible && (
@@ -114,7 +107,9 @@ function RegisterForm() {
             placeholder="Enter your email"
             value={ email }
             handleOnChange={ setEmail }
-            handleOnBlur={ validateEmail(email, setEmailErrVisible) }
+            handleOnBlur={
+              () => validateEmail(email, setEmailErrVisible)
+            }
           />
           {
             emailErrVisible && (
