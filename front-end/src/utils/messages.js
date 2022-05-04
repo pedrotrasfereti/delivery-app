@@ -7,6 +7,7 @@ const messages = {
   },
   password: {
     invalid: 'Password must be at least 6 characters long',
+    mismatch: 'Passwords did not match',
   },
 };
 
