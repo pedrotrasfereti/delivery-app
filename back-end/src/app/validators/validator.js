@@ -10,7 +10,7 @@ module.exports = {
       const result = await loginSchema.validateAsync(value);
       return result;
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       const err = new Error(error.message);
       err.name = 'bad_request';
       throw err;
@@ -20,14 +20,14 @@ module.exports = {
   async user(value) {
     try {
       const userSchema = Joi.object({
-        name: Joi.string().min(3),
+        name: Joi.string().min(3).required(),
         email: Joi.string().email().required(),
         password: Joi.string().min(6).required(),
       });
       const result = await userSchema.validateAsync(value);
       return result;
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       const err = new Error(error.message);
       err.name = 'joi';
       throw err;
