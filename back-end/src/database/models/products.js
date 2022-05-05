@@ -14,13 +14,14 @@ const makeProducts = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.FLOAT
     },
-    urlImg: {
+    urlImage: {
       allowNull: false,
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
     }   
   }, {
     timestamps: false,
     tableName: 'products',
+    underscored: true,
   });
 
   return Products;
