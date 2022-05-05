@@ -24,6 +24,7 @@ const makeUsers = (sequelize, DataTypes) => {
     },
   }, {
     timestamps: false,
+    tableName: 'users',
   });
 
   Users.associate = (models) => {
