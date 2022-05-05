@@ -1,24 +1,44 @@
 const { Sales } = require('../../database/models');
+const salesProductsModel = require('./salesproductsModel');
 
 module.exports = {
-    async createSale(obj) {
-        const sale = await Sales.create({
-            userId: obj.userId,
-            sellerId: obj.sellerId,
-            totalPrice: obj.totalPrice,
-            deliveryAddress: obj.deliveryAddress,
-            deliveryNumber: obj.deliveryNumber,
-            saleDate: new Date(),
-            status: obj.status,
-        });
-        return sale;
+    async createSale(obj, products) {
+      const sale = await Sales.create({
+        ...obj,
+        saleDate: new Date(),
+      });
+
+      const newProducts = await products.map((product) => ({
+          saleId: sale.id,
+          ...product,
+        }));
+
+      await salesProductsModel.create(newProducts);
+
+      return sale;
     },
     
     async getSales(id) {
       const sales = await Sales.findAll({
-        where: { id },
+        where: { userId: id },
+        raw: true,
       });
 
       return sales;
+    },
+
+    async getSale(id) {
+      const sale = await Sales.findOne({
+        where: { id },
+        raw: true,
+        includes: [{
+          model: 'products',
+          as: 'products',
+          through: {
+            attributes: ['quantity'] },
+        }],
+      });
+
+      return sale;
     },
 };
