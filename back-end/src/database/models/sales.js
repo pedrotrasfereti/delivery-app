@@ -34,6 +34,7 @@ const makeSales = (sequelize, DataTypes) => {
     },
   }, {
     timestamps: false,
+    tableName: 'sales',
   });
 
   Sales.associate = (models) => {
