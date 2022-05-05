@@ -165,8 +165,8 @@ function RegisterForm({ id }) {
         <Button
           id="register-btn"
           type="submit"
-          data-testid="common_register__button-register"
-          onClick={ handleSubmit }
+          dataTestId="common_register__button-register"
+          handleOnClick={ handleSubmit }
         >
           Create account
         </Button>
@@ -179,7 +179,6 @@ function RegisterForm({ id }) {
           <Button
             id="login-btn"
             type="button"
-            data-testid="common_login__button-register"
             link
           >
             <Link to="/login">Login</Link>

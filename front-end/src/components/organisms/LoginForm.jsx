@@ -31,6 +31,9 @@ function LoginForm({ id }) {
   const [password, setPassword] = useState('');
   const [passwordErrVisible, setPasswordErrVisible] = useState(false);
   const [shouldRedirect, setShouldRedirect] = useState(false);
+  // const [submitDisabled, setSubmitDisabled] = useState(true);
+
+  // setSubmitDisabled(true);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -111,8 +114,8 @@ function LoginForm({ id }) {
         <Button
           id="login-btn"
           type="submit"
-          data-testid="common_login__button-login"
-          onClick={ (e) => handleSubmit(e) }
+          dataTestId="common_login__button-login"
+          handleOnClick={ (e) => handleSubmit(e) }
         >
           Login
         </Button>
@@ -125,7 +128,6 @@ function LoginForm({ id }) {
           <Button
             id="sign-up-btn"
             type="button"
-            data-testid="common_login__button-register"
             link
           >
             <Link to="/register">Sign up</Link>
