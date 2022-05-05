@@ -210,7 +210,11 @@ function RegisterForm({ id }) {
 }
 
 RegisterForm.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
+};
+
+RegisterForm.defaultProps = {
+  id: '',
 };
 
 export default RegisterForm;
