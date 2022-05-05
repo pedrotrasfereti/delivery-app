@@ -22,6 +22,7 @@ export const {
       secondary: 'hsl(158, 62%, 47%)',
       tertiary: 'hsl(215, 96%, 50%)',
       quaternary: 'hsl(264, 67%, 31%)',
+      tertiaryLight: 'hsl(215, 100%, 67%)',
 
       /* neutral colors */
       gray800: 'hsl(0, 0%, 26%)',
