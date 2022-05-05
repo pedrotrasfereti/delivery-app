@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link, Navigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 /* Children */
+import BaseForm from './BaseForm';
+
 import {
   Button,
   ErrorMessage,
@@ -11,51 +15,60 @@ import {
 import TextInputLabel from '../molecules';
 
 /* Utils */
-import EMAIL_REGEX from '../../utils/emailRegex';
+import {
+  validateEmail,
+  validatePassword,
+} from '../../utils/validators';
+
 import messages from '../../utils/messages';
 
-/* Styles */
-import { styled } from '../../stitches.config';
+/* Services */
+import { loginRequest } from '../../services/request';
 
-const Container = styled('div', {
-  display: 'flex',
-  flexFlow: 'column nowrap',
-  gap: '$4',
-
-  '&>.ButtonGroup': {
-    display: 'flex',
-    flexFlow: 'column nowrap',
-    gap: '$3',
-
-    '&>.LinkMessage': {
-      color: '$textDark',
-      fontFamily: '$sans',
-      fontSize: '$2',
-      fontWeight: '$5',
-      display: 'flex',
-      flexFlow: 'row nowrap',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: '$1',
-    },
-  },
-});
-
-function LoginForm() {
-  const [password, setPassword] = useState('');
+function LoginForm({ id }) {
   const [email, setEmail] = useState('');
   const [emailErrVisible, setEmailErrVisible] = useState(false);
+  const [password, setPassword] = useState('');
+  const [passwordErrVisible, setPasswordErrVisible] = useState(false);
+  const [shouldRedirect, setShouldRedirect] = useState(false);
+  const [submitDisabled, setSubmitDisabled] = useState(true);
 
-  const validateEmail = () => {
-    if (email && !EMAIL_REGEX.test(email)) {
-      setEmailErrVisible(true);
+  useEffect(() => {
+    if (
+      (email && validateEmail(email))
+      && (password && validatePassword(password))
+    ) {
+      setSubmitDisabled(false);
     } else {
-      setEmailErrVisible(false);
+      setSubmitDisabled(true);
+    }
+  }, [email, password]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const data = await loginRequest({ email, password });
+
+      if (data) {
+        // save data
+        localStorage.setItem('user', JSON.stringify({
+          email,
+          name: data.name,
+          role: data.role,
+          token: data.token,
+        }));
+
+        // redirect to home
+        setShouldRedirect(true);
+      }
+    } catch (err) {
+      console.log(err);
     }
   };
 
   return (
-    <Container id="login-form-wrapper" action="">
+    <BaseForm id={ id } action="">
       <Fieldset id="control-group">
         <div>
           <TextInputLabel
@@ -66,7 +79,9 @@ function LoginForm() {
             placeholder="Enter your email"
             value={ email }
             handleOnChange={ setEmail }
-            handleOnBlur={ validateEmail }
+            handleOnBlur={
+              () => setEmailErrVisible(!validateEmail(email))
+            }
           />
           {
             emailErrVisible && (
@@ -79,22 +94,38 @@ function LoginForm() {
           }
         </div>
 
-        <TextInputLabel
-          id="login-password-input"
-          type="password"
-          dataTestId="common_login__input-password"
-          label="Password"
-          placeholder="Enter password"
-          value={ password }
-          handleOnChange={ setPassword }
-        />
+        <div>
+          <TextInputLabel
+            id="login-password-input"
+            type="password"
+            dataTestId="common_login__input-password"
+            label="Password"
+            placeholder="Enter password"
+            value={ password }
+            handleOnChange={ setPassword }
+            handleOnBlur={
+              () => setPasswordErrVisible(!validatePassword(password))
+            }
+          />
+          {
+            passwordErrVisible && (
+              <ErrorMessage
+                id="invalid-password-message"
+                dataTestId="common_login__element-invalid-password"
+                message={ messages.password.invalid }
+              />
+            )
+          }
+        </div>
       </Fieldset>
 
       <div className="ButtonGroup">
         <Button
           id="login-btn"
           type="submit"
-          data-testid="common_login__button-login"
+          dataTestId="common_login__button-login"
+          handleOnClick={ (e) => handleSubmit(e) }
+          disabled={ submitDisabled }
         >
           Login
         </Button>
@@ -107,15 +138,28 @@ function LoginForm() {
           <Button
             id="sign-up-btn"
             type="button"
-            data-testid="common_login__button-register"
+            dataTestId="common_login__button-register"
             link
           >
-            <a href="https://">Sign up</a>
+            <Link to="/register">Sign up</Link>
           </Button>
         </span>
       </div>
-    </Container>
+
+      {/* Redirect to Home page */}
+      {
+        shouldRedirect && <Navigate replace to="/home" />
+      }
+    </BaseForm>
   );
 }
+
+LoginForm.propTypes = {
+  id: PropTypes.string,
+};
+
+LoginForm.defaultProps = {
+  id: '',
+};
 
 export default LoginForm;
