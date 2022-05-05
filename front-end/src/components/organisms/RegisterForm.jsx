@@ -7,10 +7,13 @@ import { Button, ErrorMessage, Fieldset, HorizontalRule } from '../atoms';
 import TextInputLabel from '../molecules';
 
 /* Utils */
-import validateName from '../../utils/validateName';
-import validateEmail from '../../utils/validateEmail';
-import validatePassword from '../../utils/validatePassword';
-import validateMatch from '../../utils/validateMatch';
+import {
+  validateName,
+  validateEmail,
+  validatePassword,
+  validateMatch,
+} from '../../utils/validators';
+
 import messages from '../../utils/messages';
 
 /* Services */
@@ -84,7 +87,7 @@ function RegisterForm() {
 
         <div>
           <TextInputLabel
-            id="register-name-input"
+            id="register-email-input"
             type="email"
             dataTestId="common_register__input-email"
             label="Email address"
@@ -109,7 +112,7 @@ function RegisterForm() {
         <PasswordSection>
           <div>
             <TextInputLabel
-              id="register-name-input"
+              id="register-password-input"
               type="password"
               dataTestId="common_register__input-password"
               label="Password"
@@ -133,7 +136,7 @@ function RegisterForm() {
 
           <div>
             <TextInputLabel
-              id="register-name-input"
+              id="register-confirm-pw-input"
               type="password"
               dataTestId="common_register__input-confirm-password"
               label="Confirm password"
@@ -147,7 +150,7 @@ function RegisterForm() {
             {
               matchErrVisible && (
                 <ErrorMessage
-                  id="invalid-password-message"
+                  id="mismatch-message"
                   dataTestId="common_register__element-invalid_register"
                   message={ messages.password.mismatch }
                 />
@@ -159,7 +162,7 @@ function RegisterForm() {
 
       <div className="ButtonGroup">
         <Button
-          id="login-btn"
+          id="register-btn"
           type="submit"
           data-testid="common_register__button-register"
           onClick={ handleSubmit }
@@ -173,7 +176,7 @@ function RegisterForm() {
           Already have an account?
 
           <Button
-            id="sign-up-btn"
+            id="login-btn"
             type="button"
             data-testid="common_login__button-register"
             link
