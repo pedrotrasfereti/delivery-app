@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 /* Children */
@@ -38,6 +38,20 @@ function RegisterForm({ id }) {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [matchErrVisible, setMatchErrVisible] = useState(false);
   const [shouldRedirect, setShouldRedirect] = useState(false);
+  const [submitDisabled, setSubmitDisabled] = useState(true);
+
+  useEffect(() => {
+    if (
+      (name && validateName(name))
+      && (email && validateEmail(email))
+      && (password && validatePassword(password))
+      && (validateMatch(password, confirmPassword))
+    ) {
+      setSubmitDisabled(false);
+    } else {
+      setSubmitDisabled(true);
+    }
+  }, [confirmPassword, email, name, password]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -167,7 +181,7 @@ function RegisterForm({ id }) {
           type="submit"
           dataTestId="common_register__button-register"
           handleOnClick={ handleSubmit }
-          disabled
+          disabled={ submitDisabled }
         >
           Create account
         </Button>
