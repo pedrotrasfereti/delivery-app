@@ -88,4 +88,30 @@ describe('Login Form Component', () => {
       );
     });
   });
+
+  describe('When the password input has an invalid value', () => {
+    test('Invalid password error message is present in the document', () => {
+      render(<RegisterForm />);
+      const passwordInput = screen.getByTestId('common_login__input-password');
+      fireEvent.change(passwordInput, { target: { value: 'abc' } });
+      fireEvent.focusOut(passwordInput);
+      const errMessage = screen.getByTestId(
+        'common_login__element-invalid-password',
+      );
+      expect(errMessage).toBeInTheDocument();
+    });
+
+    test('Invalid password error message has correct text', () => {
+      render(<RegisterForm />);
+      const passwordInput = screen.getByTestId('common_login__input-password');
+      fireEvent.change(passwordInput, { target: { value: 'abc' } });
+      fireEvent.focusOut(passwordInput);
+      const errMessage = screen.getByTestId(
+        'common_login__element-invalid-password',
+      );
+      expect(errMessage).toHaveTextContent(
+        /Password must be at least 6 characters long$/i,
+      );
+    });
+  });
 });
