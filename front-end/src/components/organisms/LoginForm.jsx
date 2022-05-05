@@ -33,7 +33,13 @@ function LoginForm({ id }) {
   const [shouldRedirect, setShouldRedirect] = useState(false);
   // const [submitDisabled, setSubmitDisabled] = useState(true);
 
-  // setSubmitDisabled(true);
+  // useEffect(() => {
+  //   if (// condition here) {
+  //     setSubmitDisabled(false);
+  //   } else {
+  //     setSubmitDisabled(true);
+  //   }
+  // }, [email, password]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -71,7 +77,7 @@ function LoginForm({ id }) {
             value={ email }
             handleOnChange={ setEmail }
             handleOnBlur={
-              () => validateEmail(email, setEmailErrVisible)
+              () => setEmailErrVisible(!validateEmail(email))
             }
           />
           {
@@ -95,7 +101,7 @@ function LoginForm({ id }) {
             value={ password }
             handleOnChange={ setPassword }
             handleOnBlur={
-              () => validatePassword(password, setPasswordErrVisible)
+              () => setPasswordErrVisible(!validatePassword(password))
             }
           />
           {
@@ -116,6 +122,7 @@ function LoginForm({ id }) {
           type="submit"
           dataTestId="common_login__button-login"
           handleOnClick={ (e) => handleSubmit(e) }
+          disabled
         >
           Login
         </Button>

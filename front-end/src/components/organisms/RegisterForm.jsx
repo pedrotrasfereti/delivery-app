@@ -72,7 +72,7 @@ function RegisterForm({ id }) {
             value={ name }
             handleOnChange={ setName }
             handleOnBlur={
-              () => validateName(name, setNameErrVisible)
+              () => setNameErrVisible(!validateName(name))
             }
           />
           {
@@ -96,7 +96,7 @@ function RegisterForm({ id }) {
             value={ email }
             handleOnChange={ setEmail }
             handleOnBlur={
-              () => validateEmail(email, setEmailErrVisible)
+              () => setEmailErrVisible(!validateEmail(email))
             }
           />
           {
@@ -121,7 +121,7 @@ function RegisterForm({ id }) {
               value={ password }
               handleOnChange={ setPassword }
               handleOnBlur={
-                () => validatePassword(password, setPasswordErrVisible)
+                () => setPasswordErrVisible(!validatePassword(password))
               }
             />
             {
@@ -145,7 +145,7 @@ function RegisterForm({ id }) {
               value={ confirmPassword }
               handleOnChange={ setConfirmPassword }
               handleOnBlur={
-                () => validateMatch(confirmPassword, password, setMatchErrVisible)
+                () => setMatchErrVisible(!validateMatch(confirmPassword, password))
               }
             />
             {
@@ -167,6 +167,7 @@ function RegisterForm({ id }) {
           type="submit"
           dataTestId="common_register__button-register"
           handleOnClick={ handleSubmit }
+          disabled
         >
           Create account
         </Button>
