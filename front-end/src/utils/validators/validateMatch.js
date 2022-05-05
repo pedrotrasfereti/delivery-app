@@ -1,9 +1,3 @@
-const validateMatch = (password1, password2, callback) => {
-  if (password1 !== password2) {
-    callback(true);
-  } else {
-    callback(false);
-  }
-};
+const validateMatch = (password1, password2) => password1 !== password2;
 
 export default validateMatch;

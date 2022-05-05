@@ -1,11 +1,7 @@
-const validateName = (name, callback) => {
+const validateName = (name) => {
   const minLength = 12;
 
-  if (name.length < minLength) {
-    callback(true);
-  } else {
-    callback(false);
-  }
+  return name.length < minLength;
 };
 
 export default validateName;
