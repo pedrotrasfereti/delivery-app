@@ -5,8 +5,9 @@ const chai = require('chai');
 const sinon = require('sinon');
 const {
   Users
-} = require('../database/models/');
-const userModelApp = require('../app/models/userModel');
+} = require('../../database/models/');
+
+const userModelApp = require('../../app/models/userModel');
 
 describe('Testing user model', () => {
   describe('Testing create method', () => {

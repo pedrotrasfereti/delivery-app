@@ -5,8 +5,8 @@ const {
   const sinon = require('sinon');
   const {
     Sales
-  } = require('../database/models/');
-  const salesModelApp = require('../app/models/salesModel');
+  } = require('../../database/models');
+  const salesModelApp = require('../../app/models/salesModel');
 
   describe("Testing sales model", () => {
       describe("Testing createSale method", () => {
