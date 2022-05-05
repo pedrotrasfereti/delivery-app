@@ -9,6 +9,7 @@ module.exports = {
         try {
             const decoded = JwtMethods.verifyToken(token);
             if (decoded.role !== 'customer') throw new Error();
+            req.body.user = decoded;
             next();
         } catch (error) {
             return res.status(401).json({ error: 'Token invalid or expired' });
