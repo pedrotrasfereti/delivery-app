@@ -138,6 +138,7 @@ function LoginForm({ id }) {
           <Button
             id="sign-up-btn"
             type="button"
+            dataTestId="common_login__button-register"
             link
           >
             <Link to="/register">Sign up</Link>
@@ -154,7 +155,11 @@ function LoginForm({ id }) {
 }
 
 LoginForm.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
+};
+
+LoginForm.defaultProps = {
+  id: '',
 };
 
 export default LoginForm;
