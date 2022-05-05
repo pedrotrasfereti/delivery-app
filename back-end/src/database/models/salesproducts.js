@@ -7,6 +7,7 @@ const makeSalesProducts = (sequelize, DataTypes) => {
   }, {
     timestamps: false,
     tableName: 'salesProducts',
+    underscored: true,
   });
 
   SalesProducts.associate = (models) => {
