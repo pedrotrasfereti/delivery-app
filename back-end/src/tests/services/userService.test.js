@@ -15,6 +15,10 @@ describe('Tests userService', () => {
       role: 'customer',
     };
 
+    afterEach(() => {
+      sinon.restore();
+    })
+
     it('Returns created user', async () => {
       const createStub = sinon.stub(userModel, 'create').resolves(userMock);
       const jwtSignStub = sinon.stub(JwtMethods, 'jwtSign').returns('token');
