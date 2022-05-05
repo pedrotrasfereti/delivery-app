@@ -14,16 +14,21 @@ import {
 import TextInputLabel from '../molecules';
 
 /* Utils */
-import validateEmail from '../../utils/validateEmail';
+import {
+  validateEmail,
+  validatePassword,
+} from '../../utils/validators';
+
 import messages from '../../utils/messages';
 
 /* Services */
 import { loginRequest } from '../../services/request';
 
 function LoginForm() {
-  const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [emailErrVisible, setEmailErrVisible] = useState(false);
+  const [password, setPassword] = useState('');
+  const [passwordErrVisible, setPasswordErrVisible] = useState(false);
   const [shouldRedirect, setShouldRedirect] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -76,15 +81,29 @@ function LoginForm() {
           }
         </div>
 
-        <TextInputLabel
-          id="login-password-input"
-          type="password"
-          dataTestId="common_login__input-password"
-          label="Password"
-          placeholder="Enter password"
-          value={ password }
-          handleOnChange={ setPassword }
-        />
+        <div>
+          <TextInputLabel
+            id="login-password-input"
+            type="password"
+            dataTestId="common_login__input-password"
+            label="Password"
+            placeholder="Enter password"
+            value={ password }
+            handleOnChange={ setPassword }
+            handleOnBlur={
+              () => validatePassword(password, setPasswordErrVisible)
+            }
+          />
+          {
+            passwordErrVisible && (
+              <ErrorMessage
+                id="invalid-password-message"
+                dataTestId="common_login__element-invalid-password"
+                message={ messages.password.invalid }
+              />
+            )
+          }
+        </div>
       </Fieldset>
 
       <div className="ButtonGroup">
