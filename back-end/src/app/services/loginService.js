@@ -12,7 +12,7 @@ module.exports = {
       const compare = HashPassMethods.comparePass(cryptoPassword, password);
       if (!compare) throw Error;
       const token = JwtMethods.jwtSign({ id, email, role });
-      return { name, email, role, token };
+      return { id, name, email, role, token };
     } catch (error) {
       const err = new Error('Invalid email or password');
       err.name = 'unauthorized';
