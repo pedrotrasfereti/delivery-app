@@ -1,5 +1,10 @@
 // import dependencies
+import 'regenerator-runtime/runtime';
+import { createMemoryHistory } from 'history'
 import React from 'react';
+
+// import Router
+import { Router } from 'react-router-dom';
 
 // import custom matchers
 import '@testing-library/jest-dom';
@@ -12,13 +17,27 @@ import { LoginForm } from '../components/organisms';
 
 describe('Login Form Component', () => {
   test('Login email input is present in the document', () => {
-    render(<LoginForm />);
+    const history = createMemoryHistory();
+
+    render(
+      <Router location={history.location} navigator={history}>
+        <LoginForm />
+      </Router>
+    );
+
     const emailInput = screen.getByTestId('common_login__input-email');
     expect(emailInput).toBeInTheDocument();
   });
 
   test('It is possible to change the email input value', () => {
-    render(<LoginForm />);
+    const history = createMemoryHistory();
+
+    render(
+      <Router location={history.location} navigator={history}>
+        <LoginForm />
+      </Router>
+    );
+
     const emailInput = screen.getByTestId('common_login__input-email');
     const exampleEmail = 'example@mail.com';
     fireEvent.change(emailInput, { target: { value: exampleEmail } });
@@ -26,13 +45,27 @@ describe('Login Form Component', () => {
   });
 
   test('Login password input is present in the document', () => {
-    render(<LoginForm />);
+    const history = createMemoryHistory();
+
+    render(
+      <Router location={history.location} navigator={history}>
+        <LoginForm />
+      </Router>
+    );
+
     const passwordInput = screen.getByTestId('common_login__input-password');
     expect(passwordInput).toBeInTheDocument();
   });
 
   test('It is possible to change the password input value', () => {
-    render(<LoginForm />);
+    const history = createMemoryHistory();
+
+    render(
+      <Router location={history.location} navigator={history}>
+        <LoginForm />
+      </Router>
+    );
+
     const passwordInput = screen.getByTestId('common_login__input-password');
     const examplePassword = 'example@mail.com';
     fireEvent.change(passwordInput, { target: { value: examplePassword } });
@@ -40,32 +73,67 @@ describe('Login Form Component', () => {
   });
 
   test('Login button is present in the document', () => {
-    render(<LoginForm />);
+    const history = createMemoryHistory();
+
+    render(
+      <Router location={history.location} navigator={history}>
+        <LoginForm />
+      </Router>
+    );
+
     const loginButton = screen.getByTestId('common_login__button-login');
     expect(loginButton).toBeInTheDocument();
   });
 
   test('Login button has the correct text', () => {
-    render(<LoginForm />);
+    const history = createMemoryHistory();
+
+    render(
+      <Router location={history.location} navigator={history}>
+        <LoginForm />
+      </Router>
+    );
+
     const loginButton = screen.getByTestId('common_login__button-login');
     expect(loginButton).toHaveTextContent(/login$/i);
   });
 
   test('Sign up button is present in the document', () => {
-    render(<LoginForm />);
+    const history = createMemoryHistory();
+
+    render(
+      <Router location={history.location} navigator={history}>
+        <LoginForm />
+      </Router>
+    );
+
     const signUpButton = screen.getByTestId('common_login__button-register');
     expect(signUpButton).toBeInTheDocument();
   });
 
   test('Sign up button has the correct text', () => {
-    render(<LoginForm />);
+    const history = createMemoryHistory();
+
+    render(
+      <Router location={history.location} navigator={history}>
+        <LoginForm />
+      </Router>
+    );
+
     const signUpButton = screen.getByTestId('common_login__button-register');
     expect(signUpButton).toHaveTextContent(/sign up$/i);
   });
 
   describe('When the email input has an invalid value', () => {
     test('Invalid email error message is present in the document', () => {
-      render(<LoginForm />);
+      const history = createMemoryHistory();
+
+      render(
+        <Router location={history.location} navigator={history}>
+          <LoginForm />
+        </Router>
+      );
+
       const emailInput = screen.getByTestId('common_login__input-email');
       fireEvent.change(emailInput, { target: { value: 'abc' } });
       fireEvent.focusOut(emailInput);
@@ -76,7 +144,14 @@ describe('Login Form Component', () => {
     });
 
     test('Invalid email error message has correct text', () => {
-      render(<LoginForm />);
+      const history = createMemoryHistory();
+
+      render(
+        <Router location={history.location} navigator={history}>
+          <LoginForm />
+        </Router>
+      );
+
       const emailInput = screen.getByTestId('common_login__input-email');
       fireEvent.change(emailInput, { target: { value: 'abc' } });
       fireEvent.focusOut(emailInput);
@@ -91,7 +166,14 @@ describe('Login Form Component', () => {
 
   describe('When the password input has an invalid value', () => {
     test('Invalid password error message is present in the document', () => {
-      render(<RegisterForm />);
+      const history = createMemoryHistory();
+
+      render(
+        <Router location={history.location} navigator={history}>
+          <LoginForm />
+        </Router>
+      );
+
       const passwordInput = screen.getByTestId('common_login__input-password');
       fireEvent.change(passwordInput, { target: { value: 'abc' } });
       fireEvent.focusOut(passwordInput);
@@ -102,7 +184,14 @@ describe('Login Form Component', () => {
     });
 
     test('Invalid password error message has correct text', () => {
-      render(<RegisterForm />);
+      const history = createMemoryHistory();
+
+      render(
+        <Router location={history.location} navigator={history}>
+          <LoginForm />
+        </Router>
+      );
+
       const passwordInput = screen.getByTestId('common_login__input-password');
       fireEvent.change(passwordInput, { target: { value: 'abc' } });
       fireEvent.focusOut(passwordInput);
