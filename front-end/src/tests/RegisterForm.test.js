@@ -1,5 +1,10 @@
 // import dependencies
+import 'regenerator-runtime/runtime';
+import { createMemoryHistory } from 'history';
 import React from 'react';
+
+// import Router
+import { Router } from 'react-router-dom';
 
 // import custom matchers
 import '@testing-library/jest-dom';
@@ -12,13 +17,27 @@ import { RegisterForm } from '../components/organisms';
 
 describe('Register Form Component', () => {
   test('Signup name input is present in the document', () => {
-    render(<RegisterForm />);
+    const history = createMemoryHistory();
+
+    render(
+      <Router location={history.location} navigator={history}>
+        <RegisterForm />
+      </Router>
+    );
+
     const nameInput = screen.getByTestId('common_register__input-name');
     expect(nameInput).toBeInTheDocument();
   });
 
   test('It is possible to change the name input value', () => {
-    render(<RegisterForm />);
+    const history = createMemoryHistory();
+
+    render(
+      <Router location={history.location} navigator={history}>
+        <RegisterForm />
+      </Router>
+    );
+
     const nameInput = screen.getByTestId('common_register__input-name');
     const exampleName = 'Jane Doe';
     fireEvent.change(nameInput, { target: { value: exampleName } });
@@ -26,13 +45,27 @@ describe('Register Form Component', () => {
   });
 
   test('Signup email input is present in the document', () => {
-    render(<RegisterForm />);
+    const history = createMemoryHistory();
+
+    render(
+      <Router location={history.location} navigator={history}>
+        <RegisterForm />
+      </Router>
+    );
+
     const emailInput = screen.getByTestId('common_register__input-email');
     expect(emailInput).toBeInTheDocument();
   });
 
   test('It is possible to change the email input value', () => {
-    render(<RegisterForm />);
+    const history = createMemoryHistory();
+
+    render(
+      <Router location={history.location} navigator={history}>
+        <RegisterForm />
+      </Router>
+    );
+
     const emailInput = screen.getByTestId('common_register__input-email');
     const exampleEmail = 'example@mail.com';
     fireEvent.change(emailInput, { target: { value: exampleEmail } });
@@ -40,13 +73,27 @@ describe('Register Form Component', () => {
   });
 
   test('Signup password input is present in the document', () => {
-    render(<RegisterForm />);
+    const history = createMemoryHistory();
+
+    render(
+      <Router location={history.location} navigator={history}>
+        <RegisterForm />
+      </Router>
+    );
+
     const passwordInput = screen.getByTestId('common_register__input-password');
     expect(passwordInput).toBeInTheDocument();
   });
 
   test('It is possible to change the password input value', () => {
-    render(<RegisterForm />);
+    const history = createMemoryHistory();
+
+    render(
+      <Router location={history.location} navigator={history}>
+        <RegisterForm />
+      </Router>
+    );
+
     const passwordInput = screen.getByTestId('common_register__input-password');
     const examplePassword = 'example@mail.com';
     fireEvent.change(passwordInput, { target: { value: examplePassword } });
@@ -54,20 +101,41 @@ describe('Register Form Component', () => {
   });
 
   test('Create account button is present in the document', () => {
-    render(<RegisterForm />);
+    const history = createMemoryHistory();
+
+    render(
+      <Router location={history.location} navigator={history}>
+        <RegisterForm />
+      </Router>
+    );
+
     const signInButton = screen.getByTestId('common_register__button-register');
     expect(signInButton).toBeInTheDocument();
   });
 
   test('Create account button has the correct text', () => {
-    render(<RegisterForm />);
+    const history = createMemoryHistory();
+
+    render(
+      <Router location={history.location} navigator={history}>
+        <RegisterForm />
+      </Router>
+    );
+
     const loginButton = screen.getByTestId('common_register__button-register');
     expect(loginButton).toHaveTextContent(/create account$/i);
   });
 
   describe('When the name input has an invalid value', () => {
     test('Invalid name error message is present in the document', () => {
-      render(<RegisterForm />);
+      const history = createMemoryHistory();
+
+      render(
+        <Router location={history.location} navigator={history}>
+          <RegisterForm />
+        </Router>
+      );
+
       const nameInput = screen.getByTestId('common_register__input-name');
       fireEvent.change(nameInput, { target: { value: 'abc' } });
       fireEvent.focusOut(nameInput);
@@ -78,7 +146,14 @@ describe('Register Form Component', () => {
     });
 
     test('Invalid name error message has correct text', () => {
-      render(<RegisterForm />);
+      const history = createMemoryHistory();
+
+      render(
+        <Router location={history.location} navigator={history}>
+          <RegisterForm />
+        </Router>
+      );
+
       const nameInput = screen.getByTestId('common_register__input-name');
       fireEvent.change(nameInput, { target: { value: 'abc' } });
       fireEvent.focusOut(nameInput);
@@ -93,7 +168,14 @@ describe('Register Form Component', () => {
 
   describe('When the email input has an invalid value', () => {
     test('Invalid email error message is present in the document', () => {
-      render(<RegisterForm />);
+      const history = createMemoryHistory();
+
+      render(
+        <Router location={history.location} navigator={history}>
+          <RegisterForm />
+        </Router>
+      );
+
       const emailInput = screen.getByTestId('common_register__input-email');
       fireEvent.change(emailInput, { target: { value: 'abc' } });
       fireEvent.focusOut(emailInput);
@@ -104,7 +186,14 @@ describe('Register Form Component', () => {
     });
 
     test('Invalid email error message has correct text', () => {
-      render(<RegisterForm />);
+      const history = createMemoryHistory();
+
+      render(
+        <Router location={history.location} navigator={history}>
+          <RegisterForm />
+        </Router>
+      );
+
       const emailInput = screen.getByTestId('common_register__input-email');
       fireEvent.change(emailInput, { target: { value: 'abc' } });
       fireEvent.focusOut(emailInput);
@@ -119,7 +208,14 @@ describe('Register Form Component', () => {
 
   describe('When the password input has an invalid value', () => {
     test('Invalid password error message is present in the document', () => {
-      render(<RegisterForm />);
+      const history = createMemoryHistory();
+
+      render(
+        <Router location={history.location} navigator={history}>
+          <RegisterForm />
+        </Router>
+      );
+
       const passwordInput = screen.getByTestId('common_register__input-password');
       fireEvent.change(passwordInput, { target: { value: 'abc' } });
       fireEvent.focusOut(passwordInput);
@@ -130,7 +226,14 @@ describe('Register Form Component', () => {
     });
 
     test('Invalid password error message has correct text', () => {
-      render(<RegisterForm />);
+      const history = createMemoryHistory();
+
+      render(
+        <Router location={history.location} navigator={history}>
+          <RegisterForm />
+        </Router>
+      );
+
       const passwordInput = screen.getByTestId('common_register__input-password');
       fireEvent.change(passwordInput, { target: { value: 'abc' } });
       fireEvent.focusOut(passwordInput);
