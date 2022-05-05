@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -31,15 +31,18 @@ function LoginForm({ id }) {
   const [password, setPassword] = useState('');
   const [passwordErrVisible, setPasswordErrVisible] = useState(false);
   const [shouldRedirect, setShouldRedirect] = useState(false);
-  // const [submitDisabled, setSubmitDisabled] = useState(true);
+  const [submitDisabled, setSubmitDisabled] = useState(true);
 
-  // useEffect(() => {
-  //   if (// condition here) {
-  //     setSubmitDisabled(false);
-  //   } else {
-  //     setSubmitDisabled(true);
-  //   }
-  // }, [email, password]);
+  useEffect(() => {
+    if (
+      (email && validateEmail(email))
+      && (password && validatePassword(password))
+    ) {
+      setSubmitDisabled(false);
+    } else {
+      setSubmitDisabled(true);
+    }
+  }, [email, password]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -122,7 +125,7 @@ function LoginForm({ id }) {
           type="submit"
           dataTestId="common_login__button-login"
           handleOnClick={ (e) => handleSubmit(e) }
-          disabled
+          disabled={ submitDisabled }
         >
           Login
         </Button>
