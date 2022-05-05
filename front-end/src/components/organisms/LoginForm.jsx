@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 /* Children */
 import BaseForm from './BaseForm';
@@ -24,7 +25,7 @@ import messages from '../../utils/messages';
 /* Services */
 import { loginRequest } from '../../services/request';
 
-function LoginForm() {
+function LoginForm({ id }) {
   const [email, setEmail] = useState('');
   const [emailErrVisible, setEmailErrVisible] = useState(false);
   const [password, setPassword] = useState('');
@@ -55,7 +56,7 @@ function LoginForm() {
   };
 
   return (
-    <BaseForm id="login-form-wrapper" action="">
+    <BaseForm id={ id } action="">
       <Fieldset id="control-group">
         <div>
           <TextInputLabel
@@ -139,5 +140,9 @@ function LoginForm() {
     </BaseForm>
   );
 }
+
+LoginForm.propTypes = {
+  id: PropTypes.string.isRequired,
+};
 
 export default LoginForm;

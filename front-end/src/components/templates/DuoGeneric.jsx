@@ -3,9 +3,9 @@ import { styled } from '../../stitches.config';
 const DuoGeneric = styled('main', {
   display: 'grid',
   gridTemplateColumns: 'repeat(2, 1fr)',
-  gridTemplateRows: '$sectionMinHeight',
-  width: '100%',
-  height: '100vh',
+  gridTemplateRows: '1fr',
+  minHeight: '100vh',
+  maxHeight: '110vh',
 
   '@bp3': {
     gridTemplateColumns: '1fr',

@@ -14,9 +14,10 @@ const StitchesComponent = styled('div', {
   zIndex: '$0',
 });
 
-function Teaser({ image, children }) {
+function Teaser({ id, image, children }) {
   return (
     <StitchesComponent
+      id={ id }
       css={
         { backgroundImage: `url(${image})` }
       }
@@ -27,6 +28,7 @@ function Teaser({ image, children }) {
 }
 
 Teaser.propTypes = {
+  id: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),

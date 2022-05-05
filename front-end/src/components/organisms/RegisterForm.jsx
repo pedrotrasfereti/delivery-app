@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 /* Children */
 import { Link, Navigate } from 'react-router-dom';
@@ -27,7 +28,7 @@ const PasswordSection = styled('div', {
   gap: '$2',
 });
 
-function RegisterForm() {
+function RegisterForm({ id }) {
   const [name, setName] = useState('');
   const [nameErrVisible, setNameErrVisible] = useState(false);
   const [email, setEmail] = useState('');
@@ -59,7 +60,7 @@ function RegisterForm() {
   };
 
   return (
-    <BaseForm action="">
+    <BaseForm id={ id } action="">
       <Fieldset id="control-group">
         <div>
           <TextInputLabel
@@ -160,7 +161,7 @@ function RegisterForm() {
         </PasswordSection>
       </Fieldset>
 
-      <div className="ButtonGroup">
+      <div id="btn-group" className="ButtonGroup">
         <Button
           id="register-btn"
           type="submit"
@@ -193,5 +194,9 @@ function RegisterForm() {
     </BaseForm>
   );
 }
+
+RegisterForm.propTypes = {
+  id: PropTypes.string.isRequired,
+};
 
 export default RegisterForm;
