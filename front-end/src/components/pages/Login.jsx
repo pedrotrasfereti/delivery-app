@@ -16,7 +16,7 @@ const ContentWrapper = styled('div', {
   display: 'flex',
   flexFlow: 'column nowrap',
   gap: '$4',
-  padding: '$6 $7',
+  padding: '$5 $7',
   position: 'relative',
   zIndex: '$1',
 
