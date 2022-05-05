@@ -1,6 +1,6 @@
 // import dependencies
 import 'regenerator-runtime/runtime';
-import { createMemoryHistory } from 'history'
+import { createMemoryHistory } from 'history';
 import React from 'react';
 
 // import Router
