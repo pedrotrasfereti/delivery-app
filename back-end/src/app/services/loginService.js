@@ -7,11 +7,11 @@ module.exports = {
     try {
       const user = await userModel.getOne(data);
       if (!user) throw Error;
-      const { name, email, role, password } = user;
+      const { id, name, email, role, password } = user;
       const cryptoPassword = HashPassMethods.encryptPass(data.password);
       const compare = HashPassMethods.comparePass(cryptoPassword, password);
       if (!compare) throw Error;
-      const token = JwtMethods.jwtSign({ email, role });
+      const token = JwtMethods.jwtSign({ id, email, role });
       return { name, email, role, token };
     } catch (error) {
       const err = new Error('Invalid email or password');
