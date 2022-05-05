@@ -5,4 +5,10 @@ module.exports = {
         const created = await salesModel.createSale(obj);
         return created;
     },
+
+    async getSales(id) {
+      const sales = await salesModel.findAll(id);
+
+      return sales;
+    },
 };

@@ -13,4 +13,12 @@ module.exports = {
         });
         return sale;
     },
+    
+    async getSales(id) {
+      const sales = await Sales.findAll({
+        where: { id },
+      });
+
+      return sales;
+    },
 };
