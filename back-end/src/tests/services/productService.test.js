@@ -4,12 +4,17 @@ const { expect } = require("chai");
 const sinon = require("sinon");
 
 describe('Tests productService', () => {
+  const productMock = {
+    name: 'testProduct',
+    price: 2.2,
+    urlImg: 'testUrl',
+  };
+
+  afterEach(() => {
+    sinon.restore();
+  })
+
   describe('Tests getAll method', () => {
-    const productMock = {
-      name: 'testProduct',
-      price: 2.2,
-      urlImg: 'testUrl',
-    };
 
     it('Return an array with all products', async () => {
       const getAllStub = sinon.stub(productModel, 'getAll').resolves([productMock]);

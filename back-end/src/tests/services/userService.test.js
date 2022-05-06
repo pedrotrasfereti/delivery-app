@@ -9,6 +9,7 @@ const { JwtMethods } = require("../../app/utils/JwtMethods");
 describe('Tests userService', () => {
   describe('Tests create method', () => {
     const userMock = {
+      id: 1,
       name: 'testUser',
       email: 'test@email.com',
       password: 'password',
@@ -20,17 +21,19 @@ describe('Tests userService', () => {
     })
 
     it('Returns created user', async () => {
+      const { id, role, email, name } = userMock;
       const createStub = sinon.stub(userModel, 'create').resolves(userMock);
       const jwtSignStub = sinon.stub(JwtMethods, 'jwtSign').returns('token');
       const user = await userService.create(userMock);
 
       sinon.assert.calledWith(createStub, userMock);
-      sinon.assert.calledWith(jwtSignStub, { email: userMock.email, role: userMock.role });
+      sinon.assert.calledWith(jwtSignStub, { id, email, role });
       expect(user).to.be.a('object');
       expect(user).to.be.deep.equal({
-        name: userMock.name,
-        email: userMock.email,
-        role: userMock.role,
+        id,
+        name,
+        email,
+        role,
         token: 'token',
       });
     })

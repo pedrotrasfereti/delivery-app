@@ -12,6 +12,7 @@ describe('Tests loginService', () => {
   };
 
   const returnMock = {
+    id: 1,
     name: 'testUser',
     email: loginMock.email,
     role: 'customer',
@@ -52,6 +53,7 @@ describe('Tests loginService', () => {
 
   describe('When login is successfull', () => {
     it('Returns object with correct fields', async () => {
+      const { id, name, email, role } = returnMock;
       sinon.stub(userModel, 'getOne').resolves(returnMock);
       sinon.stub(HashPassMethods, 'encryptPass').returns('encriptedPassword');
       sinon.stub(HashPassMethods, 'comparePass').returns(true);
@@ -59,13 +61,13 @@ describe('Tests loginService', () => {
 
       const user = await loginService.login(loginMock);
 
-      sinon.assert.calledWith(jwtSignStub, { email: returnMock.email, role: returnMock.role });
+      sinon.assert.calledWith(jwtSignStub, { id, email, role });
       expect(user).to.be.a('object');
       expect(user).to.have.property('name');
       expect(user).to.have.property('email');
       expect(user).to.have.property('role');
       expect(user).to.have.property('token');
-      expect(user).to.be.deep.equal({ name: returnMock.name, email: returnMock.email, role: returnMock.role, token: 'token' });
+      expect(user).to.be.deep.equal({ id, name, email, role, token: 'token' });
     })
   })
 });
