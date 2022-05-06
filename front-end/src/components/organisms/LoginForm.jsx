@@ -74,7 +74,7 @@ function LoginForm({ id }) {
         loginErrVisible && (
           <ErrorMessageBox
             id="user-not-found"
-            data-testid="common_login__element-invalid-email"
+            dataTestId="common_login__element-invalid-email"
             message={ messages.login.notFound }
           />
         )
