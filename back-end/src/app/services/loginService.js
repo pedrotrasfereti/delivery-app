@@ -17,7 +17,7 @@ module.exports = {
       return { name, email, role, token };
     } catch (error) {
       const err = new Error('Invalid email or password');
-      err.name = 'unauthorized';
+      err.name = 'not_found';
       throw err;
     }
   },
