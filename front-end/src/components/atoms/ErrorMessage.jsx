@@ -24,6 +24,19 @@ const Container = styled('div', {
     fontSize: '$2',
     fontWeight: '$5',
   },
+
+  variants: {
+    box: {
+      true: {
+        '&>.Icon': {
+          fill: '$white',
+        },
+        '&>span': {
+          color: '$white',
+        },
+      },
+    },
+  },
 });
 
 function ErrorMessage({ id, dataTestId, message }) {
