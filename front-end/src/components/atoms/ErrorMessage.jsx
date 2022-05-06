@@ -7,7 +7,7 @@ import { BsExclamationCircleFill as AlertIcon } from 'react-icons/bs';
 /* Styles */
 import { styled } from '../../stitches.config';
 
-const Container = styled('div', {
+const StitchesComponent = styled('div', {
   padding: '$2',
 
   '&>.Icon': {
@@ -30,23 +30,25 @@ const Container = styled('div', {
       true: {
         '&>.Icon': {
           fill: '$white',
+          fontSize: '$5',
         },
         '&>span': {
           color: '$white',
+          fontSize: '$3',
         },
       },
     },
   },
 });
 
-function ErrorMessage({ id, dataTestId, message }) {
+function ErrorMessage({ id, dataTestId, message, box }) {
   return (
-    <Container id="error-message-wrapper">
+    <StitchesComponent id="error-message-wrapper" box={ box }>
       <AlertIcon className="Icon" />
       <span id={ id } data-testid={ dataTestId }>
         { message }
       </span>
-    </Container>
+    </StitchesComponent>
   );
 }
 
@@ -55,6 +57,7 @@ ErrorMessage.propTypes = {
   id: PropTypes.string.isRequired,
   dataTestId: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
+  box: PropTypes.bool.isRequired,
 };
 
 export default ErrorMessage;
