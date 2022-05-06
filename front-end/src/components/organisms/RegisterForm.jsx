@@ -37,6 +37,7 @@ function RegisterForm({ id }) {
   const [passwordErrVisible, setPasswordErrVisible] = useState(false);
   // const [confirmPassword, setConfirmPassword] = useState('');
   // const [matchErrVisible, setMatchErrVisible] = useState(false);
+  const [registerErrVisible, setRegisterErrVisible] = useState(false);
   const [shouldRedirect, setShouldRedirect] = useState(false);
   const [submitDisabled, setSubmitDisabled] = useState(true);
 
@@ -74,12 +75,17 @@ function RegisterForm({ id }) {
       // redirect to home
       setShouldRedirect(true);
     } catch (err) {
-      console.log(err);
+      setRegisterErrVisible(true);
     }
   };
 
   return (
     <BaseForm id={ id } action="">
+      {
+        registerErrVisible && (
+          <div>AAAA</div>
+        )
+      }
       <Fieldset id="control-group">
         <div>
           <TextInputLabel
