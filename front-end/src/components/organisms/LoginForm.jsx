@@ -72,7 +72,7 @@ function LoginForm({ id }) {
     <BaseForm id={ id } action="">
       {
         loginErrVisible && (
-          <div>AAA</div>
+          <div data-testid="common_login__element-invalid-email">AAA</div>
         )
       }
       <Fieldset id="control-group">
