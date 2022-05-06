@@ -203,7 +203,7 @@ function RegisterForm({ id }) {
 
       {/* Redirect to Home page */}
       {
-        shouldRedirect && <Navigate replace to="/home" />
+        shouldRedirect && <Navigate replace to="/customer/products" />
       }
     </BaseForm>
   );
