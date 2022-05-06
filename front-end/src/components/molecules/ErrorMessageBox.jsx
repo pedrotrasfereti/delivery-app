@@ -17,14 +17,14 @@ const StitchesComponent = styled('div', {
   },
 });
 
-function ErrorMessageBox({ id, dataTestId, message, box }) {
+function ErrorMessageBox({ id, dataTestId, message }) {
   return (
     <StitchesComponent>
       <ErrorMessage
         id={ id }
         dataTestId={ dataTestId }
         message={ message }
-        box={ box }
+        box
       />
     </StitchesComponent>
   );
@@ -35,7 +35,6 @@ ErrorMessageBox.propTypes = {
   id: PropTypes.string.isRequired,
   dataTestId: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
-  box: PropTypes.bool.isRequired,
 };
 
 export default ErrorMessageBox;
