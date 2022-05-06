@@ -1,44 +1,44 @@
-const { Sales } = require('../../database/models');
+const { Sales, Products } = require('../../database/models');
 const salesProductsModel = require('./salesproductsModel');
 
 module.exports = {
-    async createSale(obj, products) {
-      const sale = await Sales.create({
-        ...obj,
-        saleDate: new Date(),
-      });
+  async createSale(obj, products) {
+    const sale = await Sales.create({
+      ...obj,
+      saleDate: Date.now(),
+    });
 
-      const newProducts = await products.map((product) => ({
-          saleId: sale.id,
-          ...product,
-        }));
+    const newProducts = await products.map((product) => ({
+      saleId: sale.id,
+      ...product,
+    }));
 
-      await salesProductsModel.create(newProducts);
+    await salesProductsModel.create(newProducts);
 
-      return sale;
-    },
-    
-    async getSales(id) {
-      const sales = await Sales.findAll({
-        where: { userId: id },
-        raw: true,
-      });
+    return sale;
+  },
 
-      return sales;
-    },
+  async getSales(id) {
+    const sales = await Sales.findAll({
+      where: { userId: id },
+      raw: true,
+    });
 
-    async getSale(id) {
-      const sale = await Sales.findOne({
-        where: { id },
-        raw: true,
-        includes: [{
-          model: 'products',
-          as: 'products',
-          through: {
-            attributes: ['quantity'] },
-        }],
-      });
+    return sales;
+  },
 
-      return sale;
-    },
+  async getSale(id) {
+    const sale = await Sales.findOne({
+      where: { id },
+      include: [{
+        model: Products,
+        as: 'products',
+        through: {
+          attributes: ['quantity'],
+        },
+      }],
+    });
+
+    return sale;
+  },
 };
