@@ -9,6 +9,12 @@ const messages = {
     invalid: 'Password must be at least 6 characters long',
     mismatch: 'Passwords did not match',
   },
+  login: {
+    notFound: 'Incorrect email or password',
+  },
+  register: {
+    conflict: 'Name or email is already associated to an account',
+  },
 };
 
 export default messages;
