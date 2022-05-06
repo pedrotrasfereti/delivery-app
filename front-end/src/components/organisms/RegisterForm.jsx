@@ -12,7 +12,7 @@ import {
   validateName,
   validateEmail,
   validatePassword,
-  validateMatch,
+  // validateMatch,
 } from '../../utils/validators';
 
 import messages from '../../utils/messages';
@@ -35,8 +35,8 @@ function RegisterForm({ id }) {
   const [emailErrVisible, setEmailErrVisible] = useState(false);
   const [password, setPassword] = useState('');
   const [passwordErrVisible, setPasswordErrVisible] = useState(false);
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [matchErrVisible, setMatchErrVisible] = useState(false);
+  // const [confirmPassword, setConfirmPassword] = useState('');
+  // const [matchErrVisible, setMatchErrVisible] = useState(false);
   const [shouldRedirect, setShouldRedirect] = useState(false);
   const [submitDisabled, setSubmitDisabled] = useState(true);
 
@@ -45,13 +45,18 @@ function RegisterForm({ id }) {
       (name && validateName(name))
       && (email && validateEmail(email))
       && (password && validatePassword(password))
-      && (validateMatch(password, confirmPassword))
+      // && (validateMatch(password, confirmPassword))
     ) {
       setSubmitDisabled(false);
     } else {
       setSubmitDisabled(true);
     }
-  }, [confirmPassword, email, name, password]);
+  }, [
+    // confirmPassword,
+    email,
+    name,
+    password,
+  ]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -74,7 +79,7 @@ function RegisterForm({ id }) {
   };
 
   return (
-    <BaseForm id={ id } action="">
+    <BaseForm id={id} action="">
       <Fieldset id="control-group">
         <div>
           <TextInputLabel
@@ -83,8 +88,8 @@ function RegisterForm({ id }) {
             dataTestId="common_register__input-name"
             label="Name"
             placeholder="Enter your full name"
-            value={ name }
-            handleOnChange={ setName }
+            value={name}
+            handleOnChange={setName}
             handleOnBlur={
               () => setNameErrVisible(!validateName(name))
             }
@@ -94,7 +99,7 @@ function RegisterForm({ id }) {
               <ErrorMessage
                 id="invalid-name-message"
                 dataTestId="common_register__element-invalid_register"
-                message={ messages.name.invalid }
+                message={messages.name.invalid}
               />
             )
           }
@@ -107,8 +112,8 @@ function RegisterForm({ id }) {
             dataTestId="common_register__input-email"
             label="Email address"
             placeholder="Enter your email"
-            value={ email }
-            handleOnChange={ setEmail }
+            value={email}
+            handleOnChange={setEmail}
             handleOnBlur={
               () => setEmailErrVisible(!validateEmail(email))
             }
@@ -118,7 +123,7 @@ function RegisterForm({ id }) {
               <ErrorMessage
                 id="invalid-email-message"
                 dataTestId="common_register__element-invalid_register"
-                message={ messages.email.invalid }
+                message={messages.email.invalid}
               />
             )
           }
@@ -132,8 +137,8 @@ function RegisterForm({ id }) {
               dataTestId="common_register__input-password"
               label="Password"
               placeholder="Set a password"
-              value={ password }
-              handleOnChange={ setPassword }
+              value={password}
+              handleOnChange={setPassword}
               handleOnBlur={
                 () => setPasswordErrVisible(!validatePassword(password))
               }
@@ -143,21 +148,21 @@ function RegisterForm({ id }) {
                 <ErrorMessage
                   id="invalid-password-message"
                   dataTestId="common_register__element-invalid_register"
-                  message={ messages.password.invalid }
+                  message={messages.password.invalid}
                 />
               )
             }
           </div>
 
-          <div>
+          {/* <div>
             <TextInputLabel
               id="register-confirm-pw-input"
               type="password"
               dataTestId="common_register__input-confirm-password"
               label="Confirm password"
               placeholder="Confirm password"
-              value={ confirmPassword }
-              handleOnChange={ setConfirmPassword }
+              value={confirmPassword}
+              handleOnChange={setConfirmPassword}
               handleOnBlur={
                 () => setMatchErrVisible(!validateMatch(confirmPassword, password))
               }
@@ -167,11 +172,11 @@ function RegisterForm({ id }) {
                 <ErrorMessage
                   id="mismatch-message"
                   dataTestId="common_register__element-invalid_register"
-                  message={ messages.password.mismatch }
+                  message={messages.password.mismatch}
                 />
               )
             }
-          </div>
+          </div> */}
         </PasswordSection>
       </Fieldset>
 
@@ -180,8 +185,8 @@ function RegisterForm({ id }) {
           id="register-btn"
           type="submit"
           dataTestId="common_register__button-register"
-          handleOnClick={ handleSubmit }
-          disabled={ submitDisabled }
+          handleOnClick={handleSubmit}
+          disabled={submitDisabled}
         >
           Create account
         </Button>
