@@ -83,7 +83,11 @@ function RegisterForm({ id }) {
     <BaseForm id={ id } action="">
       {
         registerErrVisible && (
-          <div>AAAA</div>
+          <div
+            data-testid="common_register__element-invalid_register"
+          >
+            AAAA
+          </div>
         )
       }
       <Fieldset id="control-group">
