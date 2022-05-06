@@ -21,6 +21,6 @@ describe('Tests salesService', () => {
       sinon.assert.calledWith(createStub, saleMock);
       expect(sale).to.be.a('object');
       expect(sale).to.be.deep.equal(saleMock);
-    })
-  })
-})
+    });
+  });
+});

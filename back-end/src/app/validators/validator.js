@@ -33,5 +33,4 @@ module.exports = {
       throw err;
     }
   },
-
 };

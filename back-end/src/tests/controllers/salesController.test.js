@@ -32,6 +32,6 @@ describe('Tests productController', () => {
       sinon.assert.calledWith(createSaleStub, saleMock);
       expect((res.status).calledWith(201)).to.equal(true);
       expect((res.json).calledWith(saleMock)).to.equal(true);
-    })
-  })
-})
+    });
+  });
+});

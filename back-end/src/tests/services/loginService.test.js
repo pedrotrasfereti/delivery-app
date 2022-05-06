@@ -16,7 +16,7 @@ describe('Tests loginService', () => {
     email: loginMock.email,
     role: 'customer',
     password: 'password',
-  }
+  };
 
   afterEach(() => {
     sinon.restore();
@@ -25,6 +25,7 @@ describe('Tests loginService', () => {
   describe('When no user is found', () => {
     it('Throws error message', async () => {
       const userStub = sinon.stub(userModel, 'getOne').resolves();
+
       try {
         await loginService.login(loginMock);
         sinon.assert.calledWith(userStub, loginMock);
@@ -48,7 +49,7 @@ describe('Tests loginService', () => {
         expect(error.message).to.be.equal('Invalid email or password');
       }
     });
-  })
+  });
 
   describe('When login is successfull', () => {
     it('Returns object with correct fields', async () => {
@@ -66,6 +67,6 @@ describe('Tests loginService', () => {
       expect(user).to.have.property('role');
       expect(user).to.have.property('token');
       expect(user).to.be.deep.equal({ name: returnMock.name, email: returnMock.email, role: returnMock.role, token: 'token' });
-    })
-  })
+    });
+  });
 });

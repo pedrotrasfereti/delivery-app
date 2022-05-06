@@ -26,7 +26,7 @@ const StitchesComponent = styled('button', {
   },
 
   variants: {
-    disabled: {
+    inactive: {
       true: {
         backgroundColor: '$tertiaryLight',
         cursor: 'default',
@@ -65,6 +65,7 @@ function Button({
       type={ type }
       data-testid={ dataTestId }
       disabled={ disabled }
+      inactive={ disabled }
       link={ link }
       onClick={ handleOnClick }
     >
