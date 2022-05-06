@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { Link, Navigate } from 'react-router-dom';
 import BaseForm from './BaseForm';
 import { Button, ErrorMessage, Fieldset, HorizontalRule } from '../atoms';
-import { TextInputLabel } from '../molecules';
+import { ErrorMessageBox, TextInputLabel } from '../molecules';
 
 /* Utils */
 import {
@@ -83,11 +83,11 @@ function RegisterForm({ id }) {
     <BaseForm id={ id } action="">
       {
         registerErrVisible && (
-          <div
-            data-testid="common_register__element-invalid_register"
-          >
-            AAAA
-          </div>
+          <ErrorMessageBox
+            id="user-already-exists"
+            dataTestId="common_register__element-invalid_register"
+            message={ messages.register.conflict }
+          />
         )
       }
       <Fieldset id="control-group">
