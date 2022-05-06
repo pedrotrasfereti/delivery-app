@@ -14,7 +14,6 @@ describe('Tests productController', () => {
     sinon.restore();
   });
 
-
   describe('Tests getAll method', () => {
     const res = {};
     const req = {};
@@ -28,6 +27,6 @@ describe('Tests productController', () => {
       sinon.assert.calledWith(getAllStub, { raw: true });
       expect((res.status).calledWith(200)).to.equal(true);
       expect((res.json).calledWith([productMock])).to.equal(true);
-    })
-  })
-})
+    });
+  });
+});

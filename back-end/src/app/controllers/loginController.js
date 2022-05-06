@@ -7,5 +7,4 @@ module.exports = {
     const user = await loginService.login(req.body);
     return res.status(200).json(user);
   },
-
 };

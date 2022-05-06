@@ -18,6 +18,6 @@ describe('Tests productService', () => {
       sinon.assert.calledWith(getAllStub, { raw: true });
       expect(products).to.be.a('array');
       expect(products).to.be.deep.equal([productMock]);
-    })
-  })
-})
+    });
+  });
+});

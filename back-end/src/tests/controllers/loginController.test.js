@@ -14,7 +14,7 @@ describe('Tests loginController', () => {
     email: loginMock.email,
     role: 'customer',
     token: 'token',
-  }
+  };
 
   afterEach(() => {
     sinon.restore();
@@ -58,8 +58,8 @@ describe('Tests loginController', () => {
       } catch (err) {
         expect(err.message).to.equal('"password" length must be at least 6 characters long');
       }
-    })
-  })
+    });
+  });
 
   describe('When the email is invalid', () => {
     it('Returns error message when no email is inserted', async () => {
@@ -82,7 +82,6 @@ describe('Tests loginController', () => {
       } catch (err) {
         expect(err.message).to.equal('"email" must be a valid email');
       }
-    })
-  })
-
+    });
+  });
 });

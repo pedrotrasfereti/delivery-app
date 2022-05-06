@@ -1,5 +1,5 @@
 const sinon = require("sinon");
-const chai = require("chai");
+const { expect } = require("chai");
 const jwt = require('jsonwebtoken');
 const { JwtMethods } = require('../../app/utils/JwtMethods');
 const { HashPassMethods } = require('../../app/utils/HashPassMethods');
@@ -8,14 +8,11 @@ const { jwtPayload, fakeToken } = require("../mocks/Utils");
 const fs = require('fs');
 const JWT_SECRET = fs.readFileSync('./jwt.evaluation.key', 'utf-8');
 
-const { expect } = chai;
-
 describe('Testa as funções úteis do backend', () => {
-
   describe('Testa a JwtMethods', () => {
     afterEach(() => {
       sinon.restore();
-    })
+    });
 
     it('Testa se a sign method retorna um token', () => {
       const signStub = sinon.stub(jwt, 'sign').returns('signedToken')
@@ -25,6 +22,7 @@ describe('Testa as funções úteis do backend', () => {
       sinon.assert.calledWith(signStub, 'token', JWT_SECRET, { expiresIn: '5h', algorithm: 'HS256' });
       expect(signedToken).to.be.equal('signedToken');
     });
+
     it('Testa se a verificação do token retorna um objeto', () => {
       const verifyStub = sinon.stub(jwt, 'verify').returns(jwtPayload);
       const verify = JwtMethods.verifyToken(fakeToken);
@@ -32,8 +30,10 @@ describe('Testa as funções úteis do backend', () => {
       sinon.assert.calledWith(verifyStub, fakeToken, JWT_SECRET, {
         algorithms: ['HS256'],
       });
+
       expect(verify).to.be.an('object');
     });
+
     it('Testa o método decode', () => {
       const verify = JwtMethods.decodeToken(fakeToken);
 
