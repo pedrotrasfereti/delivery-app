@@ -8,13 +8,11 @@ import { ErrorMessage } from '../atoms';
 import { styled } from '../../stitches.config';
 
 const StitchesComponent = styled('div', {
+  backgroundColor: '$error',
   display: 'flex',
-  flexFlow: 'column nowrap',
-  gap: '$2',
-
-  '&>input': {
-    display: 'block',
-  },
+  alignItems: 'center',
+  padding: '$1',
+  borderRadius: '$edge',
 });
 
 function ErrorMessageBox({ id, dataTestId, message }) {

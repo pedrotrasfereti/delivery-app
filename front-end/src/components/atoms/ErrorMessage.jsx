@@ -30,11 +30,11 @@ const StitchesComponent = styled('div', {
       true: {
         '&>.Icon': {
           fill: '$white',
-          fontSize: '$5',
+          fontSize: '$3',
         },
         '&>span': {
           color: '$white',
-          fontSize: '$3',
+          fontSize: '$2',
         },
       },
     },

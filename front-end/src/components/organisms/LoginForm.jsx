@@ -12,7 +12,7 @@ import {
   HorizontalRule,
 } from '../atoms';
 
-import { TextInputLabel } from '../molecules';
+import { TextInputLabel, ErrorMessageBox } from '../molecules';
 
 /* Utils */
 import {
@@ -72,7 +72,11 @@ function LoginForm({ id }) {
     <BaseForm id={ id } action="">
       {
         loginErrVisible && (
-          <div data-testid="common_login__element-invalid-email">AAA</div>
+          <ErrorMessageBox
+            id="user-not-found"
+            data-testid="common_login__element-invalid-email"
+            message={ messages.login.notFound }
+          />
         )
       }
       <Fieldset id="control-group">
