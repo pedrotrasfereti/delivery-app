@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { Link, Navigate } from 'react-router-dom';
 import BaseForm from './BaseForm';
 import { Button, ErrorMessage, Fieldset, HorizontalRule } from '../atoms';
-import TextInputLabel from '../molecules';
+import { TextInputLabel } from '../molecules';
 
 /* Utils */
 import {

@@ -12,7 +12,7 @@ import {
   HorizontalRule,
 } from '../atoms';
 
-import TextInputLabel from '../molecules';
+import { TextInputLabel } from '../molecules';
 
 /* Utils */
 import {

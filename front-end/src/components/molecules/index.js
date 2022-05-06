@@ -1,3 +1,2 @@
-import TextInputLabel from './TextInputLabel';
-
-export default TextInputLabel;
+export { default as ErrorMessageBox } from './ErrorMessageBox';
+export { default as TextInputLabel } from './TextInputLabel';
