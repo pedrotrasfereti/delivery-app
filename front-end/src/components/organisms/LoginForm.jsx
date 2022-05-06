@@ -31,6 +31,7 @@ function LoginForm({ id }) {
   const [password, setPassword] = useState('');
   const [passwordErrVisible, setPasswordErrVisible] = useState(false);
   const [shouldRedirect, setShouldRedirect] = useState(false);
+  const [loginErrVisible, setLoginErrVisible] = useState(false);
   const [submitDisabled, setSubmitDisabled] = useState(true);
 
   useEffect(() => {
@@ -63,12 +64,17 @@ function LoginForm({ id }) {
         setShouldRedirect(true);
       }
     } catch (err) {
-      console.log(err);
+      setLoginErrVisible(true);
     }
   };
 
   return (
     <BaseForm id={ id } action="">
+      {
+        loginErrVisible && (
+          <div>AAA</div>
+        )
+      }
       <Fieldset id="control-group">
         <div>
           <TextInputLabel
@@ -148,7 +154,7 @@ function LoginForm({ id }) {
 
       {/* Redirect to Home page */}
       {
-        shouldRedirect && <Navigate replace to="/home" />
+        shouldRedirect && <Navigate replace to="/customer/products" />
       }
     </BaseForm>
   );
