@@ -16,7 +16,7 @@ describe('Tests userController', () => {
 
   describe('When user fields are correct', () => {
     const req = { body: userMock };
-    const res = {}
+    const res = {};
 
     it('Return status 200 with the created user', async () => {
       const createUserStub = sinon.stub(userService, 'create').resolves(userMock);
@@ -33,7 +33,7 @@ describe('Tests userController', () => {
   describe('When the password is invalid', () => {
     it('Returns error message when no password is inserted', async () => {
       const req = { body: { name: userMock.name, email: userMock.email } };
-      const res = {}
+      const res = {};
 
       try {
         await userController.create(req, res);
@@ -44,20 +44,20 @@ describe('Tests userController', () => {
 
     it('Returns error message when the password length is invalid', async () => {
       const req = { body: { name: userMock.name, email: userMock.email, password: '123' } };
-      const res = {}
+      const res = {};
 
       try {
         await userController.create(req, res);
       } catch (err) {
         expect(err.message).to.equal('"password" length must be at least 6 characters long');
       }
-    })
-  })
+    });
+  });
 
   describe('When the email is invalid', () => {
     it('Returns error message when no email is inserted', async () => {
       const req = { body: { name: userMock.name, password: userMock.password } };
-      const res = {}
+      const res = {};
 
       try {
         await userController.create(req, res);
@@ -68,20 +68,20 @@ describe('Tests userController', () => {
 
     it('Returns error message when the email is invalid', async () => {
       const req = { body: { name: userMock.name, email: 'test@testcom', password: userMock.password } };
-      const res = {}
+      const res = {};
 
       try {
         await userController.create(req, res);
       } catch (err) {
         expect(err.message).to.equal('"email" must be a valid email');
       }
-    })
-  })
+    });
+  });
 
   describe('When the name is invalid', () => {
     it('Returns error message when no name is inserted', async () => {
       const req = { body: { email: userMock.email, password: userMock.password } };
-      const res = {}
+      const res = {};
 
       try {
         await userController.create(req, res);
@@ -92,13 +92,13 @@ describe('Tests userController', () => {
 
     it('Returns error message when the name length is invalid', async () => {
       const req = { body: { name: '12', email: userMock.email, password: userMock.password } };
-      const res = {}
+      const res = {};
 
       try {
         await userController.create(req, res);
       } catch (err) {
         expect(err.message).to.equal('"name" length must be at least 3 characters long');
       }
-    })
-  })
+    });
+  });
 });

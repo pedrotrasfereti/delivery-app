@@ -14,7 +14,7 @@ describe('Tests loginController', () => {
     email: loginMock.email,
     role: 'customer',
     token: 'token',
-  }
+  };
 
   afterEach(() => {
     sinon.restore();
@@ -24,7 +24,7 @@ describe('Tests loginController', () => {
     const req = { body: loginMock };
     const res = {}
 
-    it('Return status 201 with the user', async () => {
+    it('Return status 200 with the user', async () => {
       const loginStub = sinon.stub(loginService, 'login').resolves(returnMock);
       res.status = sinon.stub().returns(res);
       res.json = sinon.stub().returns(null);
@@ -32,7 +32,7 @@ describe('Tests loginController', () => {
       await loginController.login(req, res);
 
       sinon.assert.calledWith(loginStub, loginMock);
-      expect((res.status).calledWith(201)).to.equal(true);
+      expect((res.status).calledWith(200)).to.equal(true);
       expect((res.json).calledWith(returnMock)).to.equal(true);
     });
   });
@@ -58,8 +58,8 @@ describe('Tests loginController', () => {
       } catch (err) {
         expect(err.message).to.equal('"password" length must be at least 6 characters long');
       }
-    })
-  })
+    });
+  });
 
   describe('When the email is invalid', () => {
     it('Returns error message when no email is inserted', async () => {
@@ -82,7 +82,6 @@ describe('Tests loginController', () => {
       } catch (err) {
         expect(err.message).to.equal('"email" must be a valid email');
       }
-    })
-  })
-
+    });
+  });
 });

@@ -14,7 +14,8 @@ describe("Testing sales model", () => {
       deliveryNumber: "571",
       saleDate: "2020-05-02T00:00:00.000Z",
       status: "in progress"
-    }
+    };
+
     const mockSaleApp = {
       userId: 3,
       sellerId: 2,
@@ -22,11 +23,12 @@ describe("Testing sales model", () => {
       deliveryAddress: "antonio marcos da cruz",
       deliveryNumber: "571",
       status: "in progress"
-    }
+    };
 
     afterEach(() => {
       sinon.restore();
-    })
+    });
+
     it("Return a created sale", async () => {
       const createStub = sinon.stub(Sales, "create").resolves(mockSale)
       const saleCreated = await salesModelApp.createSale(mockSaleApp)
@@ -34,6 +36,6 @@ describe("Testing sales model", () => {
       sinon.assert.calledWith(createStub, { ...mockSaleApp, saleDate: new Date() });
       expect(saleCreated).to.be.a("object");
       expect(saleCreated).to.be.deep.equal(mockSale);
-    })
-  })
-})
+    });
+  });
+});
