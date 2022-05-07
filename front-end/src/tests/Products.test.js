@@ -175,4 +175,116 @@ describe('Products Page', () => {
 
     expect(screen.getByText(/All products/i)).toBeInTheDocument();
   });
+
+  describe('The first 11 product cards are present in the document', () => {
+    const ids = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'];
+
+    test.each(ids)(
+      'The title of product #%p is present in the document',
+      (productId) => {
+        const history = createMemoryHistory();
+
+        render(
+          <Router location={history.location} navigator={history}>
+            <Products />
+          </Router>
+        );
+
+        const productCardTitle = screen.getAllByTestId(
+          `customer_products__element-card-title-${productId}`,
+        );
+
+        expect(productCardTitle).toBeInTheDocument();
+      });
+
+    test.each(ids)(
+      'The price of product #%p is present in the document',
+      (productId) => {
+        const history = createMemoryHistory();
+
+        render(
+          <Router location={history.location} navigator={history}>
+            <Products />
+          </Router>
+        );
+
+        const productCardPrice = screen.getAllByTestId(
+          `customer_products__element-card-price-${productId}`,
+        );
+
+        expect(productCardPrice).toBeInTheDocument();
+      });
+
+    test.each(ids)(
+      'The image of product #%p is present in the document',
+      (productId) => {
+        const history = createMemoryHistory();
+
+        render(
+          <Router location={history.location} navigator={history}>
+            <Products />
+          </Router>
+        );
+
+        const productCardImage = screen.getAllByTestId(
+          `customer_products__img-card-bg-image-${productId}`,
+        );
+
+        expect(productCardImage).toBeInTheDocument();
+      });
+
+    test.each(ids)(
+      'The add item button of product #%p is present in the document',
+      (productId) => {
+        const history = createMemoryHistory();
+
+        render(
+          <Router location={history.location} navigator={history}>
+            <Products />
+          </Router>
+        );
+
+        const addItemBtn = screen.getAllByTestId(
+          `customer_products__button-card-add-item-${productId}`,
+        );
+
+        expect(addItemBtn).toBeInTheDocument();
+      });
+
+    test.each(ids)(
+      'The remove item button of product #%p is present in the document',
+      (productId) => {
+        const history = createMemoryHistory();
+
+        render(
+          <Router location={history.location} navigator={history}>
+            <Products />
+          </Router>
+        );
+
+        const removeItemBtn = screen.getAllByTestId(
+          `customer_products__button-card-rm-item-${productId}`,
+        );
+
+        expect(removeItemBtn).toBeInTheDocument();
+      });
+
+    test.each(ids)(
+      'The quantity of product #%p is present in the document',
+      (productId) => {
+        const history = createMemoryHistory();
+
+        render(
+          <Router location={history.location} navigator={history}>
+            <Products />
+          </Router>
+        );
+
+        const productCardQty = screen.getAllByTestId(
+          `customer_products__input-card-quantity-${productId}`,
+        );
+
+        expect(productCardQty).toBeInTheDocument();
+      });
+  });
 });
