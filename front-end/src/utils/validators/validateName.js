@@ -1,7 +1,5 @@
-const validateName = (name) => {
-  const minLength = 12;
+const NAME_REGEX = /^[A-Za-z0-9\u00C0-\u00FF\s$&+,:;=?@#|'<>.^*()%!-]{12,}$/;
 
-  return name.length >= minLength;
-};
+const validateName = (name) => NAME_REGEX.test(name);
 
 export default validateName;
