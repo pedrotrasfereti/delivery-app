@@ -1,7 +1,5 @@
-const validatePassword = (password) => {
-  const minLength = 6;
+const PASSWORD_REGEX = /^[A-Za-z0-9\s$&+,:;=?@#|'<>.^*()%!-]{6,}$/;
 
-  return password.length >= minLength;
-};
+const validatePassword = (password) => PASSWORD_REGEX.test(password);
 
 export default validatePassword;
