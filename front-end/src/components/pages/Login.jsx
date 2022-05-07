@@ -33,7 +33,7 @@ const ContentWrapper = styled('div', {
       fontFamily: '$sans',
       fontSize: '$3',
       fontWeight: '$5',
-      margin: '10px 0 $2',
+      marginTop: '$2',
     },
   },
 
