@@ -1,4 +1,4 @@
-const EMAIL_REGEX = /^[a-z0-9_.-]+@[a-z]+\.[a-z]{2,3}(?:\.[a-z]{2})?$/i;
+const EMAIL_REGEX = /\S+@\S+\.\S+/;
 
 const validateEmail = (email) => EMAIL_REGEX.test(email);
 
