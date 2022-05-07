@@ -1,5 +1,6 @@
 const { Sales, Products } = require('../../database/models');
 const salesProductsModel = require('./salesproductsModel');
+const userModel = require('./userModel');
 
 module.exports = {
   async createSale(obj, products) {
@@ -35,10 +36,12 @@ module.exports = {
         as: 'products',
         through: {
           attributes: ['quantity'],
+          as: 'productQuantity',
         },
       }],
     });
 
-    return sale;
+    const seller = await userModel.getById(sale.sellerId);
+    return { ...sale.dataValues, sellerName: seller.name };
   },
 };

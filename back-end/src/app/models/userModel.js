@@ -11,19 +11,28 @@ module.exports = {
     if (!user) {
       return null;
     }
-    
+
     return user;
   },
 
   async create(user) {
     const criptoPassword = HashPassMethods.encryptPass(user.password);
-  
+
     const userCreated = await Users.create({
       ...user,
       role: 'customer',
       password: criptoPassword,
     });
-    
+
     return userCreated;
+  },
+
+  async getById(id) {
+    const user = await Users.findOne({
+      where: { id },
+      raw: true,
+    });
+
+    return user;
   },
 };
