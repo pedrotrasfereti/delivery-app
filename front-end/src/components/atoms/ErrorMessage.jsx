@@ -41,7 +41,7 @@ const StitchesComponent = styled('div', {
           marginRight: 'calc($2 + 3px)',
         },
         '&>span': {
-          color: '$white',
+          color: '$loContrast',
           fontSize: '$2',
         },
       },

@@ -12,15 +12,15 @@ const BaseForm = styled('form', {
     gap: '$3',
 
     '&>.LinkMessage': {
+      alignItems: 'center',
       color: '$textDark',
+      display: 'flex',
+      flexFlow: 'row nowrap',
       fontFamily: '$sans',
       fontSize: '$2',
       fontWeight: '$5',
-      display: 'flex',
-      flexFlow: 'row nowrap',
-      alignItems: 'center',
-      justifyContent: 'center',
       gap: '$1',
+      justifyContent: 'center',
     },
   },
 });

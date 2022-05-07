@@ -13,16 +13,19 @@ export const {
   theme: {
     colors: {
       /* contrast colors */
-      hiContrast: 'hsl(168, 100%, 5%)',
-      loContrast: 'hsl(166, 100%, 97%)',
-      white: 'hsl(0, 100%, 100%)',
+      hiContrast: 'hsl(0, 0%, 7%)',
+      loContrast: 'hsl(0, 100%, 100%)',
 
-      /* main and accent colors */
-      primary: 'hsl(166, 95%, 22%)',
-      secondary: 'hsl(158, 62%, 47%)',
-      tertiary: 'hsl(215, 96%, 50%)',
+      /* main colors */
+      primary: 'hsl(215, 96%, 50%)',
+      secondary: 'hsl(215, 100%, 67%)',
+
+      /* accent colors */
+      tertiary: 'hsl(166, 95%, 22%)',
       quaternary: 'hsl(264, 67%, 31%)',
-      tertiaryLight: 'hsl(215, 100%, 67%)',
+
+      /* feedback colors */
+      error: 'hsl(348, 83%, 47%)',
 
       /* neutral colors */
       gray800: 'hsl(0, 0%, 26%)',
@@ -35,14 +38,13 @@ export const {
       gray100: 'hsl(0, 0%, 96%)',
       gray50: 'hsl(0, 0%, 98%)',
 
-      /* feedback colors */
-      error: 'hsl(348, 83%, 47%)',
-
       /* aliases */
       background: '$gray50',
-      buttonPrimary: '$tertiary',
+      button: '$primary',
       textLight: '$loContrast',
       textDark: '$hiContrast',
+      accent1: '$tertiary',
+      accent2: '$quaternary',
     },
     space: {
       1: '4px',

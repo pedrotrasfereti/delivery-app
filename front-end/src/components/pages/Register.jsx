@@ -48,8 +48,8 @@ const invertRows = {
 };
 
 const DecorOne = styled('div', {
-  background: '$primary',
   alignSelf: 'flex-end',
+  backgroundColor: '$primary',
   padding: 'calc($3 + 15px)',
 
   '@bp3': {
@@ -58,8 +58,8 @@ const DecorOne = styled('div', {
 });
 
 const DecorTwo = styled('div', {
-  background: '$quaternary',
   alignSelf: 'flex-start',
+  backgroundColor: '$quaternary',
   padding: 'calc($4 - 10px)',
 });
 

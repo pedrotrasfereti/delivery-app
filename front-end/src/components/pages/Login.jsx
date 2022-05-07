@@ -53,8 +53,8 @@ const ContentWrapper = styled('div', {
 });
 
 const DecorOne = styled('div', {
-  background: '$primary',
   alignSelf: 'flex-end',
+  background: '$accent1',
   padding: '$4',
 
   '@bp3': {
@@ -63,8 +63,8 @@ const DecorOne = styled('div', {
 });
 
 const DecorTwo = styled('div', {
-  background: '$quaternary',
   alignSelf: 'flex-start',
+  background: '$accent2',
   padding: 'calc($3 + 10px)',
 });
 

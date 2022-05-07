@@ -7,7 +7,7 @@ const TextInput = styled('input', {
     'inset 0 1px 2px rgba(0, 0, 0, .39), 0 -1px 1px #fff, 0 1px 0 #fff',
   caretColor: '$hiContrast',
   color: '$hiContrast',
-  backgroundColor: '$white',
+  backgroundColor: '$loContrast',
   fontFamily: '$sans',
   fontSize: '$3',
   fontWeight: '$4',

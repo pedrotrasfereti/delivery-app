@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { styled } from '../../stitches.config';
 
 const StitchesComponent = styled('button', {
-  backgroundColor: '$buttonPrimary',
+  backgroundColor: '$button',
   border: 'none',
   borderRadius: '$default',
   color: '$textLight',
@@ -28,7 +28,7 @@ const StitchesComponent = styled('button', {
   variants: {
     inactive: {
       true: {
-        backgroundColor: '$tertiaryLight',
+        backgroundColor: '$secondary',
         cursor: 'default',
       },
     },
@@ -37,7 +37,7 @@ const StitchesComponent = styled('button', {
         padding: '0',
         background: 'transparent',
         '&>a': {
-          color: '$tertiary',
+          color: '$button',
           fontFamily: '$sans',
           fontSize: '$2',
           fontWeight: '$6',
