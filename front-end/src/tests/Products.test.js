@@ -28,6 +28,23 @@ describe('Products Page', () => {
     expect(screen.getByText(/deliveree/i)).toBeInTheDocument();
   });
 
+  test('The page contains a navigation bar', () => {
+    const history = createMemoryHistory();
+
+    render(
+      <Router location={history.location} navigator={history}>
+        <Products />
+      </Router>
+    );
+
+    const banner = screen.getByRole('banner');
+
+    expect(
+      within(banner).getByRole('navigation'),
+    ).toBeInTheDocument();
+  });
+
+
   test('The page title is present in the document', () => {
     const history = createMemoryHistory();
 
