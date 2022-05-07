@@ -71,7 +71,11 @@ ErrorMessage.propTypes = {
   id: PropTypes.string.isRequired,
   dataTestId: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
-  box: PropTypes.bool.isRequired,
+  box: PropTypes.bool,
+};
+
+ErrorMessage.defaultProps = {
+  box: false,
 };
 
 export default ErrorMessage;
