@@ -103,7 +103,7 @@ export const {
     },
     radii: {
       default: '.25rem',
-      edge: '.15rem',
+      edge: '.1rem',
       round: '9999px',
     },
     zIndices: {
