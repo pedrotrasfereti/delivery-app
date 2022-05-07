@@ -15,6 +15,9 @@ import { render, screen, fireEvent } from '@testing-library/react';
 // the component to test
 import { RegisterForm } from '../components/organisms';
 
+// import error messages
+import messages from '../utils/messages';
+
 describe('Register Form Component', () => {
   test('Signup name input is present in the document', () => {
     const history = createMemoryHistory();
@@ -26,6 +29,7 @@ describe('Register Form Component', () => {
     );
 
     const nameInput = screen.getByTestId('common_register__input-name');
+
     expect(nameInput).toBeInTheDocument();
   });
 
@@ -41,6 +45,7 @@ describe('Register Form Component', () => {
     const nameInput = screen.getByTestId('common_register__input-name');
     const exampleName = 'Jane Doe';
     fireEvent.change(nameInput, { target: { value: exampleName } });
+
     expect(nameInput.value).toBe(exampleName);
   });
 
@@ -54,6 +59,7 @@ describe('Register Form Component', () => {
     );
 
     const emailInput = screen.getByTestId('common_register__input-email');
+
     expect(emailInput).toBeInTheDocument();
   });
 
@@ -69,6 +75,7 @@ describe('Register Form Component', () => {
     const emailInput = screen.getByTestId('common_register__input-email');
     const exampleEmail = 'example@mail.com';
     fireEvent.change(emailInput, { target: { value: exampleEmail } });
+
     expect(emailInput.value).toBe(exampleEmail);
   });
 
@@ -97,6 +104,7 @@ describe('Register Form Component', () => {
     const passwordInput = screen.getByTestId('common_register__input-password');
     const examplePassword = 'example@mail.com';
     fireEvent.change(passwordInput, { target: { value: examplePassword } });
+
     expect(passwordInput.value).toBe(examplePassword);
   });
 
@@ -110,6 +118,7 @@ describe('Register Form Component', () => {
     );
 
     const signInButton = screen.getByTestId('common_register__button-register');
+
     expect(signInButton).toBeInTheDocument();
   });
 
@@ -123,6 +132,7 @@ describe('Register Form Component', () => {
     );
 
     const loginButton = screen.getByTestId('common_register__button-register');
+
     expect(loginButton).toHaveTextContent(/create account$/i);
   });
 
@@ -139,9 +149,11 @@ describe('Register Form Component', () => {
       const nameInput = screen.getByTestId('common_register__input-name');
       fireEvent.change(nameInput, { target: { value: 'abc' } });
       fireEvent.focusOut(nameInput);
+
       const errMessage = screen.getByTestId(
         'common_register__element-invalid_register',
       );
+
       expect(errMessage).toBeInTheDocument();
     });
 
@@ -157,12 +169,12 @@ describe('Register Form Component', () => {
       const nameInput = screen.getByTestId('common_register__input-name');
       fireEvent.change(nameInput, { target: { value: 'abc' } });
       fireEvent.focusOut(nameInput);
+
       const errMessage = screen.getByTestId(
         'common_register__element-invalid_register',
       );
-      expect(errMessage).toHaveTextContent(
-        /name must be at least 12 characters long$/i,
-      );
+
+      expect(errMessage).toHaveTextContent(messages.name.invalid);
     });
   });
 
@@ -179,9 +191,11 @@ describe('Register Form Component', () => {
       const emailInput = screen.getByTestId('common_register__input-email');
       fireEvent.change(emailInput, { target: { value: 'abc' } });
       fireEvent.focusOut(emailInput);
+
       const errMessage = screen.getByTestId(
         'common_register__element-invalid_register',
       );
+
       expect(errMessage).toBeInTheDocument();
     });
 
@@ -197,12 +211,12 @@ describe('Register Form Component', () => {
       const emailInput = screen.getByTestId('common_register__input-email');
       fireEvent.change(emailInput, { target: { value: 'abc' } });
       fireEvent.focusOut(emailInput);
+
       const errMessage = screen.getByTestId(
         'common_register__element-invalid_register',
       );
-      expect(errMessage).toHaveTextContent(
-        /this email is invalid. make sure it's written like example@email.com$/i,
-      );
+
+      expect(errMessage).toHaveTextContent(messages.email.invalid);
     });
   });
 
@@ -219,9 +233,11 @@ describe('Register Form Component', () => {
       const passwordInput = screen.getByTestId('common_register__input-password');
       fireEvent.change(passwordInput, { target: { value: 'abc' } });
       fireEvent.focusOut(passwordInput);
+
       const errMessage = screen.getByTestId(
         'common_register__element-invalid_register',
       );
+
       expect(errMessage).toBeInTheDocument();
     });
 
@@ -237,12 +253,11 @@ describe('Register Form Component', () => {
       const passwordInput = screen.getByTestId('common_register__input-password');
       fireEvent.change(passwordInput, { target: { value: 'abc' } });
       fireEvent.focusOut(passwordInput);
+
       const errMessage = screen.getByTestId(
         'common_register__element-invalid_register',
       );
-      expect(errMessage).toHaveTextContent(
-        /Password must be at least 6 characters long$/i,
-      );
+      expect(errMessage).toHaveTextContent(messages.password.invalid);
     });
   });
 });

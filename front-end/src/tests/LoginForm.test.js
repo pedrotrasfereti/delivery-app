@@ -15,6 +15,9 @@ import { render, screen, fireEvent } from '@testing-library/react';
 // the component to test
 import { LoginForm } from '../components/organisms';
 
+// import error messages
+import messages from '../utils/messages';
+
 describe('Login Form Component', () => {
   test('Login email input is present in the document', () => {
     const history = createMemoryHistory();
@@ -26,6 +29,7 @@ describe('Login Form Component', () => {
     );
 
     const emailInput = screen.getByTestId('common_login__input-email');
+
     expect(emailInput).toBeInTheDocument();
   });
 
@@ -41,6 +45,7 @@ describe('Login Form Component', () => {
     const emailInput = screen.getByTestId('common_login__input-email');
     const exampleEmail = 'example@mail.com';
     fireEvent.change(emailInput, { target: { value: exampleEmail } });
+
     expect(emailInput.value).toBe(exampleEmail);
   });
 
@@ -54,6 +59,7 @@ describe('Login Form Component', () => {
     );
 
     const passwordInput = screen.getByTestId('common_login__input-password');
+
     expect(passwordInput).toBeInTheDocument();
   });
 
@@ -69,6 +75,7 @@ describe('Login Form Component', () => {
     const passwordInput = screen.getByTestId('common_login__input-password');
     const examplePassword = 'example@mail.com';
     fireEvent.change(passwordInput, { target: { value: examplePassword } });
+
     expect(passwordInput.value).toBe(examplePassword);
   });
 
@@ -82,6 +89,7 @@ describe('Login Form Component', () => {
     );
 
     const loginButton = screen.getByTestId('common_login__button-login');
+
     expect(loginButton).toBeInTheDocument();
   });
 
@@ -95,6 +103,7 @@ describe('Login Form Component', () => {
     );
 
     const loginButton = screen.getByTestId('common_login__button-login');
+
     expect(loginButton).toHaveTextContent(/login$/i);
   });
 
@@ -108,6 +117,7 @@ describe('Login Form Component', () => {
     );
 
     const signUpButton = screen.getByTestId('common_login__button-register');
+
     expect(signUpButton).toBeInTheDocument();
   });
 
@@ -121,6 +131,7 @@ describe('Login Form Component', () => {
     );
 
     const signUpButton = screen.getByTestId('common_login__button-register');
+
     expect(signUpButton).toHaveTextContent(/sign up$/i);
   });
 
@@ -137,9 +148,11 @@ describe('Login Form Component', () => {
       const emailInput = screen.getByTestId('common_login__input-email');
       fireEvent.change(emailInput, { target: { value: 'abc' } });
       fireEvent.focusOut(emailInput);
+
       const errMessage = screen.getByTestId(
         'common_login__element-invalid-email',
       );
+
       expect(errMessage).toBeInTheDocument();
     });
 
@@ -155,12 +168,12 @@ describe('Login Form Component', () => {
       const emailInput = screen.getByTestId('common_login__input-email');
       fireEvent.change(emailInput, { target: { value: 'abc' } });
       fireEvent.focusOut(emailInput);
+
       const errMessage = screen.getByTestId(
         'common_login__element-invalid-email',
       );
-      expect(errMessage).toHaveTextContent(
-        /this email is invalid. make sure it's written like example@email.com$/i,
-      );
+
+      expect(errMessage).toHaveTextContent(messages.email.invalid);
     });
   });
 
@@ -177,6 +190,7 @@ describe('Login Form Component', () => {
       const passwordInput = screen.getByTestId('common_login__input-password');
       fireEvent.change(passwordInput, { target: { value: 'abc' } });
       fireEvent.focusOut(passwordInput);
+
       const errMessage = screen.getByTestId(
         'common_login__element-invalid-password',
       );
@@ -195,12 +209,12 @@ describe('Login Form Component', () => {
       const passwordInput = screen.getByTestId('common_login__input-password');
       fireEvent.change(passwordInput, { target: { value: 'abc' } });
       fireEvent.focusOut(passwordInput);
+
       const errMessage = screen.getByTestId(
         'common_login__element-invalid-password',
       );
-      expect(errMessage).toHaveTextContent(
-        /Password must be at least 6 characters long$/i,
-      );
+
+      expect(errMessage).toHaveTextContent(messages.password.invalid);
     });
   });
 });
