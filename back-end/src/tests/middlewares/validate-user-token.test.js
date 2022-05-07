@@ -30,7 +30,7 @@ describe('Tests validateUserToken', () => {
     const next = sinon.stub();
 
     it('Returns status 401 with an error message', async () => {
-      const verifyTokenStub = sinon.stub(JwtMethods, 'verifyToken').returns('invalidRole');
+      const verifyTokenStub = sinon.stub(JwtMethods, 'verifyToken').rejects(new Error());
       res.status = sinon.stub().returns(res);
       res.json = sinon.stub().returns(null);
 
@@ -44,18 +44,18 @@ describe('Tests validateUserToken', () => {
     })
   })
 
-  describe('When the role is invalid', () => {
+  describe('When the verified role is different than the token\'s role', () => {
     const req = { headers: { authorization: 'validToken' } };
     const res = {};
     const next = sinon.stub();
 
     it('Returns status 401 with an error message', async () => {
-      const verifyTokenStub = sinon.stub(JwtMethods, 'verifyToken').returns({ role: 'customer' });
+      const verifyTokenStub = sinon.stub(JwtMethods, 'verifyToken').returns({ role: 'seller' });
       res.status = sinon.stub().returns(res);
       res.json = sinon.stub().returns(null);
 
       try {
-        await validateUserToken('invalidRole')(req, res, next);
+        await validateUserToken('customer')(req, res, next);
       } catch (err) {
         sinon.assert.calledWith(verifyTokenStub, 'validToken');
         expect((res.status).calledWith(401)).to.equal(true);

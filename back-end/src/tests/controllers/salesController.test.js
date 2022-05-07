@@ -2,20 +2,10 @@ const sinon = require("sinon");
 const { expect } = require('chai');
 const salesController = require("../../app/controllers/salesController");
 const salesService = require("../../app/services/salesService");
+const { createSalePayload } = require("../mocks/Request");
 
 describe('Tests productController', () => {
-  const saleMock = {
-    userId: 1,
-    sellerId: 2,
-    totalPrice: 2.2,
-    deliveryAddress: 'testAddress',
-    deliveryNumber: 'testNumber',
-    status: 'pending',
-  };
-  const productMock = {
-    productId: 1,
-    quantity: 2,
-  }
+  const { sale, products } = createSalePayload;
 
   afterEach(() => {
     sinon.restore();
@@ -23,19 +13,19 @@ describe('Tests productController', () => {
 
 
   describe('Tests createSale method', () => {
-    const req = { body: { sale: saleMock, products: productMock } };
+    const req = { body: { sale, products } };
     const res = {};
 
     it('Return status 201 with the created product', async () => {
-      const createSaleStub = sinon.stub(salesService, 'createSale').resolves(saleMock);
+      const createSaleStub = sinon.stub(salesService, 'createSale').resolves(sale);
 
       res.status = sinon.stub().returns(res);
       res.json = sinon.stub().returns(null);
 
       await salesController.createSale(req, res);
-      sinon.assert.calledWith(createSaleStub, saleMock, productMock);
+      sinon.assert.calledWith(createSaleStub, sale, products);
       expect((res.status).calledWith(201)).to.equal(true);
-      expect((res.json).calledWith(saleMock)).to.equal(true);
+      expect((res.json).calledWith(sale)).to.equal(true);
     })
   })
 
@@ -44,14 +34,14 @@ describe('Tests productController', () => {
     const res = {};
 
     it('Returns status 200 with an array of sales', async () => {
-      const getSalesStub = sinon.stub(salesService, 'getSales').resolves([saleMock]);
+      const getSalesStub = sinon.stub(salesService, 'getSales').resolves([sale]);
       res.status = sinon.stub().returns(res);
       res.json = sinon.stub().returns(null);
 
       await salesController.getSales(req, res);
       sinon.assert.calledWith(getSalesStub, req.user.id);
       expect((res.status).calledWith(200)).to.equal(true);
-      expect((res.json).calledWith([saleMock])).to.equal(true);
+      expect((res.json).calledWith([sale])).to.equal(true);
     })
   })
 
@@ -60,14 +50,14 @@ describe('Tests productController', () => {
     const res = {};
 
     it('Returns status 200 with one sale', async () => {
-      const getSaleStub = sinon.stub(salesService, 'getSale').resolves(saleMock);
+      const getSaleStub = sinon.stub(salesService, 'getSale').resolves(sale);
       res.status = sinon.stub().returns(res);
       res.json = sinon.stub().returns(null);
 
       await salesController.getSale(req, res);
       sinon.assert.calledWith(getSaleStub, req.params.id);
       expect((res.status).calledWith(200)).to.equal(true);
-      expect((res.json).calledWith(saleMock)).to.equal(true);
+      expect((res.json).calledWith(sale)).to.equal(true);
     })
   })
 })
