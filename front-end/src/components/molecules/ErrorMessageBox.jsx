@@ -10,8 +10,7 @@ import { styled } from '../../stitches.config';
 const StitchesComponent = styled('div', {
   backgroundColor: '$error',
   display: 'flex',
-  alignItems: 'center',
-  padding: '$1',
+  padding: '$1 $2',
   borderRadius: '$edge',
 });
 

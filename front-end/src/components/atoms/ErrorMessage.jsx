@@ -31,9 +31,14 @@ const StitchesComponent = styled('div', {
   variants: {
     box: {
       true: {
+        display: 'flex',
+        alignItems: 'center',
+
         '&>.Icon': {
           fill: '$white',
           fontSize: '$4',
+          top: '0',
+          marginRight: 'calc($2 + 3px)',
         },
         '&>span': {
           color: '$white',
