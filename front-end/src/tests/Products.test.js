@@ -176,6 +176,22 @@ describe('Products Page', () => {
     expect(screen.getByText(/All products/i)).toBeInTheDocument();
   });
 
+  test('The cart/checkout button is present in the document', () => {
+    const history = createMemoryHistory();
+
+    render(
+      <Router location={history.location} navigator={history}>
+        <Products />
+      </Router>
+    );
+
+    const checkoutBtn = screen.getByTestId(
+      'customer_products__checkout-bottom-value',
+    );
+
+    expect(checkoutBtn).toBeInTheDocument();
+  });
+
   describe('The first 11 product cards are present in the document', () => {
     const ids = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'];
 
