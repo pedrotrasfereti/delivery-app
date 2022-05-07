@@ -2,7 +2,10 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 
 /* Assets */
-import { BsExclamationCircleFill as AlertIcon } from 'react-icons/bs';
+import {
+  BsExclamationCircleFill as AlertIconFill,
+  BsExclamationCircle as AlertIcon,
+} from 'react-icons/bs';
 
 /* Styles */
 import { styled } from '../../stitches.config';
@@ -30,7 +33,7 @@ const StitchesComponent = styled('div', {
       true: {
         '&>.Icon': {
           fill: '$white',
-          fontSize: '$3',
+          fontSize: '$4',
         },
         '&>span': {
           color: '$white',
@@ -44,7 +47,13 @@ const StitchesComponent = styled('div', {
 function ErrorMessage({ id, dataTestId, message, box }) {
   return (
     <StitchesComponent id="error-message-wrapper" box={ box }>
-      <AlertIcon className="Icon" />
+      {
+        box ? (
+          <AlertIcon className="Icon" />
+        ) : (
+          <AlertIconFill className="Icon" />
+        )
+      }
       <span id={ id } data-testid={ dataTestId }>
         { message }
       </span>
