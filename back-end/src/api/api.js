@@ -5,6 +5,7 @@ const loginRouter = require('./routers/loginRouter');
 const userRouter = require('./routers/userRouter');
 const customerRouter = require('./routers/customerRouter');
 const errorHandler = require('./middlewares/error-handler');
+const { validateUserToken } = require('./middlewares/validate-user-token');
 
 const api = express();
 
@@ -15,7 +16,7 @@ api.use(cors());
 // routes
 api.use('/register', userRouter);
 api.use('/login', loginRouter);
-api.use('/customer', customerRouter);
+api.use('/customer', validateUserToken('customer'), customerRouter);
 
 // error middlewares
 api.use(errorHandler);
