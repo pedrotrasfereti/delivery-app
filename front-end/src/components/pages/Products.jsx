@@ -7,6 +7,7 @@ import { ProductCards } from '../organisms';
 
 /* Styled */
 import { styled } from '../../stitches.config';
+import { getAllProducts } from '../../services/request';
 
 const StitchesComponent = styled('div', {
   minHeight: '100vh',
@@ -25,7 +26,25 @@ const Main = styled('div', {
   zIndex: '0',
 });
 
-function Products() {
+const Products = () => {
+  // const [authUser, setAuthUser] = useState(true);
+  const [productsData, setProductsData] = React.useState([]);
+
+  React.useEffect(() => {
+    const user = localStorage.getItem('user');
+    const token = JSON.parse(user);
+
+    async function getData() {
+      try {
+        const getAll = await getAllProducts(token);
+        setProductsData(getAll);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    getData();
+  }, []);
+
   return (
     <StitchesComponent id="products-page">
       {/* Header */}
@@ -35,7 +54,7 @@ function Products() {
         <Sidebar />
 
         <Main>
-          <ProductCards />
+          <ProductCards products={ productsData } />
         </Main>
       </div>
 
@@ -45,6 +64,6 @@ function Products() {
       </footer>
     </StitchesComponent>
   );
-}
+};
 
 export default Products;
