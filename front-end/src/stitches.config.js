@@ -18,7 +18,7 @@ export const {
 
       /* main colors */
       primary: 'hsl(215, 96%, 50%)',
-      secondary: 'hsl(215, 100%, 67%)',
+      secondary: 'hsl(215, 100%, 69%)',
 
       /* accent colors */
       tertiary: 'hsl(166, 95%, 22%)',
