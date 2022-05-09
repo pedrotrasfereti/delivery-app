@@ -35,7 +35,7 @@ const StitchesComponent = styled('div', {
         alignItems: 'center',
 
         '&>.Icon': {
-          fill: '$white',
+          fill: '$textLight',
           fontSize: '$4',
           top: '0',
           marginRight: 'calc($2 + 3px)',
