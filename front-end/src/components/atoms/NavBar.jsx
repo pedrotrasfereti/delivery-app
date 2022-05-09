@@ -1,8 +1,12 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
+import { Link, useLocation } from 'react-router-dom';
+import { v4 as uuid } from 'uuid';
 
 /* Styles */
 import { styled } from '../../stitches.config';
+
+/* Utils */
+import navLinksMap from '../../utils/navLinksMap';
 
 const StitchesComponent = styled('nav', {
   '& ul': {
@@ -47,23 +51,25 @@ const StitchesComponent = styled('nav', {
   },
 });
 
-function NavBar({ children }) {
+function NavBar() {
+  /* Navigation Links */
+  const { pathname } = useLocation();
+  const username = localStorage.getItem('user').name || 'John Doe';
+  const navLinks = navLinksMap(username)[pathname];
+
   return (
     <StitchesComponent>
-      { children }
+      <ul>
+        {
+          navLinks.map(({ dataTestId, name, to }) => (
+            <li key={ uuid() }>
+              <Link data-testid={ dataTestId } to={ to }>{name}</Link>
+            </li>
+          ))
+        }
+      </ul>
     </StitchesComponent>
   );
 }
-
-NavBar.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]),
-};
-
-NavBar.defaultProps = {
-  children: '',
-};
 
 export default NavBar;

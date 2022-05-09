@@ -1,23 +1,57 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 
-function Header({ children }) {
+/* Assets */
+import { Logo } from '../../assets';
+
+/* Children */
+import { NavBar } from '../atoms';
+
+/* Styles */
+import { styled } from '../../stitches.config';
+
+const StitchesComponent = styled('header', {
+  alignItems: 'center',
+  backgroundColor: '$loContrast',
+  boxShadow: 'rgba(149, 157, 165, 0.2) 0 1px 1px',
+  display: 'flex',
+  height: '5rem',
+  position: 'fixed',
+  width: '100%',
+  zIndex: '1',
+
+  '&>.Container': {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '$2',
+
+    '& img': {
+      width: '35px',
+    },
+
+    '& h1': {
+      color: '$textDark',
+      fontFamily: '$sans2',
+      fontSize: '$5',
+      fontWeight: '$7',
+    },
+  },
+
+  '& *': {
+    margin: '0 auto',
+  },
+});
+
+function Header() {
   return (
-    <header>
-      { children }
-    </header>
+    <StitchesComponent>
+      <div className="Container">
+        <img src={ Logo } alt="Deliveree" />
+        <h1>Deliveree</h1>
+      </div>
+
+      <NavBar />
+    </StitchesComponent>
   );
 }
-
-Header.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]),
-};
-
-Header.defaultProps = {
-  children: '',
-};
 
 export default Header;
