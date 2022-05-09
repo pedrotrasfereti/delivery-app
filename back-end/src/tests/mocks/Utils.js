@@ -5,7 +5,7 @@ const JWT_SECRET = fs.readFileSync('./jwt.evaluation.key', 'utf-8');
 const jwtPayload = {
   email: 'Tiradentes@maieiou.com',
   role: 'customer',
-};
+}
 
 const fakeToken = jwt.sign(jwtPayload, JWT_SECRET, {
   expiresIn: '5h',
@@ -15,4 +15,4 @@ const fakeToken = jwt.sign(jwtPayload, JWT_SECRET, {
 module.exports = {
   jwtPayload,
   fakeToken,
-};
+}

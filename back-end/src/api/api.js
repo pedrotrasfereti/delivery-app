@@ -3,9 +3,9 @@ const cors = require('cors');
 
 const loginRouter = require('./routers/loginRouter');
 const userRouter = require('./routers/userRouter');
-const salesRouter = require('./routers/salesRouter');
-const productRouter = require('./routers/productRoutes');
+const customerRouter = require('./routers/customerRouter');
 const errorHandler = require('./middlewares/error-handler');
+const { validateUserToken } = require('./middlewares/validate-user-token');
 
 const api = express();
 
@@ -16,8 +16,7 @@ api.use(cors());
 // routes
 api.use('/register', userRouter);
 api.use('/login', loginRouter);
-api.use('/customer/product', productRouter);
-api.use('/customer/checkout', salesRouter);
+api.use('/customer', validateUserToken('customer'), customerRouter);
 
 // error middlewares
 api.use(errorHandler);
