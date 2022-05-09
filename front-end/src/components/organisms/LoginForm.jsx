@@ -60,10 +60,18 @@ function LoginForm({ id }) {
           token: data.token,
         }));
 
-        // redirect to home
+        console.log({
+          email,
+          name: data.name,
+          role: data.role,
+          token: data.token,
+        });
+
+        // redirect to customer products
         setShouldRedirect(true);
       }
     } catch (err) {
+      console.log(err);
       setLoginErrVisible(true);
     }
   };
