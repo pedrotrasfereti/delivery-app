@@ -16,7 +16,7 @@ api.use(cors());
 // routes
 api.use('/register', userRouter);
 api.use('/login', loginRouter);
-api.use('/customer/product', productRouter);
+api.use('/customer/products', productRouter);
 api.use('/customer/checkout', salesRouter);
 
 // error middlewares
