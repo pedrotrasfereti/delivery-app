@@ -54,7 +54,7 @@ const StitchesComponent = styled('nav', {
 function NavBar() {
   /* Navigation Links */
   const { pathname } = useLocation();
-  const username = localStorage.getItem('user').name || 'John Doe';
+  const username = JSON.parse(localStorage.getItem('user')).name;
   const navLinks = navLinksMap(username)[pathname];
 
   return (
