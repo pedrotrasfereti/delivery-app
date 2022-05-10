@@ -18,7 +18,7 @@ api.use(cors());
 api.use('/register', userRouter);
 api.use('/login', loginRouter);
 api.use('/customer', validateUserToken('customer'), customerRouter);
-api.use('/seller', validateUserToken('seller'), sellerRouter)
+api.use('/seller', validateUserToken('seller'), sellerRouter);
 
 // error middlewares
 api.use(errorHandler);
