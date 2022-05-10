@@ -1,5 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
+import { v4 as uuid } from 'uuid';
 
 /* Children */
 import { ProductCard } from '../molecules';
@@ -35,7 +36,7 @@ function ProductCards({ products }) {
         {
           products
             ? products
-              .map((product, key) => <ProductCard product={ product } key={ key } />)
+              .map((product) => <ProductCard product={ product } key={ uuid() } />)
             : <p>Carregando...</p>
         }
       </div>
