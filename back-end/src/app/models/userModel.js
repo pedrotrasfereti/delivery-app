@@ -26,4 +26,13 @@ module.exports = {
 
     return userCreated;
   },
+
+  async getById(id) {
+    const user = await Users.findOne({
+      where: { id },
+      raw: true,
+    });
+
+    return user;
+  },
 };

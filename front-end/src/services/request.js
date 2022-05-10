@@ -5,6 +5,10 @@ const instanceApi = axios.create({
   baseURL: `http://localhost:${process.env.REACT_APP_BACKEND_PORT || '3001'}`,
 });
 
+const authenticateUser = (token) => {
+  instanceApi.defaults.headers.common.Authorization = token;
+};
+
 const loginRequest = async (body) => {
   const { data } = await instanceApi.post('/login', body);
 
@@ -17,8 +21,17 @@ const registerRequest = async (body) => {
   return data;
 };
 
+const getAllProducts = async (token) => {
+  authenticateUser(token);
+
+  const { data } = await instanceApi.get('/customer/products');
+
+  return data;
+};
+
 export {
   instanceApi,
   loginRequest,
   registerRequest,
+  getAllProducts,
 };

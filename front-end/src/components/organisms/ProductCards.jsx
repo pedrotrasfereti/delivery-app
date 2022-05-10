@@ -1,4 +1,6 @@
 import * as React from 'react';
+import PropTypes from 'prop-types';
+import { v4 as uuid } from 'uuid';
 
 /* Children */
 import { ProductCard } from '../molecules';
@@ -25,23 +27,30 @@ const StitchesComponent = styled('section', {
   },
 });
 
-function ProductCards() {
+function ProductCards({ products }) {
   return (
     <StitchesComponent>
       <h2>All products</h2>
 
       <div className="Container">
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
+        {
+          products
+            ? products
+              .map((product) => <ProductCard product={ product } key={ uuid() } />)
+            : <p>Carregando...</p>
+        }
       </div>
     </StitchesComponent>
   );
 }
+
+ProductCards.propTypes = {
+  products: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    price: PropTypes.number,
+    urlImage: PropTypes.string,
+  })),
+}.isRequired;
 
 export default ProductCards;
