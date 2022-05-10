@@ -15,8 +15,20 @@ module.exports = {
       return res.status(200).json(sales);
     },
 
+    async getSalesBySeller(req, res) {
+      const { id } = req.user;
+      const sales = await salesService.getSalesBySeller(id);
+
+      return res.status(200).json(sales);
+    },
+
     async getSale(req, res) {
       const sale = await salesService.getSale(req.params.id);
+      return res.status(200).json(sale);
+    },
+
+    async updateSaleStatus(req, res) {
+      const sale = await salesService.updateSaleStatus(req.params.id, req.body.status);
       return res.status(200).json(sale);
     },
 };

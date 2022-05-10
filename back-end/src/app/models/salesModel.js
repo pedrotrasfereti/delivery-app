@@ -28,6 +28,15 @@ module.exports = {
     return sales;
   },
 
+  async getSalesBySeller(id) {
+    const sales = await Sales.findAll({
+      where: { sellerId: id },
+      raw: true,
+    });
+
+    return sales;
+  },
+
   async getSale(id) {
     const sale = await Sales.findOne({
       where: { id },
@@ -42,6 +51,11 @@ module.exports = {
     });
 
     const seller = await userModel.getById(sale.sellerId);
-    return { ...sale.dataValues, sellerName: seller.name };
+    sale.dataValues.sellerName = seller.name;
+    return sale;
+  },
+
+  async updateSaleStatus(id, status) {
+    await Sales.update({ status }, { where: { id } });
   },
 };
