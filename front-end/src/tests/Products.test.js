@@ -2,6 +2,7 @@
 import 'regenerator-runtime/runtime';
 import { createMemoryHistory } from 'history';
 import React from 'react';
+import navLinksMap from '../utils/navLinksMap';
 
 // import Router
 import { Router } from 'react-router-dom';
@@ -15,18 +16,65 @@ import { render, screen, within } from '@testing-library/react';
 // component to test
 import { Products } from '../components/pages';
 
+jest.mock('../utils/navLinksMap', (username) => {
+  return ({
+    '/customer/products': [
+      {
+        dataTestId: 'customer_products__element-navbar-link-products',
+        name: 'Products',
+        to: '/customer/products',
+      },
+      {
+        dataTestId: 'customer_products__element-navbar-link-orders',
+        name: 'My orders',
+        to: '/',
+      },
+      {
+        dataTestId: 'customer_products__element-navbar-user-full-name',
+        name: username,
+        to: '/',
+      },
+      {
+        dataTestId: 'customer_products__element-navbar-link-logout',
+        name: 'Logout',
+        to: '/login',
+      },
+    ],
+  });
+});
+
 describe('Products Page', () => {
+  let fakeStorage = {};
+
+  beforeAll(() => {
+    // global.Storage.prototype.setItem = jest.fn((key, value) => {
+    //   fakeStorage[key] = value;
+    // });
+    // global.Storage.prototype.getItem = jest.fn((key) => {
+    //   fakeStorage[key];
+    // });
+
+    localStorage.setItem('user', JSON.stringify({
+      email: '',
+      name: '',
+      role: '',
+      token: '',
+    }));
+    // navLinksMap.mockImplementation();
+  });
+
   test('The page contains a header', () => {
     const history = createMemoryHistory();
-
+    
     render(
       <Router location={history.location} navigator={history}>
         <Products />
       </Router>
     );
-
+    
     const header = screen.getByRole('banner');
 
+    expect()
     expect(header).toBeInTheDocument();
   });
 
