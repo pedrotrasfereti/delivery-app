@@ -17,7 +17,7 @@ function ProductCard({ product }) {
   return (
     <StitchesComponent>
       <h3>{ product.name }</h3>
-      <h3>{ product.price }</h3>
+      <h3>{ `R$ ${product.price}` }</h3>
       <p>Lorem ipsum dolor sit amet</p>
     </StitchesComponent>
   );
