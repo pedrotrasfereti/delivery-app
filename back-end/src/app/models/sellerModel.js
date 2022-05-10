@@ -4,9 +4,9 @@ module.exports = {
     async getAllSalesModel(id) {
         const getSales = await Sales.findAll({
             where: { sellerId: id },
-            raw: true
+            raw: true,
         });
-        console.log('model')
+        console.log('model');
         return getSales;
     },
-}
+};
