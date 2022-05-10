@@ -32,7 +32,7 @@ const Products = () => {
 
   React.useEffect(() => {
     const user = localStorage.getItem('user');
-    const token = JSON.parse(user);
+    const { token } = JSON.parse(user);
 
     async function getData() {
       try {
