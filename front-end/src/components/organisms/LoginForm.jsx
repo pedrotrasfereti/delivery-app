@@ -60,13 +60,6 @@ function LoginForm({ id }) {
           token: data.token,
         }));
 
-        console.log({
-          email,
-          name: data.name,
-          role: data.role,
-          token: data.token,
-        });
-
         // redirect to customer products
         setShouldRedirect(true);
       }
