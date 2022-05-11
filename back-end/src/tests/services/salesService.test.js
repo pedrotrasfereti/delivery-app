@@ -34,6 +34,17 @@ describe('Tests salesService', () => {
     })
   })
 
+  describe('Tests getSalesBySeller method', () => {
+    it('Returns an array of sales', async () => {
+      const getSalesBySellerStub = sinon.stub(salesModel, 'getSalesBySeller').resolves([saleMock]);
+      const sales = await salesService.getSalesBySeller(id);
+
+      sinon.assert.calledWith(getSalesBySellerStub, id);
+      expect(sales).to.be.a('array');
+      expect(sales).to.be.deep.equal([saleMock]);
+    })
+  })
+
   describe('Tests getSale method', () => {
     it('Returns an array of sales', async () => {
       const getStub = sinon.stub(salesModel, 'getSales').resolves([saleMock]);
@@ -53,6 +64,17 @@ describe('Tests salesService', () => {
       sinon.assert.calledWith(getStub, id);
       expect(sale).to.be.a('object');
       expect(sale).to.be.deep.equal(saleMock);
+    })
+  })
+
+  describe('Tests updateSaleStatus method', () => {
+    it('Returns updated sale', async () => {
+      const getStub = sinon.stub(salesModel, 'getSale').resolves({...saleMock, save: sinon.stub()});
+      const updatedSale = await salesService.updateSaleStatus(id, 'delivered');
+
+      sinon.assert.calledWith(getStub, id);
+      expect(updatedSale).to.be.a('object');
+      expect(updatedSale.status).to.be.equal('delivered');
     })
   })
 })

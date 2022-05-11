@@ -7,6 +7,7 @@ module.exports = {
     const sale = await Sales.create({
       ...obj,
       saleDate: Date.now(),
+      status: 'Pendente',
     });
 
     const newProducts = await products.map((product) => ({
@@ -50,12 +51,8 @@ module.exports = {
       }],
     });
 
-    const seller = await userModel.getById(sale.sellerId);
+    const seller = await userModel.getById(sale.dataValues.sellerId);
     sale.dataValues.sellerName = seller.name;
     return sale;
-  },
-
-  async updateSaleStatus(id, status) {
-    await Sales.update({ status }, { where: { id } });
   },
 };
