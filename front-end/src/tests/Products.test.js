@@ -2,7 +2,6 @@
 import 'regenerator-runtime/runtime';
 import { createMemoryHistory } from 'history';
 import React from 'react';
-import navLinksMap from '../utils/navLinksMap';
 
 // import Router
 import { Router } from 'react-router-dom';
@@ -16,35 +15,32 @@ import { render, screen, within } from '@testing-library/react';
 // component to test
 import { Products } from '../components/pages';
 
-// jest.mock('../utils/navLinksMap', (username) => {
-//   return ({
-//     '/customer/products': [
-//       {
-//         dataTestId: 'customer_products__element-navbar-link-products',
-//         name: 'Products',
-//         to: '/customer/products',
-//       },
-//       {
-//         dataTestId: 'customer_products__element-navbar-link-orders',
-//         name: 'My orders',
-//         to: '/',
-//       },
-//       {
-//         dataTestId: 'customer_products__element-navbar-user-full-name',
-//         name: username,
-//         to: '/',
-//       },
-//       {
-//         dataTestId: 'customer_products__element-navbar-link-logout',
-//         name: 'Logout',
-//         to: '/login',
-//       },
-//     ],
-//   });
-// });
+jest.mock('../utils/navLinksMap', () => () => ({
+  '/customer/products': [
+    {
+      dataTestId: 'customer_products__element-navbar-link-products',
+      name: 'Products',
+      to: '/customer/products',
+    },
+    {
+      dataTestId: 'customer_products__element-navbar-link-orders',
+      name: 'My orders',
+      to: '/',
+    },
+    {
+      dataTestId: 'customer_products__element-navbar-user-full-name',
+      name: 'zebirita',
+      to: '/',
+    },
+    {
+      dataTestId: 'customer_products__element-navbar-link-logout',
+      name: 'Logout',
+      to: '/login',
+    },
+  ],
+}));
 
 describe('Products Page', () => {
-  let navLinkMock;
   beforeAll(() => {
     localStorage.setItem('user', JSON.stringify({
       email: '',
@@ -52,71 +48,33 @@ describe('Products Page', () => {
       role: '',
       token: '',
     }));
-
-    navLinkMock = jest.spyOn(navLinksMap, 'navLinksMap').mockImplemetation(() => ({
-      '/customer/products': [
-        {
-          dataTestId: 'customer_products__element-navbar-link-products',
-          name: 'Products',
-          to: '/customer/products',
-        },
-        {
-          dataTestId: 'customer_products__element-navbar-link-orders',
-          name: 'My orders',
-          to: '/',
-        },
-        {
-          dataTestId: 'customer_products__element-navbar-user-full-name',
-          name: 'zebirita',
-          to: '/',
-        },
-        {
-          dataTestId: 'customer_products__element-navbar-link-logout',
-          name: 'Logout',
-          to: '/login',
-        },
-      ],
-    }));
   });
 
-  test('The page contains a header', () => {
+  beforeEach(() => {
     const history = createMemoryHistory();
-    
+    const route = '/customer/products';
+    history.push(route);
+
     render(
       <Router location={history.location} navigator={history}>
         <Products />
       </Router>
     );
-    
+  });
+
+  test('The page contains a header', () => {
     const header = screen.getByRole('banner');
 
-    expect()
     expect(header).toBeInTheDocument();
   });
 
   test('The page contains a heading', () => {
-    const history = createMemoryHistory();
-
-    render(
-      <Router location={history.location} navigator={history}>
-        <Products />
-      </Router>
-    );
-
     const heading = screen.getByRole('heading');
 
     expect(heading).toBeInTheDocument();
   });
 
   test('The page heading has the correct text', () => {
-    const history = createMemoryHistory();
-
-    render(
-      <Router location={history.location} navigator={history}>
-        <Products />
-      </Router>
-    );
-
     const heading = screen.getByRole(
       'heading',
       { name: /deliveree/i },
@@ -126,14 +84,6 @@ describe('Products Page', () => {
   });
 
   test('The page contains a navigation bar within a header', () => {
-    const history = createMemoryHistory();
-
-    render(
-      <Router location={history.location} navigator={history}>
-        <Products />
-      </Router>
-    );
-
     const header = screen.getByRole('banner');
     const navbar = within(header).getByRole('navigation');
 
@@ -141,14 +91,6 @@ describe('Products Page', () => {
   });
 
   test('The navigation bar contains a link to the products page', () => {
-    const history = createMemoryHistory();
-
-    render(
-      <Router location={history.location} navigator={history}>
-        <Products />
-      </Router>
-    );
-
     const header = screen.getByRole('banner');
     const navbar = within(header).getByRole('navigation');
     const productsLink = within(navbar).getByTestId(
@@ -159,14 +101,6 @@ describe('Products Page', () => {
   });
 
   test('The navigation bar contains a link to the orders page', () => {
-    const history = createMemoryHistory();
-
-    render(
-      <Router location={history.location} navigator={history}>
-        <Products />
-      </Router>
-    );
-
     const header = screen.getByRole('banner');
     const navbar = within(header).getByRole('navigation');
     const ordersLink = within(navbar).getByTestId(
@@ -179,14 +113,6 @@ describe('Products Page', () => {
   test(
     "The navigation bar contains an element with the user's full name",
     () => {
-      const history = createMemoryHistory();
-
-      render(
-        <Router location={history.location} navigator={history}>
-          <Products />
-        </Router>
-      );
-
       const header = screen.getByRole('banner');
       const navbar = within(header).getByRole('navigation');
       const fullName = within(navbar).getByTestId(
@@ -197,14 +123,6 @@ describe('Products Page', () => {
   });
 
   test('The navigation bar contains a logout link', () => {
-    const history = createMemoryHistory();
-
-    render(
-      <Router location={history.location} navigator={history}>
-        <Products />
-      </Router>
-    );
-
     const header = screen.getByRole('banner');
     const navbar = within(header).getByRole('navigation');
     const logoutLink = within(navbar).getByTestId(
@@ -215,40 +133,16 @@ describe('Products Page', () => {
   });
 
   test('The page contains a main section', () => {
-    const history = createMemoryHistory();
-
-    render(
-      <Router location={history.location} navigator={history}>
-        <Products />
-      </Router>
-    );
-
     const main = screen.getByRole('main');
 
     expect(main).toBeInTheDocument();
   });
 
   test('The page title is present in the document', () => {
-    const history = createMemoryHistory();
-
-    render(
-      <Router location={history.location} navigator={history}>
-        <Products />
-      </Router>
-    );
-
     expect(screen.getByText(/All products/i)).toBeInTheDocument();
   });
 
   test('The cart/checkout button is present in the document', () => {
-    const history = createMemoryHistory();
-
-    render(
-      <Router location={history.location} navigator={history}>
-        <Products />
-      </Router>
-    );
-
     const checkoutBtn = screen.getByTestId(
       'customer_products__checkout-bottom-value',
     );
@@ -262,14 +156,6 @@ describe('Products Page', () => {
     test.each(ids)(
       'The title of product #%p is present in the document',
       (productId) => {
-        const history = createMemoryHistory();
-
-        render(
-          <Router location={history.location} navigator={history}>
-            <Products />
-          </Router>
-        );
-
         const productCardTitle = screen.getAllByTestId(
           `customer_products__element-card-title-${productId}`,
         );
@@ -280,14 +166,6 @@ describe('Products Page', () => {
     test.each(ids)(
       'The price of product #%p is present in the document',
       (productId) => {
-        const history = createMemoryHistory();
-
-        render(
-          <Router location={history.location} navigator={history}>
-            <Products />
-          </Router>
-        );
-
         const productCardPrice = screen.getAllByTestId(
           `customer_products__element-card-price-${productId}`,
         );
@@ -298,14 +176,6 @@ describe('Products Page', () => {
     test.each(ids)(
       'The image of product #%p is present in the document',
       (productId) => {
-        const history = createMemoryHistory();
-
-        render(
-          <Router location={history.location} navigator={history}>
-            <Products />
-          </Router>
-        );
-
         const productCardImage = screen.getAllByTestId(
           `customer_products__img-card-bg-image-${productId}`,
         );
@@ -316,14 +186,6 @@ describe('Products Page', () => {
     test.each(ids)(
       'The add item button of product #%p is present in the document',
       (productId) => {
-        const history = createMemoryHistory();
-
-        render(
-          <Router location={history.location} navigator={history}>
-            <Products />
-          </Router>
-        );
-
         const addItemBtn = screen.getAllByTestId(
           `customer_products__button-card-add-item-${productId}`,
         );
@@ -334,14 +196,6 @@ describe('Products Page', () => {
     test.each(ids)(
       'The remove item button of product #%p is present in the document',
       (productId) => {
-        const history = createMemoryHistory();
-
-        render(
-          <Router location={history.location} navigator={history}>
-            <Products />
-          </Router>
-        );
-
         const removeItemBtn = screen.getAllByTestId(
           `customer_products__button-card-rm-item-${productId}`,
         );
@@ -352,14 +206,6 @@ describe('Products Page', () => {
     test.each(ids)(
       'The quantity of product #%p is present in the document',
       (productId) => {
-        const history = createMemoryHistory();
-
-        render(
-          <Router location={history.location} navigator={history}>
-            <Products />
-          </Router>
-        );
-
         const productCardQty = screen.getAllByTestId(
           `customer_products__input-card-quantity-${productId}`,
         );
