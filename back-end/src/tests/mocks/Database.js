@@ -15,7 +15,7 @@ const saleMockDatavalues = {
     deliveryAddress: "antonio marcos da cruz",
     deliveryNumber: "571",
     saleDate: "2020-05-02T00:00:00.000Z",
-    status: "in progress",
+    status: "Pendente",
   },
 };
 
