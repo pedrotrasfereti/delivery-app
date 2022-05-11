@@ -20,7 +20,7 @@ const StitchesComponent = styled('aside', {
       borderBottom: '1px solid lightgray',
 
       '& h3': {
-        color: '$textDark',
+        color: '$gray800',
         fontFamily: '$sans2',
         fontSize: '$4',
         fontWeight: '$5',
