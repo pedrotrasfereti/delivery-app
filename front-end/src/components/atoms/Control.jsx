@@ -41,9 +41,10 @@ const StitchesComponent = styled('button', {
   },
 });
 
-function Control({ handleOnClick, operation }) {
+function Control({ dataTestId, handleOnClick, operation }) {
   return (
     <StitchesComponent
+      data-testid={ dataTestId }
       onClick={ handleOnClick }
       operation={ operation }
     >
@@ -56,6 +57,7 @@ function Control({ handleOnClick, operation }) {
 
 Control.propTypes = {
   operation: PropTypes.oneOf(['add', 'subtract']),
+  dataTestId: PropTypes.string.isRequired,
   handleOnClick: PropTypes.func.isRequired,
 };
 

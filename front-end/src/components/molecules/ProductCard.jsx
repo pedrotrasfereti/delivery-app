@@ -7,7 +7,7 @@ import Control from '../atoms/Control';
 /* Styles */
 import { styled } from '../../stitches.config';
 
-const StitchesComponent = styled('header', {
+const StitchesComponent = styled('div', {
   backgroundColor: '$loContrast',
   border: '0',
   borderRadius: '$default',
@@ -105,27 +105,59 @@ function ProductCard({ product }) {
 
   return (
     <StitchesComponent>
-      <div className="product-card__image">
-        <span className="product-card__discount">-30%</span>
+      <div
+        className="product-card__image"
+        data-testid={
+          `customer_products__img-card-bg-image-${product.id}`
+        }
+      >
+        <span className="product-card__discount">-5%</span>
       </div>
 
       <div className="product-card__content">
-        <h3>{ product.name }</h3>
+        <h3
+          data-testid={
+            `customer_products__element-card-title-${product.id}`
+          }
+        >
+          { product.name }
+        </h3>
         <p>Lorem ipsum dolor sit amet</p>
 
         <div className="product-card__content-bottom">
-          <div className="product-card__content-price">
-            <span>{`R$ ${product.price} `}</span>
+          <div
+            className="product-card__content-price"
+            data-testid={
+              `customer_products__element-card-price-${product.id}`
+            }
+          >
+            <span>{`R$ ${product.price}`}</span>
           </div>
 
           <div className="product-card__content-controls">
-            <Control handleOnClick={ decrement } operation="subtract" />
+            <Control
+              dataTestId={
+                `customer_products__button-card-rm-item-${product.id}`
+              }
+              handleOnClick={ decrement }
+              operation="subtract"
+            />
 
-            <span className="product-card__product-quantity">
+            <span
+              className="product-card__product-quantity"
+              data-testid={
+                `customer_products__input-card-quantity-${product.id}`
+              }
+            >
               { quantity }
             </span>
 
-            <Control handleOnClick={ increment } />
+            <Control
+              dataTestId={
+                `customer_products__button-card-add-item-${product.id}`
+              }
+              handleOnClick={ increment }
+            />
           </div>
         </div>
       </div>
