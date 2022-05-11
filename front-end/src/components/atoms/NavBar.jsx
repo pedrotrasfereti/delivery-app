@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
-const util = require('util')
 
 /* Styles */
 import { styled } from '../../stitches.config';
 
 /* Utils */
 import navLinksMap from '../../utils/navLinksMap';
+
+const util = require('util');
 
 const StitchesComponent = styled('nav', {
   '& ul': {
@@ -59,7 +60,7 @@ function NavBar() {
   const username = JSON.parse(user).name;
   const navLinks = navLinksMap(username)[pathname];
   const myLogger = util.debuglog('myloggername');
-  myLogger(user, 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA trasfereti');
+  myLogger(user, 'AAAAAAAAA');
   console.log(user);
 
   return (
