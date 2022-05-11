@@ -156,7 +156,7 @@ describe('Products Page', () => {
     test.each(ids)(
       'The title of product #%p is present in the document',
       (productId) => {
-        const productCardTitle = screen.getAllByTestId(
+        const productCardTitle = screen.getByTestId(
           `customer_products__element-card-title-${productId}`,
         );
 
@@ -166,7 +166,7 @@ describe('Products Page', () => {
     test.each(ids)(
       'The price of product #%p is present in the document',
       (productId) => {
-        const productCardPrice = screen.getAllByTestId(
+        const productCardPrice = screen.getByTestId(
           `customer_products__element-card-price-${productId}`,
         );
 
@@ -176,7 +176,7 @@ describe('Products Page', () => {
     test.each(ids)(
       'The image of product #%p is present in the document',
       (productId) => {
-        const productCardImage = screen.getAllByTestId(
+        const productCardImage = screen.getByTestId(
           `customer_products__img-card-bg-image-${productId}`,
         );
 
@@ -186,7 +186,7 @@ describe('Products Page', () => {
     test.each(ids)(
       'The add item button of product #%p is present in the document',
       (productId) => {
-        const addItemBtn = screen.getAllByTestId(
+        const addItemBtn = screen.getByTestId(
           `customer_products__button-card-add-item-${productId}`,
         );
 
@@ -196,7 +196,7 @@ describe('Products Page', () => {
     test.each(ids)(
       'The remove item button of product #%p is present in the document',
       (productId) => {
-        const removeItemBtn = screen.getAllByTestId(
+        const removeItemBtn = screen.getByTestId(
           `customer_products__button-card-rm-item-${productId}`,
         );
 
@@ -206,7 +206,7 @@ describe('Products Page', () => {
     test.each(ids)(
       'The quantity of product #%p is present in the document',
       (productId) => {
-        const productCardQty = screen.getAllByTestId(
+        const productCardQty = screen.getByTestId(
           `customer_products__input-card-quantity-${productId}`,
         );
 
