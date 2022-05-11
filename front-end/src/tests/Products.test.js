@@ -15,6 +15,7 @@ import { render, screen, within } from '@testing-library/react';
 // component to test
 import { Products } from '../components/pages';
 
+// mocks
 jest.mock('../utils/navLinksMap', () => () => ({
   '/customer/products': [
     {
@@ -39,6 +40,8 @@ jest.mock('../utils/navLinksMap', () => () => ({
     },
   ],
 }));
+
+jest.mock('../services/request', () => () => []);
 
 describe('Products Page', () => {
   beforeAll(() => {
