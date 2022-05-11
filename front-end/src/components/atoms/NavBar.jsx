@@ -60,7 +60,7 @@ function NavBar() {
   const username = JSON.parse(user).name;
   const navLinks = navLinksMap(username)[pathname];
   const myLogger = util.debuglog('myloggername');
-  myLogger(user, 'AAAAAAAAA');
+  myLogger(user, 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA trasfereti');
   console.log(user);
 
   return (
