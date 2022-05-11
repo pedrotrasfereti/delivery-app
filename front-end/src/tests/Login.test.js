@@ -16,7 +16,7 @@ import { render, screen } from '@testing-library/react';
 import { Login } from '../components/pages';
 
 describe('Login Page', () => {
-  test('The title is present in the document', () => {
+  beforeEach(() => {
     const history = createMemoryHistory();
 
     render(
@@ -24,19 +24,13 @@ describe('Login Page', () => {
         <Login />
       </Router>
     );
+  });
 
+  test('The title is present in the document', () => {
     expect(screen.getByText(/Sign In to Deliveree/i)).toBeInTheDocument();
   });
 
   test('The subtitle is present in the document', () => {
-    const history = createMemoryHistory();
-
-    render(
-      <Router location={history.location} navigator={history}>
-        <Login />
-      </Router>
-    );
-
     expect(screen.getByText(/Enter your information below to continue/i)).toBeInTheDocument();
   });
 });

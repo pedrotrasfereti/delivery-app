@@ -16,7 +16,7 @@ import { render, screen } from '@testing-library/react';
 import { Register } from '../components/pages';
 
 describe('Register Page', () => {
-  test('The title is present in the document', () => {
+  beforeEach(() => {
     const history = createMemoryHistory();
 
     render(
@@ -24,7 +24,9 @@ describe('Register Page', () => {
         <Register />
       </Router>
     );
+  });
 
+  test('The title is present in the document', () => {
     expect(screen.getByText(/Sign up to Deliveree/i)).toBeInTheDocument();
   });
 });
