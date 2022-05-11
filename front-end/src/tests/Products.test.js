@@ -14,6 +14,9 @@ import { render, screen, within } from '@testing-library/react';
 
 // component to test
 import { Products } from '../components/pages';
+import { ProductCards } from '../components/organisms';
+import mockProducts from './mocks/ProductsMock';
+// import * as serviceRequest from '../services/request';
 
 // mocks
 jest.mock('../utils/navLinksMap', () => () => ({
@@ -41,7 +44,11 @@ jest.mock('../utils/navLinksMap', () => () => ({
   ],
 }));
 
-jest.mock('../services/request', () => () => []);
+jest.mock('../services/request');
+
+// jest.mock('../services/request', () => {
+//   return jest.fn().mockResolvedValue(mockProducts);
+// });
 
 describe('Products Page', () => {
   beforeAll(() => {
@@ -53,15 +60,22 @@ describe('Products Page', () => {
     }));
   });
 
-  beforeEach(() => {
+  beforeEach(async () => {
     const history = createMemoryHistory();
     const route = '/customer/products';
     history.push(route);
 
+    // render(
+    //     <Router location={history.location} navigator={history}>
+    //       <Products>
+    //         <ProductCards products={mockProducts}/>
+    //       </Products>
+    //     </Router>
+    // );
     render(
-      <Router location={history.location} navigator={history}>
-        <Products />
-      </Router>
+    <Router location={history.location} navigator={history}>
+      <Products />
+    </Router>
     );
   });
 
@@ -154,7 +168,14 @@ describe('Products Page', () => {
   });
 
   describe('The first 11 product cards are present in the document', () => {
+    // let mockdb;
     const ids = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'];
+
+    beforeEach(() => {
+      // serviceRequest.getAllProducts = jest.fn(() => Promise.resolve(mockProducts));
+      // mockdb = jest.spyOn(serviceRequest, 'getAllProducts');
+      // mockdb.mockResolvedValue(mockProducts);
+    });
 
     test.each(ids)(
       'The title of product #%p is present in the document',
