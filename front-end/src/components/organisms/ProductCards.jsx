@@ -9,7 +9,7 @@ import { ProductCard } from '../molecules';
 import { styled } from '../../stitches.config';
 
 const StitchesComponent = styled('section', {
-  padding: '2rem 1.25rem 0',
+  paddingTop: '2rem',
 
   '&>h2': {
     color: '$textDark',
@@ -20,10 +20,12 @@ const StitchesComponent = styled('section', {
   },
 
   '&>.Container': {
-    marginTop: '2rem',
+    margin: '2rem 0',
     display: 'flex',
     flexFlow: 'row wrap',
-    gap: '1.25rem',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '$3',
   },
 });
 
@@ -35,9 +37,11 @@ function ProductCards({ products }) {
       <div className="Container">
         {
           products
-            ? products
-              .map((product) => <ProductCard product={ product } key={ uuid() } />)
-            : <p>Carregando...</p>
+            ? products.map((product) => (
+              <ProductCard product={ product } key={ uuid() } />
+            )) : (
+              <span>Loading...</span>
+            )
         }
       </div>
     </StitchesComponent>

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 
 /* Children */
 import { Sidebar } from '../atoms';
@@ -27,10 +27,9 @@ const Main = styled('div', {
 });
 
 const Products = () => {
-  // const [authUser, setAuthUser] = useState(true);
-  const [productsData, setProductsData] = React.useState([]);
+  const [productsData, setProductsData] = useState([]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const user = localStorage.getItem('user');
     const { token } = JSON.parse(user);
 
@@ -42,6 +41,7 @@ const Products = () => {
         console.log(err);
       }
     }
+
     getData();
   }, []);
 
