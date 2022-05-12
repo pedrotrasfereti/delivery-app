@@ -19,7 +19,7 @@ const StitchesComponent = styled('div', {
   },
 });
 
-const Main = styled('div', {
+const Main = styled('main', {
   backgroundColor: '$gray100',
   position: 'relative',
   width: '100%',
