@@ -72,7 +72,10 @@ describe('Products Page', () => {
   });
 
   test('The page contains a heading', () => {
-    const heading = screen.getByRole('heading');
+    const heading = screen.getByRole(
+      'heading',
+      { name: /deliveree/i },
+    );
 
     expect(heading).toBeInTheDocument();
   });
