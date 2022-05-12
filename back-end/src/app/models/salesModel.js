@@ -7,6 +7,7 @@ module.exports = {
     const sale = await Sales.create({
       ...obj,
       saleDate: Date.now(),
+      status: 'Pendente',
     });
 
     const newProducts = await products.map((product) => ({
@@ -28,6 +29,15 @@ module.exports = {
     return sales;
   },
 
+  async getSalesBySeller(id) {
+    const sales = await Sales.findAll({
+      where: { sellerId: id },
+      raw: true,
+    });
+
+    return sales;
+  },
+
   async getSale(id) {
     const sale = await Sales.findOne({
       where: { id },
@@ -41,7 +51,8 @@ module.exports = {
       }],
     });
 
-    const seller = await userModel.getById(sale.sellerId);
-    return { ...sale.dataValues, sellerName: seller.name };
+    const seller = await userModel.getById(sale.dataValues.sellerId);
+    sale.dataValues.sellerName = seller.name;
+    return sale;
   },
 };

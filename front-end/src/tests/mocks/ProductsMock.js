@@ -1,4 +1,4 @@
-const ProductsMock = [
+const mockProducts = [
   {
     id: 1,
     name: 'Skol Lata 250ml',
@@ -67,4 +67,4 @@ const ProductsMock = [
   },
 ];
 
-export default ProductsMock;
+export default mockProducts;

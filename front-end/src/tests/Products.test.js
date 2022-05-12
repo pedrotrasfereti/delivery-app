@@ -41,7 +41,7 @@ jest.mock('../utils/navLinksMap', () => () => ({
   ],
 }));
 
-jest.mock('../services/request', () => () => []);
+jest.mock('../services/request');
 
 describe('Products Page', () => {
   beforeAll(() => {
@@ -53,15 +53,15 @@ describe('Products Page', () => {
     }));
   });
 
-  beforeEach(() => {
+  beforeEach(async () => {
     const history = createMemoryHistory();
     const route = '/customer/products';
     history.push(route);
 
     render(
-      <Router location={history.location} navigator={history}>
-        <Products />
-      </Router>
+    <Router location={history.location} navigator={history}>
+      <Products />
+    </Router>
     );
   });
 

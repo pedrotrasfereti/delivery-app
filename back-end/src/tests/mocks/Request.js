@@ -15,8 +15,7 @@ const createSalePayload = {
     sellerId: 2,
     totalPrice: 20.35,
     deliveryAddress: "antonio marcos da cruz",
-    deliveryNumber: "571",
-    status: "in progress"
+    deliveryNumber: "571"
   },
   products: [
     {
