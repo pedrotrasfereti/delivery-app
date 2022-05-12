@@ -115,7 +115,7 @@ function ProductCard({ product }) {
   };
 
   const handleRemoveProduct = () => {
-    dispatch(removeProduct(product.id));
+    dispatch(removeProduct());
     decrement();
   };
 
