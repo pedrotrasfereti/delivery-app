@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  products: [],
+  products: {},
 };
 
 export const checkoutSlice = createSlice({
@@ -9,10 +9,35 @@ export const checkoutSlice = createSlice({
   initialState,
   reducers: {
     addProduct: (state, action) => {
-      state.products.push(action.payload);
+      const { id, price } = action.payload;
+
+      let quantity = 1;
+
+      if (state.products[id]) {
+        quantity = state.products[id].quantity + 1;
+      }
+
+      state.products = {
+        ...state.products,
+        [id]: { quantity, price },
+      };
     },
-    removeProduct: (state) => {
-      state.products.pop();
+    removeProduct: (state, action) => {
+      const { id, price } = action.payload;
+
+      let quantity = 0;
+
+      if (
+        state.products[id]
+        && state.products[id] > 0
+      ) {
+        quantity = state.products[id].quantity - 1;
+      }
+
+      state.products = {
+        ...state.products,
+        [id]: { quantity, price },
+      };
     },
   },
 });

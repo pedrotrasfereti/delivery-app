@@ -110,12 +110,12 @@ function ProductCard({ product }) {
   const dispatch = useDispatch();
 
   const handleAddProduct = () => {
-    dispatch(addProduct(product.id));
+    dispatch(addProduct(product));
     increment();
   };
 
   const handleRemoveProduct = () => {
-    dispatch(removeProduct());
+    dispatch(removeProduct(product));
     decrement();
   };
 
