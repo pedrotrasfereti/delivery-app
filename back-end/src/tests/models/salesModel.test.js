@@ -10,6 +10,7 @@ const { createSalePayload } = require('../mocks/Request');
 describe("Testing sales model", () => {
   const { sale, products } = createSalePayload;
   const { dataValues: saleMock } = saleMockDatavalues;
+  const id = 1
 
   afterEach(() => {
     sinon.restore();
@@ -22,7 +23,7 @@ describe("Testing sales model", () => {
       sinon.stub(Date, "now").returns(saleMock.saleDate)
       const saleCreated = await salesModel.createSale(sale, products)
 
-      sinon.assert.calledWith(createStub, { ...sale, saleDate: saleMock.saleDate })
+      sinon.assert.calledWith(createStub, { ...sale, saleDate: saleMock.saleDate, status: 'Pendente' })
       sinon.assert.calledWith(createProductsStub, [{ saleId: saleMock.id, ...products[0] }]);
       expect(saleCreated).to.be.a("object");
       expect(saleCreated).to.be.deep.equal(saleMock);
@@ -30,8 +31,6 @@ describe("Testing sales model", () => {
   })
 
   describe("Testing getSales method", () => {
-    const id = 1
-
     it("Return an array of sales", async () => {
       const findAllStub = sinon.stub(Sales, "findAll").resolves([saleMock])
       const sales = await salesModel.getSales(id)
@@ -42,8 +41,18 @@ describe("Testing sales model", () => {
     })
   })
 
+  describe("Testing getSalesBySeller method", () => {
+    it("Return an array of sales", async () => {
+      const getSalesBySellerStub = sinon.stub(Sales, "findAll").resolves([saleMock])
+      const sales = await salesModel.getSalesBySeller(id)
+
+      sinon.assert.calledWith(getSalesBySellerStub, { where: { sellerId: id }, raw: true });
+      expect(sales).to.be.a("array");
+      expect(sales).to.be.deep.equal([saleMock]);
+    })
+  })
+
   describe("Testing getSale method", () => {
-    const id = 1
     const findOneQuery = {
       where: { id },
       include: [{
@@ -55,16 +64,15 @@ describe("Testing sales model", () => {
         },
       }],
     }
-
     it("Return one sale", async () => {
-      const findOneSaleStub = sinon.stub(Sales, "findOne").resolves(saleMock)
+      const findOneSaleStub = sinon.stub(Sales, "findOne").resolves(saleMockDatavalues)
       const getUserByIdStub = sinon.stub(userModel, "getById").resolves(userMock)
       const sales = await salesModel.getSale(id)
 
       sinon.assert.calledWith(findOneSaleStub, findOneQuery);
       sinon.assert.calledWith(getUserByIdStub, saleMock.sellerId);
       expect(sales).to.be.a("object");
-      expect(sales).to.be.deep.equal({ ...saleMock.dataValues, sellerName: userMock.name });
+      expect(sales.dataValues).to.be.deep.equal({ ...saleMockDatavalues.dataValues, sellerName: userMock.name });
     })
   })
 })
