@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 /* Children */
-import { Sidebar } from '../atoms';
+import { CheckoutBtn, Sidebar } from '../atoms';
 import { Header } from '../molecules';
 import { ProductCards } from '../organisms';
 
@@ -62,6 +62,8 @@ const Products = () => {
       <footer>
         <nav id="footer-nav" />
       </footer>
+
+      <CheckoutBtn />
     </StitchesComponent>
   );
 };
