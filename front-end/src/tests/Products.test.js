@@ -6,6 +6,10 @@ import React from 'react';
 // import Router
 import { Router } from 'react-router-dom';
 
+// import state
+import store from '../redux/store';
+import { Provider } from 'react-redux';
+
 // import custom matchers
 import '@testing-library/jest-dom';
 
@@ -59,9 +63,11 @@ describe('Products Page', () => {
     history.push(route);
 
     render(
-    <Router location={history.location} navigator={history}>
-      <Products />
-    </Router>
+      <Provider store={ store }>
+        <Router location={history.location} navigator={history}>
+          <Products />
+        </Router>
+      </Provider>
     );
   });
 
