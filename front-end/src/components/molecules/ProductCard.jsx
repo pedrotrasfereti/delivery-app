@@ -19,7 +19,7 @@ const StitchesComponent = styled('div', {
   display: 'flex',
   flexFlow: 'column nowrap',
   gap: '$4',
-  height: '325px',
+  height: '350px',
   width: '260px',
 
   '&>.product-card__image': {
