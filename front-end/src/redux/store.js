@@ -1,5 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-const store = configureStore({});
+// reducers
+import checkoutReducer from './reducers';
+
+const store = configureStore({
+  reducer: {
+    checkout: checkoutReducer,
+  },
+});
 
 export default store;
