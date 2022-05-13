@@ -99,18 +99,20 @@ const StitchesComponent = styled('div', {
 
 function ProductCard({ product }) {
   const [quantity, setQuantity] = useState(0);
-
   const increment = () => setQuantity((prev) => prev + 1);
   const decrement = () => setQuantity((prev) => (prev > 0 ? prev - 1 : 0));
 
   return (
     <StitchesComponent>
-      <div
-        className="product-card__image"
-        data-testid={
-          `customer_products__img-card-bg-image-${product.id}`
-        }
-      >
+      <div>
+        <img
+          className="product-card__image"
+          data-testid={
+            `customer_products__img-card-bg-image-${product.id}`
+          }
+          src={ product.urlImage }
+          alt="Bebida"
+        />
         <span className="product-card__discount">-5%</span>
       </div>
 
@@ -172,6 +174,7 @@ ProductCard.propTypes = {
     price: PropTypes.number,
     urlImage: PropTypes.string,
   }),
+  // image: PropTypes.string,
 }.isRequired;
 
 export default ProductCard;

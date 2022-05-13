@@ -7,6 +7,7 @@ import { ProductCard } from '../molecules';
 
 /* Styles */
 import { styled } from '../../stitches.config';
+// import { getProductImage } from '../../services/request';
 
 const StitchesComponent = styled('section', {
   paddingTop: '2rem',
@@ -30,6 +31,21 @@ const StitchesComponent = styled('section', {
 });
 
 function ProductCards({ products }) {
+  // const [images, setImages] = React.useState([]);
+
+  // React.useEffect(() => {
+  //   async function getImages() {
+  //     const getImg = await products.map(({ urlImage }) => {
+  //       const img = getProductImage(urlImage);
+  //       // setImages((prevState) => [...prevState, img]);
+  //       return img;
+  //     });
+  //     const resolvePromises = await Promise.all(getImg);
+  //     setImages(resolvePromises)
+  //   }
+  //   getImages();
+  // }, []);
+
   return (
     <StitchesComponent>
       <h2>All products</h2>
