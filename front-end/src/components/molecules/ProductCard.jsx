@@ -25,6 +25,14 @@ const StitchesComponent = styled('div', {
   '&>.product-card__image': {
     flex: '1.5',
     position: 'relative',
+    maxHeight: '170px',
+
+    '&>img': {
+      width: '100%',
+      height: '100%',
+      objectFit: 'contain',
+      overflow: 'hidden',
+    },
 
     '&>.product-card__discount:not(:empty)': {
       alignItems: 'center',
@@ -120,9 +128,8 @@ function ProductCard({ product }) {
 
   return (
     <StitchesComponent>
-      <div>
+      <div className="product-card__image">
         <img
-          className="product-card__image"
           data-testid={
             `customer_products__img-card-bg-image-${product.id}`
           }

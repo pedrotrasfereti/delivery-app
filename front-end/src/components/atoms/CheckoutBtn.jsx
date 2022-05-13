@@ -25,11 +25,11 @@ const StitchesComponent = styled('button', {
 });
 
 function CheckoutBtn() {
-  const { products } = useSelector((state) => state.checkout);
+  const { total } = useSelector((state) => state.checkout);
 
   return (
     <StitchesComponent data-testid="customer_products__checkout-bottom-value">
-      <span>{ products.length }</span>
+      <span>{ total }</span>
     </StitchesComponent>
   );
 }

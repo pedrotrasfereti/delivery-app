@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
+  total: 0,
   products: {},
 };
 
@@ -17,6 +18,8 @@ export const checkoutSlice = createSlice({
         quantity = state.products[id].quantity + 1;
       }
 
+      state.total += price;
+
       state.products = {
         ...state.products,
         [id]: { quantity, price },
@@ -29,9 +32,10 @@ export const checkoutSlice = createSlice({
 
       if (
         state.products[id]
-        && state.products[id] > 0
+        && state.products[id].quantity > 0
       ) {
         quantity = state.products[id].quantity - 1;
+        state.total -= price;
       }
 
       state.products = {
