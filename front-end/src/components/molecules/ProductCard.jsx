@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
+/* State */
+import { useDispatch } from 'react-redux';
+import { addProduct, removeProduct } from '../../redux/features/checkoutSlice';
+
 /* Children */
 import Control from '../atoms/Control';
 
@@ -15,7 +19,7 @@ const StitchesComponent = styled('div', {
   display: 'flex',
   flexFlow: 'column nowrap',
   gap: '$4',
-  height: '325px',
+  height: '350px',
   width: '260px',
 
   '&>.product-card__image': {
@@ -102,6 +106,18 @@ function ProductCard({ product }) {
   const increment = () => setQuantity((prev) => prev + 1);
   const decrement = () => setQuantity((prev) => (prev > 0 ? prev - 1 : 0));
 
+  const dispatch = useDispatch();
+
+  const handleAddProduct = () => {
+    dispatch(addProduct(product));
+    increment();
+  };
+
+  const handleRemoveProduct = () => {
+    dispatch(removeProduct(product));
+    decrement();
+  };
+
   return (
     <StitchesComponent>
       <div>
@@ -141,7 +157,7 @@ function ProductCard({ product }) {
               dataTestId={
                 `customer_products__button-card-rm-item-${product.id}`
               }
-              handleOnClick={ decrement }
+              handleOnClick={ handleRemoveProduct }
               operation="subtract"
             />
 
@@ -158,7 +174,7 @@ function ProductCard({ product }) {
               dataTestId={
                 `customer_products__button-card-add-item-${product.id}`
               }
-              handleOnClick={ increment }
+              handleOnClick={ handleAddProduct }
             />
           </div>
         </div>

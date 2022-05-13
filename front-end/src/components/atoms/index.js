@@ -1,4 +1,5 @@
 export { default as Button } from './Button';
+export { default as CheckoutBtn } from './CheckoutBtn';
 export { default as Control } from './Control';
 export { default as ErrorMessage } from './ErrorMessage';
 export { default as Fieldset } from './Fieldset';

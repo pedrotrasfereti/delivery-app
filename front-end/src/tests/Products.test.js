@@ -6,6 +6,10 @@ import React from 'react';
 // import Router
 import { Router } from 'react-router-dom';
 
+// import state
+import store from '../redux/store';
+import { Provider } from 'react-redux';
+
 // import custom matchers
 import '@testing-library/jest-dom';
 
@@ -14,9 +18,6 @@ import { render, screen, within } from '@testing-library/react';
 
 // component to test
 import { Products } from '../components/pages';
-import { ProductCards } from '../components/organisms';
-import mockProducts from './mocks/ProductsMock';
-// import * as serviceRequest from '../services/request';
 
 // mocks
 jest.mock('../utils/navLinksMap', () => () => ({
@@ -46,10 +47,6 @@ jest.mock('../utils/navLinksMap', () => () => ({
 
 jest.mock('../services/request');
 
-// jest.mock('../services/request', () => {
-//   return jest.fn().mockResolvedValue(mockProducts);
-// });
-
 describe('Products Page', () => {
   beforeAll(() => {
     localStorage.setItem('user', JSON.stringify({
@@ -65,17 +62,12 @@ describe('Products Page', () => {
     const route = '/customer/products';
     history.push(route);
 
-    // render(
-    //     <Router location={history.location} navigator={history}>
-    //       <Products>
-    //         <ProductCards products={mockProducts}/>
-    //       </Products>
-    //     </Router>
-    // );
     render(
-    <Router location={history.location} navigator={history}>
-      <Products />
-    </Router>
+      <Provider store={ store }>
+        <Router location={history.location} navigator={history}>
+          <Products />
+        </Router>
+      </Provider>
     );
   });
 
@@ -86,7 +78,10 @@ describe('Products Page', () => {
   });
 
   test('The page contains a heading', () => {
-    const heading = screen.getByRole('heading');
+    const heading = screen.getByRole(
+      'heading',
+      { name: /deliveree/i },
+    );
 
     expect(heading).toBeInTheDocument();
   });
@@ -167,74 +162,67 @@ describe('Products Page', () => {
     expect(checkoutBtn).toBeInTheDocument();
   });
 
-  describe('The first 11 product cards are present in the document', () => {
-    // let mockdb;
-    const ids = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'];
+  // describe('The first 11 product cards are present in the document', () => {
+  //   const ids = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'];
 
-    beforeEach(() => {
-      // serviceRequest.getAllProducts = jest.fn(() => Promise.resolve(mockProducts));
-      // mockdb = jest.spyOn(serviceRequest, 'getAllProducts');
-      // mockdb.mockResolvedValue(mockProducts);
-    });
+  //   test.each(ids)(
+  //     'The title of product #%p is present in the document',
+  //     (productId) => {
+  //       const productCardTitle = screen.getByTestId(
+  //         `customer_products__element-card-title-${productId}`,
+  //       );
 
-    test.each(ids)(
-      'The title of product #%p is present in the document',
-      (productId) => {
-        const productCardTitle = screen.getByTestId(
-          `customer_products__element-card-title-${productId}`,
-        );
+  //       expect(productCardTitle).toBeInTheDocument();
+  //     });
 
-        expect(productCardTitle).toBeInTheDocument();
-      });
+  //   test.each(ids)(
+  //     'The price of product #%p is present in the document',
+  //     (productId) => {
+  //       const productCardPrice = screen.getByTestId(
+  //         `customer_products__element-card-price-${productId}`,
+  //       );
 
-    test.each(ids)(
-      'The price of product #%p is present in the document',
-      (productId) => {
-        const productCardPrice = screen.getByTestId(
-          `customer_products__element-card-price-${productId}`,
-        );
+  //       expect(productCardPrice).toBeInTheDocument();
+  //     });
 
-        expect(productCardPrice).toBeInTheDocument();
-      });
+  //   test.each(ids)(
+  //     'The image of product #%p is present in the document',
+  //     (productId) => {
+  //       const productCardImage = screen.getByTestId(
+  //         `customer_products__img-card-bg-image-${productId}`,
+  //       );
 
-    test.each(ids)(
-      'The image of product #%p is present in the document',
-      (productId) => {
-        const productCardImage = screen.getByTestId(
-          `customer_products__img-card-bg-image-${productId}`,
-        );
+  //       expect(productCardImage).toBeInTheDocument();
+  //     });
 
-        expect(productCardImage).toBeInTheDocument();
-      });
+  //   test.each(ids)(
+  //     'The add item button of product #%p is present in the document',
+  //     (productId) => {
+  //       const addItemBtn = screen.getByTestId(
+  //         `customer_products__button-card-add-item-${productId}`,
+  //       );
 
-    test.each(ids)(
-      'The add item button of product #%p is present in the document',
-      (productId) => {
-        const addItemBtn = screen.getByTestId(
-          `customer_products__button-card-add-item-${productId}`,
-        );
+  //       expect(addItemBtn).toBeInTheDocument();
+  //     });
 
-        expect(addItemBtn).toBeInTheDocument();
-      });
+  //   test.each(ids)(
+  //     'The remove item button of product #%p is present in the document',
+  //     (productId) => {
+  //       const removeItemBtn = screen.getByTestId(
+  //         `customer_products__button-card-rm-item-${productId}`,
+  //       );
 
-    test.each(ids)(
-      'The remove item button of product #%p is present in the document',
-      (productId) => {
-        const removeItemBtn = screen.getByTestId(
-          `customer_products__button-card-rm-item-${productId}`,
-        );
+  //       expect(removeItemBtn).toBeInTheDocument();
+  //     });
 
-        expect(removeItemBtn).toBeInTheDocument();
-      });
+  //   test.each(ids)(
+  //     'The quantity of product #%p is present in the document',
+  //     (productId) => {
+  //       const productCardQty = screen.getByTestId(
+  //         `customer_products__input-card-quantity-${productId}`,
+  //       );
 
-    test.each(ids)(
-      'The quantity of product #%p is present in the document',
-      (productId) => {
-        const productCardQty = screen.getByTestId(
-          `customer_products__input-card-quantity-${productId}`,
-        );
-
-        expect(productCardQty).toBeInTheDocument();
-      });
-  });
+  //       expect(productCardQty).toBeInTheDocument();
+  //     });
+  // });
 });

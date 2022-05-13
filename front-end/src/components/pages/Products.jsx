@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 /* Children */
-import { Sidebar } from '../atoms';
+import { CheckoutBtn, Sidebar } from '../atoms';
 import { Header } from '../molecules';
 import { ProductCards } from '../organisms';
 
@@ -19,7 +19,7 @@ const StitchesComponent = styled('div', {
   },
 });
 
-const Main = styled('div', {
+const Main = styled('main', {
   backgroundColor: '$gray100',
   position: 'relative',
   width: '100%',
@@ -62,6 +62,8 @@ const Products = () => {
       <footer>
         <nav id="footer-nav" />
       </footer>
+
+      <CheckoutBtn />
     </StitchesComponent>
   );
 };
