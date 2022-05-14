@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 
 /* State */
 import { useDispatch } from 'react-redux';
-import { addProduct, removeProduct } from '../../redux/features/checkoutSlice';
+import {
+  addProduct,
+  removeProduct,
+  updateProduct,
+} from '../../redux/features/checkoutSlice';
 
 /* Children */
 import Control from '../atoms/Control';
@@ -93,16 +97,14 @@ const StitchesComponent = styled('div', {
         display: 'flex',
 
         '&>.product-card__product-quantity': {
-          alignItems: 'center',
           backgroundColor: '$background',
           color: '$textDark',
-          display: 'flex',
           fontFamily: '$sans',
           fontSize: '$3',
           fontWeight: '$5',
-          justifyContent: 'center',
-          padding: '0 $2',
-          width: '36px',
+          outline: '0',
+          textAlign: 'center',
+          width: '$4',
         },
       },
     },
@@ -111,19 +113,29 @@ const StitchesComponent = styled('div', {
 
 function ProductCard({ product }) {
   const [quantity, setQuantity] = useState(0);
-  const increment = () => setQuantity((prev) => prev + 1);
-  const decrement = () => setQuantity((prev) => (prev > 0 ? prev - 1 : 0));
 
   const dispatch = useDispatch();
 
   const handleAddProduct = () => {
     dispatch(addProduct(product));
-    increment();
+    setQuantity((prev) => prev + 1);
   };
 
   const handleRemoveProduct = () => {
     dispatch(removeProduct(product));
-    decrement();
+    setQuantity((prev) => (prev > 0 ? prev - 1 : 0));
+  };
+
+  const handleChangeQty = (newQty) => {
+    const num = Number(newQty);
+
+    if (num) {
+      dispatch(updateProduct({ ...product, quantity: num }));
+      setQuantity(num);
+    } else if (newQty === '') {
+      dispatch(updateProduct({ ...product, quantity: 0 }));
+      setQuantity(0);
+    }
   };
 
   return (
@@ -156,7 +168,7 @@ function ProductCard({ product }) {
               `customer_products__element-card-price-${product.id}`
             }
           >
-            <span>{product.price.replace('.', ',')}</span>
+            <span>{ String(product.price).replace('.', ',') }</span>
           </div>
 
           <div className="product-card__content-controls">
@@ -175,7 +187,7 @@ function ProductCard({ product }) {
                 `customer_products__input-card-quantity-${product.id}`
               }
               value={ quantity }
-              readOnly
+              onChange={ (e) => handleChangeQty(e.target.value) }
             />
 
             <Control

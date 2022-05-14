@@ -5,13 +5,13 @@ const initialState = {
   products: {},
 };
 
-const formatPrice = (total, val, operation = 'add') => {
+const calcTotal = (total, price, operation = 'add') => {
   let result = total;
 
   if (operation === 'add') {
-    result = total + val;
+    result = total + price;
   } else if (operation === 'subtract') {
-    result = total - val;
+    result = total - price;
   }
 
   return Math.round((result + Number.EPSILON) * 100) / 100;
@@ -30,7 +30,7 @@ export const checkoutSlice = createSlice({
         quantity = state.products[id].quantity + 1;
       }
 
-      state.total = formatPrice(state.total, price);
+      state.total = calcTotal(state.total, price);
 
       state.products = {
         ...state.products,
@@ -47,7 +47,27 @@ export const checkoutSlice = createSlice({
         && state.products[id].quantity > 0
       ) {
         quantity = state.products[id].quantity - 1;
-        state.total = formatPrice(state.total, price, 'subtract');
+        state.total = calcTotal(state.total, price, 'subtract');
+      }
+
+      state.products = {
+        ...state.products,
+        [id]: { quantity, price },
+      };
+    },
+    updateProduct: (state, action) => {
+      const { id, price, quantity } = action.payload;
+
+      if (state.products[id]) {
+        state.total = calcTotal(
+          state.total,
+          state.products[id].quantity * price,
+          'subtract',
+        );
+
+        state.total = calcTotal(state.total, quantity * price);
+      } else {
+        state.total = calcTotal(state.total, quantity * price);
       }
 
       state.products = {
@@ -61,6 +81,7 @@ export const checkoutSlice = createSlice({
 export const {
   addProduct,
   removeProduct,
+  updateProduct,
 } = checkoutSlice.actions;
 
 export default checkoutSlice.reducer;
