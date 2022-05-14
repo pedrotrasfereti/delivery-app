@@ -11,6 +11,9 @@ import DuoGeneric from '../templates';
 /* Styles */
 import { styled } from '../../stitches.config';
 
+/* Utils */
+import LocalStorageMethods from '../../utils/localStorage';
+
 const ContentWrapper = styled('div', {
   boxShadow: '0 0 120px 10px hsla(215, 0%, 20%, .5)',
   display: 'flex',
@@ -69,6 +72,10 @@ const DecorTwo = styled('div', {
 });
 
 function Login() {
+  React.useEffect(() => {
+    LocalStorageMethods.deleteItem('user');
+  }, []);
+
   return (
     <DuoGeneric id="login-page">
       <Teaser id="teaser" image={ DeliveryMan }>
