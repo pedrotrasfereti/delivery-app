@@ -12,4 +12,8 @@ export default class LocalStorageMethods {
     const parse = JSON.parse(payload);
     return parse;
   }
+
+  static deleteItem(key) {
+    localStorage.removeItem(key);
+  }
 }
