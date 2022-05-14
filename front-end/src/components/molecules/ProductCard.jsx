@@ -156,7 +156,7 @@ function ProductCard({ product }) {
               `customer_products__element-card-price-${product.id}`
             }
           >
-            <span>{`R$ ${product.price}`}</span>
+            <span>{product.price.replace('.', ',')}</span>
           </div>
 
           <div className="product-card__content-controls">
@@ -168,14 +168,15 @@ function ProductCard({ product }) {
               operation="subtract"
             />
 
-            <span
+            <input
+              type="text"
               className="product-card__product-quantity"
               data-testid={
                 `customer_products__input-card-quantity-${product.id}`
               }
-            >
-              { quantity }
-            </span>
+              value={ quantity }
+              readOnly
+            />
 
             <Control
               dataTestId={
