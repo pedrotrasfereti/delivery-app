@@ -12,7 +12,7 @@ const makeProducts = (sequelize, DataTypes) => {
     },
     price: {
       allowNull: false,
-      type: DataTypes.FLOAT
+      type: DataTypes.DECIMAL(10, 2)
     },
     urlImage: {
       allowNull: false,
