@@ -29,7 +29,7 @@ function CheckoutBtn() {
 
   return (
     <StitchesComponent data-testid="customer_products__checkout-bottom-value">
-      <span>{ total }</span>
+      <span>{ String(total).replace('.', ',') }</span>
     </StitchesComponent>
   );
 }
