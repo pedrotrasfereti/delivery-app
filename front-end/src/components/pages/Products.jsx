@@ -17,7 +17,11 @@ const StitchesComponent = styled('div', {
 
   '&>.Container': {
     display: 'flex',
-    padding: '5rem 0 $5',
+    paddingTop: '5rem',
+
+    '@bp3': {
+      paddingBottom: '$5',
+    },
   },
 
   '@bp3': {
