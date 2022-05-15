@@ -48,6 +48,10 @@ const StitchesComponent = styled('nav', {
     '& li>a:hover::before': {
       transform: 'scaleX(1)',
     },
+
+    '@bp3': {
+      display: 'none',
+    },
   },
 });
 
