@@ -190,7 +190,7 @@ function RegisterForm({ id }) {
         </PasswordSection>
       </Fieldset>
 
-      <div id="btn-group" className="ButtonGroup">
+      <div id="btn-group" className="form__button-group">
         <Button
           id="register-btn"
           type="submit"
@@ -203,7 +203,7 @@ function RegisterForm({ id }) {
 
         <HorizontalRule />
 
-        <span className="LinkMessage">
+        <span className="form__link-message">
           Already have an account?
 
           <Button

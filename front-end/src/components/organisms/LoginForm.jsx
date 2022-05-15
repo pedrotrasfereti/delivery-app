@@ -130,7 +130,7 @@ function LoginForm({ id }) {
         </div>
       </Fieldset>
 
-      <div className="ButtonGroup">
+      <div className="form__button-group">
         <Button
           id="login-btn"
           type="submit"
@@ -143,7 +143,7 @@ function LoginForm({ id }) {
 
         <HorizontalRule />
 
-        <span className="LinkMessage">
+        <span className="form__link-message">
           Don&apos;t have an account?
 
           <Button

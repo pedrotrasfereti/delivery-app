@@ -6,12 +6,12 @@ const BaseForm = styled('form', {
   flexFlow: 'column nowrap',
   gap: '$4',
 
-  '&>.ButtonGroup': {
+  '&>.form__button-group': {
     display: 'flex',
     flexFlow: 'column nowrap',
     gap: '$3',
 
-    '&>.LinkMessage': {
+    '&>.form__link-message': {
       alignItems: 'center',
       color: '$textDark',
       display: 'flex',
