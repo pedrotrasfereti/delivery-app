@@ -63,8 +63,7 @@ const StitchesComponent = styled('aside', {
 
   '@bp3': {
     '.simplebar-scrollbar::before': {
-      background: '$hiContrast',
-      borderRadius: '0',
+      background: '$gray800',
     },
 
     alignItems: 'center',
