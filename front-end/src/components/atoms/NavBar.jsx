@@ -60,9 +60,9 @@ export const StitchesComponent = styled('nav', {
         borderRadius: '1rem 1rem 0 0',
         boxShadow: 'rgba(0, 0, 0, 0.1) 0px 4px 12px',
         display: 'none',
+        height: '$iconBarHeight',
         position: 'fixed',
         width: '100%',
-        height: '$5',
 
         '& ul': {
           gap: '0',
