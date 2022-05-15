@@ -8,7 +8,7 @@ import { styled } from '../../stitches.config';
 /* Utils */
 import navLinksMap from '../../utils/navLinksMap';
 
-const StitchesComponent = styled('nav', {
+export const StitchesComponent = styled('nav', {
   '& ul': {
     display: 'flex',
     gap: '$5',
@@ -47,10 +47,6 @@ const StitchesComponent = styled('nav', {
 
     '& li>a:hover::before': {
       transform: 'scaleX(1)',
-    },
-
-    '@bp3': {
-      display: 'none',
     },
   },
 });

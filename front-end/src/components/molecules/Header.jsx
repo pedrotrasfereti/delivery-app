@@ -5,6 +5,7 @@ import { Logo } from '../../assets';
 
 /* Children */
 import { NavBar } from '../atoms';
+import { StitchesComponent as NavBarStitches } from '../atoms/NavBar';
 
 /* Styles */
 import { styled } from '../../stitches.config';
@@ -38,6 +39,12 @@ const StitchesComponent = styled('header', {
 
   '& *': {
     margin: '0 auto',
+  },
+
+  '@bp3': {
+    [`& ${NavBarStitches}`]: {
+      display: 'none',
+    },
   },
 });
 
