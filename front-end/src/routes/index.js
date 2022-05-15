@@ -2,6 +2,7 @@ import * as React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 /* Children */
+import { NavBar } from '../components/atoms';
 import {
   Base,
   Login,
@@ -18,6 +19,9 @@ function AppRoutes() {
         <Route path="/login" element={ <Login /> } />
         <Route path="/" element={ <Base /> } />
       </Routes>
+
+      {/* Mobile "Icon Bar" Menu */}
+      <NavBar iconbar />
     </Router>
   );
 }
