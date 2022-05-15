@@ -23,7 +23,7 @@ const ContentWrapper = styled('div', {
   position: 'relative',
   zIndex: '$1',
 
-  '&>.Headings': {
+  '&>.form-content_headings': {
     '&>h1': {
       color: '$textDark',
       fontFamily: '$sans2',
@@ -47,7 +47,7 @@ const ContentWrapper = styled('div', {
   '@bp3': {
     padding: '$4',
 
-    '&>.Headings': {
+    '&>.form-content_headings': {
       '&>h1': {
         fontSize: '$6',
       },
@@ -84,7 +84,7 @@ function Login() {
       </Teaser>
 
       <ContentWrapper id="form-content">
-        <div className="Headings">
+        <div className="form-content_headings">
           <h1 id="title">Sign In to Deliveree</h1>
           <h2 id="subtitle">
             Enter your information below to continue
