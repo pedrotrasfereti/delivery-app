@@ -15,7 +15,7 @@ const StitchesComponent = styled('header', {
   backgroundColor: '$loContrast',
   boxShadow: 'rgba(149, 157, 165, 0.2) 0 1px 1px',
   display: 'flex',
-  height: '5rem',
+  height: '$headerHeight',
   position: 'fixed',
   width: '100%',
   zIndex: '1',
