@@ -38,7 +38,7 @@ const StitchesComponent = styled('aside', {
       display: 'flex',
       flexFlow: 'column nowrap',
 
-      '&>li>div': {
+      '&>li': {
         cursor: 'pointer',
         color: '$gray800',
         display: 'flex',
@@ -86,7 +86,7 @@ const StitchesComponent = styled('aside', {
         gap: '$2',
         padding: '$3',
 
-        '&>li>div': {
+        '&>li': {
           backgroundColor: '$gray200',
           display: 'flex',
           padding: '$2 $3',
@@ -110,16 +110,16 @@ function Sidebar() {
 
         <SimpleBar scrollbarMaxSize={ 65 }>
           <ul className="Categories">
-            <li><div className="Selected">Beverages</div></li>
-            <li><div>Desert</div></li>
-            <li><div>Fast Food</div></li>
-            <li><div>Healthy</div></li>
-            <li><div>Iced Coffee</div></li>
-            <li><div>Mexican</div></li>
-            <li><div>Milkshake</div></li>
-            <li><div>Sushi</div></li>
-            <li><div>Thai</div></li>
-            <li><div>Veggie</div></li>
+            <li className="Selected">Beverages</li>
+            <li>Desert</li>
+            <li>Fast Food</li>
+            <li>Healthy</li>
+            <li>Iced Coffee</li>
+            <li>Mexican</li>
+            <li>Milkshake</li>
+            <li>Sushi</li>
+            <li>Thai</li>
+            <li>Veggie</li>
           </ul>
         </SimpleBar>
       </section>
