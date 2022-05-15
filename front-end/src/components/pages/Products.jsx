@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 /* Children */
-import { CheckoutBtn, Sidebar } from '../atoms';
+import { CheckoutBtn, SideBar } from '../atoms';
 import {
   StitchesComponent as CheckoutBtnStitches,
 } from '../atoms/CheckoutBtn';
@@ -59,18 +59,16 @@ const Products = () => {
 
   return (
     <StitchesComponent id="products-page">
-      {/* Header */}
       <Header />
 
       <div className="Container">
-        <Sidebar />
+        <SideBar />
 
         <Main>
           <ProductCards products={ productsData } />
         </Main>
       </div>
 
-      {/* Footer */}
       <footer>
         <nav id="footer-nav" />
       </footer>

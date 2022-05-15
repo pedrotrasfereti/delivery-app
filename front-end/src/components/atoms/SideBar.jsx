@@ -99,7 +99,7 @@ const StitchesComponent = styled('aside', {
   },
 });
 
-function Sidebar() {
+function SideBar() {
   return (
     <StitchesComponent>
       <section className="Filters">
@@ -127,4 +127,4 @@ function Sidebar() {
   );
 }
 
-export default Sidebar;
+export default SideBar;
