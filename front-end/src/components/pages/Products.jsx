@@ -2,9 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 /* Children */
 import { CheckoutBtn, SideBar } from '../atoms';
-import {
-  StitchesComponent as CheckoutBtnStitches,
-} from '../atoms/CheckoutBtn';
 import { Header } from '../molecules';
 import { ProductCards } from '../organisms';
 
@@ -27,10 +24,6 @@ const StitchesComponent = styled('div', {
   '@bp3': {
     '&>.Container': {
       flexFlow: 'column nowrap',
-    },
-
-    [`&>${CheckoutBtnStitches}, &>${CheckoutBtnStitches}>*`]: {
-      display: 'none',
     },
   },
 });
