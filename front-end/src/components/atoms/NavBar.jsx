@@ -1,5 +1,6 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { v4 as uuid } from 'uuid';
 
 /* Styles */
@@ -49,22 +50,93 @@ export const StitchesComponent = styled('nav', {
       transform: 'scaleX(1)',
     },
   },
+
+  variants: {
+    iconbar: {
+      true: {
+        backgroundColor: '$loContrast',
+        bottom: '0',
+        borderRadius: '1rem 1rem 0 0',
+        borderTop: '1px solid rgba(149, 157, 165, .5)',
+        display: 'none',
+        position: 'fixed',
+        width: '100%',
+        height: '$5',
+
+        '& ul': {
+          gap: '0',
+          justifyContent: 'space-around',
+          width: '100%',
+
+          '& li>a': {
+            alignItems: 'center',
+            borderRadius: '.5rem',
+            color: '$primary',
+            display: 'flex',
+            fontSize: '$7',
+            height: '35px',
+            justifyContent: 'center',
+            padding: '$2',
+            width: '35px',
+          },
+
+          '& li>a.Selected': {
+            color: '$textLight',
+            backgroundColor: '$primary',
+          },
+
+          '& li>a::before': {
+            width: '0',
+          },
+        },
+
+        '@bp3': {
+          display: 'flex',
+        },
+      },
+    },
+  },
 });
 
-function NavBar() {
-  /* Navigation Links */
+function NavBar({ iconbar }) {
   const { pathname } = useLocation();
-  const user = localStorage.getItem('user');
-  const username = JSON.parse(user).name;
-  const navLinks = navLinksMap(username)[pathname];
+
+  /* Navigation Links */
+  const [navLinks, setNavLinks] = useState([]);
+
+  useEffect(() => {
+    const user = localStorage.getItem('user');
+
+    if (user) {
+      const username = JSON.parse(user).name;
+
+      setNavLinks(navLinksMap(username)[pathname]);
+    }
+  }, [pathname]);
+
+  /* Conditional Style */
+  const getLinkClassName = (to) => {
+    return to === pathname ? 'Selected' : '';
+  };
 
   return (
-    <StitchesComponent>
+    <StitchesComponent iconbar={ iconbar }>
       <ul>
         {
-          navLinks.map(({ dataTestId, name, to }) => (
+          navLinks.map(({ dataTestId, name, to, icon }) => (
             <li key={ uuid() }>
-              <Link data-testid={ dataTestId } to={ to }>{name}</Link>
+              {
+                iconbar ? (
+                  <Link
+                    to={ to }
+                    className={ getLinkClassName(to) }
+                  >
+                    { icon() }
+                  </Link>
+                ) : (
+                  <Link data-testid={ dataTestId } to={ to }>{name}</Link>
+                )
+              }
             </li>
           ))
         }
@@ -72,5 +144,13 @@ function NavBar() {
     </StitchesComponent>
   );
 }
+
+NavBar.propTypes = {
+  iconbar: PropTypes.bool,
+};
+
+NavBar.defaultProps = {
+  iconbar: false,
+};
 
 export default NavBar;
