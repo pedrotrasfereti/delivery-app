@@ -53,7 +53,7 @@ function CheckoutBtn() {
   return (
     <StitchesComponent
       data-testid="customer_products__button-cart"
-      disabled={ !total && true }
+      disabled={ !total }
       onClick={ () => setShouldRedirect(true) }
     >
       <div className="customer_products__checkout-label">
