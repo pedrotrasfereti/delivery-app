@@ -18,11 +18,14 @@ const StitchesComponent = styled('div', {
   '&>.Container': {
     display: 'flex',
     paddingTop: '5rem',
-    minHeight: '100vh',
   },
 
   '@bp3': {
-    [`&>${CheckoutBtnStitches}`]: {
+    '&>.Container': {
+      flexFlow: 'column nowrap',
+    },
+
+    [`&>${CheckoutBtnStitches}, &>${CheckoutBtnStitches}>*`]: {
       display: 'none',
     },
   },

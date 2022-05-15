@@ -1,6 +1,8 @@
 import * as React from 'react';
+import 'simplebar/dist/simplebar.min.css';
 
 /* Children */
+import SimpleBar from 'simplebar-react';
 import { BsArrowUp as ArrowUp } from 'react-icons/bs';
 
 /* Styles */
@@ -32,7 +34,7 @@ const StitchesComponent = styled('aside', {
       },
     },
 
-    '&>.Categories': {
+    '& .Categories': {
       display: 'flex',
       flexFlow: 'column nowrap',
 
@@ -58,6 +60,43 @@ const StitchesComponent = styled('aside', {
       },
     },
   },
+
+  '@bp3': {
+    '.simplebar-scrollbar::before': {
+      background: '$hiContrast',
+      borderRadius: '0',
+    },
+
+    alignItems: 'center',
+    border: '0',
+    display: 'flex',
+    height: '$5',
+    width: '100%',
+
+    '&>.Filters': {
+      width: '100%',
+
+      '& .Heading': {
+        display: 'none',
+      },
+
+      '& .Categories': {
+        width: '100%',
+        flexFlow: 'row nowrap',
+        gap: '$2',
+        padding: '$3',
+
+        '&>li>div': {
+          backgroundColor: '$gray200',
+          display: 'flex',
+          padding: '$2 $3',
+          border: '0',
+          borderRadius: '$round',
+          whiteSpace: 'nowrap',
+        },
+      },
+    },
+  },
 });
 
 function Sidebar() {
@@ -69,18 +108,20 @@ function Sidebar() {
           <ArrowUp className="Icon" />
         </div>
 
-        <ul className="Categories">
-          <li><div className="Selected">Beverages</div></li>
-          <li><div>Desert</div></li>
-          <li><div>Fast Food</div></li>
-          <li><div>Healthy</div></li>
-          <li><div>Iced Coffee</div></li>
-          <li><div>Mexican</div></li>
-          <li><div>Milkshake</div></li>
-          <li><div>Sushi</div></li>
-          <li><div>Thai</div></li>
-          <li><div>Veggie</div></li>
-        </ul>
+        <SimpleBar scrollbarMaxSize={ 65 }>
+          <ul className="Categories">
+            <li><div className="Selected">Beverages</div></li>
+            <li><div>Desert</div></li>
+            <li><div>Fast Food</div></li>
+            <li><div>Healthy</div></li>
+            <li><div>Iced Coffee</div></li>
+            <li><div>Mexican</div></li>
+            <li><div>Milkshake</div></li>
+            <li><div>Sushi</div></li>
+            <li><div>Thai</div></li>
+            <li><div>Veggie</div></li>
+          </ul>
+        </SimpleBar>
       </section>
     </StitchesComponent>
   );
