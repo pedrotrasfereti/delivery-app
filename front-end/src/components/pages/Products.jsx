@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 
 /* Children */
 import { CheckoutBtn, Sidebar } from '../atoms';
+import {
+  StitchesComponent as CheckoutBtnStitches,
+} from '../atoms/CheckoutBtn';
 import { Header } from '../molecules';
 import { ProductCards } from '../organisms';
 
@@ -16,6 +19,12 @@ const StitchesComponent = styled('div', {
     display: 'flex',
     paddingTop: '5rem',
     minHeight: '100vh',
+  },
+
+  '@bp3': {
+    [`&>${CheckoutBtnStitches}`]: {
+      display: 'none',
+    },
   },
 });
 

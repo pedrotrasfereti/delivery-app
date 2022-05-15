@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 /* Styles */
 import { styled } from '../../stitches.config';
 
-const StitchesComponent = styled('button', {
+export const StitchesComponent = styled('button', {
   bottom: '15px',
   border: '0',
   borderRadius: '$edge',
