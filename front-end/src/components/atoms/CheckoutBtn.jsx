@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import { styled } from '../../stitches.config';
 
 export const StitchesComponent = styled('button', {
+  appearance: 'none',
   bottom: '15px',
   border: '0',
   borderRadius: '$edge',
@@ -25,6 +26,7 @@ export const StitchesComponent = styled('button', {
     alignItems: 'center',
     display: 'flex',
     justifyContent: 'center',
+    height: '100%',
 
     '&>span': {
       color: '$textLight',
