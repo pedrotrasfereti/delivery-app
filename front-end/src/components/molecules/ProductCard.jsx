@@ -22,20 +22,19 @@ const StitchesComponent = styled('div', {
   boxShadow: 'rgba(149, 157, 165, 0.2) 0 8px 20px',
   display: 'flex',
   flexFlow: 'column nowrap',
-  gap: '$4',
+  gap: '$3',
   height: '350px',
   width: '260px',
 
   '&>.product-card__image': {
     flex: '1.5',
     position: 'relative',
-    maxHeight: '170px',
+    overflow: 'hidden',
 
     '&>img': {
       width: '100%',
       height: '100%',
       objectFit: 'contain',
-      overflow: 'hidden',
     },
 
     '&>.product-card__discount:not(:empty)': {
@@ -106,6 +105,20 @@ const StitchesComponent = styled('div', {
           textAlign: 'center',
           width: '$4',
         },
+      },
+    },
+  },
+
+  '@bp3': {
+    height: '300px',
+    width: '210px',
+
+    '&>.product-card__content': {  
+      '&>p': {
+        color: '$gray600',
+        fontFamily: '$sans',
+        fontSize: '$2',
+        fontWeight: '$4',
       },
     },
   },
