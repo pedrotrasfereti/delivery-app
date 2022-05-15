@@ -54,6 +54,7 @@ export const {
       5: '64px',
       6: '96px',
       7: '128px',
+
       btnPadding: '.7rem 1rem',
     },
     fontSizes: {
@@ -100,6 +101,8 @@ export const {
       5: '64px',
       6: '96px',
       7: '128px',
+
+      iconBarHeight: '$5',
       headerHeight: '5rem',
       sectionMinHeight: '100vh',
     },
