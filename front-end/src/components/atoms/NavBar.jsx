@@ -56,8 +56,9 @@ export const StitchesComponent = styled('nav', {
       true: {
         backgroundColor: '$loContrast',
         bottom: '0',
+        border: '1px solid $gray300',
         borderRadius: '1rem 1rem 0 0',
-        borderTop: '1px solid rgba(149, 157, 165, .5)',
+        boxShadow: 'rgba(0, 0, 0, 0.1) 0px 4px 12px',
         display: 'none',
         position: 'fixed',
         width: '100%',
