@@ -16,19 +16,19 @@ const StitchesComponent = styled('aside', {
       alignItems: 'center',
       display: 'flex',
       gap: '$2',
-      padding: '1rem 1.5rem',
+      padding: '.75rem 1.5rem',
       borderBottom: '1px solid lightgray',
 
       '& h3': {
-        color: '$gray800',
+        color: '$textDark',
         fontFamily: '$sans2',
         fontSize: '$4',
-        fontWeight: '$5',
+        fontWeight: '$4',
       },
 
       '& .Icon': {
-        color: '$textDark',
-        fontSize: '$3',
+        color: '$gray800',
+        fontSize: '$4',
       },
     },
 
@@ -38,7 +38,7 @@ const StitchesComponent = styled('aside', {
 
       '&>li>div': {
         cursor: 'pointer',
-        color: '$gray700',
+        color: '$gray800',
         display: 'flex',
         fontFamily: '$sans',
         fontSize: '$3',
@@ -47,7 +47,7 @@ const StitchesComponent = styled('aside', {
 
         '&.Selected': {
           backgroundColor: '$secondary',
-          color: '$textLight',
+          color: '$loContrast',
           fontWeight: '$5',
         },
 
