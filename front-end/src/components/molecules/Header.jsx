@@ -25,14 +25,14 @@ const StitchesComponent = styled('header', {
     gap: '$2',
 
     '& img': {
-      width: '35px',
+      width: '42.5px',
     },
 
     '& h1': {
       color: '$textDark',
       fontFamily: '$sans2',
       fontSize: '$5',
-      fontWeight: '$7',
+      fontWeight: '$4',
     },
   },
 
