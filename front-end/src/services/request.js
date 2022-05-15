@@ -29,16 +29,9 @@ const getAllProducts = async (token) => {
   return data;
 };
 
-const getProductImage = async (urlImg) => {
-  const data = await axios.get(urlImg);
-
-  return data.data;
-};
-
 export {
   instanceApi,
   loginRequest,
   registerRequest,
   getAllProducts,
-  getProductImage,
 };
