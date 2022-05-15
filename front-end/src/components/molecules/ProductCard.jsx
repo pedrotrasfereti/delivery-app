@@ -115,10 +115,18 @@ const StitchesComponent = styled('div', {
 
     '&>.product-card__content': {  
       '&>p': {
-        color: '$gray600',
-        fontFamily: '$sans',
         fontSize: '$2',
-        fontWeight: '$4',
+      },
+    },
+  },
+
+  '@bp2': {
+    height: '265px',
+    width: '175px',
+
+    '&>.product-card__content': {  
+      '&>h3': {
+        fontSize: '$3',
       },
     },
   },
