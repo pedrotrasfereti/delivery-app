@@ -42,7 +42,7 @@ function Checkout() {
         footer: [...prev.footer, total],
       }));
     }
-  }, []);
+  }, [checkout]);
 
   return (
     <ClassicLayout id="checkout-page">

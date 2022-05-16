@@ -3,9 +3,19 @@ import PropTypes from 'prop-types';
 import { v4 as uuid } from 'uuid';
 
 /* Children */
-import { Label } from '../atoms';
+import { Button, Label } from '../atoms';
+
+/* State */
+import { useDispatch } from 'react-redux';
+import { updateProduct } from '../../redux/features/checkoutSlice';
 
 function Table({ data }) {
+  const dispatch = useDispatch();
+
+  const removeItem = (product) => {
+    dispatch(updateProduct({ ...product, quantity: 0 }));
+  };
+
   return (
     <table>
       <thead>
@@ -23,15 +33,23 @@ function Table({ data }) {
       </thead>
       <tbody>
           {
-            data.body.map((value, index) => {
+            data.body.map((product, index) => {
               return (
                 <tr key={ uuid() }>
                   <td>{ index + 1 }</td>
-                  <td>{ value.name }</td>
-                  <td>{ value.quantity }</td>
-                  <td>{ value.price }</td>
-                  <td>{ value.subTotal }</td>
-                  <td>Remove Item</td>
+                  <td>{ product.name }</td>
+                  <td>{ product.quantity }</td>
+                  <td>{ product.price }</td>
+                  <td>{ product.subTotal }</td>
+                  <td>
+                    <Button
+                      dataTestId=""
+                      type="button"
+                      handleOnClick={ () => removeItem(product) }
+                    >
+                      Remove Item
+                    </Button>
+                  </td>
                 </tr>
               );
             })
