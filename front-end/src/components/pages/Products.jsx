@@ -5,7 +5,6 @@ import { CheckoutBtn, SideBar } from '../atoms';
 import {
   StitchesComponent as CheckoutBtnStitches,
 } from '../atoms/CheckoutBtn';
-import { Header } from '../molecules';
 import { ProductCards } from '../organisms';
 
 /* Styled */
