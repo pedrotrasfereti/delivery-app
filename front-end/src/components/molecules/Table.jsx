@@ -1,4 +1,4 @@
-import * as React from 'react';;
+import * as React from 'react';
 import PropTypes from 'prop-types';
 import { v4 as uuid } from 'uuid';
 
@@ -22,24 +22,6 @@ function Table({ data }) {
       </thead>
 
       <TableBody data={ data.body } />
-
-      <tfoot>
-        <tr>
-          {
-            data.footer.map((value, index) => {
-              if (index === 0) {
-                return (
-                  <td key={ uuid() }>
-                    <Label>{ value }:</Label>
-                  </td>
-                );
-              }
-
-              return <td key={ uuid() }>{ value }</td>
-            })
-          }
-        </tr>
-      </tfoot>
     </table>
   );
 }
