@@ -5,7 +5,6 @@ import { CheckoutBtn, SideBar } from '../atoms';
 import {
   StitchesComponent as CheckoutBtnStitches,
 } from '../atoms/CheckoutBtn';
-import { Header } from '../molecules';
 import { ProductCards } from '../organisms';
 
 /* Styled */
@@ -13,21 +12,13 @@ import { styled } from '../../stitches.config';
 import { getAllProducts } from '../../services/request';
 
 const StitchesComponent = styled('div', {
+  display: 'flex',
   minHeight: '100vh',
-
-  '&>.Container': {
-    display: 'flex',
-    paddingTop: '5rem',
-
-    '@bp3': {
-      paddingBottom: '$5',
-    },
-  },
+  paddingTop: '5rem',
 
   '@bp3': {
-    '&>.Container': {
-      flexFlow: 'column nowrap',
-    },
+    flexFlow: 'column nowrap',
+    paddingBottom: '$5',
 
     [`& ${CheckoutBtnStitches}`]: {
       display: 'none',
@@ -63,13 +54,11 @@ const Products = () => {
 
   return (
     <StitchesComponent id="products-page">
-      <div className="Container">
-        <SideBar />
+      <SideBar />
 
-        <Main>
-          <ProductCards products={ productsData } />
-        </Main>
-      </div>
+      <Main>
+        <ProductCards products={ productsData } />
+      </Main>
 
       <CheckoutBtn />
     </StitchesComponent>
