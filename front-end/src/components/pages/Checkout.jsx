@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 
 /* Children */
 import { Table } from '../molecules';
+import { CheckoutForm } from '../organisms';
 
 /* Styles */
 import { ClassicLayout } from '../templates';
@@ -49,6 +50,8 @@ function Checkout() {
           id="checkout-table"
           data={ tableData }
         />
+
+        <CheckoutForm />
       </main>
     </ClassicLayout>
   );
