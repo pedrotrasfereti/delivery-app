@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useDispatch } from 'react-redux'
+import PropTypes from 'prop-types';
 import { v4 as uuid } from 'uuid';
 
 /* Children */
