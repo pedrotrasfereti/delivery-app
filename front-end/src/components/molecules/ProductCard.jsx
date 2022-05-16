@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 /* State */
 import { useDispatch } from 'react-redux';
 import {
-  addProduct,
-  removeProduct,
   updateProduct,
 } from '../../redux/features/checkoutSlice';
 
@@ -137,20 +135,10 @@ function ProductCard({ product }) {
 
   const dispatch = useDispatch();
 
-  const handleAddProduct = () => {
-    dispatch(addProduct(product));
-    setQuantity((prev) => prev + 1);
-  };
-
-  const handleRemoveProduct = () => {
-    dispatch(removeProduct(product));
-    setQuantity((prev) => (prev > 0 ? prev - 1 : 0));
-  };
-
   const handleChangeQty = (newQty) => {
     const num = Number(newQty);
 
-    if (num) {
+    if (num >= 0) {
       dispatch(updateProduct({ ...product, quantity: num }));
       setQuantity(num);
     } else if (newQty === '') {
@@ -197,7 +185,7 @@ function ProductCard({ product }) {
               dataTestId={
                 `customer_products__button-card-rm-item-${product.id}`
               }
-              handleOnClick={ handleRemoveProduct }
+              handleOnClick={ () => handleChangeQty(quantity - 1) }
               operation="subtract"
             />
 
@@ -215,7 +203,7 @@ function ProductCard({ product }) {
               dataTestId={
                 `customer_products__button-card-add-item-${product.id}`
               }
-              handleOnClick={ handleAddProduct }
+              handleOnClick={ () => handleChangeQty(quantity + 1) }
             />
           </div>
         </div>
