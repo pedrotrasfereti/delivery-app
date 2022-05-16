@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useLocation } from 'react-router-dom';
 
 /* Assets */
 import { Logo } from '../../assets';
@@ -49,7 +50,10 @@ const StitchesComponent = styled('header', {
 });
 
 function Header() {
-  return (
+  const { pathname } = useLocation();
+  const shouldRender = pathname.includes('customer');
+
+  return shouldRender && (
     <StitchesComponent>
       <div className="Container">
         <img src={ Logo } alt="Deliveree" />
