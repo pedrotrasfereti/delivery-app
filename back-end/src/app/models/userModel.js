@@ -2,6 +2,14 @@ const { Users } = require('../../database/models');
 const { HashPassMethods } = require('../utils/HashPassMethods');
 
 module.exports = {
+  async getAll() {
+    return Users.findAll({
+      where: { role: 'seller' },
+      raw: true,
+      attributes: ['id', 'name'],
+    });
+  },
+
   async getOne(data) {
     const user = await Users.findOne({
       where: { email: data.email },

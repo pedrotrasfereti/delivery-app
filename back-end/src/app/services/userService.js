@@ -2,6 +2,9 @@ const userModel = require('../models/userModel');
 const { JwtMethods } = require('../utils/JwtMethods');
 
 module.exports = {
+  async getAll() {
+    return userModel.getAll();
+  },
   async create(user) {
     try {
       const { id, name, email, role } = await userModel.create(user);
