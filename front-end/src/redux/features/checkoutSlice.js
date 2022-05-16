@@ -21,40 +21,6 @@ export const checkoutSlice = createSlice({
   name: 'checkout',
   initialState,
   reducers: {
-    addProduct: (state, action) => {
-      const { id, price, name } = action.payload;
-
-      let quantity = 1;
-
-      if (state.products[id]) {
-        quantity = state.products[id].quantity + 1;
-      }
-
-      state.total = calcTotal(state.total, price);
-
-      state.products = {
-        ...state.products,
-        [id]: { quantity, price, name },
-      };
-    },
-    removeProduct: (state, action) => {
-      const { id, price, name } = action.payload;
-
-      let quantity = 0;
-
-      if (
-        state.products[id]
-        && state.products[id].quantity > 0
-      ) {
-        quantity = state.products[id].quantity - 1;
-        state.total = calcTotal(state.total, price, 'subtract');
-      }
-
-      state.products = {
-        ...state.products,
-        [id]: { quantity, price, name },
-      };
-    },
     updateProduct: (state, action) => {
       const { id, price, name, quantity } = action.payload;
 
@@ -79,8 +45,6 @@ export const checkoutSlice = createSlice({
 });
 
 export const {
-  addProduct,
-  removeProduct,
   updateProduct,
 } = checkoutSlice.actions;
 
