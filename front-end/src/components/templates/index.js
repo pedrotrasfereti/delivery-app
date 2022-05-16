@@ -1,3 +1,2 @@
-import DuoGeneric from './DuoGeneric';
-
-export default DuoGeneric;
+export { default as ClassicLayout } from './ClassicLayout';
+export { default as DuoGeneric } from './DuoGeneric';

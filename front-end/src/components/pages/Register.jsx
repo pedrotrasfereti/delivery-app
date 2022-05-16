@@ -6,7 +6,7 @@ import { Packages } from '../../assets';
 /* Children */
 import { Teaser } from '../atoms';
 import { RegisterForm } from '../organisms';
-import DuoGeneric from '../templates';
+import { DuoGeneric } from '../templates';
 
 /* Styles */
 import { styled } from '../../stitches.config';

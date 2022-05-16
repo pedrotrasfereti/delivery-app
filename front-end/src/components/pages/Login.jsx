@@ -6,7 +6,7 @@ import { DeliveryMan } from '../../assets';
 /* Children */
 import { Teaser } from '../atoms';
 import { LoginForm } from '../organisms';
-import DuoGeneric from '../templates';
+import { DuoGeneric } from '../templates';
 
 /* Styles */
 import { styled } from '../../stitches.config';
