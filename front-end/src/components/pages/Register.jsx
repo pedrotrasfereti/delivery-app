@@ -40,8 +40,8 @@ const ContentWrapper = styled('div', {
   },
 });
 
-// Place form content at the bottom and teaser at the top
-const invertRows = {
+const mobileStyle = {
+  // Place form content at the bottom and teaser at the top
   '& #form-content': {
     order: '2',
   },
@@ -67,7 +67,7 @@ function Register() {
   return (
     <DuoGeneric
       id="register-page"
-      css={ { '@bp3': invertRows } }
+      css={ { '@bp3': mobileStyle } }
     >
       <ContentWrapper id="form-content">
         <h1 id="title">Sign Up to Deliveree</h1>
