@@ -9,7 +9,7 @@ import { ProductCard } from '../molecules';
 import { styled } from '../../stitches.config';
 
 const StitchesComponent = styled('section', {
-  paddingTop: '2rem',
+  padding: '2rem 0',
 
   '&>h2': {
     color: '$textDark',
@@ -20,7 +20,7 @@ const StitchesComponent = styled('section', {
   },
 
   '&>.Container': {
-    margin: '2rem 0',
+    marginTop: '2rem',
     display: 'flex',
     flexFlow: 'row wrap',
     alignItems: 'center',
