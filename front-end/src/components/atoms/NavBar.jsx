@@ -110,8 +110,9 @@ function NavBar({ iconbar }) {
 
     if (user) {
       const username = JSON.parse(user).name;
+      const path = pathname.split('/')[1];
 
-      setNavLinks(navLinksMap(username)[pathname]);
+      setNavLinks(navLinksMap(username)[path]);
     }
   }, [pathname]);
 

@@ -8,7 +8,7 @@ import {
 
 function navLinksMap(username) {
   return ({
-    '/customer/products': [
+    customer: [
       {
         dataTestId: 'customer_products__element-navbar-link-products',
         name: 'Products',
