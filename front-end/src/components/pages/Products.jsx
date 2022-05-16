@@ -63,8 +63,6 @@ const Products = () => {
 
   return (
     <StitchesComponent id="products-page">
-      <Header />
-
       <div className="Container">
         <SideBar />
 
@@ -72,10 +70,6 @@ const Products = () => {
           <ProductCards products={ productsData } />
         </Main>
       </div>
-
-      <footer>
-        <nav id="footer-nav" />
-      </footer>
 
       <CheckoutBtn />
     </StitchesComponent>
