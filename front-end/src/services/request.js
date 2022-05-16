@@ -29,9 +29,18 @@ const getAllProducts = async (token) => {
   return data;
 };
 
+const getAllSellers = async (token) => {
+  authenticateUser(token);
+
+  const { data } = await instanceApi.get('/register');
+
+  return data;
+};
+
 export {
   instanceApi,
   loginRequest,
   registerRequest,
   getAllProducts,
+  getAllSellers,
 };
