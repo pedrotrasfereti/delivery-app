@@ -109,7 +109,7 @@ function NavBar({ iconbar }) {
   useEffect(() => {
     const user = localStorage.getItem('user');
 
-    if (user) {
+    if (user && shouldRender) {
       const username = JSON.parse(user).name;
       const path = pathname.split('/')[1];
 
