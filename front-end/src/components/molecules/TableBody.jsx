@@ -21,12 +21,46 @@ function TableBody({ data }) {
       {
         data.map((product, index) => (
           <tr key={ uuid() }>
-            <td>{ index + 1 }</td>
-            <td>{ product.name }</td>
-            <td>{ product.quantity }</td>
-            <td>{ product.price }</td>
-            <td>{ product.subTotal }</td>
-            <td>
+            <td
+              data-testid={
+                `customer_checkout__element-order-table-item-number-${index}`
+              }
+            >
+              { index + 1 }
+            </td>
+            <td
+              data-testid={
+                `customer_checkout__element-order-table-name-${index}`
+              }
+            >
+              { product.name }
+            </td>
+            <td
+              data-testid={
+                `customer_checkout__element-order-table-quantity-${index}`
+              }
+            >
+              { product.quantity }
+            </td>
+            <td
+              data-testid={
+                `customer_checkout__element-order-table-unit-price-${index}`
+              }
+            >
+              { product.price }
+            </td>
+            <td
+              data-testid={
+                `customer_checkout__element-order-table-sub-total-${index}`
+              }
+            >
+              { product.subTotal }
+            </td>
+            <td
+              data-testid={
+                `customer_checkout__element-order-table-remove-${index}`
+              }
+            >
               <Button
                 dataTestId=""
                 type="button"
