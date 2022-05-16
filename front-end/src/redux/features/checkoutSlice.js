@@ -21,24 +21,47 @@ export const checkoutSlice = createSlice({
   name: 'checkout',
   initialState,
   reducers: {
+    clearTotal: (state, action) => {
+      return {
+        total: action.payload,
+        products: { ...state.products },
+      };
+    },
     updateProduct: (state, action) => {
       const { id, price, name, quantity } = action.payload;
 
       if (state.products[id]) {
-        state.total = calcTotal(
+        const resetTotal = calcTotal(
           state.total,
           state.products[id].quantity * price,
           'subtract',
         );
 
-        state.total = calcTotal(state.total, quantity * price);
-      } else {
-        state.total = calcTotal(state.total, quantity * price);
+        if (quantity === 0) {
+          const updatedProducts = { ...state.products };
+          delete updatedProducts[id];
+
+          return {
+            total: calcTotal(resetTotal, quantity * price),
+            products: updatedProducts,
+          };
+        };
+
+        return {
+          total: calcTotal(resetTotal, quantity * price),
+          products: {
+            ...state.products,
+            [id]: { quantity, price, name },
+          },
+        };
       }
 
-      state.products = {
-        ...state.products,
-        [id]: { quantity, price, name },
+      return {
+        total: calcTotal(state.total, quantity * price),
+        products: {
+          ...state.products,
+          [id]: { quantity, price, name },
+        },
       };
     },
   },
