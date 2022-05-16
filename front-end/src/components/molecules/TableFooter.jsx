@@ -22,7 +22,14 @@ function TableFooter({ data }) {
               );
             }
 
-            return <td key={ uuid() }>{ value }</td>;
+            return (
+              <td
+                data-testid="customer_checkout__element-order-total-price"
+                key={ uuid() }
+              >
+                { value }
+              </td>
+            );
           })
         }
       </tr>
