@@ -115,7 +115,7 @@ function NavBar({ iconbar }) {
 
       setNavLinks(navLinksMap(username)[path]);
     }
-  }, [pathname]);
+  }, [pathname, shouldRender]);
 
   /* Conditional Style */
   const getLinkClassName = (to) => {
