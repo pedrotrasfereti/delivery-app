@@ -118,7 +118,9 @@ function NavBar({ iconbar }) {
 
   /* Conditional Style */
   const getLinkClassName = (to) => {
-    if (to === pathname) {
+    const path = pathname.replace('checkout', 'products');
+
+    if (to === path) {
       return 'Selected';
     }
 
