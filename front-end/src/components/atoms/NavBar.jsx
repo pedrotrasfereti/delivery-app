@@ -116,9 +116,7 @@ function NavBar({ iconbar }) {
   }, [pathname]);
 
   /* Conditional Style */
-  const getLinkClassName = (to) => {
-    return to === pathname ? 'Selected' : '';
-  };
+  const getLinkClassName = (to) => to === pathname ? 'Selected' : '';
 
   return (
     <StitchesComponent iconbar={ iconbar }>

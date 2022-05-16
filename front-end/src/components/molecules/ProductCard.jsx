@@ -113,7 +113,7 @@ const StitchesComponent = styled('div', {
     height: '300px',
     width: '210px',
 
-    '&>.product-card__content': {  
+    '&>.product-card__content': {
       '&>p': {
         fontSize: '$2',
       },
@@ -124,7 +124,7 @@ const StitchesComponent = styled('div', {
     height: '265px',
     width: '175px',
 
-    '&>.product-card__content': {  
+    '&>.product-card__content': {
       '&>h3': {
         fontSize: '$3',
       },

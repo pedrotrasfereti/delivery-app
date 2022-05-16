@@ -4,7 +4,7 @@ import * as React from 'react';
 import { Logo } from '../../assets';
 
 /* Children */
-import { CheckoutBtn, NavBar } from '../atoms';
+import { NavBar } from '../atoms';
 import { StitchesComponent as NavBarStitches } from '../atoms/NavBar';
 
 /* Styles */
