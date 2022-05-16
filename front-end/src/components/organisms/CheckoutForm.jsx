@@ -47,15 +47,7 @@ function CheckoutForm() {
     setShouldRedirect(false);
 
     // try {
-    //   const data = await exampleRequest({});
-
-    //   if (data) {
-    //     // save data
-    //     localStorage.setItem('', JSON.stringify({}));
-
-    //     // redirect to customer products
-    //     setShouldRedirect(true);
-    //   }
+    // ...
     // } catch (err) {
     //   console.log(err);
     // }
@@ -85,7 +77,7 @@ function CheckoutForm() {
           label="Address"
           placeholder="Address"
           value={ address }
-          handleOnChange={ (e) => setAddress(e.target.value) }
+          handleOnChange={ setAddress }
         />
 
         <TextInputLabel
@@ -95,7 +87,7 @@ function CheckoutForm() {
           label="Address Number"
           placeholder="Address Number"
           value={ addressNum }
-          handleOnChange={ (e) => setAddressNum(e.target.value) }
+          handleOnChange={ setAddressNum }
         />
 
         <Button
