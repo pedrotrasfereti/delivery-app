@@ -75,7 +75,7 @@ function Button({
 }
 
 Button.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
   type: PropTypes.string.isRequired,
   dataTestId: PropTypes.string,
   disabled: PropTypes.bool,
@@ -88,6 +88,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
+  id: '',
   dataTestId: '',
   disabled: false,
   link: false,
