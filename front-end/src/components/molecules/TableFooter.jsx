@@ -5,12 +5,12 @@ import { v4 as uuid } from 'uuid';
 /* Children */
 import { Label } from '../atoms';
 
-function TableFooter() {
+function TableFooter({ data }) {
   return (
     <tfoot>
       <tr>
         {
-          data.footer.map((value, index) => {
+          data.map((value, index) => {
             if (index === 0) {
               return (
                 <td key={ uuid() }>
