@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 /* Assets */
 import {
   BsFillBagFill as BagIcon,
@@ -15,25 +13,25 @@ function navLinksMap(username) {
         dataTestId: 'customer_products__element-navbar-link-products',
         name: 'Products',
         to: '/customer/products',
-        icon: () => <BasketIcon className="Icon" />,
+        icon: BasketIcon,
       },
       {
         dataTestId: 'customer_products__element-navbar-link-orders',
         name: 'My orders',
         to: '/',
-        icon: () => <BagIcon className="Icon" />,
+        icon: BagIcon,
       },
       {
         dataTestId: 'customer_products__element-navbar-user-full-name',
         name: username,
         to: '/',
-        icon: () => <PersonIcon className="Icon" />,
+        icon: PersonIcon,
       },
       {
         dataTestId: 'customer_products__element-navbar-link-logout',
         name: 'Logout',
         to: '/login',
-        icon: () => <DoorClosedIcon className="Icon" />,
+        icon: DoorClosedIcon,
       },
     ],
   });
