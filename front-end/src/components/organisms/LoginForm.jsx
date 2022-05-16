@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -30,9 +30,9 @@ function LoginForm({ id }) {
   const [emailErrVisible, setEmailErrVisible] = useState(false);
   const [password, setPassword] = useState('');
   const [passwordErrVisible, setPasswordErrVisible] = useState(false);
-  const [shouldRedirect, setShouldRedirect] = useState(false);
   const [loginErrVisible, setLoginErrVisible] = useState(false);
   const [submitDisabled, setSubmitDisabled] = useState(true);
+  const [shouldRedirect, setShouldRedirect] = useState(false);
 
   useEffect(() => {
     if (
@@ -157,7 +157,7 @@ function LoginForm({ id }) {
         </span>
       </div>
 
-      {/* Redirect to Home page */}
+      {/* Redirect to Products page */}
       {
         shouldRedirect && <Navigate replace to="/customer/products" />
       }
