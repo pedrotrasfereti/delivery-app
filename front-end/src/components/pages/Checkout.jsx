@@ -37,7 +37,7 @@ function Checkout() {
       setTableData((prev) => ({
         header: [...prev.header],
         body: productsArray,
-        footer: [...prev.footer, total],
+        footer: [prev.footer[0], total],
       }));
     }
   }, [checkout]);
