@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
+import { v4 as uuid } from 'uuid';
 
 /* Children */
 import { Button, Fieldset } from '../atoms';
@@ -65,7 +66,12 @@ function CheckoutForm() {
         >
           {
             sellers.map(({ id, name }) => (
-              <option value={ id }>{ name }</option>
+              <option
+                key={ uuid() }
+                value={ id }
+              >
+                { name }
+              </option>
             ))
           }
         </select>
