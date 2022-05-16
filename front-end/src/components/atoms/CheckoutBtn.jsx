@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 /* State */
 import { useSelector } from 'react-redux';
@@ -45,9 +46,21 @@ export const StitchesComponent = styled('button', {
     backgroundColor: '$accent2',
     flex: '1',
   },
+
+  variants: {
+    flat: {
+      true: {
+        position: 'static',
+        borderRadius: '0',
+        height: '25px',
+        right: '0',
+        width: '100%',
+      },
+    },
+  },
 });
 
-function CheckoutBtn() {
+function CheckoutBtn({ flat }) {
   const [shouldRedirect, setShouldRedirect] = useState(false);
 
   const { total } = useSelector((state) => state.checkout);
@@ -57,6 +70,7 @@ function CheckoutBtn() {
       data-testid="customer_products__button-cart"
       disabled={ !total }
       onClick={ () => setShouldRedirect(true) }
+      flat={ flat }
     >
       <div className="customer_products__checkout-label">
         <span>Total:</span>
@@ -76,5 +90,13 @@ function CheckoutBtn() {
     </StitchesComponent>
   );
 }
+
+CheckoutBtn.propTypes = {
+  flat: PropTypes.bool,
+};
+
+CheckoutBtn.defaultProps = {
+  flat: false,
+};
 
 export default CheckoutBtn;

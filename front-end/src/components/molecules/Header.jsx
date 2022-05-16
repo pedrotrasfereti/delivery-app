@@ -4,7 +4,7 @@ import * as React from 'react';
 import { Logo } from '../../assets';
 
 /* Children */
-import { NavBar } from '../atoms';
+import { CheckoutBtn, NavBar } from '../atoms';
 import { StitchesComponent as NavBarStitches } from '../atoms/NavBar';
 
 /* Styles */
@@ -57,6 +57,8 @@ function Header() {
       </div>
 
       <NavBar />
+
+      {/* <CheckoutBtn flat /> */}
     </StitchesComponent>
   );
 }
