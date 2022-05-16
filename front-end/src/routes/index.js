@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { NavBar } from '../components/atoms';
 import {
   Base,
+  Checkout,
   Login,
   Register,
   Products,
@@ -14,6 +15,7 @@ function AppRoutes() {
   return (
     <Router>
       <Routes>
+        <Route path="/customer/checkout" element={ <Checkout /> } />
         <Route path="/customer/products" element={ <Products /> } />
         <Route path="/register" element={ <Register /> } />
         <Route path="/login" element={ <Login /> } />
