@@ -8,7 +8,7 @@ function transformProducts(products) {
       id: value[0],
       subTotal: Math.round((subTotal + Number.EPSILON) * 100) / 100,
       ...value[1],
-  });
+    });
 
     return result;
   }, []);
