@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 /* Children */
-import Table from '../molecules/Table';
+import { Table } from '../molecules';
 
 /* State */
 import { useSelector } from 'react-redux';
