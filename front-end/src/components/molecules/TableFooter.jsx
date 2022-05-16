@@ -22,7 +22,7 @@ function TableFooter() {
               );
             }
 
-            return <td key={ uuid() }>{ value }</td>
+            return <td key={ uuid() }>{ value }</td>;
           })
         }
       </tr>

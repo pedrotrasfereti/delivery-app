@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 /* Children */
 import { Table } from '../molecules';
-
-/* State */
-import { useSelector } from 'react-redux';
 
 /* Styles */
 import { ClassicLayout } from '../templates';
@@ -27,7 +25,7 @@ function Checkout() {
     footer: ['Total'],
   };
 
-  const checkout = useSelector((state) => state.checkout); 
+  const checkout = useSelector((state) => state.checkout);
 
   const [tableData, setTableData] = useState(initialState);
 
