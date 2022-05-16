@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 /* Children */
 import { NavBar } from '../components/atoms';
+import { Header } from '../components/molecules';
+
 import {
   Base,
   Checkout,
@@ -14,6 +16,9 @@ import {
 function AppRoutes() {
   return (
     <Router>
+      {/* Header */}
+      <Header />
+
       <Routes>
         <Route path="/customer/checkout" element={ <Checkout /> } />
         <Route path="/customer/products" element={ <Products /> } />
