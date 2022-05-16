@@ -6,32 +6,21 @@ import {
   StitchesComponent as CheckoutBtnStitches,
 } from '../atoms/CheckoutBtn';
 import { ProductCards } from '../organisms';
+import { ClassicLayout } from '../templates';
 
-/* Styled */
-import { styled } from '../../stitches.config';
+/* Services */
 import { getAllProducts } from '../../services/request';
 
-const StitchesComponent = styled('div', {
-  display: 'flex',
-  minHeight: '100vh',
-  paddingTop: '5rem',
+/* Styles */
+// Change flex-direction to 'column'
+const mobileStyle = {
+  flexFlow: 'column nowrap',
 
-  '@bp3': {
-    flexFlow: 'column nowrap',
-    paddingBottom: '$5',
-
-    [`& ${CheckoutBtnStitches}`]: {
-      display: 'none',
-    },
+  // hide checkout button
+  [`& ${CheckoutBtnStitches}`]: {
+    display: 'none',
   },
-});
-
-const Main = styled('main', {
-  backgroundColor: '$gray100',
-  position: 'relative',
-  width: '100%',
-  zIndex: '0',
-});
+};
 
 const Products = () => {
   const [productsData, setProductsData] = useState([]);
@@ -53,15 +42,18 @@ const Products = () => {
   }, []);
 
   return (
-    <StitchesComponent id="products-page">
+    <ClassicLayout
+      id="products-page"
+      css={ { '@bp3': mobileStyle } }
+    >
       <SideBar />
 
-      <Main>
+      <main>
         <ProductCards products={ productsData } />
-      </Main>
+      </main>
 
       <CheckoutBtn />
-    </StitchesComponent>
+    </ClassicLayout>
   );
 };
 
