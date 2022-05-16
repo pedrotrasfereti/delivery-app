@@ -101,6 +101,7 @@ export const StitchesComponent = styled('nav', {
 
 function NavBar({ iconbar }) {
   const { pathname } = useLocation();
+  const shouldRender = pathname.includes('customer');
 
   /* Navigation Links */
   const [navLinks, setNavLinks] = useState([]);
@@ -127,7 +128,7 @@ function NavBar({ iconbar }) {
     return '';
   };
 
-  return (
+  return shouldRender && (
     <StitchesComponent iconbar={ iconbar }>
       <ul>
         {
