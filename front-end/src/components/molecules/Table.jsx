@@ -5,6 +5,7 @@ import { v4 as uuid } from 'uuid';
 /* Children */
 import { Label } from '../atoms';
 import TableBody from './TableBody';
+import TableFooter from './TableFooter';
 
 function Table({ data }) {
   return (
@@ -22,6 +23,8 @@ function Table({ data }) {
       </thead>
 
       <TableBody data={ data.body } />
+
+      <TableFooter data={ data.footer } />
     </table>
   );
 }
