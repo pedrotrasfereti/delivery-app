@@ -28,6 +28,10 @@ const StitchesComponent = styled('div', {
     flex: '1.5',
     position: 'relative',
     overflow: 'hidden',
+    // properties below not for production
+    width: '100px',
+    height: '100px',
+    // properties below not for production
 
     '&>img': {
       width: '100%',
@@ -35,99 +39,99 @@ const StitchesComponent = styled('div', {
       objectFit: 'contain',
     },
 
-    '&>.product-card__discount:not(:empty)': {
-      alignItems: 'center',
-      color: '$textLight',
-      backgroundColor: 'rgb(3,109,85)',
-      background:
-        'linear-gradient(333deg, rgba(3,109,85,1) 40%, rgba(61,149,105,1) 100%)',
-      borderRadius: '0 $default',
-      display: 'flex',
-      fontFamily: '$sans',
-      fontSize: '$2',
-      fontWeight: '$5',
-      height: '25px',
-      justifyContent: 'center',
-      opacity: '.9',
-      padding: '$3 $2',
-      position: 'absolute',
-      right: '0',
-      top: '0',
-    },
+    // '&>.product-card__discount:not(:empty)': {
+    //   alignItems: 'center',
+    //   color: '$textLight',
+    //   backgroundColor: 'rgb(3,109,85)',
+    //   background:
+    //     'linear-gradient(333deg, rgba(3,109,85,1) 40%, rgba(61,149,105,1) 100%)',
+    //   borderRadius: '0 $default',
+    //   display: 'flex',
+    //   fontFamily: '$sans',
+    //   fontSize: '$2',
+    //   fontWeight: '$5',
+    //   height: '25px',
+    //   justifyContent: 'center',
+    //   opacity: '.9',
+    //   padding: '$3 $2',
+    //   position: 'absolute',
+    //   right: '0',
+    //   top: '0',
+    // },
   },
 
   '&>.product-card__content': {
-    display: 'flex',
-    flex: '1',
-    flexFlow: 'column nowrap',
-    gap: '$2',
-    padding: '$3',
+  //   display: 'flex',
+  //   flex: '1',
+  //   flexFlow: 'column nowrap',
+  //   gap: '$2',
+  //   padding: '$3',
 
-    '&>h3': {
-      color: '$textDark',
-      fontFamily: '$sans',
-      fontSize: '$4',
-      fontWeight: '$5',
-    },
+  //   '&>h3': {
+  //     color: '$textDark',
+  //     fontFamily: '$sans',
+  //     fontSize: '$4',
+  //     fontWeight: '$5',
+  //   },
 
-    '&>p': {
-      color: '$gray600',
-      fontFamily: '$sans',
-      fontSize: '$3',
-      fontWeight: '$4',
-    },
+  //   '&>p': {
+  //     color: '$gray600',
+  //     fontFamily: '$sans',
+  //     fontSize: '$3',
+  //     fontWeight: '$4',
+  //   },
 
     '&>.product-card__content-bottom': {
-      alignItems: 'center',
-      display: 'flex',
-      justifyContent: 'space-between',
-      marginTop: 'auto',
+  //     alignItems: 'center',
+  //     display: 'flex',
+  //     justifyContent: 'space-between',
+  //     marginTop: 'auto',
 
-      '&>.product-card__content-price': {
-        color: '$accent1',
-        fontFamily: '$sans',
-        fontSize: '$4',
-        fontWeight: '$5',
-      },
+  //     '&>.product-card__content-price': {
+  //       color: '$accent1',
+  //       fontFamily: '$sans',
+  //       fontSize: '$4',
+  //       fontWeight: '$5',
+  //     },
 
       '&>.product-card__content-controls': {
-        display: 'flex',
+        // display: 'flex',
 
         '&>.product-card__product-quantity': {
-          backgroundColor: '$background',
-          color: '$textDark',
-          fontFamily: '$sans',
-          fontSize: '$3',
-          fontWeight: '$5',
-          outline: '0',
-          textAlign: 'center',
+          // backgroundColor: '$background',
+          // color: '$textDark',
+          // fontFamily: '$sans',
+          // fontSize: '$3',
+          // fontWeight: '$5',
+          // outline: '0',
+          // textAlign: 'center',
           width: '$4',
         },
       },
     },
   },
 
-  '@bp3': {
-    height: '300px',
-    width: '210px',
+  // '@bp3': {
+  //   height: '300px',
+  //   width: '210px',
 
-    '&>.product-card__content': {
-      '&>p': {
-        fontSize: '$2',
-      },
-    },
-  },
+  //   '&>.product-card__content': {
+  //     '&>p': {
+  //       fontSize: '$2',
+  //     },
+  //   },
+  // },
 
-  '@bp2': {
-    height: '265px',
-    width: '175px',
+  // '@bp2': {
+  //   height: '265px',
+  //   width: '175px',
 
-    '&>.product-card__content': {
-      '&>h3': {
-        fontSize: '$3',
-      },
-    },
-  },
+  //   '&>.product-card__content': {
+  //     '&>h3': {
+  //       fontSize: '$3',
+  //     },
+  //   },
+  // },
 });
 
 function ProductCard({ product }) {
