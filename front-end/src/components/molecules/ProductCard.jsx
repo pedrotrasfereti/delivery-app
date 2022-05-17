@@ -221,7 +221,6 @@ ProductCard.propTypes = {
     price: PropTypes.number,
     urlImage: PropTypes.string,
   }),
-  // image: PropTypes.string,
 }.isRequired;
 
 export default ProductCard;
