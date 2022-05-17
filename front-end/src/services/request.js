@@ -37,10 +37,19 @@ const getAllSellers = async (token) => {
   return data;
 };
 
+const createSale = async (token, body) => {
+  authenticateUser(token);
+
+  const { data } = await instanceApi.post('/login', body);
+
+  return data;
+};
+
 export {
   instanceApi,
   loginRequest,
   registerRequest,
   getAllProducts,
   getAllSellers,
+  createSale,
 };
