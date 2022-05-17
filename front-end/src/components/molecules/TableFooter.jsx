@@ -15,7 +15,7 @@ function TableFooter({ data }) {
               return (
                 <td key={ uuid() }>
                   <Label>
-                    { value }
+                    { String(value).replace('.', ',') }
                     :
                   </Label>
                 </td>
