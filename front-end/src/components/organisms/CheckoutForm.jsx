@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 import { useSelector } from 'react-redux';
 
@@ -14,13 +14,15 @@ import { getAllSellers, createSale } from '../../services/request';
 import transformProducts from '../../utils/transformProducts';
 
 function CheckoutForm() {
+  // Redirect
+  const navigate = useNavigate();
+
+  // State
   const [sellers, setSellers] = useState([]);
   const [seller, setSeller] = useState('');
   const [address, setAddress] = useState('');
   const [addressNum, setAddressNum] = useState('');
   const [submitDisabled, setSubmitDisabled] = useState(true);
-  const [shouldRedirect, setShouldRedirect] = useState(false);
-
   const checkout = useSelector((state) => state.checkout);
 
   useEffect(() => {
@@ -69,9 +71,9 @@ function CheckoutForm() {
           quantity,
         }));
 
-      await createSale(token, { sale, products });
+      const { id: orderId } = await createSale(token, { sale, products });
 
-      setShouldRedirect(true);
+      navigate(`/customer/orders/${orderId}`);
     } catch (err) {
       console.log(err);
     }
@@ -129,11 +131,6 @@ function CheckoutForm() {
           Confirm Order
         </Button>
       </Fieldset>
-
-      {/* Redirect to Products page */}
-      {
-        shouldRedirect && <Navigate replace to="/customer/orders" />
-      }
     </form>
   );
 }
