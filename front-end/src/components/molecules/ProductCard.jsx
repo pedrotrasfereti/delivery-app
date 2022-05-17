@@ -67,32 +67,32 @@ const StitchesComponent = styled('div', {
   //   gap: '$2',
   //   padding: '$3',
 
-  //   '&>h3': {
-  //     color: '$textDark',
-  //     fontFamily: '$sans',
-  //     fontSize: '$4',
-  //     fontWeight: '$5',
-  //   },
+    //   '&>h3': {
+    //     color: '$textDark',
+    //     fontFamily: '$sans',
+    //     fontSize: '$4',
+    //     fontWeight: '$5',
+    //   },
 
-  //   '&>p': {
-  //     color: '$gray600',
-  //     fontFamily: '$sans',
-  //     fontSize: '$3',
-  //     fontWeight: '$4',
-  //   },
+    //   '&>p': {
+    //     color: '$gray600',
+    //     fontFamily: '$sans',
+    //     fontSize: '$3',
+    //     fontWeight: '$4',
+    //   },
 
     '&>.product-card__content-bottom': {
-  //     alignItems: 'center',
-  //     display: 'flex',
-  //     justifyContent: 'space-between',
-  //     marginTop: 'auto',
+      //     alignItems: 'center',
+      //     display: 'flex',
+      //     justifyContent: 'space-between',
+      //     marginTop: 'auto',
 
-  //     '&>.product-card__content-price': {
-  //       color: '$accent1',
-  //       fontFamily: '$sans',
-  //       fontSize: '$4',
-  //       fontWeight: '$5',
-  //     },
+      //     '&>.product-card__content-price': {
+      //       color: '$accent1',
+      //       fontFamily: '$sans',
+      //       fontSize: '$4',
+      //       fontWeight: '$5',
+      //     },
 
       '&>.product-card__content-controls': {
         // display: 'flex',
