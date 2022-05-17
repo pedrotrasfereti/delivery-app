@@ -163,6 +163,9 @@ function LoginForm({ id }) {
   );
 }
 
+LoginForm.propTypes = {
+  id: PropTypes.string,
+};
 
 LoginForm.defaultProps = {
   id: '',
