@@ -64,7 +64,10 @@ function CheckoutForm() {
       };
 
       const products = transformProducts(checkout.products)
-        .map(({ id, quantity }) => ({ productId: Number(id), quantity }));
+        .map(({ id: productId, quantity }) => ({
+          productId: Number(productId),
+          quantity,
+        }));
 
       await createSale(token, { sale, products });
 
