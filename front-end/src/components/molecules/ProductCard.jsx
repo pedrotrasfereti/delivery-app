@@ -190,11 +190,13 @@ function ProductCard({ product }) {
             />
 
             <input
-              type="text"
+              type="number"
               className="product-card__product-quantity"
               data-testid={
                 `customer_products__input-card-quantity-${product.id}`
               }
+              min="0"
+              max="99"
               value={ quantity }
               onChange={ (e) => handleChangeQty(e.target.value) }
             />
