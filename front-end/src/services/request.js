@@ -40,7 +40,7 @@ const getAllSellers = async (token) => {
 const createSale = async (token, body) => {
   authenticateUser(token);
 
-  const { data } = await instanceApi.post('/checkout', body);
+  const { data } = await instanceApi.post('/customer/checkout', body);
 
   return data;
 };
