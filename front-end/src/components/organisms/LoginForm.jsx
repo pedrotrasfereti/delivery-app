@@ -55,9 +55,7 @@ function LoginForm({ id }) {
         // save data
         localStorage.setItem('user', JSON.stringify({
           email,
-          name: data.name,
-          role: data.role,
-          token: data.token,
+          ...data,
         }));
 
         // redirect to customer products
@@ -165,9 +163,6 @@ function LoginForm({ id }) {
   );
 }
 
-LoginForm.propTypes = {
-  id: PropTypes.string,
-};
 
 LoginForm.defaultProps = {
   id: '',
