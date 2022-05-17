@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
+import { useSelector } from 'react-redux';
 
 /* Children */
 import { Button, Fieldset } from '../atoms';
 import { TextInputLabel } from '../molecules';
 
 /* Services */
-import { getAllSellers } from '../../services/request';
+import { getAllSellers, createSale } from '../../services/request';
+
+/* Utils */
+import transformProducts from '../../utils/transformProducts';
 
 function CheckoutForm() {
   const [sellers, setSellers] = useState([]);
@@ -16,6 +20,8 @@ function CheckoutForm() {
   const [addressNum, setAddressNum] = useState('');
   const [submitDisabled, setSubmitDisabled] = useState(true);
   const [shouldRedirect, setShouldRedirect] = useState(false);
+
+  const checkout = useSelector((state) => state.checkout);
 
   useEffect(() => {
     const user = localStorage.getItem('user');
@@ -45,13 +51,27 @@ function CheckoutForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setShouldRedirect(false);
+    try {
+      const user = localStorage.getItem('user');
+      const { token, id } = JSON.parse(user);
 
-    // try {
-    // ...
-    // } catch (err) {
-    //   console.log(err);
-    // }
+      const sale = {
+        userId: id,
+        sellerId: seller,
+        totalPrice: checkout.total,
+        deliveryAddress: address,
+        deliveryNumber: addressNum,
+      };
+
+      const products = transformProducts(checkout.products)
+        .map(({ id, quantity }) => ({ productId: Number(id), quantity }));
+
+      await createSale(token, { sale, products });
+
+      setShouldRedirect(true);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
