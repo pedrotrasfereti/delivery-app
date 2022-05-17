@@ -9,8 +9,9 @@ import {
   Base,
   Checkout,
   Login,
-  Register,
+  Order,
   Products,
+  Register,
 } from '../components/pages';
 
 function AppRoutes() {
@@ -20,6 +21,7 @@ function AppRoutes() {
       <Header />
 
       <Routes>
+        <Route path="/customer/orders/:id" element={ <Order /> } />
         <Route path="/customer/checkout" element={ <Checkout /> } />
         <Route path="/customer/products" element={ <Products /> } />
         <Route path="/register" element={ <Register /> } />
