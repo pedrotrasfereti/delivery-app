@@ -38,7 +38,7 @@ function Checkout() {
       setTableData((prev) => ({
         header: [...prev.header],
         body: productsArray,
-        footer: [prev.footer[0], total],
+        footer: [prev.footer[0], total.toFixed(2)],
       }));
     }
   }, [checkout]);
