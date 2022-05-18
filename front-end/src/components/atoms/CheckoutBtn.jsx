@@ -61,14 +61,14 @@ export const StitchesComponent = styled('button', {
 });
 
 function CheckoutBtn({ flat }) {
-  const [shouldRedirect, setShouldRedirect] = useState(false);
+  const { totalPrice } = useSelector((state) => state.checkout);
 
-  const { total } = useSelector((state) => state.checkout);
+  const [shouldRedirect, setShouldRedirect] = useState(false);
 
   return (
     <StitchesComponent
       data-testid="customer_products__button-cart"
-      disabled={ !total }
+      disabled={ !totalPrice }
       onClick={ () => setShouldRedirect(true) }
       flat={ flat }
     >
@@ -79,7 +79,7 @@ function CheckoutBtn({ flat }) {
         <span
           data-testid="customer_products__checkout-bottom-value"
         >
-          { String(total).replace('.', ',') }
+          { String(totalPrice).replace('.', ',') }
         </span>
       </div>
 
