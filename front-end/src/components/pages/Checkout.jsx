@@ -8,10 +8,9 @@ import { CheckoutForm } from '../organisms';
 /* Styles */
 import { ClassicLayout } from '../templates';
 
-/* Utils */
-import transformProducts from '../../utils/transformProducts';
-
 function Checkout() {
+  const { cart, totalPrice } = useSelector((state) => state.checkout);
+
   const initialState = {
     header: [
       'Item',
@@ -21,27 +20,20 @@ function Checkout() {
       'Sub-total',
       'Remove Item',
     ],
-    body: [''],
+    body: cart,
     // footer[0]: label, footer[1]: value
-    footer: ['Total'],
+    footer: ['Total', totalPrice.toFixed(2)],
   };
-
-  const checkout = useSelector((state) => state.checkout);
 
   const [tableData, setTableData] = useState(initialState);
 
   useEffect(() => {
-    if (checkout) {
-      const { products, total } = checkout;
-      const productsArray = transformProducts(products);
-
-      setTableData((prev) => ({
-        header: [...prev.header],
-        body: productsArray,
-        footer: [prev.footer[0], total.toFixed(2)],
-      }));
-    }
-  }, [checkout]);
+    setTableData((prev) => ({
+      ...prev,
+      body: cart,
+      footer: [prev.footer[0], totalPrice.toFixed(2)],
+    }));
+  }, [cart, totalPrice]);
 
   return (
     <ClassicLayout id="checkout-page">
