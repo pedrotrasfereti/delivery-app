@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 /* State */
@@ -135,17 +135,19 @@ function ProductCard({ product }) {
 
   const dispatch = useDispatch();
 
-  const handleChangeQty = (newQty) => {
-    const num = Number(newQty);
+  const increment = () => setQuantity((prev) => prev + 1);
 
-    if (num >= 0) {
-      dispatch(updateProduct({ ...product, quantity: num }));
-      setQuantity(num);
-    } else if (newQty === '') {
-      dispatch(updateProduct({ ...product, quantity: 0 }));
-      setQuantity(0);
-    }
+  const decrement = () => {
+    setQuantity((prev) => {
+      if ((prev - 1) < 0) return prev;
+      return prev - 1;
+    });
   };
+
+  useEffect(() => {
+    dispatch(updateProduct({ ...product, quantity }));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch, quantity]);
 
   return (
     <StitchesComponent>
@@ -185,7 +187,7 @@ function ProductCard({ product }) {
               dataTestId={
                 `customer_products__button-card-rm-item-${product.id}`
               }
-              handleOnClick={ () => handleChangeQty(quantity - 1) }
+              handleOnClick={ () => decrement() }
               operation="subtract"
             />
 
@@ -198,14 +200,14 @@ function ProductCard({ product }) {
               min="0"
               max="99"
               value={ quantity }
-              onChange={ (e) => handleChangeQty(e.target.value) }
+              onChange={ (e) => setQuantity(e.target.value) }
             />
 
             <Control
               dataTestId={
                 `customer_products__button-card-add-item-${product.id}`
               }
-              handleOnClick={ () => handleChangeQty(quantity + 1) }
+              handleOnClick={ () => increment() }
             />
           </div>
         </div>
