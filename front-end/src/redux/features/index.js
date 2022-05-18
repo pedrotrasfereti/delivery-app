@@ -1,3 +1,3 @@
-import checkoutReducer from './checkoutSlice';
-
-export default checkoutReducer;
+export { default as checkoutReducer } from './checkoutSlice';
+export { default as ordersReducer } from './ordersSlice';
+export { default as productsReducer } from './productsSlice';
