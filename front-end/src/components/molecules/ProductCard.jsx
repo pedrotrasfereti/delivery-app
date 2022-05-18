@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 
 /* State */
 import { useDispatch } from 'react-redux';
-import {
-  updateProduct,
-} from '../../redux/features/checkoutSlice';
+import { updateProductQty } from '../../redux/features/productsSlice';
 
 /* Children */
 import Control from '../atoms/Control';
@@ -131,33 +129,34 @@ const StitchesComponent = styled('div', {
 });
 
 function ProductCard({ product }) {
-  const [quantity, setQuantity] = useState(0);
+  const { id, urlImage, name, price, quantity } = product;
 
   const dispatch = useDispatch();
 
-  const increment = () => setQuantity((prev) => prev + 1);
-
-  const decrement = () => {
-    setQuantity((prev) => {
-      if ((prev - 1) < 0) return prev;
-      return prev - 1;
-    });
+  const increment = () => {
+    const newQty = quantity + 1;
+    dispatch(updateProductQty({ id, newQty }));
   };
 
-  useEffect(() => {
-    dispatch(updateProduct({ ...product, quantity }));
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, quantity]);
+  const decrement = () => {
+    const newQty = quantity - 1 < 0 ? 0 : quantity - 1;
+    dispatch(updateProductQty({ id, newQty }));
+  };
+
+  const setQuantity = (e) => {
+    const newQty = Number(e.target.value);
+    dispatch(updateProductQty({ id, newQty }));
+  };
 
   return (
     <StitchesComponent>
       <div className="product-card__image">
         <img
           data-testid={
-            `customer_products__img-card-bg-image-${product.id}`
+            `customer_products__img-card-bg-image-${id}`
           }
-          src={ product.urlImage }
-          alt="Bebida"
+          src={ urlImage }
+          alt="Product"
         />
         <span className="product-card__discount">-5%</span>
       </div>
@@ -165,10 +164,10 @@ function ProductCard({ product }) {
       <div className="product-card__content">
         <h3
           data-testid={
-            `customer_products__element-card-title-${product.id}`
+            `customer_products__element-card-title-${id}`
           }
         >
-          { product.name }
+          { name }
         </h3>
         <p>Lorem ipsum dolor sit amet</p>
 
@@ -176,16 +175,16 @@ function ProductCard({ product }) {
           <div
             className="product-card__content-price"
             data-testid={
-              `customer_products__element-card-price-${product.id}`
+              `customer_products__element-card-price-${id}`
             }
           >
-            <span>{ String(product.price).replace('.', ',') }</span>
+            <span>{ String(price).replace('.', ',') }</span>
           </div>
 
           <div className="product-card__content-controls">
             <Control
               dataTestId={
-                `customer_products__button-card-rm-item-${product.id}`
+                `customer_products__button-card-rm-item-${id}`
               }
               handleOnClick={ () => decrement() }
               operation="subtract"
@@ -195,17 +194,17 @@ function ProductCard({ product }) {
               type="number"
               className="product-card__product-quantity"
               data-testid={
-                `customer_products__input-card-quantity-${product.id}`
+                `customer_products__input-card-quantity-${id}`
               }
               min="0"
               max="99"
               value={ quantity }
-              onChange={ (e) => setQuantity(e.target.value) }
+              onChange={ setQuantity }
             />
 
             <Control
               dataTestId={
-                `customer_products__button-card-add-item-${product.id}`
+                `customer_products__button-card-add-item-${id}`
               }
               handleOnClick={ () => increment() }
             />
