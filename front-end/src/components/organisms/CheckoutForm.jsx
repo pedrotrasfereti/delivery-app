@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
+
+/* State */
 import { useSelector } from 'react-redux';
 
 /* Children */
@@ -9,9 +11,6 @@ import { TextInputLabel } from '../molecules';
 
 /* Services */
 import { getAllSellers, createSale } from '../../services/request';
-
-/* Utils */
-import transformProducts from '../../utils/transformProducts';
 
 function CheckoutForm() {
   // Redirect
@@ -23,8 +22,10 @@ function CheckoutForm() {
   const [address, setAddress] = useState('');
   const [addressNum, setAddressNum] = useState('');
   const [submitDisabled, setSubmitDisabled] = useState(true);
-  const checkout = useSelector((state) => state.checkout);
 
+  const { cart, totalPrice } = useSelector((state) => state.checkout);
+
+  // get sellers
   useEffect(() => {
     const user = localStorage.getItem('user');
     const { token } = JSON.parse(user);
@@ -42,13 +43,14 @@ function CheckoutForm() {
     getData();
   }, []);
 
+  // redirect to order details page
   useEffect(() => {
-    if (seller && address && addressNum) {
+    if (seller && address && addressNum && totalPrice) {
       setSubmitDisabled(false);
     } else {
       setSubmitDisabled(true);
     }
-  }, [seller, address, addressNum]);
+  }, [seller, address, addressNum, totalPrice]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -60,16 +62,15 @@ function CheckoutForm() {
       const sale = {
         userId: id,
         sellerId: seller,
-        totalPrice: checkout.total,
+        totalPrice,
         deliveryAddress: address,
         deliveryNumber: addressNum,
       };
 
-      const products = transformProducts(checkout.products)
-        .map(({ id: productId, quantity }) => ({
-          productId: Number(productId),
-          quantity,
-        }));
+      const products = cart.map(({ id: productId, quantity }) => ({
+        productId: Number(productId),
+        quantity,
+      }));
 
       const { id: orderId } = await createSale(token, { sale, products });
 
@@ -81,6 +82,7 @@ function CheckoutForm() {
 
   return (
     <form id="checkout-form" action="">
+      <div />
       <Fieldset>
         <select
           name="select-seller"
