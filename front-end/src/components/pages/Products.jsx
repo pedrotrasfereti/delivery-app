@@ -10,11 +10,11 @@ import {
 
 /* Children */
 import { CheckoutBtn, SideBar } from '../atoms';
-import {
-  StitchesComponent as CheckoutBtnStitches,
-} from '../atoms/CheckoutBtn';
+// import {
+//   StitchesComponent as CheckoutBtnStitches,
+// } from '../atoms/CheckoutBtn';
 import { ProductCards } from '../organisms';
-import { ClassicLayout } from '../templates';
+// import { ClassicLayout } from '../templates';
 
 /* Services */
 import { getAllProducts } from '../../services/request';
@@ -24,13 +24,13 @@ import generateCart from '../../utils/generateCart';
 import calculateTotalPrice from '../../utils/calculateTotalPrice';
 
 /* Styles */
-const mobileStyle = {
-  flexFlow: 'column nowrap',
+// const mobileStyle = {
+//   flexFlow: 'column nowrap',
 
-  [`& ${CheckoutBtnStitches}`]: {
-    display: 'none',
-  },
-};
+//   [`& ${CheckoutBtnStitches}`]: {
+//     display: 'none',
+//   },
+// };
 
 const Products = () => {
   const dispatch = useDispatch();
@@ -70,10 +70,11 @@ const Products = () => {
   }, [dispatch, cart]);
 
   return (
-    <ClassicLayout
-      id="products-page"
-      css={ { '@bp3': mobileStyle } }
-    >
+    // <ClassicLayout
+    //   id="products-page"
+    //   css={ { '@bp3': mobileStyle } }
+    // >
+    <div>
       <SideBar />
 
       <main>
@@ -81,7 +82,8 @@ const Products = () => {
       </main>
 
       <CheckoutBtn />
-    </ClassicLayout>
+    </div>
+    // </ClassicLayout>
   );
 };
 
