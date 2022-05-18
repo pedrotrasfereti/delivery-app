@@ -1,6 +1,8 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import { v4 as uuid } from 'uuid';
+
+/* State */
+import { useSelector } from 'react-redux';
 
 /* Children */
 import { ProductCard } from '../molecules';
@@ -19,22 +21,24 @@ const StitchesComponent = styled('section', {
     textAlign: 'center',
   },
 
-  '&>.Container': {
-    marginTop: '2rem',
+  '&>.product-cards': {
+    alignItems: 'center',
     display: 'flex',
     flexFlow: 'row wrap',
-    alignItems: 'center',
-    justifyContent: 'center',
     gap: '$3',
+    justifyContent: 'center',
+    marginTop: '2rem',
   },
 });
 
-function ProductCards({ products }) {
+function ProductCards() {
+  const { products } = useSelector((state) => state.products);
+
   return (
     <StitchesComponent>
       <h2>All products</h2>
 
-      <div className="Container">
+      <div className="product-cards">
         {
           products
             ? products.map((product) => (
@@ -47,14 +51,5 @@ function ProductCards({ products }) {
     </StitchesComponent>
   );
 }
-
-ProductCards.propTypes = {
-  products: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.string,
-    price: PropTypes.number,
-    urlImage: PropTypes.string,
-  })),
-}.isRequired;
 
 export default ProductCards;
