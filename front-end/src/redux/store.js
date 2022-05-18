@@ -1,11 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 // reducers
-import checkoutReducer from './features';
+import {
+  checkoutReducer,
+  ordersReducer,
+  productsReducer,
+} from './features';
 
 const store = configureStore({
   reducer: {
     checkout: checkoutReducer,
+    orders: ordersReducer,
+    products: productsReducer,
   },
 });
 
