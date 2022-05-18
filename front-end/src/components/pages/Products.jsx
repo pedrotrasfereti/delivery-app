@@ -1,4 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+
+/* State */
+import { useDispatch, useSelector } from 'react-redux';
+import { setProducts } from '../../redux/features/productsSlice';
+import {
+  updateCart,
+  updateTotalPrice,
+} from '../../redux/features/checkoutSlice';
 
 /* Children */
 import { CheckoutBtn, SideBar } from '../atoms';
@@ -11,35 +19,55 @@ import { ClassicLayout } from '../templates';
 /* Services */
 import { getAllProducts } from '../../services/request';
 
+/* Utils */
+import generateCart from '../../utils/generateCart';
+import calculateTotalPrice from '../../utils/calculateTotalPrice';
+
 /* Styles */
-// Change flex-direction to 'column'
 const mobileStyle = {
   flexFlow: 'column nowrap',
 
-  // hide checkout button
   [`& ${CheckoutBtnStitches}`]: {
     display: 'none',
   },
 };
 
 const Products = () => {
-  const [productsData, setProductsData] = useState([]);
+  const dispatch = useDispatch();
 
+  const { cart } = useSelector((state) => state.checkout);
+  const { products } = useSelector((state) => state.products);
+
+  // set products
   useEffect(() => {
     const user = localStorage.getItem('user');
     const { token } = JSON.parse(user);
 
     async function getData() {
       try {
-        const getAll = await getAllProducts(token);
-        setProductsData(getAll);
+        const data = await getAllProducts(token);
+        dispatch(setProducts(data));
       } catch (err) {
         console.log(err);
       }
     }
 
     getData();
-  }, []);
+  }, [dispatch]);
+
+  // update cart
+  useEffect(() => {
+    const updatedCart = generateCart(products);
+
+    dispatch(updateCart(updatedCart));
+  }, [dispatch, products]);
+
+  // update total price
+  useEffect(() => {
+    const updatedTotalPrice = calculateTotalPrice(cart);
+
+    dispatch(updateTotalPrice(updatedTotalPrice));
+  }, [dispatch, cart]);
 
   return (
     <ClassicLayout
@@ -49,7 +77,7 @@ const Products = () => {
       <SideBar />
 
       <main>
-        <ProductCards products={ productsData } />
+        <ProductCards />
       </main>
 
       <CheckoutBtn />
