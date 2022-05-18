@@ -14,7 +14,7 @@ const makeSales = (sequelize, DataTypes) => {
     },
     totalPrice: {
       allowNull: false,
-      type: DataTypes.FLOAT
+      type: DataTypes.DECIMAL(10, 2),
     },
     deliveryAddress: {
       allowNull: false,
