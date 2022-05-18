@@ -1,20 +1,28 @@
-import * as React from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { v4 as uuid } from 'uuid';
+
+/* State */
+import { useDispatch, useSelector } from 'react-redux';
+import { removeItem, updateTotalPrice } from '../../redux/features/checkoutSlice';
 
 /* Children */
 import { Button } from '../atoms';
 
-/* State */
-import { updateProduct } from '../../redux/features/checkoutSlice';
+/* Utils */
+import calculateTotalPrice from '../../utils/calculateTotalPrice';
 
 function TableBody({ data }) {
   const dispatch = useDispatch();
 
-  const removeItem = (product) => {
-    dispatch(updateProduct({ ...product, quantity: 0 }));
-  };
+  const { cart } = useSelector((state) => state.checkout);
+
+  // update total price
+  useEffect(() => {
+    const updatedTotalPrice = calculateTotalPrice(cart);
+
+    dispatch(updateTotalPrice(updatedTotalPrice));
+  }, [dispatch, cart]);
 
   return (
     <tbody>
@@ -64,7 +72,7 @@ function TableBody({ data }) {
               <Button
                 dataTestId=""
                 type="button"
-                handleOnClick={ () => removeItem(product) }
+                handleOnClick={ () => dispatch(removeItem(product.id)) }
               >
                 Remove Item
               </Button>
