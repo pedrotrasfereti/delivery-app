@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { v4 as uuid } from 'uuid';
 
 /* Styles */
 import { styled } from '../../stitches.config';
@@ -148,7 +147,7 @@ function NavBar({ iconbar }) {
       <ul>
         {
           navLinks.map(({ dataTestId, name, to, icon }) => (
-            <li key={ uuid() }>
+            <li key={ name }>
               {
                 iconbar ? (
                   <Link
