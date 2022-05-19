@@ -27,11 +27,11 @@ export const productsSlice = createSlice({
 
       const targetId = state.products.findIndex((p) => p.id === id);
 
-      const products = LocalStorageMethods.getParsedItem('products');
+      const updatedProducts = LocalStorageMethods.getParsedItem('products');
 
-      products[targetId].quantity = newQty;
+      updatedProducts[targetId].quantity = newQty;
 
-      LocalStorageMethods.setItem('products', products);
+      LocalStorageMethods.setItem('products', updatedProducts);
 
       state.products[targetId].quantity = newQty;
     },
