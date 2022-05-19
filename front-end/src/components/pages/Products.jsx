@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Navigate } from 'react-router-dom';
 
 /* State */
 import { useDispatch, useSelector } from 'react-redux';
@@ -31,6 +32,8 @@ import LocalStorageMethods from '../../utils/localStorage';
 // };
 
 const Products = () => {
+  const [shouldRedirect, setShouldRedirect] = useState(false);
+
   const dispatch = useDispatch();
 
   const { cart } = useSelector((state) => state.checkout);
@@ -38,15 +41,17 @@ const Products = () => {
 
   // set products
   useEffect(() => {
-    const { token } = LocalStorageMethods.getParsedItem('user');
+    const user = LocalStorageMethods.getParsedItem('user');
     const localProducts = LocalStorageMethods.getParsedItem('products');
 
-    if (token) {
+    if (user) {
       if (localProducts) {
         dispatch(setProducts(localProducts));
       } else {
-        dispatch(fetchProducts(token));
+        dispatch(fetchProducts(user.token));
       }
+    } else {
+      setShouldRedirect(true);
     }
   }, [dispatch]);
 
@@ -77,6 +82,11 @@ const Products = () => {
       </main>
 
       <CheckoutBtn />
+
+      {/* Redirect to Login */}
+      {
+        shouldRedirect && <Navigate replace to="/login" />
+      }
     </div>
     // </ClassicLayout>
   );
