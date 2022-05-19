@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 /* Assets */
 import { DeliveryMan } from '../../assets';
@@ -73,13 +73,14 @@ const DecorTwo = styled('div', {
 });
 
 function Login() {
-  const [shouldRedirect, setShouldRedirect] = useState(false);
+  // const [shouldRedirect, setShouldRedirect] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const user = LocalStorageMethods.getParsedItem('user');
 
-    if (user) setShouldRedirect(true);
-  }, []);
+    if (user) navigate('/customer/products');
+  }, [navigate]);
 
   return (
     <DuoGeneric id="login-page">
@@ -97,11 +98,6 @@ function Login() {
         </div>
         <LoginForm id="login-form" />
       </ContentWrapper>
-
-      {/* Redirect to Home */}
-      {
-        shouldRedirect && <Navigate replace to="/customer/products" />
-      }
     </DuoGeneric>
   );
 }
