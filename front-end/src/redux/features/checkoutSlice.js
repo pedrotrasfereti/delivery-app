@@ -20,9 +20,6 @@ export const checkoutSlice = createSlice({
 
       const updatedCart = state.cart.filter((p) => p.id !== targetId);
 
-      console.log(targetId);
-      console.log(updatedCart);
-
       state.cart = updatedCart;
     },
   },
