@@ -86,7 +86,7 @@ function CheckoutBtn({ flat }) {
         <span
           data-testid="customer_products__checkout-bottom-value"
         >
-          { String(totalPrice).replace('.', ',') }
+          { String(totalPrice.toFixed(2)).replace('.', ',') }
         </span>
       </div>
 
