@@ -1,6 +1,5 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { v4 as uuid } from 'uuid';
 
 /* Children */
 import { Label } from '../atoms';
@@ -14,7 +13,7 @@ function Table({ data }) {
         <tr>
           {
             data.header.map((heading) => (
-              <td key={ uuid() }>
+              <td key={ heading }>
                 <Label>{ heading }</Label>
               </td>
             ))
