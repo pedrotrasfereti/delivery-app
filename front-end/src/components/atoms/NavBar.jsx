@@ -8,6 +8,7 @@ import { styled } from '../../stitches.config';
 
 /* Utils */
 import navLinksMap from '../../utils/navLinksMap';
+import LocalStorageMethods from '../../utils/localStorage';
 
 export const StitchesComponent = styled('nav', {
   '& ul': {
@@ -20,7 +21,15 @@ export const StitchesComponent = styled('nav', {
       gap: '$2',
     },
 
-    '& li>a': {
+    '& li>button': {
+      appearance: 'none',
+      background: 'none',
+      border: '0',
+      color: 'none',
+      outline: '0',
+    },
+
+    '& li>button>a': {
       color: '$textDark',
       fontFamily: '$sans',
       fontSize: '$3',
@@ -28,11 +37,11 @@ export const StitchesComponent = styled('nav', {
       position: 'relative',
     },
 
-    '& li>a:hover': {
+    '& li>button>a:hover': {
       color: '$primary',
     },
 
-    '& li>a::before': {
+    '& li>button>a::before': {
       backgroundColor: '$secondary',
       border: '0',
       borderRadius: '$default',
@@ -46,7 +55,7 @@ export const StitchesComponent = styled('nav', {
       transition: 'transform .3s ease',
     },
 
-    '& li>a:hover::before': {
+    '& li>button>a:hover::before': {
       transform: 'scaleX(1)',
     },
   },
@@ -103,7 +112,7 @@ function NavBar({ iconbar }) {
   const { pathname } = useLocation();
   const shouldRender = pathname.includes('customer');
 
-  /* Navigation Links */
+  // Navigation Links
   const [navLinks, setNavLinks] = useState([]);
 
   useEffect(() => {
@@ -117,7 +126,13 @@ function NavBar({ iconbar }) {
     }
   }, [pathname, shouldRender]);
 
-  /* Conditional Style */
+  // Logout
+  const clearLocalStorage = () => {
+    LocalStorageMethods.deleteItem('user');
+    LocalStorageMethods.deleteItem('products');
+  };
+
+  // Conditional Style
   const getLinkClassName = (to) => {
     const path = pathname.replace('checkout', 'products');
 
@@ -143,7 +158,14 @@ function NavBar({ iconbar }) {
                     { icon() }
                   </Link>
                 ) : (
-                  <Link data-testid={ dataTestId } to={ to }>{name}</Link>
+                  <button
+                    type="button"
+                    onClick={
+                      name === 'Logout' ? clearLocalStorage : () => {}
+                    }
+                  >
+                    <Link data-testid={ dataTestId } to={ to }>{name}</Link>
+                  </button>
                 )
               }
             </li>
