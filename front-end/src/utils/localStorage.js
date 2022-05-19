@@ -4,6 +4,12 @@ export default class LocalStorageMethods {
     return localItem;
   }
 
+  static getParsedItem(item) {
+    const localItem = localStorage.getItem(item);
+    const parsedItem = JSON.parse(localItem);
+    return parsedItem;
+  }
+
   static setItem(key, payload) {
     localStorage.setItem(key, JSON.stringify(payload));
   }
