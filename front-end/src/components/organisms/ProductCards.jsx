@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { v4 as uuid } from 'uuid';
 
 /* State */
 import { useSelector } from 'react-redux';
@@ -43,7 +42,7 @@ function ProductCards() {
         {
           products
             ? products.map((product) => (
-              <ProductCard product={ product } key={ uuid() } />
+              <ProductCard product={ product } key={ product.id } />
             )) : (
               <span>Loading...</span>
             )
