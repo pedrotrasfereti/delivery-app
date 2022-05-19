@@ -77,7 +77,7 @@ function CheckoutBtn({ flat }) {
       data-testid="customer_products__button-cart"
       disabled={ !totalPrice }
       onClick={ () => setShouldRedirect(true) }
-      flat={ flat }
+      flat={ flat ? true : undefined }
     >
       <div className="customer_products__checkout-label">
         <span>Total:</span>
@@ -92,7 +92,7 @@ function CheckoutBtn({ flat }) {
 
       {/* Redirect */}
       {
-        shouldRedirect && <Navigate replace to="/customer/checkout" />
+        shouldRedirect && <Navigate to="/customer/checkout" />
       }
     </button>
     // </StitchesComponent>
