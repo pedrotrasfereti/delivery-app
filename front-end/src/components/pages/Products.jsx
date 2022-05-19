@@ -59,6 +59,8 @@ const Products = () => {
   useEffect(() => {
     const updatedCart = generateCart(products);
 
+    LocalStorageMethods.setItem('carrinho', updatedCart);
+
     dispatch(updateCart(updatedCart));
   }, [dispatch, products]);
 
