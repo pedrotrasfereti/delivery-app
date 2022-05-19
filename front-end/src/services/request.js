@@ -26,7 +26,12 @@ const getAllProducts = async (token) => {
 
   const { data } = await instanceApi.get('/customer/products');
 
-  return data;
+  const products = data.map((product) => ({
+    ...product,
+    quantity: 0,
+  }));
+
+  return products;
 };
 
 const getAllSellers = async (token) => {
