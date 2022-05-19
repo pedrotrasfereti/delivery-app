@@ -5,6 +5,7 @@ import { v4 as uuid } from 'uuid';
 /* State */
 import { useDispatch, useSelector } from 'react-redux';
 import { removeItem, updateTotalPrice } from '../../redux/features/checkoutSlice';
+import { updateProductQty } from '../../redux/features/productsSlice';
 
 /* Children */
 import { Button } from '../atoms';
@@ -16,6 +17,14 @@ function TableBody({ data }) {
   const dispatch = useDispatch();
 
   const { cart } = useSelector((state) => state.checkout);
+
+  const handleRemoveItem = (productId) => {
+    // reset product quantity
+    dispatch(updateProductQty({ id: productId, newQty: 0 }));
+
+    // remove product from cart
+    dispatch(removeItem(productId));
+  };
 
   // update total price
   useEffect(() => {
@@ -72,7 +81,7 @@ function TableBody({ data }) {
               <Button
                 dataTestId=""
                 type="button"
-                handleOnClick={ () => dispatch(removeItem(product.id)) }
+                handleOnClick={ () => handleRemoveItem(product.id) }
               >
                 Remove Item
               </Button>
