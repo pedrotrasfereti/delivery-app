@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { v4 as uuid } from 'uuid';
 
 /* State */
 import { useDispatch, useSelector } from 'react-redux';
@@ -37,7 +36,7 @@ function TableBody({ data }) {
     <tbody>
       {
         data.map((product, index) => (
-          <tr key={ uuid() }>
+          <tr key={ product.id }>
             <td
               data-testid={
                 `customer_checkout__element-order-table-item-number-${index}`
