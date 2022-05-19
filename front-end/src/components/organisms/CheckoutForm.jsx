@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { v4 as uuid } from 'uuid';
 
 /* State */
 import { useSelector } from 'react-redux';
@@ -94,7 +93,7 @@ function CheckoutForm() {
           {
             sellers.map(({ id, name }) => (
               <option
-                key={ uuid() }
+                key={ id }
                 value={ id }
               >
                 { name }
