@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 /* State */
 import { useDispatch, useSelector } from 'react-redux';
-import { setProducts } from '../../redux/features/productsSlice';
+import { setProducts, fetchProducts } from '../../redux/features/productsSlice';
 import {
   updateCart,
   updateTotalPrice,
@@ -16,12 +16,10 @@ import { CheckoutBtn, SideBar } from '../atoms';
 import { ProductCards } from '../organisms';
 // import { ClassicLayout } from '../templates';
 
-/* Services */
-import { getAllProducts } from '../../services/request';
-
 /* Utils */
 import generateCart from '../../utils/generateCart';
 import calculateTotalPrice from '../../utils/calculateTotalPrice';
+import LocalStorageMethods from '../../utils/localStorage';
 
 /* Styles */
 // const mobileStyle = {
@@ -40,19 +38,16 @@ const Products = () => {
 
   // set products
   useEffect(() => {
-    const user = localStorage.getItem('user');
-    const { token } = JSON.parse(user);
+    const { token } = LocalStorageMethods.getParsedItem('user');
+    const localProducts = LocalStorageMethods.getParsedItem('products');
 
-    async function getData() {
-      try {
-        const data = await getAllProducts(token);
-        dispatch(setProducts(data));
-      } catch (err) {
-        console.log(err);
+    if (token) {
+      if (localProducts) {
+        dispatch(setProducts(localProducts));
+      } else {
+        dispatch(fetchProducts(token));
       }
     }
-
-    getData();
   }, [dispatch]);
 
   // update cart
