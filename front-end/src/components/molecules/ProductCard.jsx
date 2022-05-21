@@ -157,7 +157,6 @@ function ProductCard({ product }) {
           }
           src={ urlImage }
           alt="Product"
-          style={ { maxWidth: '100px' } }
         />
         <span className="product-card__discount">-5%</span>
       </div>
