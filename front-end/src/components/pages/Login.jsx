@@ -73,7 +73,6 @@ const DecorTwo = styled('div', {
 });
 
 function Login() {
-  // const [shouldRedirect, setShouldRedirect] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {

@@ -7,35 +7,34 @@ import { useSelector } from 'react-redux';
 import { ProductCard } from '../molecules';
 
 /* Styles */
-// import { styled } from '../../stitches.config';
+import { styled } from '../../stitches.config';
 
-// const StitchesComponent = styled('section', {
-//   padding: '2rem 0',
+const StitchesComponent = styled('section', {
+  padding: '2rem 0',
 
-//   '&>h2': {
-//     color: '$textDark',
-//     fontFamily: '$sans2',
-//     fontSize: '$6',
-//     fontWeight: '$5',
-//     textAlign: 'center',
-//   },
+  '&>h2': {
+    color: '$textDark',
+    fontFamily: '$sans2',
+    fontSize: '$6',
+    fontWeight: '$5',
+    textAlign: 'center',
+  },
 
-//   '&>.product-cards': {
-//     alignItems: 'center',
-//     display: 'flex',
-//     flexFlow: 'row wrap',
-//     gap: '$3',
-//     justifyContent: 'center',
-//     marginTop: '2rem',
-//   },
-// });
+  '&>.product-cards': {
+    alignItems: 'center',
+    display: 'flex',
+    flexFlow: 'row wrap',
+    gap: '$3',
+    justifyContent: 'center',
+    marginTop: '2rem',
+  },
+});
 
 function ProductCards() {
   const { products } = useSelector((state) => state.products);
 
   return (
-    // <StitchesComponent>
-    <section>
+    <StitchesComponent>
       <h2>All products</h2>
 
       <div className="product-cards">
@@ -48,8 +47,7 @@ function ProductCards() {
             )
         }
       </div>
-    </section>
-    // </StitchesComponent>
+    </StitchesComponent>
   );
 }
 

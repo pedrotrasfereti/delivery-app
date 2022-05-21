@@ -2,54 +2,48 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 
 /* Styles */
-// import { styled } from '../../stitches.config';
+import { styled } from '../../stitches.config';
 
-// const StitchesComponent = styled('button', {
-//   alignItems: 'center',
-//   cursor: 'pointer',
-//   border: '0',
-//   borderRadius: '$default',
-//   display: 'flex',
-//   fontFamily: '$sans2',
-//   fontSize: '$4',
-//   fontWeight: '$5',
-//   justifyContent: 'center',
-//   height: '25px',
-//   outline: '0',
-//   width: '25px',
+const StitchesComponent = styled('button', {
+  alignItems: 'center',
+  cursor: 'pointer',
+  border: '0',
+  borderRadius: '$default',
+  display: 'flex',
+  fontFamily: '$sans2',
+  fontSize: '$4',
+  fontWeight: '$5',
+  justifyContent: 'center',
+  height: '25px',
+  outline: '0',
+  width: '25px',
 
-//   '&:hover': {
-//     filter: 'brightness(95%)',
-//   },
+  '&:hover': {
+    filter: 'brightness(95%)',
+  },
 
-//   '&:active': {
-//     filter: 'brightness(85%)',
-//   },
+  '&:active': {
+    filter: 'brightness(85%)',
+  },
 
-//   variants: {
-//     operation: {
-//       add: {
-//         backgroundColor: '$accent1',
-//         color: '$textLight',
-//       },
+  variants: {
+    operation: {
+      add: {
+        backgroundColor: '$accent1',
+        color: '$textLight',
+      },
 
-//       subtract: {
-//         backgroundColor: '$gray300',
-//         color: '$textDark',
-//       },
-//     },
-//   },
-// });
+      subtract: {
+        backgroundColor: '$gray300',
+        color: '$textDark',
+      },
+    },
+  },
+});
 
 function Control({ dataTestId, handleOnClick, operation }) {
   return (
-    // <StitchesComponent
-    //   data-testid={ dataTestId }
-    //   onClick={ handleOnClick }
-    //   operation={ operation }
-    // >
-    <button
-      type="button"
+    <StitchesComponent
       data-testid={ dataTestId }
       onClick={ handleOnClick }
       operation={ operation }
@@ -57,8 +51,7 @@ function Control({ dataTestId, handleOnClick, operation }) {
       <span>
         { operation === 'add' ? '+' : '-' }
       </span>
-    </button>
-    // </StitchesComponent>
+    </StitchesComponent>
   );
 }
 

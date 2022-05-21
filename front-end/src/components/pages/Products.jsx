@@ -11,11 +11,11 @@ import {
 
 /* Children */
 import { CheckoutBtn, SideBar } from '../atoms';
-// import {
-//   StitchesComponent as CheckoutBtnStitches,
-// } from '../atoms/CheckoutBtn';
+import {
+  StitchesComponent as CheckoutBtnStitches,
+} from '../atoms/CheckoutBtn';
 import { ProductCards } from '../organisms';
-// import { ClassicLayout } from '../templates';
+import { ClassicLayout } from '../templates';
 
 /* Utils */
 import generateCart from '../../utils/generateCart';
@@ -23,13 +23,13 @@ import calculateTotalPrice from '../../utils/calculateTotalPrice';
 import LocalStorageMethods from '../../utils/localStorage';
 
 /* Styles */
-// const mobileStyle = {
-//   flexFlow: 'column nowrap',
+const mobileStyle = {
+  flexFlow: 'column nowrap',
 
-//   [`& ${CheckoutBtnStitches}`]: {
-//     display: 'none',
-//   },
-// };
+  [`& ${CheckoutBtnStitches}`]: {
+    display: 'none',
+  },
+};
 
 const Products = () => {
   const [shouldRedirect, setShouldRedirect] = useState(false);
@@ -59,8 +59,6 @@ const Products = () => {
   useEffect(() => {
     const updatedCart = generateCart(products);
 
-    LocalStorageMethods.setItem('carrinho', updatedCart);
-
     dispatch(updateCart(updatedCart));
   }, [dispatch, products]);
 
@@ -72,11 +70,10 @@ const Products = () => {
   }, [dispatch, cart]);
 
   return (
-    // <ClassicLayout
-    //   id="products-page"
-    //   css={ { '@bp3': mobileStyle } }
-    // >
-    <div>
+    <ClassicLayout
+      id="products-page"
+      css={ { '@bp3': mobileStyle } }
+    >
       <SideBar />
 
       <main>
@@ -89,8 +86,7 @@ const Products = () => {
       {
         shouldRedirect && <Navigate replace to="/login" />
       }
-    </div>
-    // </ClassicLayout>
+    </ClassicLayout>
   );
 };
 
