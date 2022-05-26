@@ -6,7 +6,7 @@ import {
   BsPersonFill as PersonIcon,
 } from 'react-icons/bs';
 
-function navLinksMap(username) {
+export default function navLinksMap(username) {
   return ({
     customer: [
       {
@@ -56,5 +56,3 @@ function navLinksMap(username) {
     ],
   });
 }
-
-export default navLinksMap;

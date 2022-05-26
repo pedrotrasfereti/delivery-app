@@ -6,10 +6,8 @@
 
  * @returns The new total price.
  */
-function calculateTotalPrice(cart) {
+export default function calculateTotalPrice(cart) {
   const total = cart.reduce((acc, obj) => acc + obj.subTotal, 0);
 
   return Math.round((total + Number.EPSILON) * 100) / 100;
 }
-
-export default calculateTotalPrice;
