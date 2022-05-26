@@ -75,7 +75,7 @@ const DecorTwo = styled('div', {
 function Login() {
   const navigate = useNavigate();
 
-  /* Redirect */
+  // Redirect
   useEffect(() => {
     const user = LocalStorageMethods.getParsedItem('user');
 
