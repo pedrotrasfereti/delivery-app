@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 /* Children */
 import BaseForm from './BaseForm';
@@ -25,41 +24,43 @@ import messages from '../../utils/messages';
 /* Services */
 import { loginRequest } from '../../services/request';
 
-function LoginForm({ id }) {
+function LoginForm() {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState('');
   const [emailErrVisible, setEmailErrVisible] = useState(false);
   const [password, setPassword] = useState('');
   const [passwordErrVisible, setPasswordErrVisible] = useState(false);
   const [loginErrVisible, setLoginErrVisible] = useState(false);
   const [submitDisabled, setSubmitDisabled] = useState(true);
-  const [shouldRedirect, setShouldRedirect] = useState(false);
 
+  // Enable Submit
   useEffect(() => {
-    if (
-      (email && validateEmail(email))
-      && (password && validatePassword(password))
-    ) {
+    if (validateEmail(email) && validatePassword(password)) {
       setSubmitDisabled(false);
     } else {
       setSubmitDisabled(true);
     }
   }, [email, password]);
 
+  // Handle Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const data = await loginRequest({ email, password });
+      const user = await loginRequest({ email, password });
 
-      if (data) {
-        // save data
+      if (user) {
         localStorage.setItem('user', JSON.stringify({
           email,
-          ...data,
+          ...user,
         }));
 
-        // redirect to customer products
-        setShouldRedirect(true);
+        if (user.role === 'customer') {
+          navigate('/customer/products');
+        } else {
+          navigate('/seller/orders');
+        }
       }
     } catch (err) {
       console.log(err);
@@ -68,7 +69,7 @@ function LoginForm({ id }) {
   };
 
   return (
-    <BaseForm id={ id } action="">
+    <BaseForm id="login-form" action="">
       {
         loginErrVisible && (
           <ErrorMessageBox
@@ -154,21 +155,8 @@ function LoginForm({ id }) {
           </Button>
         </span>
       </div>
-
-      {/* Redirect to Products page */}
-      {
-        shouldRedirect && <Navigate replace to="/customer/products" />
-      }
     </BaseForm>
   );
 }
-
-LoginForm.propTypes = {
-  id: PropTypes.string,
-};
-
-LoginForm.defaultProps = {
-  id: '',
-};
 
 export default LoginForm;
