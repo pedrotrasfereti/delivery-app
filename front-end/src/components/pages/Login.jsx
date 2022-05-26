@@ -75,10 +75,17 @@ const DecorTwo = styled('div', {
 function Login() {
   const navigate = useNavigate();
 
+  /* Redirect */
   useEffect(() => {
     const user = LocalStorageMethods.getParsedItem('user');
 
-    if (user) navigate('/customer/products');
+    if (user) {
+      if (user.role === 'customer') {
+        navigate('/customer/products');
+      } else {
+        navigate('/seller/orders');
+      }
+    }
   }, [navigate]);
 
   return (
