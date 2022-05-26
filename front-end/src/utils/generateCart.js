@@ -5,7 +5,7 @@
 
  * @returns A cart of products.
  */
-function generateCart(products) {
+export default function generateCart(products) {
   const filteredProducts = products
     .filter(({ quantity }) => quantity > 0);
 
@@ -19,5 +19,3 @@ function generateCart(products) {
     };
   });
 }
-
-export default generateCart;
