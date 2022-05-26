@@ -18,13 +18,33 @@ function navLinksMap(username) {
       {
         dataTestId: 'customer_products__element-navbar-link-orders',
         name: 'My orders',
-        to: '/',
+        to: '/customer/orders',
         icon: BagIcon,
       },
       {
         dataTestId: 'customer_products__element-navbar-user-full-name',
         name: username,
-        to: '/',
+        to: '/customer/products',
+        icon: PersonIcon,
+      },
+      {
+        dataTestId: 'customer_products__element-navbar-link-logout',
+        name: 'Logout',
+        to: '/login',
+        icon: DoorClosedIcon,
+      },
+    ],
+    seller: [
+      {
+        dataTestId: 'customer_products__element-navbar-link-orders',
+        name: 'Sales',
+        to: '/seller/orders',
+        icon: BasketIcon,
+      },
+      {
+        dataTestId: 'customer_products__element-navbar-user-full-name',
+        name: username,
+        to: '/seller/orders',
         icon: PersonIcon,
       },
       {
