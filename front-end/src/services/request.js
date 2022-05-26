@@ -50,11 +50,30 @@ const createSale = async (token, body) => {
   return data;
 };
 
+const getAllOrders = async (token, role) => {
+  authenticateUser(token);
+
+  const { data } = await instanceApi.get(`/${role}/orders`);
+
+  return data;
+};
+
+const updateOrder = async (token, role, orderId, body) => {
+  authenticateUser(token);
+
+  const { data } = await instanceApi
+    .patch(`${role}/orders/${orderId}`, body);
+
+  return data;
+};
+
 export {
+  createSale,
+  getAllOrders,
+  getAllProducts,
+  getAllSellers,
   instanceApi,
   loginRequest,
   registerRequest,
-  getAllProducts,
-  getAllSellers,
-  createSale,
+  updateOrder,
 };
