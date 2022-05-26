@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-// reducers
+/* Reducers */
 import {
   checkoutReducer,
   ordersReducer,
@@ -9,9 +9,9 @@ import {
 
 const store = configureStore({
   reducer: {
+    products: productsReducer,
     checkout: checkoutReducer,
     orders: ordersReducer,
-    products: productsReducer,
   },
 });
 
