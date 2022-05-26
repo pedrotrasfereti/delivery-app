@@ -19,6 +19,11 @@ export const productsSlice = createSlice({
   name: 'products',
   initialState,
   reducers: {
+    clearProducts: (state) => {
+      LocalStorageMethods.deleteItem('products');
+
+      state.products = [];
+    },
     setProducts: (state, action) => {
       state.products = action.payload;
     },
@@ -45,6 +50,10 @@ export const productsSlice = createSlice({
   },
 });
 
-export const { setProducts, updateProductQty } = productsSlice.actions;
+export const {
+  clearProducts,
+  setProducts,
+  updateProductQty,
+} = productsSlice.actions;
 
 export default productsSlice.reducer;
