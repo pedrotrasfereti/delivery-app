@@ -9,11 +9,8 @@ export const checkoutSlice = createSlice({
   name: 'checkout',
   initialState,
   reducers: {
-    updateCart: (state, action) => {
-      state.cart = action.payload;
-    },
-    updateTotalPrice: (state, action) => {
-      state.totalPrice = action.payload;
+    clearCart: (state) => {
+      state.cart = [];
     },
     removeItem: (state, action) => {
       const targetId = action.payload;
@@ -22,13 +19,20 @@ export const checkoutSlice = createSlice({
 
       state.cart = updatedCart;
     },
+    setCart: (state, action) => {
+      state.cart = action.payload;
+    },
+    updateTotalPrice: (state, action) => {
+      state.totalPrice = action.payload;
+    },
   },
 });
 
 export const {
-  updateCart,
-  updateTotalPrice,
+  clearCart,
   removeItem,
+  setCart,
+  updateTotalPrice,
 } = checkoutSlice.actions;
 
 export default checkoutSlice.reducer;
