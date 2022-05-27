@@ -12,7 +12,6 @@ import { TextInputLabel } from '../molecules';
 import { getAllSellers, createSale } from '../../services/request';
 
 function CheckoutForm() {
-  // Redirect
   const navigate = useNavigate();
 
   // State
@@ -24,7 +23,16 @@ function CheckoutForm() {
 
   const { cart, totalPrice } = useSelector((state) => state.checkout);
 
-  // get sellers
+  // Redirect
+  useEffect(() => {
+    if (seller && address && addressNum && totalPrice) {
+      setSubmitDisabled(false);
+    } else {
+      setSubmitDisabled(true);
+    }
+  }, [seller, address, addressNum, totalPrice]);
+
+  // Get Sellers
   useEffect(() => {
     const user = localStorage.getItem('user');
     const { token } = JSON.parse(user);
@@ -41,15 +49,6 @@ function CheckoutForm() {
 
     getData();
   }, []);
-
-  // redirect to order details page
-  useEffect(() => {
-    if (seller && address && addressNum && totalPrice) {
-      setSubmitDisabled(false);
-    } else {
-      setSubmitDisabled(true);
-    }
-  }, [seller, address, addressNum, totalPrice]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
