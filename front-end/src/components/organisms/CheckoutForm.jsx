@@ -50,6 +50,7 @@ function CheckoutForm() {
     getData();
   }, []);
 
+  // Handle Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
 
