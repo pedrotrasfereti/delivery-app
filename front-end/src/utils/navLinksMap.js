@@ -24,7 +24,7 @@ export default function navLinksMap(username) {
       {
         dataTestId: 'customer_products__element-navbar-user-full-name',
         name: username,
-        to: '/customer/products',
+        to: '/',
         icon: PersonIcon,
       },
       {
@@ -44,7 +44,7 @@ export default function navLinksMap(username) {
       {
         dataTestId: 'customer_products__element-navbar-user-full-name',
         name: username,
-        to: '/seller/orders',
+        to: '/',
         icon: PersonIcon,
       },
       {

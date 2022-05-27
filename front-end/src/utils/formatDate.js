@@ -8,7 +8,7 @@
 export default function formatDate(timestamp) {
   const date = new Date(timestamp);
 
-  // add leading zeros to day and month
+  // Add leading zeros to day and month
   const lastTwoChars = -2;
 
   const day = (`0${date.getDate()}`).slice(lastTwoChars);
