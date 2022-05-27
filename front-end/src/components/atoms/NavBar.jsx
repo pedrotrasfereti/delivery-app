@@ -41,7 +41,8 @@ export const StitchesComponent = styled('nav', {
     },
 
     '& li>button.Selected>a': {
-      color: '$gray700',
+      color: '$primary',
+      fontWeight: '$5',
     },
 
     '& li>button>a::before': {
@@ -153,6 +154,7 @@ function NavBar({ iconbar }) {
               {
                 iconbar ? (
                   <Link
+                    data-testid={ dataTestId }
                     to={ to }
                     className={ getLinkClassName(to) }
                   >
@@ -160,13 +162,14 @@ function NavBar({ iconbar }) {
                   </Link>
                 ) : (
                   <button
+                    data-testid={ dataTestId }
                     type="button"
                     className={ getLinkClassName(to) }
                     onClick={
                       name === 'Logout' ? clearLocalStorage : () => {}
                     }
                   >
-                    <Link data-testid={ dataTestId } to={ to }>{name}</Link>
+                    <Link to={ to }>{name}</Link>
                   </button>
                 )
               }
