@@ -1,11 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 /* State */
 import { useDispatch, useSelector } from 'react-redux';
-import { setProducts, fetchProducts } from '../../redux/features/productsSlice';
+
 import {
-  updateCart,
+  setProducts,
+  fetchProducts,
+} from '../../redux/features/productsSlice';
+
+import {
+  setCart,
   updateTotalPrice,
 } from '../../redux/features/checkoutSlice';
 
@@ -32,14 +37,13 @@ const mobileStyle = {
 };
 
 const Products = () => {
-  const [shouldRedirect, setShouldRedirect] = useState(false);
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const { cart } = useSelector((state) => state.checkout);
   const { products } = useSelector((state) => state.products);
 
-  // set products
+  // Set Products
   useEffect(() => {
     const user = LocalStorageMethods.getParsedItem('user');
     const localProducts = LocalStorageMethods.getParsedItem('products');
@@ -51,18 +55,18 @@ const Products = () => {
         dispatch(fetchProducts(user.token));
       }
     } else {
-      setShouldRedirect(true);
+      navigate('/login');
     }
-  }, [dispatch]);
+  }, [dispatch, navigate]);
 
-  // update cart
+  // Update Cart
   useEffect(() => {
     const updatedCart = generateCart(products);
 
-    dispatch(updateCart(updatedCart));
+    dispatch(setCart(updatedCart));
   }, [dispatch, products]);
 
-  // update total price
+  // Update Total Price
   useEffect(() => {
     const updatedTotalPrice = calculateTotalPrice(cart);
 
@@ -81,11 +85,6 @@ const Products = () => {
       </main>
 
       <CheckoutBtn />
-
-      {/* Redirect to Login */}
-      {
-        shouldRedirect && <Navigate replace to="/login" />
-      }
     </ClassicLayout>
   );
 };
