@@ -36,7 +36,7 @@ export const StitchesComponent = styled('nav', {
       position: 'relative',
     },
 
-    '& li>button>a:hover, & li>button.Selected>a': {
+    '& li>button>a:hover': {
       color: '$primary',
     },
 
