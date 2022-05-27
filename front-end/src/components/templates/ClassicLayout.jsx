@@ -5,7 +5,7 @@ const ClassicLayout = styled('div', {
   minHeight: '100vh',
 
   // space between main and header
-  paddingTop: '5rem',
+  paddingTop: '4.5rem',
 
   '& main': {
     backgroundColor: '$gray100',

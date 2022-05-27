@@ -103,7 +103,7 @@ export const {
       7: '128px',
 
       iconBarHeight: '$5',
-      headerHeight: '5rem',
+      headerHeight: '4.5rem',
       sectionMinHeight: '100vh',
     },
     radii: {
