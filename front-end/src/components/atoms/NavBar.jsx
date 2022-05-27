@@ -31,7 +31,7 @@ export const StitchesComponent = styled('nav', {
     '& li>button>a': {
       color: '$textDark',
       fontFamily: '$sans',
-      fontSize: '$3',
+      fontSize: '16px',
       fontWeight: '$4',
       position: 'relative',
     },
@@ -40,14 +40,16 @@ export const StitchesComponent = styled('nav', {
       color: '$primary',
     },
 
+    '& li>button.Selected>a': {
+      color: '$gray700',
+    },
+
     '& li>button>a::before': {
       backgroundColor: '$secondary',
-      border: '0',
-      borderRadius: '$default',
       content: '',
-      height: '.1rem',
+      height: '.2rem',
       position: 'absolute',
-      top: '1.4rem',
+      top: '1.5rem',
       left: '0',
       width: '100%',
       transform: 'scaleX(0)',
