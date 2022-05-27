@@ -133,6 +133,7 @@ function ProductCard({ product }) {
 
   const dispatch = useDispatch();
 
+  // Controls
   const increment = () => {
     const newQty = quantity + 1;
     dispatch(updateProductQty({ id, newQty }));
