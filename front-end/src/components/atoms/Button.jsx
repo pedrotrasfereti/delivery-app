@@ -7,16 +7,17 @@ import { styled } from '../../stitches.config';
 const StitchesComponent = styled('button', {
   backgroundColor: '$button',
   border: 'none',
-  borderRadius: '$default',
+  borderRadius: '$round',
   color: '$textLight',
   cursor: 'pointer',
   fontFamily: '$sans',
-  fontSize: '$3',
-  fontWeight: '$5',
+  fontSize: '$2',
+  fontWeight: '$6',
   lineHeight: '$default',
   transition: '$default',
   padding: '$btnPadding',
   textAlign: 'center',
+  textTransform: 'uppercase',
   userSelect: 'none',
   verticalAlign: 'middle',
   whiteSpace: 'nowrap',
@@ -36,12 +37,15 @@ const StitchesComponent = styled('button', {
       true: {
         padding: '0',
         background: 'transparent',
+        textTransform: 'none',
+
         '&>a': {
           color: '$button',
           fontFamily: '$sans',
           fontSize: '$2',
           fontWeight: '$6',
         },
+
         '&:hover>a': {
           textDecorationLine: 'underline',
         },

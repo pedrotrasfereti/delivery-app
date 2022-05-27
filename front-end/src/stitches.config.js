@@ -55,7 +55,7 @@ export const {
       6: '96px',
       7: '128px',
 
-      btnPadding: '.7rem 1rem',
+      btnPadding: '.8rem 1rem',
     },
     fontSizes: {
       1: '12px',
