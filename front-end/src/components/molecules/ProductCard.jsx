@@ -146,7 +146,12 @@ function ProductCard({ product }) {
 
   const setQuantity = (e) => {
     const newQty = Number(e.target.value);
-    dispatch(updateProductQty({ id, newQty }));
+
+    if (e.target.value === '') {
+      dispatch(updateProductQty({ id, newQty: 0 }));
+    } else if (newQty) {
+      dispatch(updateProductQty({ id, newQty }));
+    }
   };
 
   return (
@@ -192,13 +197,11 @@ function ProductCard({ product }) {
             />
 
             <input
-              type="number"
+              type="text"
               className="product-card__product-quantity"
               data-testid={
                 `customer_products__input-card-quantity-${id}`
               }
-              min="0"
-              max="99"
               value={ quantity }
               onChange={ setQuantity }
             />
