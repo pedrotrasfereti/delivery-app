@@ -20,7 +20,7 @@ const StitchesComponent = styled('section', {
     textAlign: 'center',
   },
 
-  '&>.product-cards': {
+  '& #product-cards': {
     alignItems: 'center',
     display: 'flex',
     flexFlow: 'row wrap',
@@ -37,7 +37,7 @@ function ProductCards() {
     <StitchesComponent>
       <h2>All products</h2>
 
-      <div className="product-cards">
+      <section id="product-cards">
         {
           products
             ? products.map((product) => (
@@ -46,7 +46,7 @@ function ProductCards() {
               <span>Loading...</span>
             )
         }
-      </div>
+      </section>
     </StitchesComponent>
   );
 }
