@@ -23,9 +23,10 @@ export const {
       /* accent colors */
       tertiary: 'hsl(166, 95%, 22%)',
       quaternary: 'hsl(264, 67%, 31%)',
+      quintenary: 'hsl(348, 83%, 47%)',
 
       /* feedback colors */
-      error: 'hsl(348, 83%, 47%)',
+      error: '$quintenary',
 
       /* neutral colors */
       gray800: 'hsl(0, 0%, 26%)',
