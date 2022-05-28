@@ -14,6 +14,7 @@ const StitchesComponent = styled('button', {
   fontSize: '$2',
   fontWeight: '$6',
   lineHeight: '$default',
+  letterSpacing: '.1rem',
   transition: '$default',
   padding: '$btnPadding',
   textAlign: 'center',
@@ -37,6 +38,7 @@ const StitchesComponent = styled('button', {
       true: {
         padding: '0',
         background: 'transparent',
+        letterSpacing: 'normal',
         textTransform: 'none',
 
         '&>a': {
