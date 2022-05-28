@@ -12,7 +12,7 @@ import {
   validateName,
   validateEmail,
   validatePassword,
-  // validateMatch,
+  validateMatch,
 } from '../../utils/validators';
 
 import messages from '../../utils/messages';
@@ -35,25 +35,25 @@ function RegisterForm({ id }) {
   const [emailErrVisible, setEmailErrVisible] = useState(false);
   const [password, setPassword] = useState('');
   const [passwordErrVisible, setPasswordErrVisible] = useState(false);
-  // const [confirmPassword, setConfirmPassword] = useState('');
-  // const [matchErrVisible, setMatchErrVisible] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [matchErrVisible, setMatchErrVisible] = useState(false);
   const [registerErrVisible, setRegisterErrVisible] = useState(false);
   const [shouldRedirect, setShouldRedirect] = useState(false);
   const [submitDisabled, setSubmitDisabled] = useState(true);
 
   useEffect(() => {
     if (
-      (name && validateName(name))
-      && (email && validateEmail(email))
-      && (password && validatePassword(password))
-      // && (validateMatch(password, confirmPassword))
+      validateName(name)
+      && validateEmail(email)
+      && validatePassword(password)
+      && validateMatch(password, confirmPassword)
     ) {
       setSubmitDisabled(false);
     } else {
       setSubmitDisabled(true);
     }
   }, [
-    // confirmPassword,
+    confirmPassword,
     email,
     name,
     password,
@@ -164,15 +164,15 @@ function RegisterForm({ id }) {
             }
           </div>
 
-          {/* <div>
+          <div>
             <TextInputLabel
               id="register-confirm-pw-input"
               type="password"
               dataTestId="common_register__input-confirm-password"
               label="Confirm password"
               placeholder="Confirm password"
-              value={confirmPassword}
-              handleOnChange={setConfirmPassword}
+              value={ confirmPassword }
+              handleOnChange={ setConfirmPassword }
               handleOnBlur={
                 () => setMatchErrVisible(!validateMatch(confirmPassword, password))
               }
@@ -182,11 +182,11 @@ function RegisterForm({ id }) {
                 <ErrorMessage
                   id="mismatch-message"
                   dataTestId="common_register__element-invalid_register"
-                  message={messages.password.mismatch}
+                  message={ messages.password.mismatch }
                 />
               )
             }
-          </div> */}
+          </div>
         </PasswordSection>
       </Fieldset>
 
