@@ -8,14 +8,23 @@ import { Table } from '../molecules';
 import { CheckoutForm } from '../organisms';
 
 /* Styles */
+import { styled } from '../../stitches.config';
 import { ClassicLayout } from '../templates';
+
+const Main = styled('main', {
+  alignItems: 'center',
+  display: 'flex',
+  flexFlow: 'column nowrap',
+  gap: '$4',
+  justifyContent: 'space-around',
+});
 
 function Checkout() {
   const { cart, totalPrice } = useSelector((state) => state.checkout);
 
   return (
     <ClassicLayout id="checkout-page">
-      <main>
+      <Main>
         <Table
           id="checkout-table"
           data={ {
@@ -33,7 +42,7 @@ function Checkout() {
         />
 
         <CheckoutForm />
-      </main>
+      </Main>
     </ClassicLayout>
   );
 }
