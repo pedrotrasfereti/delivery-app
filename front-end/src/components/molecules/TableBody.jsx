@@ -37,6 +37,11 @@ const StitchesComponent = styled('tbody', {
       fontWeight: '$3',
       textAlign: 'center',
       height: '4rem',
+
+      '@bp4': {
+        fontSize: '$2',
+        fontWeight: '$4',
+      },
     },
 
     '& td.Bold': {
@@ -53,6 +58,10 @@ const StitchesComponent = styled('tbody', {
       fontSize: '$5',
       outline: '0',
       padding: '0',
+
+      '@bp4': {
+        fontSize: '$4',
+      },
     },
 
     // Remove Item Button Hover
@@ -66,17 +75,6 @@ const StitchesComponent = styled('tbody', {
 
     '& td button:hover .TrashIconFill': {
       display: 'block',
-    },
-  },
-
-  '@bp4': {
-    '& tr td': {
-      fontSize: '$2',
-      fontWeight: '$4',
-
-      '& button': {
-        fontSize: '$4',
-      },
     },
   },
 });

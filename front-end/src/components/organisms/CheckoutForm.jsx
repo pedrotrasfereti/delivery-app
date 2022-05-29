@@ -19,12 +19,28 @@ const StitchesComponent = styled('form', {
   flexFlow: 'row wrap',
   gap: '$3',
 
-  '& input:first-of-type': {
-    width: 'auto',
+  '& .InputGroup': {
+    display: 'flex',
+    gap: '$3',
+    maxWidth: '32.5rem',
+
+    '& input:first-of-type': {
+      flex: '2',
+    },
+
+    '& input:last-of-type': {
+      flex: '1',
+    },
   },
 
-  '& input:last-of-type': {
-    width: '$6',
+  '@bp3': {
+    flexFlow: 'column nowrap',
+    gap: '$4',
+
+    '& .InputGroup': {
+      gap: '$2',
+      width: '17.15rem',
+    },
   },
 });
 
@@ -103,6 +119,7 @@ function CheckoutForm() {
         value={ String(seller) }
         handleOnChange={ (e) => setSeller(e.target.value) }
       >
+        <option value="-1" disabled>=== Select Seller ===</option>
         {
           sellers.map(({ id, name }) => (
             <option
@@ -115,19 +132,21 @@ function CheckoutForm() {
         }
       </Select>
 
-      <TextInput
-        type="text"
-        placeholder="Address"
-        value={ address }
-        onChange={ (e) => setAddress(e.target.value) }
-      />
+      <div className="InputGroup">
+        <TextInput
+          type="text"
+          placeholder="Address Line"
+          value={ address }
+          onChange={ (e) => setAddress(e.target.value) }
+        />
 
-      <TextInput
-        type="text"
-        placeholder="Apt No."
-        value={ addressNum }
-        onChange={ (e) => setAddressNum(e.target.value) }
-      />
+        <TextInput
+          type="text"
+          placeholder="Apt No."
+          value={ addressNum }
+          onChange={ (e) => setAddressNum(e.target.value) }
+        />
+      </div>
 
       <Button
         type="sumbit"

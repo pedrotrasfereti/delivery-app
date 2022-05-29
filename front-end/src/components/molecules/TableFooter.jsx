@@ -16,12 +16,20 @@ const StitchesComponent = styled('tbody', {
       marginRight: '$2',
       textTransform: 'uppercase',
       letterSpacing: '.05rem',
+
+      '@bp3': {
+        fontSize: '$2',
+      },
     },
 
     '& span': {
       fontFamily: '$sans',
       fontSize: '$3',
       fontWeight: '$5',
+
+      '@bp3': {
+        fontSize: '$2',
+      },
     },
   },
 });
