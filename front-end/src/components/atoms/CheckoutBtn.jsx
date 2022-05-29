@@ -50,11 +50,24 @@ export const StitchesComponent = styled('button', {
   variants: {
     flat: {
       true: {
-        position: 'static',
+        display: 'none',
+        position: 'fixed',
         borderRadius: '0',
-        height: '25px',
-        right: '0',
+        height: '22px',
+        bottom: '60px',
         width: '100%',
+
+        '&>.customer_products__checkout-label': {
+          '&>span': {
+            fontSize: '$2',
+          },
+        },
+
+        '&>.customer_products__checkout-bottom-value': {
+          '&>span': {
+            fontSize: '$2',
+          },
+        },
       },
     },
   },
