@@ -9,6 +9,7 @@ const ClassicLayout = styled('div', {
 
   '& main': {
     backgroundColor: '$gray100',
+    padding: '$4 0 $6',
     position: 'relative',
     width: '100%',
     zIndex: '0',

@@ -18,9 +18,7 @@ const Main = styled('main', {
   alignItems: 'center',
   display: 'flex',
   flexFlow: 'column nowrap',
-  gap: '$4',
-  justifyContent: 'space-around',
-  padding: '$4 0',
+  gap: '$5',
 });
 
 function Checkout() {

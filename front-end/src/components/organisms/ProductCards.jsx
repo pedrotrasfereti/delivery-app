@@ -10,8 +10,6 @@ import { ProductCard } from '../molecules';
 import { styled } from '../../stitches.config';
 
 const StitchesComponent = styled('section', {
-  padding: '2rem 0',
-
   '&>h2': {
     color: '$textDark',
     fontFamily: '$sans2',
