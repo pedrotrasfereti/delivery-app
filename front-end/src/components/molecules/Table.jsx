@@ -20,6 +20,7 @@ const StitchesComponent = styled('table', {
   width: '70rem',
 
   '& caption': {
+    backgroundColor: '$loContrast',
     borderRadius: '1rem 1rem 0 0',
     boxShadow:
       'rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px',
