@@ -16,9 +16,6 @@ import {
 
 /* Children */
 import { CheckoutBtn, SideBar } from '../atoms';
-import {
-  StitchesComponent as CheckoutBtnStitches,
-} from '../atoms/CheckoutBtn';
 import { ProductCards } from '../organisms';
 import { ClassicLayout } from '../templates';
 
@@ -30,10 +27,6 @@ import LocalStorageMethods from '../../utils/localStorage';
 /* Styles */
 const mobileStyle = {
   flexFlow: 'column nowrap',
-
-  [`& ${CheckoutBtnStitches}`]: {
-    display: 'none',
-  },
 };
 
 const Products = () => {
