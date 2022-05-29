@@ -61,8 +61,6 @@ function Header() {
       </div>
 
       <NavBar />
-
-      {/* <CheckoutBtn flat /> */}
     </StitchesComponent>
   );
 }
