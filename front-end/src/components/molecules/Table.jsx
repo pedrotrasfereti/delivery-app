@@ -17,7 +17,7 @@ const StitchesComponent = styled('table', {
   boxShadow:
     'rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px',
   color: '$textDark',
-  width: '65rem',
+  width: '62.5rem',
 
   '& caption': {
     backgroundColor: '$loContrast',
@@ -38,6 +38,26 @@ const StitchesComponent = styled('table', {
       backgroundColor: '$gray300',
       padding: '$2 $3',
       textAlign: 'center',
+    },
+  },
+
+  '@bp4': {
+    background: 'none',
+    boxShadow: 'none',
+    width: '100%',
+
+    '& thead': {
+      borderRadius: '0',
+
+      '& tr td label': {
+        fontSize: '$1',
+      },
+    },
+
+    '& caption': {
+      background: 'none',
+      borderRadius: '0',
+      boxShadow: 'none',
     },
   },
 });
