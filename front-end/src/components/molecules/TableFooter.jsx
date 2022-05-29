@@ -1,38 +1,47 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 
-/* Children */
-import { Label } from '../atoms';
+/* Styled */
+import { styled } from '../../stitches.config';
+
+const StitchesComponent = styled('tbody', {
+  '& tr td': {
+    padding: '$3',
+    textAlign: 'end',
+
+    '& label': {
+      fontFamily: '$sans',
+      fontSize: '$3',
+      fontWeight: '$5',
+      marginRight: '$2',
+      textTransform: 'uppercase',
+      letterSpacing: '.05rem',
+    },
+
+    '& span': {
+      fontFamily: '$sans',
+      fontSize: '$3',
+      fontWeight: '$5',
+    },
+  },
+});
 
 function TableFooter({ data }) {
   return (
-    <tfoot>
+    <StitchesComponent>
       <tr>
-        {
-          data.map((value, index) => {
-            if (index === 0) {
-              return (
-                <td key={ value }>
-                  <Label>
-                    { String(value).replace('.', ',') }
-                    :
-                  </Label>
-                </td>
-              );
-            }
-
-            return (
-              <td
-                data-testid="customer_checkout__element-order-total-price"
-                key={ value }
-              >
-                { value }
-              </td>
-            );
-          })
-        }
+        <td colSpan="100">
+          <label htmlFor="total-price">
+            { data[0] }
+            :
+          </label>
+          <span id="total-price">
+            $
+            { data[1] }
+          </span>
+        </td>
       </tr>
-    </tfoot>
+    </StitchesComponent>
   );
 }
 

@@ -1,16 +1,73 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
+/* Assets */
+import {
+  BsTrash as TrashIcon,
+  BsTrashFill as TrashIconFill,
+} from 'react-icons/bs';
+
 /* State */
 import { useDispatch, useSelector } from 'react-redux';
 import { removeItem, updateTotalPrice } from '../../redux/features/checkoutSlice';
 import { updateProductQty } from '../../redux/features/productsSlice';
 
-/* Children */
-import { Button } from '../atoms';
-
 /* Utils */
 import calculateTotalPrice from '../../utils/calculateTotalPrice';
+import formatFloat from '../../utils/formatFloat';
+
+/* Styles */
+import { styled } from '../../stitches.config';
+
+const StitchesComponent = styled('tbody', {
+  '& tr': {
+    borderBottom: '1px solid gainsboro',
+    borderTop: '1px solid gainsboro',
+
+    // Hover
+    '&:hover td': {
+      backgroundColor: 'hsl(215, 100%, 99%)',
+    },
+
+    // Text
+    '& td': {
+      fontFamily: '$sans',
+      fontSize: '$3',
+      fontWeight: '$3',
+      textAlign: 'center',
+      height: '4rem',
+    },
+
+    '& td.Bold': {
+      fontWeight: '$4',
+    },
+
+    // Remove Item Button
+    '& td button': {
+      appearance: 'none',
+      background: 'transparent',
+      border: '0',
+      color: '$quintenary',
+      cursor: 'pointer',
+      padding: '0',
+      outline: '0',
+      fontSize: '$5',
+    },
+
+    // Remove Item Button Hover
+    '& .TrashIconFill': {
+      display: 'none',
+    },
+
+    '& td button:hover .TrashIcon': {
+      display: 'none',
+    },
+
+    '& td button:hover .TrashIconFill': {
+      display: 'block',
+    },
+  },
+});
 
 function TableBody({ data }) {
   const dispatch = useDispatch();
@@ -33,62 +90,40 @@ function TableBody({ data }) {
   }, [dispatch, cart]);
 
   return (
-    <tbody>
+    <StitchesComponent>
       {
-        data.map((product, index) => (
-          <tr key={ product.id }>
-            <td
-              data-testid={
-                `customer_checkout__element-order-table-item-number-${index}`
-              }
-            >
+        data.map(({ id, name, quantity, price, subTotal }, index) => (
+          <tr key={ id }>
+            <td className="Bold">
               { index + 1 }
             </td>
-            <td
-              data-testid={
-                `customer_checkout__element-order-table-name-${index}`
-              }
-            >
-              { product.name }
+            <td className="Bold">
+              { name }
             </td>
-            <td
-              data-testid={
-                `customer_checkout__element-order-table-quantity-${index}`
-              }
-            >
-              { product.quantity }
+            <td className="Bold">
+              { quantity }
             </td>
-            <td
-              data-testid={
-                `customer_checkout__element-order-table-unit-price-${index}`
-              }
-            >
-              { product.price }
+            <td>
+              $
+              { formatFloat(price) }
             </td>
-            <td
-              data-testid={
-                `customer_checkout__element-order-table-sub-total-${index}`
-              }
-            >
-              { product.subTotal }
+            <td>
+              $
+              { formatFloat(subTotal) }
             </td>
-            <td
-              data-testid={
-                `customer_checkout__element-order-table-remove-${index}`
-              }
-            >
-              <Button
-                dataTestId=""
+            <td>
+              <button
                 type="button"
-                handleOnClick={ () => handleRemoveItem(product.id) }
+                onClick={ () => handleRemoveItem(id) }
               >
-                Remove Item
-              </Button>
+                <TrashIcon className="TrashIcon" />
+                <TrashIconFill className="TrashIconFill" />
+              </button>
             </td>
           </tr>
         ))
       }
-    </tbody>
+    </StitchesComponent>
   );
 }
 

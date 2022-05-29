@@ -11,12 +11,16 @@ import { CheckoutForm } from '../organisms';
 import { styled } from '../../stitches.config';
 import { ClassicLayout } from '../templates';
 
+/* Utils */
+import formatFloat from '../../utils/formatFloat';
+
 const Main = styled('main', {
   alignItems: 'center',
   display: 'flex',
   flexFlow: 'column nowrap',
   gap: '$4',
   justifyContent: 'space-around',
+  padding: '$4 0',
 });
 
 function Checkout() {
@@ -37,7 +41,7 @@ function Checkout() {
               'Remove Item',
             ],
             body: cart,
-            footer: ['Total', totalPrice],
+            footer: ['Total', formatFloat(totalPrice)],
           } }
         />
 

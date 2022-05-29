@@ -6,9 +6,47 @@ import { Label } from '../atoms';
 import TableBody from './TableBody';
 import TableFooter from './TableFooter';
 
+/* Styled */
+import { styled } from '../../stitches.config';
+
+const StitchesComponent = styled('table', {
+  backgroundColor: '$loContrast',
+  border: '0',
+  borderCollapse: 'collapse',
+  borderRadius: '1rem',
+  boxShadow:
+    'rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px',
+  color: '$textDark',
+  width: '70rem',
+
+  '& caption': {
+    backgroundColor: '$loContrast',
+    borderRadius: '1rem 1rem 0 0',
+    boxShadow:
+      'rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px',
+    fontFamily: '$sans',
+    fontSize: '$4',
+    fontWeight: '$6',
+    padding: '$3 0',
+  },
+
+  '& thead': {
+    border: '0',
+    borderRadius: '1rem',
+
+    '& tr td': {
+      backgroundColor: '$gray300',
+      padding: '$2 $3',
+      textAlign: 'center',
+    },
+  },
+});
+
 function Table({ data }) {
   return (
-    <table>
+    <StitchesComponent>
+      <caption>My order</caption>
+
       <thead>
         <tr>
           {
@@ -24,7 +62,7 @@ function Table({ data }) {
       <TableBody data={ data.body } />
 
       <TableFooter data={ data.footer } />
-    </table>
+    </StitchesComponent>
   );
 }
 
