@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Navigate } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 
 /* State */
 import { useSelector } from 'react-redux';
@@ -8,108 +7,82 @@ import { useSelector } from 'react-redux';
 /* Styles */
 import { styled } from '../../stitches.config';
 
+/* Utils */
+import formatFloat from '../../utils/formatFloat';
+
 export const StitchesComponent = styled('button', {
+  alignItems: 'center',
   appearance: 'none',
+  background: 'linear-gradient(333deg, rgba(102,51,153,1) 0%, rgba(51,0,102,1) 100%)',
   bottom: '15px',
   border: '0',
-  borderRadius: '$edge',
+  borderRadius: '$default',
   display: 'flex',
-  height: '50px',
+  justifyContent: 'space-around',
+  padding: '15px 10px',
   position: 'fixed',
+  transition: 'ease .3s',
   right: '15px',
-  width: '150px',
+  width: '140px',
 
+  // Text
+  '& span': {
+    color: '$textLight',
+    fontFamily: '$sans2',
+    fontSize: '18px',
+    fontWeight: '$5',
+  },
+
+  // States
   '&:hover:not(:disabled)': {
+    borderRadius: '2.3rem',
     cursor: 'pointer',
   },
 
-  '&>.customer_products__checkout-label, &>.customer_products__checkout-bottom-value': {
-    alignItems: 'center',
-    display: 'flex',
-    justifyContent: 'center',
-    height: '100%',
+  '&:disabled': {
+    opacity: '.9',
+  },
+
+  '@bp3': {
+    bottom: '64px',
+    height: '24px',
+    position: 'fixed',
+    right: '0',
+    width: '100%',
 
     '&>span': {
-      color: '$textLight',
-      fontFamily: '$sans',
-      fontSize: '$4',
-      fontWeight: '$4',
-    },
-  },
-
-  '&>.customer_products__checkout-label': {
-    backgroundColor: '$primary',
-    flex: '1.15',
-  },
-
-  '&>.customer_products__checkout-bottom-value': {
-    backgroundColor: '$accent2',
-    flex: '1',
-  },
-
-  variants: {
-    flat: {
-      true: {
-        display: 'none',
-        position: 'fixed',
-        borderRadius: '0',
-        height: '22px',
-        bottom: '60px',
-        width: '100%',
-
-        '&>.customer_products__checkout-label': {
-          '&>span': {
-            fontSize: '$2',
-          },
-        },
-
-        '&>.customer_products__checkout-bottom-value': {
-          '&>span': {
-            fontSize: '$2',
-          },
-        },
-      },
+      fontFamily: '$sans2',
+      fontSize: '$2',
+      fontWeight: '$5',
     },
   },
 });
 
-function CheckoutBtn({ flat }) {
+export function CheckoutBtn() {
+  const navigate = useNavigate();
+
   const { totalPrice } = useSelector((state) => state.checkout);
 
-  const [shouldRedirect, setShouldRedirect] = useState(false);
+  const [showTotal, setShowTotal] = useState(true);
 
   return (
     <StitchesComponent
-      data-testid="customer_products__button-cart"
       disabled={ !totalPrice }
-      onClick={ () => setShouldRedirect(true) }
-      flat={ flat }
+      onClick={ () => navigate('/customer/checkout') }
+      onMouseOver={ () => setShowTotal(false) }
+      onMouseOut={ () => setShowTotal(true) }
     >
-      <div className="customer_products__checkout-label">
-        <span>Total:</span>
-      </div>
-      <div className="customer_products__checkout-bottom-value">
-        <span
-          data-testid="customer_products__checkout-bottom-value"
-        >
-          { String(totalPrice.toFixed(2)).replace('.', ',') }
-        </span>
-      </div>
-
-      {/* Redirect */}
+      <span>{ showTotal ? 'Total:' : 'Checkout' }</span>
       {
-        shouldRedirect && <Navigate to="/customer/checkout" />
+        showTotal && (
+          <span>
+            $
+            { formatFloat(totalPrice) }
+          </span>
+        )
       }
     </StitchesComponent>
   );
 }
-
-CheckoutBtn.propTypes = {
-  flat: PropTypes.bool,
-};
-
-CheckoutBtn.defaultProps = {
-  flat: false,
-};
 
 export default CheckoutBtn;
