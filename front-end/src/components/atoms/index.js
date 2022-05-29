@@ -7,5 +7,6 @@ export { default as TextInput } from './TextInput';
 export { default as HorizontalRule } from './HorizontalRule';
 export { default as Label } from './Label';
 export { default as NavBar } from './NavBar';
+export { default as Select } from './Select';
 export { default as SideBar } from './SideBar';
 export { default as Teaser } from './Teaser';
