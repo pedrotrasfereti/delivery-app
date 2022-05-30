@@ -28,6 +28,7 @@ function AppRoutes() {
       <Header />
 
       <Routes>
+        <Route path="/seller/orders" element={ <Orders /> } />
         <Route path="/customer/orders/:id" element={ <Order /> } />
         <Route path="/customer/orders" element={ <Orders /> } />
         <Route path="/customer/checkout" element={ <Checkout /> } />
