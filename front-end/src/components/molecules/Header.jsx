@@ -19,7 +19,7 @@ const StitchesComponent = styled('header', {
   height: '$headerHeight',
   position: 'fixed',
   width: '100%',
-  zIndex: '1',
+  zIndex: '99',
 
   '&>.Container': {
     display: 'flex',
