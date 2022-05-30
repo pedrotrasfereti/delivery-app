@@ -16,6 +16,8 @@ import navLinksMap from '../../utils/navLinksMap';
 import LocalStorageMethods from '../../utils/localStorage';
 
 export const StitchesComponent = styled('nav', {
+  zIndex: '99',
+
   '& ul': {
     display: 'flex',
     gap: '$5',
