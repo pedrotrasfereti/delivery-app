@@ -8,7 +8,6 @@ const ClassicLayout = styled('div', {
   paddingTop: '4.5rem',
 
   '& main': {
-    backgroundColor: '$gray100',
     padding: '$4 0 $6',
     position: 'relative',
     width: '100%',
