@@ -65,12 +65,17 @@ export function CheckoutBtn() {
 
   const [showTotal, setShowTotal] = useState(true);
 
+  const mobileStyle = {
+    display: totalPrice ? 'flex' : 'none',
+  };
+
   return (
     <StitchesComponent
       disabled={ !totalPrice }
       onClick={ () => navigate('/customer/checkout') }
       onMouseOver={ () => setShowTotal(false) }
       onMouseOut={ () => setShowTotal(true) }
+      css={ { '@bp3': mobileStyle } }
     >
       <span>{ showTotal ? 'Total:' : 'Checkout' }</span>
       {
