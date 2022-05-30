@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+/* State */
+import { useSelector } from 'react-redux';
+
 /* Assets */
 import { DeliveryMan } from '../../assets';
 
@@ -11,9 +14,6 @@ import { DuoGeneric } from '../templates';
 
 /* Styles */
 import { styled } from '../../stitches.config';
-
-/* Utils */
-import LocalStorageMethods from '../../utils/localStorage';
 
 const ContentWrapper = styled('div', {
   boxShadow: '0 0 120px 10px hsla(215, 0%, 20%, .5)',
@@ -75,10 +75,10 @@ const DecorTwo = styled('div', {
 function Login() {
   const navigate = useNavigate();
 
+  const { user } = useSelector((state) => state.user);
+
   // Redirect
   useEffect(() => {
-    const user = LocalStorageMethods.getParsedItem('user');
-
     if (user) {
       if (user.role === 'customer') {
         navigate('/customer/products');
@@ -86,7 +86,7 @@ function Login() {
         navigate('/seller/orders');
       }
     }
-  }, [navigate]);
+  }, [navigate, user]);
 
   return (
     <DuoGeneric id="login-page">
