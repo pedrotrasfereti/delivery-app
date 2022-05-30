@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 /* State */
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { clearProducts } from '../../redux/features/productsSlice';
 import { clearCart } from '../../redux/features/checkoutSlice';
 import { clearUser } from '../../redux/features/userSlice';
@@ -125,16 +125,14 @@ function NavBar({ iconbar }) {
 
   const dispatch = useDispatch();
 
-  const { user } = useSelector((state) => state.user);
-
   // Navigation Links
   const [navLinks, setNavLinks] = useState([]);
 
   useEffect(() => {
-    const { name, role } = user;
+    const { name, role } = LocalStorageMethods.getParsedItem('user');
 
     setNavLinks(navLinksMap(name)[role]);
-  }, [user]);
+  }, []);
 
   // Logout
   const logout = () => {
