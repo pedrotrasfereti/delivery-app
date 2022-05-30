@@ -2,6 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+/* State */
+import { useDispatch, useSelector } from 'react-redux';
+import { clearProducts } from '../../redux/features/productsSlice';
+import { clearCart } from '../../redux/features/checkoutSlice';
+import { clearUser } from '../../redux/features/userSlice';
+
 /* Styles */
 import { styled } from '../../stitches.config';
 
@@ -112,26 +118,32 @@ export const StitchesComponent = styled('nav', {
 
 function NavBar({ iconbar }) {
   const { pathname } = useLocation();
-  const shouldRender = pathname.includes('customer');
+
+  // Render
+  const excludeRoutes = ['/login', '/register'];
+  const shouldRender = !excludeRoutes.includes(pathname);
+
+  const dispatch = useDispatch();
+
+  const { user } = useSelector((state) => state.user);
 
   // Navigation Links
   const [navLinks, setNavLinks] = useState([]);
 
   useEffect(() => {
-    const user = localStorage.getItem('user');
+    const { name, role } = user;
 
-    if (user && shouldRender) {
-      const username = JSON.parse(user).name;
-      const path = pathname.split('/')[1];
-
-      setNavLinks(navLinksMap(username)[path]);
-    }
-  }, [pathname, shouldRender]);
+    setNavLinks(navLinksMap(name)[role]);
+  }, [user]);
 
   // Logout
-  const clearLocalStorage = () => {
+  const logout = () => {
     LocalStorageMethods.deleteItem('user');
     LocalStorageMethods.deleteItem('products');
+
+    dispatch(clearProducts());
+    dispatch(clearCart());
+    dispatch(clearUser());
   };
 
   // Conditional Style
@@ -166,7 +178,7 @@ function NavBar({ iconbar }) {
                     type="button"
                     className={ getLinkClassName(to) }
                     onClick={
-                      name === 'Logout' ? clearLocalStorage : () => {}
+                      name === 'Logout' ? logout : () => {}
                     }
                   >
                     <Link to={ to }>{name}</Link>
