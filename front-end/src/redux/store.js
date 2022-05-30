@@ -5,6 +5,7 @@ import {
   checkoutReducer,
   ordersReducer,
   productsReducer,
+  userReducer,
 } from './features';
 
 const store = configureStore({
@@ -12,6 +13,7 @@ const store = configureStore({
     products: productsReducer,
     checkout: checkoutReducer,
     orders: ordersReducer,
+    user: userReducer,
   },
 });
 
