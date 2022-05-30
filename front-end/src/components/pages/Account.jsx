@@ -52,6 +52,10 @@ const Main = styled('main', {
       fontSize: '$3',
       fontWeight: '$4',
       marginTop: '$2',
+
+      '@bp3': {
+        fontSize: '$2',
+      },
     },
   },
 
