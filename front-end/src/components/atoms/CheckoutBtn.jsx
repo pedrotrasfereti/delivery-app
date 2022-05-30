@@ -65,7 +65,8 @@ export function CheckoutBtn() {
 
   const [showTotal, setShowTotal] = useState(true);
 
-  const mobileStyle = {
+  // Conditional Style
+  const css = {
     display: totalPrice ? 'flex' : 'none',
   };
 
@@ -75,7 +76,7 @@ export function CheckoutBtn() {
       onClick={ () => navigate('/customer/checkout') }
       onMouseOver={ () => setShowTotal(false) }
       onMouseOut={ () => setShowTotal(true) }
-      css={ { '@bp3': mobileStyle } }
+      css={ css }
     >
       <span>{ showTotal ? 'Total:' : 'Checkout' }</span>
       {
