@@ -19,32 +19,40 @@ const Main = styled('main', {
   flexFlow: 'column nowrap',
   gap: '$3',
 
-  '& .ImageContainer': {
-    border: '0',
-    borderRadius: '$round',
-    height: '4rem',
-    objectFit: 'cover',
-    width: '4rem',
+  '& header': {
+    alignItems: 'center',
+    display: 'flex',
+    flexFlow: 'inherit',
 
-    '& img': {
+    '& .ImageContainer': {
       border: '0',
       borderRadius: '$round',
-      width: '100%',
+      height: '4rem',
+      objectFit: 'cover',
+      width: '4rem',
+
+      '& img': {
+        border: '0',
+        borderRadius: '$round',
+        width: '100%',
+      },
     },
-  },
 
-  '& h2': {
-    color: '$textDark',
-    fontFamily: '$sans',
-    fontSize: '$5',
-    fontWeight: '$6',
-  },
+    '& h2': {
+      color: '$textDark',
+      fontFamily: '$sans',
+      fontSize: '$5',
+      fontWeight: '$6',
+      marginTop: '$3',
+    },
 
-  '& span': {
-    color: '$gray700',
-    fontFamily: '$sans',
-    fontSize: '$3',
-    fontWeight: '$4',
+    '& span': {
+      color: '$gray700',
+      fontFamily: '$sans',
+      fontSize: '$3',
+      fontWeight: '$4',
+      marginTop: '$2',
+    },
   },
 
   '& .Links': {
@@ -62,18 +70,20 @@ export default function Account() {
   return (
     <ClassicLayout>
       <Main>
-        <div className="ImageContainer">
-          <img src={ BlankProfile } alt="Profile" />
-        </div>
+        <header>
+          <div className="ImageContainer">
+            <img src={ BlankProfile } alt="Profile" />
+          </div>
 
-        <h2>{ user.name }</h2>
+          <h2>{ user.name }</h2>
 
-        <span id="email">{ user.email }</span>
+          <span id="email">{ user.email }</span>
+        </header>
 
         <HorizontalRule />
 
         <div className="Links">
-          <Button id="edit-profile" link>
+          <Button type="button" id="edit-profile" link>
             <a
               href="http://"
               target="_blank"
@@ -82,7 +92,7 @@ export default function Account() {
               Edit Profile
             </a>
           </Button>
-          <Button id="change-password" link>
+          <Button type="button" id="change-password" link>
             <a
               href="http://"
               target="_blank"
@@ -91,7 +101,7 @@ export default function Account() {
               Change Password
             </a>
           </Button>
-          <Button id="delete" link>
+          <Button type="button" id="delete" link>
             <a
               href="http://"
               target="_blank"
