@@ -131,9 +131,11 @@ function NavBar({ iconbar }) {
   const [navLinks, setNavLinks] = useState([]);
 
   useEffect(() => {
-    const { name, role } = LocalStorageMethods.getParsedItem('user');
+    const user = LocalStorageMethods.getParsedItem('user');
 
-    setNavLinks(navLinksMap(name)[role]);
+    if (user) {
+      setNavLinks(navLinksMap(user.name)[user.role]);
+    }
   }, []);
 
   // Logout
