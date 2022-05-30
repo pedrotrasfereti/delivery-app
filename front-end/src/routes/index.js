@@ -1,12 +1,17 @@
-import * as React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React from 'react';
+
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from 'react-router-dom';
 
 /* Children */
 import { NavBar } from '../components/atoms';
 import { Header } from '../components/molecules';
 
 import {
-  Base,
   Checkout,
   Login,
   Order,
@@ -28,7 +33,7 @@ function AppRoutes() {
         <Route path="/customer/products" element={ <Products /> } />
         <Route path="/register" element={ <Register /> } />
         <Route path="/login" element={ <Login /> } />
-        <Route path="/" element={ <Base /> } />
+        <Route path="/" element={ <Navigate replace to="/login" /> } />
       </Routes>
 
       {/* Mobile "Icon Bar" Menu */}
