@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import { Link, useNavigate } from 'react-router-dom';
+
+/* State */
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../redux/features/userSlice';
 
 /* Children */
-import { Link, Navigate } from 'react-router-dom';
 import BaseForm from './BaseForm';
 import { Button, ErrorMessage, Fieldset, HorizontalRule } from '../atoms';
 import { ErrorMessageBox, TextInputLabel } from '../molecules';
@@ -28,7 +31,10 @@ const PasswordSection = styled('div', {
   gap: '$2',
 });
 
-function RegisterForm({ id }) {
+function RegisterForm() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [name, setName] = useState('');
   const [nameErrVisible, setNameErrVisible] = useState(false);
   const [email, setEmail] = useState('');
@@ -38,9 +44,9 @@ function RegisterForm({ id }) {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [matchErrVisible, setMatchErrVisible] = useState(false);
   const [registerErrVisible, setRegisterErrVisible] = useState(false);
-  const [shouldRedirect, setShouldRedirect] = useState(false);
   const [submitDisabled, setSubmitDisabled] = useState(true);
 
+  // Enable Submit
   useEffect(() => {
     if (
       validateName(name)
@@ -59,28 +65,39 @@ function RegisterForm({ id }) {
     password,
   ]);
 
+  // Handle Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const data = await registerRequest({
+      const user = await registerRequest({
         email,
         password,
         name,
       });
 
-      // implement save data step
-      localStorage.setItem('user', JSON.stringify(data));
+      if (user) {
+        dispatch(setUser(user));
 
-      // redirect to home
-      setShouldRedirect(true);
+        localStorage.setItem('user', JSON.stringify({
+          email,
+          ...user,
+        }));
+
+        // Redirect
+        if (user.role === 'customer') {
+          navigate('/customer/products');
+        } else {
+          navigate('/seller/orders');
+        }
+      }
     } catch (err) {
       setRegisterErrVisible(true);
     }
   };
 
   return (
-    <BaseForm id={ id } action="">
+    <BaseForm id="register-form" action="">
       {
         registerErrVisible && (
           <ErrorMessageBox
@@ -215,21 +232,8 @@ function RegisterForm({ id }) {
           </Button>
         </span>
       </div>
-
-      {/* Redirect to Home page */}
-      {
-        shouldRedirect && <Navigate replace to="/customer/products" />
-      }
     </BaseForm>
   );
 }
-
-RegisterForm.propTypes = {
-  id: PropTypes.string,
-};
-
-RegisterForm.defaultProps = {
-  id: '',
-};
 
 export default RegisterForm;
