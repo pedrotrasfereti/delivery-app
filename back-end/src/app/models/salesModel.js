@@ -1,4 +1,8 @@
-const { Sales, Products } = require('../../database/models');
+const {
+  Sales,
+  Products,
+} = require('../../database/models');
+
 const salesProductsModel = require('./salesproductsModel');
 const userModel = require('./userModel');
 
@@ -23,7 +27,14 @@ module.exports = {
   async getSales(id) {
     const sales = await Sales.findAll({
       where: { userId: id },
-      raw: true,
+      include: [{
+        model: Products,
+        as: 'products',
+        through: {
+          attributes: ['quantity'],
+          as: 'quantity',
+        },
+      }],
     });
 
     return sales;
@@ -32,7 +43,14 @@ module.exports = {
   async getSalesBySeller(id) {
     const sales = await Sales.findAll({
       where: { sellerId: id },
-      raw: true,
+      include: [{
+        model: Products,
+        as: 'products',
+        through: {
+          attributes: ['quantity'],
+          as: 'quantity',
+        },
+      }],
     });
 
     return sales;
@@ -46,7 +64,7 @@ module.exports = {
         as: 'products',
         through: {
           attributes: ['quantity'],
-          as: 'productQuantity',
+          as: 'quantity',
         },
       }],
     });

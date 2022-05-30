@@ -13,6 +13,7 @@ import {
   Products,
   Register,
 } from '../components/pages';
+import Orders from '../components/pages/Orders';
 
 function AppRoutes() {
   return (
@@ -22,6 +23,7 @@ function AppRoutes() {
 
       <Routes>
         <Route path="/customer/orders/:id" element={ <Order /> } />
+        <Route path="/customer/orders" element={ <Orders /> } />
         <Route path="/customer/checkout" element={ <Checkout /> } />
         <Route path="/customer/products" element={ <Products /> } />
         <Route path="/register" element={ <Register /> } />
