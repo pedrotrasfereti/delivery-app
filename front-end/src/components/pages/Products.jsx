@@ -74,7 +74,9 @@ const Products = () => {
       <SideBar />
 
       <main>
-        <ProductCards />
+        {
+          products.length && <ProductCards products={ products } />
+        }
       </main>
 
       <CheckoutBtn />

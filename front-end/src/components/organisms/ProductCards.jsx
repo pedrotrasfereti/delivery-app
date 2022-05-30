@@ -1,7 +1,5 @@
-import * as React from 'react';
-
-/* State */
-import { useSelector } from 'react-redux';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 /* Children */
 import { ProductCard } from '../molecules';
@@ -10,7 +8,7 @@ import { ProductCard } from '../molecules';
 import { styled } from '../../stitches.config';
 
 const StitchesComponent = styled('section', {
-  '&>h2': {
+  '& h2': {
     color: '$textDark',
     fontFamily: '$sans2',
     fontSize: '$6',
@@ -18,7 +16,7 @@ const StitchesComponent = styled('section', {
     textAlign: 'center',
   },
 
-  '& #product-cards': {
+  '& .Container': {
     alignItems: 'center',
     display: 'flex',
     flexFlow: 'row wrap',
@@ -28,25 +26,29 @@ const StitchesComponent = styled('section', {
   },
 });
 
-function ProductCards() {
-  const { products } = useSelector((state) => state.products);
-
+export default function ProductCards({ products }) {
   return (
-    <StitchesComponent>
+    <StitchesComponent id="product-cards">
       <h2>All products</h2>
 
-      <section id="product-cards">
+      <div className="Container">
         {
-          products
-            ? products.map((product) => (
-              <ProductCard product={ product } key={ product.id } />
-            )) : (
-              <span>Loading...</span>
-            )
+          products.map((product) => (
+            <ProductCard product={ product } key={ product.id } />
+          ))
         }
-      </section>
+      </div>
     </StitchesComponent>
   );
 }
 
-export default ProductCards;
+ProductCards.propTypes = {
+  products: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+      price: PropTypes.number,
+      urlImage: PropTypes.string,
+    }),
+  ),
+}.isRequired;
