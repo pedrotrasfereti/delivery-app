@@ -11,11 +11,13 @@ import Control from '../atoms/Control';
 /* Styles */
 import { styled } from '../../stitches.config';
 
+const boxShadow = 'rgba(0, 0, 0, .08) 0px 4px 12px';
+
 const StitchesComponent = styled('div', {
   backgroundColor: '$loContrast',
   border: '0',
   borderRadius: '$default',
-  boxShadow: 'rgba(149, 157, 165, 0.2) 0 8px 20px',
+  boxShadow,
   display: 'flex',
   flexFlow: 'column nowrap',
   gap: '$3',
