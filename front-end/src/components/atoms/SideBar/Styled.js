@@ -169,37 +169,30 @@ export default styled('aside', {
   },
 
   '@bp3': {
-    '.simplebar-scrollbar::before': {
-      background: '$gray800',
-    },
-
     alignItems: 'center',
     border: '0',
     display: 'flex',
     height: '$5',
     width: '100%',
 
-    '&>.Filters': {
+    '& header': {
+      display: 'none',
+    },
+
+    '& .Categories': {
+      flexFlow: 'row nowrap',
+      gap: '$2',
+      padding: '$3',
       width: '100%',
+      overflowX: 'scroll',
 
-      '& .Heading': {
-        display: 'none',
-      },
-
-      '& .Categories': {
-        width: '100%',
-        flexFlow: 'row nowrap',
-        gap: '$2',
-        padding: '$3',
-
-        '&>li': {
-          backgroundColor: '$gray200',
-          display: 'flex',
-          padding: '$2 $3',
-          border: '0',
-          borderRadius: '$round',
-          whiteSpace: 'nowrap',
-        },
+      '&>li': {
+        backgroundColor: '$gray200',
+        display: 'flex',
+        padding: '$2 $3',
+        border: '0',
+        borderRadius: '$round',
+        whiteSpace: 'nowrap',
       },
     },
   },
