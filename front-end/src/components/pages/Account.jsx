@@ -23,6 +23,7 @@ const Main = styled('main', {
     alignItems: 'center',
     display: 'flex',
     flexFlow: 'inherit',
+    gap: '$3',
 
     '& .ImageContainer': {
       border: '0',
@@ -43,7 +44,6 @@ const Main = styled('main', {
       fontFamily: '$sans',
       fontSize: '$5',
       fontWeight: '$6',
-      marginTop: '$3',
     },
 
     '& span': {
@@ -51,7 +51,6 @@ const Main = styled('main', {
       fontFamily: '$sans',
       fontSize: '$3',
       fontWeight: '$4',
-      marginTop: '$2',
 
       '@bp3': {
         fontSize: '$2',
