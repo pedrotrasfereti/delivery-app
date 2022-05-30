@@ -1,10 +1,7 @@
 import React from 'react';
 
 /* Assets */
-import { useSelector } from 'react-redux';
 import { BlankProfile } from '../../assets';
-
-/* State */
 
 /* Children */
 import { Button, HorizontalRule } from '../atoms';
@@ -12,6 +9,9 @@ import { ClassicLayout } from '../templates';
 
 /* Styles */
 import { styled } from '../../stitches.config';
+
+/* Utils */
+import LocalStorageMethods from '../../utils/localStorage';
 
 const Main = styled('main', {
   alignItems: 'center',
@@ -65,7 +65,7 @@ const Main = styled('main', {
 });
 
 export default function Account() {
-  const { user } = useSelector((state) => state.user);
+  const { name, email } = LocalStorageMethods.getParsedItem('user');
 
   return (
     <ClassicLayout>
@@ -75,9 +75,9 @@ export default function Account() {
             <img src={ BlankProfile } alt="Profile" />
           </div>
 
-          <h2>{ user.name }</h2>
+          <h2>{ name }</h2>
 
-          <span id="email">{ user.email }</span>
+          <span id="email">{ email }</span>
         </header>
 
         <HorizontalRule />
