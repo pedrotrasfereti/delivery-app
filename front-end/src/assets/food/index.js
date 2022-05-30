@@ -1,0 +1,10 @@
+export { default as Beverages } from './beverages.webp';
+export { default as Dessert } from './dessert.webp';
+export { default as FastFood } from './fast_food.webp';
+export { default as HealthyFood } from './healthy_food.webp';
+export { default as IcedCoffee } from './iced_coffee.webp';
+export { default as MexicanFood } from './mex_food.webp';
+export { default as Milkshake } from './milkshake.webp';
+export { default as Sushi } from './sushi.webp';
+export { default as ThaiFood } from './thai_food.webp';
+export { default as VeggieFood } from './veggie_food.webp';
