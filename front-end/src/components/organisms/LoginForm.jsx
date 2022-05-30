@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
+/* State */
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../redux/features/userSlice';
+
 /* Children */
 import BaseForm from './BaseForm';
 
@@ -25,6 +29,7 @@ import messages from '../../utils/messages';
 import { loginRequest } from '../../services/request';
 
 function LoginForm() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
@@ -51,6 +56,8 @@ function LoginForm() {
       const user = await loginRequest({ email, password });
 
       if (user) {
+        dispatch(setUser(user));
+
         localStorage.setItem('user', JSON.stringify({
           email,
           ...user,
