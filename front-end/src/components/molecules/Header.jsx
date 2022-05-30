@@ -51,7 +51,13 @@ const StitchesComponent = styled('header', {
 
 function Header() {
   const { pathname } = useLocation();
-  const shouldRender = pathname.includes('customer');
+
+  const excludeRoutes = [
+    '/login',
+    '/register',
+  ];
+
+  const shouldRender = !excludeRoutes.includes(pathname);
 
   return shouldRender && (
     <StitchesComponent>
