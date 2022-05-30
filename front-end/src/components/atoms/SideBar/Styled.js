@@ -18,7 +18,7 @@ import { styled } from '../../../stitches.config';
 const backgroundProperties = {
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
-  backgroundSize: 'cover',
+  backgroundSize: '120%',
 };
 
 const gradient = `
