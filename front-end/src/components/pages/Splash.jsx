@@ -28,15 +28,15 @@ export default function Splash() {
   useEffect(() => {
     const user = LocalStorageMethods.getParsedItem('user');
 
-    // if (user) {
-    //   if (user.role === 'customer') {
-    //     navigate('/customer/products');
-    //   } else {
-    //     navigate('/seller/orders');
-    //   }
-    // } else {
-    //   navigate('/login');
-    // }
+    if (user) {
+      if (user.role === 'customer') {
+        navigate('/customer/products');
+      } else {
+        navigate('/seller/orders');
+      }
+    } else {
+      navigate('/login');
+    }
   }, [navigate]);
 
   return (
