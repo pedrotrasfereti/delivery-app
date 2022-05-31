@@ -41,14 +41,18 @@ const Main = styled('main', {
 
     '& h2': {
       color: '$textDark',
-      fontFamily: '$sans',
+      fontFamily: '$sans2',
       fontSize: '$5',
       fontWeight: '$6',
+
+      '@bp3': {
+        fontSize: '$4',
+      },
     },
 
     '& span': {
       color: '$gray700',
-      fontFamily: '$sans',
+      fontFamily: '$sans2',
       fontSize: '$3',
       fontWeight: '$4',
 
