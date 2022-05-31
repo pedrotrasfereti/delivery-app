@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+/* Assets */
+import { BsCart as CartIcon } from 'react-icons/bs';
+
 /* State */
 import { useSelector } from 'react-redux';
 
@@ -18,10 +21,8 @@ export function CheckoutBtn() {
   const [showTotal, setShowTotal] = useState(true);
 
   // Conditional Style
-  const mobileStyle = {
-    '@bp3': {
-      display: 'none',
-    },
+  const css = {
+    display: totalPrice ? 'flex' : 'none',
   };
 
   return (
@@ -30,7 +31,7 @@ export function CheckoutBtn() {
       onClick={ () => navigate('/customer/checkout') }
       onMouseOver={ () => setShowTotal(false) }
       onMouseOut={ () => setShowTotal(true) }
-      css={ mobileStyle }
+      css={ css }
     >
       <span>{ showTotal ? 'Total:' : 'Checkout' }</span>
       {
@@ -41,6 +42,7 @@ export function CheckoutBtn() {
           </span>
         )
       }
+      <CartIcon className="CartIcon" />
     </Styled>
   );
 }

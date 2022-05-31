@@ -15,6 +15,11 @@ export default styled('button', {
   right: '15px',
   width: '140px',
 
+  // Hide Icon
+  '& .CartIcon': {
+    display: 'none',
+  },
+
   // Text
   '& span': {
     color: '$textLight',
@@ -34,5 +39,10 @@ export default styled('button', {
   },
 
   '@bp3': {
+    // Show Icon
+
+    '& .CartIcon': {
+      display: 'flex',
+    },
   },
 });
