@@ -16,6 +16,7 @@ import {
 
 /* Children */
 import { CheckoutBtn, SideBar } from '../atoms';
+import StyledCheckoutBtn from '../atoms/CheckoutBtn/Styled';
 import { ProductCards } from '../organisms';
 import { ClassicLayout } from '../templates';
 
@@ -25,8 +26,14 @@ import calculateTotalPrice from '../../utils/calculateTotalPrice';
 import LocalStorageMethods from '../../utils/localStorage';
 
 /* Styles */
-const mobileStyle = {
-  flexFlow: 'column nowrap',
+const styles = {
+  '@pb3': {
+    flexFlow: 'column nowrap',
+
+    [`&>${StyledCheckoutBtn}`]: {
+      display: 'none',
+    },
+  },
 };
 
 const Products = () => {
@@ -69,7 +76,7 @@ const Products = () => {
   return (
     <ClassicLayout
       id="products-page"
-      css={ { '@bp3': mobileStyle } }
+      css={ styles }
     >
       <SideBar />
 
