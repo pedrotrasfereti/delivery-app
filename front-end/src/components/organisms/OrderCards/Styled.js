@@ -115,12 +115,8 @@ export default styled('section', {
       display: 'flex',
       flex: '3',
       flexFlow: 'row wrap',
-      gap: '$5',
+      gap: '$4',
       justifyContent: 'center',
-
-      '@bp4': {
-        gap: '$4',
-      },
 
       '@bp3': {
         gap: '$3',
