@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { useLocation } from 'react-router-dom';
+import React from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 /* Assets */
 import { BsChevronLeft as BackIcon } from 'react-icons/bs';
@@ -12,8 +12,13 @@ import { NavBar, CheckoutBtn } from '../../atoms';
 import Styled from './Styled';
 
 function Header() {
+  // Back Button
+  const navigate = useNavigate();
+  const goBack = -1;
+
   const { pathname } = useLocation();
 
+  // Conditional Render
   const excludeRoutes = [
     '/',
     '/login',
@@ -22,11 +27,26 @@ function Header() {
 
   const shouldRender = !excludeRoutes.includes(pathname);
 
+  // Conditional Styles
+  const hideOn = [
+    '/customer/products',
+    '/seller/orders',
+  ];
+
+  const backDisabled = hideOn.includes(pathname);
+
+  const styles = {
+    visibility: backDisabled ? 'hidden' : 'visible',
+  };
+
   return shouldRender && (
     <Styled>
       <button
         type="button"
         className="BackButton"
+        onClick={ () => navigate(goBack) }
+        disabled={ backDisabled }
+        style={ styles }
       >
         <BackIcon className="BackIcon" />
       </button>
