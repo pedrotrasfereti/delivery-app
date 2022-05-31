@@ -2,7 +2,7 @@ import { styled } from '../../../stitches.config';
 
 /* Children */
 import StyledNavBar from '../../atoms/NavBar/Styled';
-// import StyledCheckoutBtn from '../../atoms/CheckoutBtn/Styled';
+import StyledCheckoutBtn from '../../atoms/CheckoutBtn/Styled';
 
 export default styled('header', {
   alignItems: 'center',
@@ -13,6 +13,10 @@ export default styled('header', {
   position: 'fixed',
   width: '100%',
   zIndex: '99',
+
+  [`& ${StyledCheckoutBtn}`]: {
+    display: 'none',
+  },
 
   '&>.Container': {
     display: 'flex',
@@ -38,6 +42,10 @@ export default styled('header', {
   '@bp3': {
     [`& ${StyledNavBar}`]: {
       display: 'none',
+    },
+
+    [`& ${StyledCheckoutBtn}`]: {
+      display: 'flex',
     },
   },
 });
