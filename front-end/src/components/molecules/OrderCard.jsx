@@ -82,10 +82,6 @@ const Styled = styled('button', {
     '& .OrderId': {
       color: '$primary',
     },
-
-    '& .Status, & .TotalPrice': {
-      color: '$gray800',
-    },
   },
 
   '@bp4': {
