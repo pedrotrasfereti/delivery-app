@@ -27,7 +27,7 @@ import LocalStorageMethods from '../../utils/localStorage';
 
 /* Styles */
 const styles = {
-  '@pb3': {
+  '@bp3': {
     flexFlow: 'column nowrap',
 
     [`&>${StyledCheckoutBtn}`]: {
