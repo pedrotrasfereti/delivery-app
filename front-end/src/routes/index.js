@@ -4,7 +4,6 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Navigate,
 } from 'react-router-dom';
 
 /* Children */
@@ -19,6 +18,7 @@ import {
   Orders,
   Products,
   Register,
+  Splash,
 } from '../components/pages';
 
 function AppRoutes() {
@@ -36,7 +36,7 @@ function AppRoutes() {
         <Route path="/account" element={ <Account /> } />
         <Route path="/register" element={ <Register /> } />
         <Route path="/login" element={ <Login /> } />
-        <Route path="/" element={ <Navigate replace to="/login" /> } />
+        <Route path="/" element={ <Splash /> } />
       </Routes>
 
       {/* Mobile "Icon Bar" Menu */}
