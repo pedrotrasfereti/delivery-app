@@ -21,7 +21,7 @@ export function CheckoutBtn() {
   const [showTotal, setShowTotal] = useState(true);
 
   // Conditional Style
-  const css = {
+  const styles = {
     display: totalPrice ? 'flex' : 'none',
   };
 
@@ -31,12 +31,14 @@ export function CheckoutBtn() {
       onClick={ () => navigate('/customer/checkout') }
       onMouseOver={ () => setShowTotal(false) }
       onMouseOut={ () => setShowTotal(true) }
-      css={ css }
+      css={ styles }
     >
-      <span>{ showTotal ? 'Total:' : 'Checkout' }</span>
+      <span className="Label">
+        { showTotal ? 'Total:' : 'Checkout' }
+      </span>
       {
         showTotal && (
-          <span>
+          <span className="TotalPrice">
             $
             { formatFloat(totalPrice) }
           </span>

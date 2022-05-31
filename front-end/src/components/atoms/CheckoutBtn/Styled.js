@@ -15,13 +15,14 @@ export default styled('button', {
   right: '15px',
   width: '140px',
 
-  // Hide Icon
   '& .CartIcon': {
+    color: '$textDark',
     display: 'none',
+    fontSize: '$5',
   },
 
   // Text
-  '& span': {
+  '& .Label, & .TotalPrice': {
     color: '$textLight',
     fontFamily: '$sans2',
     fontSize: '18px',
@@ -39,8 +40,18 @@ export default styled('button', {
   },
 
   '@bp3': {
-    // Show Icon
+    background: 'none',
+    borderRadius: '0',
+    padding: '0',
+    position: 'static',
+    width: 'auto',
 
+    // Hide Text
+    '& .Label, & .TotalPrice': {
+      display: 'none',
+    },
+
+    // Show Icon
     '& .CartIcon': {
       display: 'flex',
     },
