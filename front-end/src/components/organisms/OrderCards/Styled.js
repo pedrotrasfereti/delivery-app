@@ -63,7 +63,7 @@ export default styled('section', {
         },
 
         '& .Month': {
-          marginRight: '$2',
+          margin: '0 $2 0 2rem',
         },
 
         // Hover
@@ -108,10 +108,26 @@ export default styled('section', {
       flexFlow: 'row wrap',
       gap: '$5',
       justifyContent: 'center',
+
+      '@bp4': {
+        gap: '$4',
+      },
+
+      '@bp3': {
+        gap: '$3',
+      },
     },
 
     '@bp4': {
       gap: '$4',
+    },
+
+    '@bp3': {
+      gap: '$3',
+    },
+
+    '@bp2': {
+      gap: '$2',
     },
   },
 

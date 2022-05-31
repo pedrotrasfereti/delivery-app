@@ -22,11 +22,19 @@ const Styled = styled('button', {
   height: '8rem',
   flex: '1',
   outline: '0',
-  padding: '$4',
+  padding: '$3',
   transition: 'flex ease .6s',
 
   '&:hover': {
-    flex: '4',
+    flex: '5',
+  },
+
+  '@bp4': {
+    padding: '$2',
+  },
+
+  '@bp3': {
+    padding: '$1',
   },
 });
 
