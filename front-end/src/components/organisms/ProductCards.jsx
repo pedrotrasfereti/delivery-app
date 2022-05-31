@@ -7,7 +7,7 @@ import { ProductCard } from '../molecules';
 /* Styles */
 import { styled } from '../../stitches.config';
 
-const StitchesComponent = styled('section', {
+const Styled = styled('section', {
   '& h2': {
     color: '$textDark',
     fontFamily: '$sans2',
@@ -23,12 +23,16 @@ const StitchesComponent = styled('section', {
     gap: '$3',
     justifyContent: 'center',
     marginTop: '2rem',
+
+    '@bp0': {
+      gap: '$2',
+    },
   },
 });
 
 export default function ProductCards({ products }) {
   return (
-    <StitchesComponent id="product-cards">
+    <Styled id="product-cards">
       <h2>All products</h2>
 
       <div className="Container">
@@ -38,7 +42,7 @@ export default function ProductCards({ products }) {
           ))
         }
       </div>
-    </StitchesComponent>
+    </Styled>
   );
 }
 
