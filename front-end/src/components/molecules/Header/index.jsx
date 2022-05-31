@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useLocation } from 'react-router-dom';
 
 /* Assets */
+import { BsChevronLeft as BackIcon } from 'react-icons/bs';
 import { Logo } from '../../../assets';
 
 /* Children */
@@ -27,7 +28,7 @@ function Header() {
         type="button"
         className="BackButton"
       >
-        X
+        <BackIcon className="BackIcon" />
       </button>
 
       <div className="Container">

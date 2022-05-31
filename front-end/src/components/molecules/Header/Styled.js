@@ -14,6 +14,24 @@ export default styled('header', {
   width: '100%',
   zIndex: '99',
 
+  // Back Button
+  '& .BackButton': {
+    alignItems: 'center',
+    appearance: 'none',
+    background: 'none',
+    border: '0',
+    cursor: 'pointer',
+    display: 'none',
+    justifyContent: 'center',
+    transition: 'ease .3s',
+
+    '& .BackIcon': {
+      color: '$textDark',
+      fontSize: '$4',
+    },
+  },
+
+  // Hide Nested Checkout Button
   [`& ${StyledCheckoutBtn}`]: {
     display: 'none',
   },
@@ -40,11 +58,20 @@ export default styled('header', {
   },
 
   '@bp3': {
+    // Hide Nested NavBar
     [`& ${StyledNavBar}`]: {
       display: 'none',
     },
 
+    // Show Nested Checkout Button
     [`& ${StyledCheckoutBtn}`]: {
+      display: 'flex',
+    },
+
+    /* !=**=- Provisory -=**=!
+      Show should be done using JavaScript
+    */
+    '& .BackButton': {
       display: 'flex',
     },
   },
