@@ -122,7 +122,12 @@ function NavBar({ iconbar }) {
   const { pathname } = useLocation();
 
   // Render
-  const excludeRoutes = ['/login', '/register'];
+  const excludeRoutes = [
+    '/',
+    '/login',
+    '/register',
+  ];
+
   const shouldRender = !excludeRoutes.includes(pathname);
 
   const dispatch = useDispatch();
