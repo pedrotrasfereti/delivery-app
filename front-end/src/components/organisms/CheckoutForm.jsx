@@ -13,7 +13,7 @@ import { getAllSellers, createSale } from '../../services/request';
 /* Styles */
 import { styled } from '../../stitches.config';
 
-const StitchesComponent = styled('form', {
+const Styled = styled('form', {
   alignItems: 'center',
   display: 'flex',
   flexFlow: 'row wrap',
@@ -33,7 +33,7 @@ const StitchesComponent = styled('form', {
     },
   },
 
-  '@bp3': {
+  '@bp4': {
     flexFlow: 'column nowrap',
     gap: '$4',
 
@@ -113,7 +113,7 @@ function CheckoutForm() {
   };
 
   return (
-    <StitchesComponent id="checkout-form" action="">
+    <Styled id="checkout-form" action="">
       <Select
         name="select-seller"
         value={ String(seller) }
@@ -155,7 +155,7 @@ function CheckoutForm() {
       >
         Confirm Order
       </Button>
-    </StitchesComponent>
+    </Styled>
   );
 }
 
