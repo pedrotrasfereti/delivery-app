@@ -56,6 +56,8 @@ const Styled = styled('button', {
 
     '@bp3': {
       height: '.4rem',
+      marginBottom: '2px',
+      marginRight: '4px',
       width: '.4rem',
     },
   },
