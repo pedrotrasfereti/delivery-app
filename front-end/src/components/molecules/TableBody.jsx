@@ -19,7 +19,7 @@ import formatFloat from '../../utils/formatFloat';
 /* Styles */
 import { styled } from '../../stitches.config';
 
-const StitchesComponent = styled('tbody', {
+const Styled = styled('tbody', {
   '& tr': {
     borderBottom: '1px solid gainsboro',
     borderTop: '1px solid gainsboro',
@@ -37,6 +37,7 @@ const StitchesComponent = styled('tbody', {
       fontWeight: '$3',
       textAlign: 'center',
       height: '4rem',
+      padding: '0 $2',
 
       '@bp4': {
         fontSize: '$2',
@@ -76,6 +77,13 @@ const StitchesComponent = styled('tbody', {
     '& td button:hover .TrashIconFill': {
       display: 'block',
     },
+
+    // Hide Item Column
+    '@bp3': {
+      '#item-column': {
+        display: 'none',
+      },
+    },
   },
 });
 
@@ -100,11 +108,11 @@ function TableBody({ data }) {
   }, [dispatch, cart]);
 
   return (
-    <StitchesComponent>
+    <Styled>
       {
         data.map(({ id, name, quantity, price, subTotal }, index) => (
           <tr key={ id }>
-            <td className="Bold">
+            <td id="item-column" className="Bold">
               { index + 1 }
             </td>
             <td className="Bold">
@@ -133,7 +141,7 @@ function TableBody({ data }) {
           </tr>
         ))
       }
-    </StitchesComponent>
+    </Styled>
   );
 }
 

@@ -38,6 +38,17 @@ const StitchesComponent = styled('table', {
       backgroundColor: '$gray300',
       padding: '$2 $3',
       textAlign: 'center',
+
+      '@bp1': {
+        padding: '$1 $2',
+      },
+    },
+  },
+
+  // Hide Item Column
+  '@bp3': {
+    '& thead tr #item-column': {
+      display: 'none',
     },
   },
 
@@ -71,7 +82,10 @@ function Table({ data }) {
         <tr>
           {
             data.header.map((heading) => (
-              <td key={ heading }>
+              <td
+                id={ `${heading.toLowerCase()}-column` }
+                key={ heading }
+              >
                 <Label>{ heading }</Label>
               </td>
             ))
