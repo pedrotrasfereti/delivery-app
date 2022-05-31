@@ -16,13 +16,19 @@ import formatFloat from '../../../utils/formatFloat';
 export function CheckoutBtn() {
   const navigate = useNavigate();
 
-  const { totalPrice } = useSelector((state) => state.checkout);
+  const { cart, totalPrice } = useSelector((state) => state.checkout);
 
   const [showTotal, setShowTotal] = useState(true);
 
   // Conditional Style
   const styles = {
     display: totalPrice ? 'flex' : 'none',
+
+    '@bp3': {
+      '&::after': {
+        content: String(cart.length),
+      },
+    },
   };
 
   return (

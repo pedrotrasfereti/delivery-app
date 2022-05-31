@@ -32,6 +32,10 @@ const styles = {
 
     [`&>${StyledCheckoutBtn}`]: {
       display: 'none',
+
+      '&::after': {
+        display: 'none',
+      },
     },
   },
 };

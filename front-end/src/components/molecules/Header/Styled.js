@@ -27,7 +27,7 @@ export default styled('header', {
 
     '& .BackIcon': {
       color: '$textDark',
-      fontSize: '$4',
+      fontSize: '$5',
     },
   },
 

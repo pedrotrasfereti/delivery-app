@@ -18,7 +18,8 @@ export default styled('button', {
   '& .CartIcon': {
     color: '$textDark',
     display: 'none',
-    fontSize: '$5',
+    fontSize: '$6',
+    position: 'relative',
   },
 
   // Text
@@ -41,10 +42,12 @@ export default styled('button', {
 
   '@bp3': {
     background: 'none',
+    bottom: '0',
     borderRadius: '0',
     cursor: 'pointer',
     padding: '0',
-    position: 'static',
+    position: 'relative',
+    right: '0',
     width: 'auto',
 
     // Hide Text
@@ -55,6 +58,23 @@ export default styled('button', {
     // Show Icon
     '& .CartIcon': {
       display: 'flex',
+    },
+
+    // Show Cart Length
+    '&::after': {
+      backgroundColor: '$primary',
+      bottom: '2px',
+      border: '0',
+      borderRadius: '$round',
+      color: '$loContrast',
+      content: '',
+      fontFamily: '$sans',
+      fontSize: '$1',
+      fontWeight: '$5',
+      height: '1rem',
+      position: 'absolute',
+      right: '-6px',
+      width: '1rem',
     },
   },
 });
