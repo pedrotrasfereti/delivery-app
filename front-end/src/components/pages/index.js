@@ -5,3 +5,4 @@ export { default as Order } from './Order';
 export { default as Orders } from './Orders';
 export { default as Register } from './Register';
 export { default as Products } from './Products';
+export { default as Splash } from './Splash';
