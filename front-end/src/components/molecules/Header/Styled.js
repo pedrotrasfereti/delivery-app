@@ -33,7 +33,7 @@ export default styled('header', {
 
   // Hide Nested Checkout Button
   [`& ${StyledCheckoutBtn}`]: {
-    display: 'none',
+    display: 'none !important',
   },
 
   '&>.Container': {
@@ -65,12 +65,10 @@ export default styled('header', {
 
     // Show Nested Checkout Button
     [`& ${StyledCheckoutBtn}`]: {
-      display: 'flex',
+      display: 'flex !important',
     },
 
-    /* !=**=- Provisory -=**=!
-      Show should be done using JavaScript
-    */
+    // Show Back Button
     '& .BackButton': {
       display: 'flex',
     },
