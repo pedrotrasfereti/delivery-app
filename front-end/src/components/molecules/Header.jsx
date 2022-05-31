@@ -53,6 +53,7 @@ function Header() {
   const { pathname } = useLocation();
 
   const excludeRoutes = [
+    '/',
     '/login',
     '/register',
   ];
