@@ -42,6 +42,7 @@ export default styled('button', {
   '@bp3': {
     background: 'none',
     borderRadius: '0',
+    cursor: 'pointer',
     padding: '0',
     position: 'static',
     width: 'auto',
