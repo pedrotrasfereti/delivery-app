@@ -49,6 +49,10 @@ export default styled('section', {
           '@bp4': {
             fontSize: '$5',
           },
+
+          '@bp3': {
+            fontSize: '$4',
+          },
         },
 
         '& .Month, & .Day': {
@@ -59,6 +63,11 @@ export default styled('section', {
 
           '@bp4': {
             fontSize: '$3',
+          },
+
+          '@bp3': {
+            fontSize: '$2',
+            fontWeight: '$4',
           },
         },
 
@@ -124,10 +133,6 @@ export default styled('section', {
 
     '@bp3': {
       gap: '$3',
-    },
-
-    '@bp2': {
-      gap: '$2',
     },
   },
 
