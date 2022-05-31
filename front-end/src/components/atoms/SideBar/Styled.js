@@ -186,13 +186,26 @@ export default styled('aside', {
       width: '100%',
       overflowX: 'scroll',
 
-      '&>li': {
-        backgroundColor: '$gray200',
+      '&>li, &>li:hover': {
+        backgroundImage: 'none !important',
         display: 'flex',
         padding: '$2 $3',
         border: '0',
         borderRadius: '$round',
         whiteSpace: 'nowrap',
+
+        '& span': {
+          fontSize: '$3',
+          fontWeight: '$4 !important',
+        },
+
+        '&::before': {
+          display: 'none',
+        },
+      },
+
+      '&>li': {
+        backgroundColor: '$gray200',
       },
     },
   },
