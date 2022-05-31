@@ -17,7 +17,8 @@ const Styled = styled('main', {
   minHeight: '100vh',
 
   '& .Logo': {
-    width: '$6',
+    opacity: '.4',
+    width: '$5',
   },
 });
 
