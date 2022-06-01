@@ -10,19 +10,23 @@ import LocalStorageMethods from '../../../utils/localStorage';
 import formatDate from '../../../utils/formatDate';
 
 /* Children */
+import { ClassicLayout } from '../../templates';
 import OrderTable from './OrderTable';
+
+/* Styles */
+import Styled from './Styled';
 
 export default function OrderDetails() {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
   const orderId = pathname.substring(pathname.lastIndexOf('/') + 1);
 
-  // order details
+  // Order
   const order = useSelector(
     (state) => state.orders.orders.find((o) => o.id === Number(orderId)),
   );
 
-  // mark as delivered
+  // Mark as Delivered
   const handleMarkAsDelivered = () => {
     const user = LocalStorageMethods.getParsedItem('user');
     if (user) {
@@ -40,61 +44,56 @@ export default function OrderDetails() {
     if (user) dispatch(fetchOrders({ token: user.token, role: user.role }));
   }, [dispatch]);
 
-  // data-testid
-  const labelTestIdPrefix = 'customer_order_details__element-order-details-label-';
-
   return (
-    <main>
-      <div>
-        {
-          order
+    <ClassicLayout id="order-details">
+      <Styled>
+        <h2>
+          Order #
+          {orderId}
+        </h2>
+
+        <div>
+          {
+            order
             && (
               <>
-                <span
-                  data-testid={ `${labelTestIdPrefix}order-id` }
-                >
+                <span>
                   { Number(orderId) }
                 </span>
-                <span
-                  data-testid={ `${labelTestIdPrefix}seller-name` }
-                >
+                <span>
                   Fulana Pereira
                 </span>
-                <span
-                  data-testid={ `${labelTestIdPrefix}order-date` }
-                >
+                <span>
                   { formatDate(order.saleDate) }
                 </span>
-                <span
-                  data-testid={ `${labelTestIdPrefix}delivery-status` }
-                >
+                <span>
                   { order.status }
                 </span>
               </>
             )
+          }
+
+          <button
+            type="button"
+            disabled={ order && order.status !== 'Em trânsito' }
+            onClick={ handleMarkAsDelivered }
+          >
+            Mark as Delivered
+          </button>
+        </div>
+
+        {
+          order && (
+            <OrderTable
+              data={ {
+                header: ['Item', 'Name', 'Quantity', 'Unit Value', 'Sub-total'],
+                body: order.products,
+                footer: ['Total', order.totalPrice],
+              } }
+            />
+          )
         }
-
-        <button
-          data-testid="customer_order_details__button-delivery-check"
-          type="button"
-          disabled={ order && order.status !== 'Em trânsito' }
-          onClick={ handleMarkAsDelivered }
-        >
-          Mark as Delivered
-        </button>
-      </div>
-
-      {
-        order && (
-          <OrderTable
-            data={ {
-              header: ['Item', 'Name', 'Quantity', 'Unit Value', 'Sub-total'],
-              body: order.products,
-              footer: ['Total', order.totalPrice],
-            } }
-          />
-        )
-      }
-    </main>
+      </Styled>
+    </ClassicLayout>
   );
 }
