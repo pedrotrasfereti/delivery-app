@@ -9,11 +9,11 @@ export default function TableFooter({ data }) {
     <Styled>
       <tr>
         <td colSpan="100">
-          <label htmlFor="total-price">
+          <label htmlFor="table-footer__total-price">
             { data[0] }
             :
           </label>
-          <span id="total-price">
+          <span id="table-footer__total-price">
             $
             { data[1] }
           </span>
