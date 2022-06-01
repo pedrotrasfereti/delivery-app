@@ -12,12 +12,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { removeItem, updateTotalPrice } from '../../../redux/features/checkoutSlice';
 import { updateProductQty } from '../../../redux/features/productsSlice';
 
-/* Utils */
-import calculateTotalPrice from '../../../utils/calculateTotalPrice';
-import formatFloat from '../../../utils/formatFloat';
-
 /* Styles */
 import Styled from './Styled';
+
+/* Utils */
+import calculateTotalPrice from '../../../utils/calculateTotalPrice';
 
 export default function TableBody({ data }) {
   const dispatch = useDispatch();
@@ -42,7 +41,15 @@ export default function TableBody({ data }) {
   return (
     <Styled>
       {
-        data.map(({ id, name, quantity, price, subTotal }, index) => (
+        data.map(({
+          id,
+          name,
+          quantity,
+          price,
+          subTotal,
+        },
+        index,
+        ) => (
           <tr key={ id }>
             <td id="item-column" className="Bold">
               { index + 1 }
@@ -55,11 +62,11 @@ export default function TableBody({ data }) {
             </td>
             <td>
               $
-              { formatFloat(price) }
+              { price }
             </td>
             <td>
               $
-              { formatFloat(subTotal) }
+              { subTotal }
             </td>
             <td>
               <button

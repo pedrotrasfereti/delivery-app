@@ -23,14 +23,17 @@ export default function Checkout() {
         <Table
           data={ {
             header: [
-              'Item',
               'Name',
               'Quantity',
               'Unit Value',
               'Sub-total',
               'Remove Item',
             ],
-            body: cart,
+            body: cart.map((p) => ({
+              ...p,
+              price: formatFloat(p.price),
+              subTotal: formatFloat(p.subTotal),
+            })),
             footer: ['Total', formatFloat(totalPrice)],
           } }
         />
