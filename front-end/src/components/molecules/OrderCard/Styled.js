@@ -1,6 +1,7 @@
 import { styled } from '../../../stitches.config';
 
 const boxShadow = 'rgba(0, 0, 0, .08) 0px 4px 12px';
+const glow = 'inset 0 0 1px hsl(166, 95%, 100%)';
 
 export default styled('button', {
   alignItems: 'center',
@@ -35,12 +36,11 @@ export default styled('button', {
     },
   },
 
-  '& .Status .Decor': {
+  '& .Status .Dot': {
     display: 'inline-block',
-    backgroundColor: '$accent1',
     border: '0',
     borderRadius: '$round',
-    boxShadow: 'inset 0 0 2px hsl(166, 95%, 100%)',
+    boxShadow: glow,
     height: '.5rem',
     marginBottom: '$1',
     marginRight: '$2',

@@ -13,11 +13,25 @@ export default function OrderCard({ order }) {
 
   const navigate = useNavigate();
 
+  // Conditional Styles
+  const dotColorMap = {
+    'Em Trânsito': '$accent2',
+    'Entregue': '$accent1',
+    'Pendente': '$primary',
+  };
+
+  const extraStyles = {
+    '& .Status .Dot': {
+      backgroundColor: dotColorMap[status],
+    },
+  };
+
   return (
     <Styled
       key={ id }
       type="button"
       onClick={ () => navigate(`/customer/orders/${id}`) }
+      css={ extraStyles }
     >
       <h3 className="OrderId">
         Pedido
@@ -25,7 +39,7 @@ export default function OrderCard({ order }) {
         { id }
       </h3>
       <span className="Status">
-        <span className="Decor" />
+        <span className="Dot" />
         Status:
         {' '}
         <span className="StatusCircle" />
