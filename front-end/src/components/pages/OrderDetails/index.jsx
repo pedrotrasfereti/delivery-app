@@ -10,10 +10,10 @@ import LocalStorageMethods from '../../../utils/localStorage';
 import formatDate from '../../../utils/formatDate';
 
 /* Children */
-import { ClassicLayout } from '../../templates';
 import OrderTable from './OrderTable';
 
 /* Styles */
+import { ClassicLayout } from '../../templates';
 import Styled from './Styled';
 
 export default function OrderDetails() {

@@ -15,7 +15,7 @@ import Styled from './Styled';
 import navLinksMap from '../../../utils/navLinksMap';
 import LocalStorageMethods from '../../../utils/localStorage';
 
-function NavBar({ iconbar }) {
+export default function NavBar({ iconbar }) {
   const { pathname } = useLocation();
 
   // Render
@@ -65,12 +65,11 @@ function NavBar({ iconbar }) {
     <Styled iconbar={ iconbar }>
       <ul>
         {
-          navLinks.map(({ dataTestId, name, to, icon }) => (
+          navLinks.map(({ name, to, icon }) => (
             <li key={ name }>
               {
                 iconbar ? (
                   <Link
-                    data-testid={ dataTestId }
                     to={ to }
                     className={ getLinkClassName(to) }
                   >
@@ -78,7 +77,6 @@ function NavBar({ iconbar }) {
                   </Link>
                 ) : (
                   <button
-                    data-testid={ dataTestId }
                     type="button"
                     className={ getLinkClassName(to) }
                     onClick={
@@ -104,5 +102,3 @@ NavBar.propTypes = {
 NavBar.defaultProps = {
   iconbar: false,
 };
-
-export default NavBar;

@@ -13,7 +13,7 @@ import Styled from './Styled';
 /* Utils */
 import formatFloat from '../../../utils/formatFloat';
 
-export function CheckoutBtn() {
+export default function CheckoutBtn() {
   const navigate = useNavigate();
 
   const { cart, totalPrice } = useSelector((state) => state.checkout);
@@ -54,5 +54,3 @@ export function CheckoutBtn() {
     </Styled>
   );
 }
-
-export default CheckoutBtn;

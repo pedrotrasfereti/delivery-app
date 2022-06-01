@@ -6,7 +6,6 @@ import { useDispatch } from 'react-redux';
 import { setUser } from '../../redux/features/userSlice';
 
 /* Children */
-import BaseForm from './BaseForm';
 import { Button, ErrorMessage, Fieldset, HorizontalRule } from '../atoms';
 import { ErrorMessageBox, TextInputLabel } from '../molecules';
 
@@ -24,14 +23,16 @@ import messages from '../../utils/messages';
 import { registerRequest } from '../../services/request';
 
 /* Styles */
-import { styled } from '../../stitches.config';
+import Form from '../atoms/Form';
 
-const PasswordSection = styled('div', {
-  display: 'flex',
-  gap: '$2',
-});
+const styles = {
+  '& .PasswordSection': {
+    display: 'flex',
+    gap: '$2',
+  },
+};
 
-function RegisterForm() {
+export default function RegisterForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -97,7 +98,7 @@ function RegisterForm() {
   };
 
   return (
-    <BaseForm id="register-form" action="">
+    <Form action="" css={ styles }>
       {
         registerErrVisible && (
           <ErrorMessageBox
@@ -156,7 +157,7 @@ function RegisterForm() {
           }
         </div>
 
-        <PasswordSection>
+        <div className="PasswordSection">
           <div>
             <TextInputLabel
               id="register-password-input"
@@ -204,7 +205,7 @@ function RegisterForm() {
               )
             }
           </div>
-        </PasswordSection>
+        </div>
       </Fieldset>
 
       <div id="btn-group" className="form__button-group">
@@ -232,8 +233,6 @@ function RegisterForm() {
           </Button>
         </span>
       </div>
-    </BaseForm>
+    </Form>
   );
 }
-
-export default RegisterForm;

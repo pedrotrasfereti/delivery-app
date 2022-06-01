@@ -11,7 +11,7 @@ import { NavBar, CheckoutBtn } from '../../atoms';
 /* Styles */
 import Styled from './Styled';
 
-function Header() {
+export default function Header() {
   // Back Button
   const navigate = useNavigate();
   const goBack = -1;
@@ -62,5 +62,3 @@ function Header() {
     </Styled>
   );
 }
-
-export default Header;

@@ -5,9 +5,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../redux/features/userSlice';
 
-/* Children */
-import BaseForm from './BaseForm';
-
 import {
   Button,
   ErrorMessage,
@@ -28,7 +25,10 @@ import messages from '../../utils/messages';
 /* Services */
 import { loginRequest } from '../../services/request';
 
-function LoginForm() {
+/* Styles */
+import Form from '../atoms/Form';
+
+export default function LoginForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -76,7 +76,7 @@ function LoginForm() {
   };
 
   return (
-    <BaseForm id="login-form" action="">
+    <Form id="login-form" action="">
       {
         loginErrVisible && (
           <ErrorMessageBox
@@ -162,8 +162,6 @@ function LoginForm() {
           </Button>
         </span>
       </div>
-    </BaseForm>
+    </Form>
   );
 }
-
-export default LoginForm;

@@ -18,7 +18,6 @@ import {
 import { CheckoutBtn, SideBar } from '../atoms';
 import StyledCheckoutBtn from '../atoms/CheckoutBtn/Styled';
 import { ProductCards } from '../organisms';
-import { ClassicLayout } from '../templates';
 
 /* Utils */
 import generateCart from '../../utils/generateCart';
@@ -26,6 +25,8 @@ import calculateTotalPrice from '../../utils/calculateTotalPrice';
 import LocalStorageMethods from '../../utils/localStorage';
 
 /* Styles */
+import { ClassicLayout } from '../templates';
+
 const styles = {
   '@bp3': {
     flexFlow: 'column nowrap',
@@ -84,11 +85,9 @@ const Products = () => {
     >
       <SideBar />
 
-      <main>
-        {
-          products.length && <ProductCards products={ products } />
-        }
-      </main>
+      {
+        products.length && <ProductCards products={ products } />
+      }
 
       <CheckoutBtn />
     </ClassicLayout>

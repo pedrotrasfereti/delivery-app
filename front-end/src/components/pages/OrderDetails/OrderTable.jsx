@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+/* Utils */
+import formatFloat from '../../../utils/formatFloat';
+
 export default function OrderTable({ data }) {
   return (
     <table>
@@ -20,40 +23,20 @@ export default function OrderTable({ data }) {
         {
           data.body.map(({ id, name, quantity, price, subTotal }, index) => (
             <tr key={ id }>
-              <td
-                data-testid={
-                  `customer_order_details__element-order-table-item-number-${index}`
-                }
-              >
+              <td>
                 { index + 1 }
               </td>
-              <td
-                data-testid={
-                  `customer_order_details__element-order-table-name-${index}`
-                }
-              >
+              <td>
                 { name }
               </td>
-              <td
-                data-testid={
-                  `customer_order_details__element-order-table-quantity-${index}`
-                }
-              >
+              <td>
                 { quantity }
               </td>
-              <td
-                data-testid={
-                  `customer_order_details__element-order-table-unit-price-${index}`
-                }
-              >
-                { String(Number(price).toFixed(2)).replace('.', ',') }
+              <td>
+                { formatFloat(price) }
               </td>
-              <td
-                data-testid={
-                  `customer_order_details__element-order-table-sub-total-${index}`
-                }
-              >
-                { String(Number(subTotal).toFixed(2)).replace('.', ',') }
+              <td>
+                { formatFloat(subTotal) }
               </td>
             </tr>
           ))
@@ -77,11 +60,8 @@ export default function OrderTable({ data }) {
               }
 
               return (
-                <td
-                  data-testid="customer_order_details__element-order-total-price"
-                  key={ value }
-                >
-                  { String(Number(value).toFixed(2)).replace('.', ',')}
+                <td key={ value }>
+                  { formatFloat(value) }
                 </td>
               );
             })
