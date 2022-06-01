@@ -16,6 +16,9 @@ export default function Table({ data }) {
 
       <thead>
         <tr>
+            <td id="item-column">
+              <Label>Item</Label>
+            </td>
           {
             data.header.map((heading) => (
               <td
