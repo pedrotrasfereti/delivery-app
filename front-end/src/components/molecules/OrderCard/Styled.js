@@ -40,7 +40,7 @@ export default styled('button', {
     backgroundColor: '$accent1',
     border: '0',
     borderRadius: '$round',
-    boxShadow: 'hsl(166, 95%, 40%) 0px 0px 2px',
+    boxShadow: 'inset 0 0 2px hsl(166, 95%, 100%)',
     height: '.5rem',
     marginBottom: '$1',
     marginRight: '$2',
