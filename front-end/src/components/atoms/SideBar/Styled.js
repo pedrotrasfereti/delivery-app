@@ -22,7 +22,7 @@ const backgroundProperties = {
 };
 
 const gradient = `
-linear-gradient(0deg, hsla(215, 100%, 65%, .5) 0%, hsla(0, 100%, 100%, .5) 50%)
+linear-gradient(0deg, hsla(215, 100%, 65%, .5) 0%, hsla(0, 100%, 100%, .3) 50%)
 `;
 
 export default styled('aside', {
@@ -137,18 +137,19 @@ export default styled('aside', {
       },
 
       '&:hover': {
-        padding: '3rem 1.5rem',
+        padding: '6.5vh 1.5rem',
 
         '& span': {
+          fontFamily: '$sans',
           fontSize: '$4',
-          fontWeight: '$5',
+          fontWeight: '$6',
         },
 
         '&:not(.Selected) span': {
           color: '$textDark',
         },
 
-        '&::before': {
+        '&::after': {
           background: gradient,
           content: '',
           height: '100%',
@@ -162,7 +163,12 @@ export default styled('aside', {
 
       '&.Selected:hover::before': {
         background: '$primary',
-        width: '.5rem',
+        content: '',
+        height: '100%',
+        left: '0',
+        position: 'absolute',
+        top: '0',
+        width: '.4rem',
         zIndex: '9',
       },
     },
