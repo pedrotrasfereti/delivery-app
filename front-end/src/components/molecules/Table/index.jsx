@@ -9,18 +9,18 @@ import TableFooter from '../TableFooter';
 /* Styled */
 import Styled from './Styled';
 
-export default function Table({ data, deleteItem }) {
+export default function Table({ body, caption, cols, sum, deleteItem }) {
   return (
     <Styled>
-      <caption>My order</caption>
+      <caption>{ caption }</caption>
 
       <thead>
         <tr>
-            <td id="item-column">
-              <Label>Item</Label>
-            </td>
+          <td id="item-column">
+            <Label>Item</Label>
+          </td>
           {
-            data.header.map((heading) => (
+            cols.map((heading) => (
               <td
                 id={ `${heading.toLowerCase()}-column` }
                 key={ heading }
@@ -32,22 +32,29 @@ export default function Table({ data, deleteItem }) {
         </tr>
       </thead>
 
-      <TableBody data={ data.body } deleteItem={ deleteItem } />
+      <TableBody data={ body } deleteItem={ deleteItem } />
 
-      <TableFooter data={ data.footer } />
+      <TableFooter sum={ sum } />
     </Styled>
   );
 }
 
 Table.propTypes = {
-  data: PropTypes.shape({
-    header: PropTypes.arrayOf(PropTypes.string),
-    body: PropTypes.arrayOf(PropTypes.object),
-    footer: PropTypes.arrayOf(PropTypes.string),
-  }).isRequired,
+  body: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    price: PropTypes.string,
+    quantity: PropTypes.number,
+    subTotal: PropTypes.string,
+  })).isRequired,
+  caption: PropTypes.string,
+  cols: PropTypes.arrayOf(PropTypes.string).isRequired,
   deleteItem: PropTypes.bool,
+  sum: PropTypes.string,
 };
 
 Table.defaultProps = {
+  caption: '',
   deleteItem: false,
+  sum: '',
 };

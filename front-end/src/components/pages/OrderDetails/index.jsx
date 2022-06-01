@@ -10,11 +10,14 @@ import LocalStorageMethods from '../../../utils/localStorage';
 import formatDate from '../../../utils/formatDate';
 
 /* Children */
-import OrderTable from './OrderTable';
+import { Table } from '../../molecules';
 
 /* Styles */
 import { ClassicLayout } from '../../templates';
 import Styled from './Styled';
+
+/* Utils */
+import formatFloat from '../../../utils/formatFloat';
 
 export default function OrderDetails() {
   const dispatch = useDispatch();
@@ -47,11 +50,6 @@ export default function OrderDetails() {
   return (
     <ClassicLayout id="order-details">
       <Styled>
-        <h2>
-          Order #
-          {orderId}
-        </h2>
-
         <div>
           {
             order
@@ -84,12 +82,17 @@ export default function OrderDetails() {
 
         {
           order && (
-            <OrderTable
-              data={ {
-                header: ['Item', 'Name', 'Quantity', 'Unit Value', 'Sub-total'],
-                body: order.products,
-                footer: ['Total', order.totalPrice],
-              } }
+            <Table
+              body={
+                order.products.map((p) => ({
+                  ...p,
+                  price: formatFloat(p.price),
+                  subTotal: formatFloat(p.subTotal),
+                }))
+              }
+              caption={ `Order #${orderId}` }
+              cols={ ['Name', 'Quantity', 'Unit Value', 'Sub-total'] }
+              sum={ formatFloat(order.totalPrice) }
             />
           )
         }

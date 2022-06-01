@@ -5,7 +5,7 @@ export default styled('tbody', {
     padding: '$3',
     textAlign: 'end',
 
-    '& label': {
+    '& .Label': {
       fontFamily: '$sans',
       fontSize: '$3',
       fontWeight: '$5',
@@ -18,7 +18,7 @@ export default styled('tbody', {
       },
     },
 
-    '& span': {
+    '& .Sum': {
       fontFamily: '$sans',
       fontSize: '$3',
       fontWeight: '$5',

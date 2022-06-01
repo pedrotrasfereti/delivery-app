@@ -4,25 +4,30 @@ import PropTypes from 'prop-types';
 /* Styled */
 import Styled from './Styled';
 
-export default function TableFooter({ data }) {
+export default function TableFooter({ sum }) {
   return (
     <Styled>
       <tr>
-        <td colSpan="100">
-          <label htmlFor="table-footer__total-price">
-            { data[0] }
-            :
-          </label>
-          <span id="table-footer__total-price">
-            $
-            { data[1] }
-          </span>
-        </td>
+        {
+          sum === ''
+            ? <td colSpan="100" />
+            : (
+              <td colSpan="100">
+                <span className="Label">
+                  Total:
+                </span>
+                <span className="Sum">
+                  $
+                  { sum }
+                </span>
+              </td>
+            )
+        }
       </tr>
     </Styled>
   );
 }
 
 TableFooter.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.string),
-}.isRequired;
+  sum: PropTypes.string.isRequired,
+};

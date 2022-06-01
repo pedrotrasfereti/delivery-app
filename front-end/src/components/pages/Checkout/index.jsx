@@ -7,12 +7,12 @@ import { useSelector } from 'react-redux';
 import { Table } from '../../molecules';
 import { CheckoutForm } from '../../organisms';
 
-/* Utils */
-import formatFloat from '../../../utils/formatFloat';
-
 /* Styles */
 import { ClassicLayout } from '../../templates';
 import Styled from './Styled';
+
+/* Utils */
+import formatFloat from '../../../utils/formatFloat';
 
 export default function Checkout() {
   const { cart, totalPrice } = useSelector((state) => state.checkout);
@@ -21,24 +21,18 @@ export default function Checkout() {
     <ClassicLayout>
       <Styled>
         <Table
-          data={ {
-            header: [
-              'Name',
-              'Quantity',
-              'Unit Value',
-              'Sub-total',
-              'Remove Item',
-            ],
-            body: cart.map((p) => ({
+          body={
+            cart.map((p) => ({
               ...p,
               price: formatFloat(p.price),
               subTotal: formatFloat(p.subTotal),
-            })),
-            footer: ['Total', formatFloat(totalPrice)],
-          } }
+            }))
+          }
+          caption="My order"
+          cols={ ['Name', 'Quantity', 'Unit Value', 'Sub-total', 'Remove Item'] }
+          sum={ formatFloat(totalPrice) }
           deleteItem
         />
-
         <CheckoutForm />
       </Styled>
     </ClassicLayout>
