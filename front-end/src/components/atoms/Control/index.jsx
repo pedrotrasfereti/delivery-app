@@ -4,10 +4,9 @@ import PropTypes from 'prop-types';
 /* Styles */
 import Styled from './Styled';
 
-export default function Control({ dataTestId, handleOnClick, operation }) {
+export default function Control({ handleOnClick, operation }) {
   return (
     <Styled
-      data-testid={ dataTestId }
       onClick={ handleOnClick }
       operation={ operation }
     >
@@ -20,7 +19,6 @@ export default function Control({ dataTestId, handleOnClick, operation }) {
 
 Control.propTypes = {
   operation: PropTypes.oneOf(['add', 'subtract']),
-  dataTestId: PropTypes.string.isRequired,
   handleOnClick: PropTypes.func.isRequired,
 };
 
