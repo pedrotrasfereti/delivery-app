@@ -9,7 +9,7 @@ import TableFooter from '../TableFooter';
 /* Styled */
 import Styled from './Styled';
 
-export default function Table({ data }) {
+export default function Table({ data, deleteItem }) {
   return (
     <Styled>
       <caption>My order</caption>
@@ -32,7 +32,7 @@ export default function Table({ data }) {
         </tr>
       </thead>
 
-      <TableBody data={ data.body } />
+      <TableBody data={ data.body } deleteItem={ deleteItem } />
 
       <TableFooter data={ data.footer } />
     </Styled>
@@ -42,7 +42,12 @@ export default function Table({ data }) {
 Table.propTypes = {
   data: PropTypes.shape({
     header: PropTypes.arrayOf(PropTypes.string),
-    body: PropTypes.arrayOf(PropTypes.string),
+    body: PropTypes.arrayOf(PropTypes.object),
     footer: PropTypes.arrayOf(PropTypes.string),
-  }),
-}.isRequired;
+  }).isRequired,
+  deleteItem: PropTypes.bool,
+};
+
+Table.defaultProps = {
+  deleteItem: false,
+};

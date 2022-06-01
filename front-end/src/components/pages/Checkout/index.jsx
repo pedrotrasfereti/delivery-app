@@ -36,6 +36,7 @@ export default function Checkout() {
             })),
             footer: ['Total', formatFloat(totalPrice)],
           } }
+          deleteItem
         />
 
         <CheckoutForm />

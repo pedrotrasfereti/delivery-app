@@ -18,7 +18,7 @@ import Styled from './Styled';
 /* Utils */
 import calculateTotalPrice from '../../../utils/calculateTotalPrice';
 
-export default function TableBody({ data }) {
+export default function TableBody({ data, deleteItem }) {
   const dispatch = useDispatch();
 
   const { cart } = useSelector((state) => state.checkout);
@@ -68,15 +68,19 @@ export default function TableBody({ data }) {
               $
               { subTotal }
             </td>
-            <td>
-              <button
-                type="button"
-                onClick={ () => handleRemoveItem(id) }
-              >
-                <TrashIcon className="TrashIcon" />
-                <TrashIconFill className="TrashIconFill" />
-              </button>
-            </td>
+            {
+              deleteItem && (
+                <td>
+                  <button
+                    type="button"
+                    onClick={ () => handleRemoveItem(id) }
+                  >
+                    <TrashIcon className="TrashIcon" />
+                    <TrashIconFill className="TrashIconFill" />
+                  </button>
+                </td>
+              )
+            }
           </tr>
         ))
       }
@@ -85,5 +89,10 @@ export default function TableBody({ data }) {
 }
 
 TableBody.propTypes = {
-  body: PropTypes.arrayOf(PropTypes.string),
-}.isRequired;
+  body: PropTypes.arrayOf(PropTypes.object),
+  deleteItem: PropTypes.bool,
+};
+
+TableBody.defaultProps = {
+  deleteItem: false,
+};
