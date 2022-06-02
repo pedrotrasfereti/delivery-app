@@ -32,7 +32,7 @@ export default function Account() {
         <HorizontalRule />
 
         <div className="Links">
-          <Button type="button" id="edit-profile" link>
+          <Button type="button" link>
             <a
               href="http://"
               target="_blank"
@@ -41,7 +41,7 @@ export default function Account() {
               Edit Profile
             </a>
           </Button>
-          <Button type="button" id="change-password" link>
+          <Button type="button" link>
             <a
               href="http://"
               target="_blank"
@@ -50,7 +50,7 @@ export default function Account() {
               Change Password
             </a>
           </Button>
-          <Button type="button" id="delete" link>
+          <Button type="button" link>
             <a
               href="http://"
               target="_blank"

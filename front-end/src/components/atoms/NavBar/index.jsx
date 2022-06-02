@@ -50,7 +50,7 @@ export default function NavBar({ iconbar }) {
     dispatch(clearUser());
   };
 
-  // Conditional Style
+  // Conditional Styles
   const getLinkClassName = (to) => {
     const path = pathname.replace('checkout', 'products');
 

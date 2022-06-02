@@ -25,7 +25,7 @@ import { registerRequest } from '../../services/request';
 /* Styles */
 import Form from '../atoms/Form';
 
-const styles = {
+const extraStyles = {
   '& .PasswordSection': {
     display: 'flex',
     gap: '$2',
@@ -98,7 +98,7 @@ export default function RegisterForm() {
   };
 
   return (
-    <Form action="" css={ styles }>
+    <Form action="" css={ extraStyles }>
       {
         registerErrVisible && (
           <ErrorMessageBox

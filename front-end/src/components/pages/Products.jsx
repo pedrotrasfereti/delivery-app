@@ -27,7 +27,7 @@ import LocalStorageMethods from '../../utils/localStorage';
 /* Styles */
 import { ClassicLayout } from '../templates';
 
-const styles = {
+const extraStyles = {
   '@bp3': {
     flexFlow: 'column nowrap',
 
@@ -81,7 +81,7 @@ const Products = () => {
   return (
     <ClassicLayout
       id="products-page"
-      css={ styles }
+      css={ extraStyles }
     >
       <SideBar />
 

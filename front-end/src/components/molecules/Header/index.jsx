@@ -27,7 +27,7 @@ export default function Header() {
 
   const shouldRender = !excludeRoutes.includes(pathname);
 
-  // Conditional Styles
+  // Conditional Styless
   const hideOn = [
     '/customer/products',
     '/seller/orders',
@@ -35,7 +35,7 @@ export default function Header() {
 
   const backDisabled = hideOn.includes(pathname);
 
-  const styles = {
+  const extraStyles = {
     visibility: backDisabled ? 'hidden' : 'visible',
   };
 
@@ -46,7 +46,7 @@ export default function Header() {
         className="BackButton"
         onClick={ () => navigate(goBack) }
         disabled={ backDisabled }
-        style={ styles }
+        style={ extraStyles }
       >
         <BackIcon className="BackIcon" />
       </button>

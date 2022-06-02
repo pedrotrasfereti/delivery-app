@@ -11,7 +11,7 @@ import { RegisterForm } from '../../organisms';
 import { DuoGeneric } from '../../templates';
 import { ContentWrapper, DecorOne, DecorTwo } from './Styled';
 
-const styles = {
+const extraStyles = {
   // Place form content at the bottom and teaser at the top
   '@bp3': {
     '& #form-content': {
@@ -24,7 +24,7 @@ export default function Register() {
   return (
     <DuoGeneric
       id="register-page"
-      css={ styles }
+      css={ extraStyles }
     >
       <ContentWrapper id="form-content">
         <h1 id="title">Sign Up to Deliveree</h1>

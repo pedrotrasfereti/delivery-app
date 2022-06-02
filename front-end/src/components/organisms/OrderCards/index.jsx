@@ -36,7 +36,7 @@ export default function OrderCards({ orders }) {
     return '';
   };
 
-  // Conditional Style
+  // Conditional Styles
   const getDateClassName = (date) => (date === selectedDate ? 'Date Selected' : 'Date');
 
   return (

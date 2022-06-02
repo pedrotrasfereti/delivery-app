@@ -23,7 +23,7 @@ export default function OrderCard({ order }) {
     }
   };
 
-  // Conditional Styles
+  // Conditional Styless
   const dotColorMap = {
     'Em Trânsito': '$senary',
     Entregue: '$accent1',
