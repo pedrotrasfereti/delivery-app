@@ -49,7 +49,7 @@ export default function Table({
                     type="button"
                     className="Control"
                     disabled={ disabled }
-                    onClick={ () => handleOnClick() }
+                    onClick={ handleOnClick }
                   >
                     { name }
                   </button>

@@ -32,28 +32,28 @@ export default function OrderDetails() {
   );
 
   /* Controls */
-  const dispatcher = (user, callback) => callback({
+  const dispatcher = (callback, user) => dispatch(callback({
     token: user.token,
     role: user.role,
     orderId,
-  });
+  }));
 
   // Mark as Delivered
   const handleMarkAsDelivered = () => {
     const user = LocalStorageMethods.getParsedItem('user');
-    if (user) dispatcher(user, markAsDelivered);
+    if (user) dispatcher(markAsDelivered, user);
   };
 
   // Mark as Dispatched
   const handleMarkAsDispatched = () => {
     const user = LocalStorageMethods.getParsedItem('user');
-    if (user) dispatcher(user, markAsDispatched);
+    if (user) dispatcher(markAsDispatched, user);
   };
 
   // Mark as Preparing
   const handleMarkAsPreparing = () => {
     const user = LocalStorageMethods.getParsedItem('user');
-    if (user) dispatcher(user, markAsPreparing);
+    if (user) dispatcher(markAsPreparing, user);
   };
 
   const getControls = () => {
@@ -63,18 +63,18 @@ export default function OrderDetails() {
       return user.role === 'customer'
         ? ([{
           disabled: (order && order.status) !== 'Em trânsito',
-          handleOnClick: handleMarkAsDelivered,
+          handleOnClick: () => handleMarkAsDelivered(),
           name: 'Mark as Delivered',
         }])
         : ([
           {
             disabled: order && order.status !== 'Pendente',
-            handleOnClick: handleMarkAsPreparing,
+            handleOnClick: () => handleMarkAsPreparing(),
             name: 'Mark as Preparing',
           },
           {
             disabled: order && order.status !== 'Preparando',
-            handleOnClick: handleMarkAsDispatched,
+            handleOnClick: () => handleMarkAsDispatched(),
             name: 'Mark as Dispatched',
           },
         ]);
