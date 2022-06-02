@@ -27,7 +27,7 @@ export default function OrderCard({ order }) {
   const dotColorMap = {
     'Em Trânsito': '$senary',
     Entregue: '$accent1',
-    Pendente: '$primary', // $gray500
+    Pendente: '$primary',
     Preparando: '$accent2',
   };
 
