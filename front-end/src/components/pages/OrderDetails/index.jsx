@@ -62,7 +62,7 @@ export default function OrderDetails() {
     if (user) {
       return user.role === 'customer'
         ? ([{
-          disabled: (order && order.status) !== 'Em trânsito',
+          disabled: (order && order.status) !== 'Em Trânsito',
           handleOnClick: () => handleMarkAsDelivered(),
           name: 'Mark as Delivered',
         }])
