@@ -43,7 +43,7 @@ export default function CheckoutBtn() {
         { showTotal ? 'Total:' : 'Checkout' }
       </span>
       {
-        showTotal && (
+        (showTotal && totalPrice) && (
           <span className="TotalPrice">
             $
             { formatFloat(totalPrice) }
