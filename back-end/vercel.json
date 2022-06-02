@@ -1,4 +1,5 @@
 {
+  "rewrites": [{ "source": "/api/(.*)", "destination": "server.js" }],
   "headers": [
     {
       "source": "/api/(.*)",
