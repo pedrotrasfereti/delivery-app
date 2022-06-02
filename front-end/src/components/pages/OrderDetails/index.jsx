@@ -3,7 +3,12 @@ import { useLocation } from 'react-router-dom';
 
 /* State */
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchOrders, markAsDelivered } from '../../../redux/features/ordersSlice';
+import {
+  fetchOrders,
+  markAsDelivered,
+  markAsDispatched,
+  markAsPreparing,
+} from '../../../redux/features/ordersSlice';
 
 /* Children */
 import { Table } from '../../molecules';
@@ -26,19 +31,57 @@ export default function OrderDetails() {
     (state) => state.orders.orders.find((o) => o.id === Number(orderId)),
   );
 
+  /* Controls */
+  const dispatcher = (user, callback) => callback({
+    token: user.token,
+    role: user.role,
+    orderId,
+  });
+
   // Mark as Delivered
   const handleMarkAsDelivered = () => {
     const user = LocalStorageMethods.getParsedItem('user');
+    if (user) dispatcher(user, markAsDelivered);
+  };
+
+  // Mark as Dispatched
+  const handleMarkAsDispatched = () => {
+    const user = LocalStorageMethods.getParsedItem('user');
+    if (user) dispatcher(user, markAsDispatched);
+  };
+
+  // Mark as Preparing
+  const handleMarkAsPreparing = () => {
+    const user = LocalStorageMethods.getParsedItem('user');
+    if (user) dispatcher(user, markAsPreparing);
+  };
+
+  const getControls = () => {
+    const user = LocalStorageMethods.getParsedItem('user');
+
     if (user) {
-      dispatch(markAsDelivered({
-        token: user.token,
-        role: user.role,
-        orderId,
-      }));
+      return user.role === 'customer'
+        ? ([{
+          disabled: (order && order.status) !== 'Em trânsito',
+          handleOnClick: handleMarkAsDelivered,
+          name: 'Mark as Delivered',
+        }])
+        : ([
+          {
+            disabled: order && order.status !== 'Pendente',
+            handleOnClick: handleMarkAsPreparing,
+            name: 'Mark as Preparing',
+          },
+          {
+            disabled: order && order.status !== 'Preparando',
+            handleOnClick: handleMarkAsDispatched,
+            name: 'Mark as Dispatched',
+          },
+        ]);
     }
   };
 
-  // fetch orders
+  // Fetch Orders
   useEffect(() => {
     const user = LocalStorageMethods.getParsedItem('user');
     if (user) dispatch(fetchOrders({ token: user.token, role: user.role }));
@@ -58,11 +101,7 @@ export default function OrderDetails() {
                 }))
               }
               cols={ ['Name', 'Quantity', 'Unit Value', 'Sub-total'] }
-              controls={ [{
-                disabled: (order && order.status) !== 'Em trânsito',
-                handleOnClick: handleMarkAsDelivered,
-                name: 'Mark as Delivered',
-              }] }
+              controls={ getControls() }
               labels={ [order.status] }
               sum={ formatFloat(order.totalPrice) }
               title={ `Order #${orderId}` }
