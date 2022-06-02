@@ -28,6 +28,7 @@ export default function OrderCard({ order }) {
     'Em Trânsito': '$accent2',
     Entregue: '$accent1',
     Pendente: '$primary',
+    Preparando: '$senary',
   };
 
   const extraStyles = {
