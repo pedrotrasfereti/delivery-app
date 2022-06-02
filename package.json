@@ -9,17 +9,11 @@
   "scripts": {
     "pm2": "./node_modules/.bin/pm2",
     "jest": "./node_modules/.bin/jest",
-    "start": "./scripts/prepare-for-test.sh",
     "stop": "(pm2 stop all && pm2 delete all) | grep 'PM2'",
     "dev": "./scripts/prepare-for-dev.sh",
     "dev:prestart": "./scripts/prestart-dev.sh",
     "db:reset": "./scripts/reset-db-dev.sh",
-    "db:reset:debug": "./scripts/reset-db-dev-debug.sh",
-    "pretest": "npm start",
-    "test": "jest -i --forceExit --verbose --config=./jest.config.js",
-    "test:dev": "NODE_ENV=development npm run jest -i --forceExit --verbose --config=./jest.config.js",
-    "test:dev:open": "NODE_ENV=development HEADLESS=false npm run test:dev",
-    "test:dev:report": "./__tests__/reports/generate.sh"
+    "db:reset:debug": "./scripts/reset-db-dev-debug.sh"
   },
   "repository": {
     "type": "git",
