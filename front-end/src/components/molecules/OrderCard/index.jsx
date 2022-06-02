@@ -25,10 +25,10 @@ export default function OrderCard({ order }) {
 
   // Conditional Styles
   const dotColorMap = {
-    'Em Trânsito': '$accent2',
+    'Em Trânsito': '$senary',
     Entregue: '$accent1',
-    Pendente: '$primary',
-    Preparando: '$senary',
+    Pendente: '$primary', // $gray500
+    Preparando: '$accent2',
   };
 
   const extraStyles = {
