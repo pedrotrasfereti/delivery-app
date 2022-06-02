@@ -48,8 +48,7 @@ export default function TableBody({ data, deleteItem }) {
           price,
           subTotal,
         },
-        index,
-        ) => (
+        index) => (
           <tr key={ id }>
             <td id="item-column" className="Bold">
               { index + 1 }
@@ -89,7 +88,13 @@ export default function TableBody({ data, deleteItem }) {
 }
 
 TableBody.propTypes = {
-  body: PropTypes.arrayOf(PropTypes.object),
+  data: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    price: PropTypes.string,
+    quantity: PropTypes.number,
+    subTotal: PropTypes.string,
+  })).isRequired,
   deleteItem: PropTypes.bool,
 };
 
