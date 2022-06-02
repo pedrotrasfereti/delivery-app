@@ -12,8 +12,8 @@ const { validateUserToken } = require('./middlewares/validate-user-token');
 const api = express();
 
 // middlewares
-api.use(express.json());
 api.use(cors());
+api.use(express.json());
 api.use('/images', express.static(path.join(__dirname, '../../public')));
 
 // routes
