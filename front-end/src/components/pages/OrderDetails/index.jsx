@@ -61,7 +61,7 @@ export default function OrderDetails() {
               controls={ [{
                 disabled: order && order.status !== 'Em trânsito',
                 handleOnClick: handleMarkAsDelivered,
-                label: 'Mark as Delivered',
+                name: 'Mark as Delivered',
               }] }
               labels={ [order.status] }
               sum={ formatFloat(order.totalPrice) }

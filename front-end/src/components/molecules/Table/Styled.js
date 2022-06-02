@@ -18,20 +18,58 @@ export default styled('table', {
       borderRadius: '1rem 1rem 0 0',
       boxShadow,
       display: 'flex',
-      justifyContent: 'space-around',
       padding: '$3 0',
 
       '& .Caption': {
         fontFamily: '$sans',
         fontSize: '$4',
         fontWeight: '$6',
+        marginLeft: '-40px',
       },
 
       '& .Controls, .Labels': {
         display: 'flex',
         fontFamily: '$sans',
         fontSize: '$3',
+        flex: '1',
         gap: '$3',
+      },
+
+      '& .Labels': {
+        marginLeft: '3rem',
+
+        '& .Label': {
+          display: 'flex',
+          gap: '$1',
+
+          '& .TagIcon': {
+            color: '$gray800',
+            fontSize: '$4',
+          },
+
+          '& span': {
+            color: '$textDark',
+            fontFamily: '$sans',
+            fontWeight: '$4',
+          },
+        },
+      },
+
+      '& .Controls .Control': {
+        appearance: 'none',
+        backgroundColor: '$primary',
+        border: '0',
+        borderRadius: '$round',
+        color: '$textLight',
+        cursor: 'pointer',
+        fontFamily: '$sans',
+        fontWeight: '$5',
+        padding: '.7rem 1rem',
+        transition: '.3s',
+
+        '&:disabled': {
+          display: 'none',
+        },
       },
     },
   },

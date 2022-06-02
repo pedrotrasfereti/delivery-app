@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+/* Assets */
+import { BsTag as TagIcon } from 'react-icons/bs';
+
 /* Children */
 import { Label } from '../../atoms';
 import TableBody from '../TableBody';
@@ -22,38 +25,38 @@ export default function Table({
     <Styled>
       <caption>
         <div className="Container">
-          {
-            labels.length > 0 && (
-              <div className="Labels">
-                {
-                  labels.map((label, index) => (
-                    <span key={ `${label}-${index}` }>{ label }</span>
-                  ))
-                }
-              </div>
-            )
-          }
+          <div className="Labels">
+            {
+              labels.length > 0 && (
+                labels.map((label, index) => (
+                  <div key={ `${label}-${index}` } className="Label">
+                    <TagIcon className="TagIcon" />
+                    <span>{ label }</span>
+                  </div>
+                ))
+              )
+            }
+          </div>
 
           <span className="Caption">{ title }</span>
 
-          {
-            controls.length > 0 && (
-              <div className="Controls">
-                {
-                  controls.map(({ label, handleOnClick, disabled }, index) => (
-                    <button
-                      key={ `${label}-${index}` }
-                      type="button"
-                      disabled={ disabled }
-                      onClick={ () => handleOnClick() }
-                    >
-                      { label }
-                    </button>
-                  ))
-                }
-              </div>
-            )
-          }
+          <div className="Controls">
+            {
+              controls.length > 0 && (
+                controls.map(({ disabled, handleOnClick, name }, index) => (
+                  <button
+                    key={ `${name}-${index}` }
+                    type="button"
+                    className="Control"
+                    disabled={ disabled }
+                    onClick={ () => handleOnClick() }
+                  >
+                    { name }
+                  </button>
+                ))
+              )
+            }
+          </div>
         </div>
       </caption>
 
@@ -94,7 +97,7 @@ Table.propTypes = {
   controls: PropTypes.arrayOf(PropTypes.shape({
     disabled: PropTypes.bool,
     handleOnClick: PropTypes.func,
-    label: PropTypes.string,
+    name: PropTypes.string,
   })),
   deleteItem: PropTypes.bool,
   labels: PropTypes.arrayOf(PropTypes.string),
