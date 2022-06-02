@@ -59,7 +59,7 @@ export default function OrderDetails() {
               }
               cols={ ['Name', 'Quantity', 'Unit Value', 'Sub-total'] }
               controls={ [{
-                disabled: order && order.status !== 'Em trânsito',
+                disabled: (order && order.status) !== 'Em trânsito',
                 handleOnClick: handleMarkAsDelivered,
                 name: 'Mark as Delivered',
               }] }

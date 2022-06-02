@@ -24,7 +24,6 @@ export default styled('table', {
         fontFamily: '$sans',
         fontSize: '$4',
         fontWeight: '$6',
-        marginLeft: '-40px',
       },
 
       '& .Controls, .Labels': {
@@ -55,20 +54,27 @@ export default styled('table', {
         },
       },
 
-      '& .Controls .Control': {
-        appearance: 'none',
-        backgroundColor: '$primary',
-        border: '0',
-        borderRadius: '$round',
-        color: '$textLight',
-        cursor: 'pointer',
-        fontFamily: '$sans',
-        fontWeight: '$5',
-        padding: '.7rem 1rem',
-        transition: '.3s',
+      '& .Controls': {
+        marginRight: '3rem',
+        justifyContent: 'flex-end',
 
-        '&:disabled': {
-          display: 'none',
+        '& .Control': {
+          appearance: 'none',
+          backgroundColor: '$primary',
+          border: '0',
+          borderRadius: '$round',
+          color: '$textLight',
+          cursor: 'pointer',
+          fontFamily: '$sans',
+          fontWeight: '$5',
+          padding: '.7rem 1rem',
+          transition: '.3s',
+
+          '&:disabled': {
+            backgroundColor: '$secondary',
+            cursor: 'default',
+            opacity: '.8',
+          },
         },
       },
     },
