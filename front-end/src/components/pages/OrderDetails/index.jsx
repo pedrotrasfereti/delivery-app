@@ -5,10 +5,6 @@ import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchOrders, markAsDelivered } from '../../../redux/features/ordersSlice';
 
-/* Utils */
-import LocalStorageMethods from '../../../utils/localStorage';
-import formatDate from '../../../utils/formatDate';
-
 /* Children */
 import { Table } from '../../molecules';
 
@@ -18,6 +14,7 @@ import Styled from './Styled';
 
 /* Utils */
 import formatFloat from '../../../utils/formatFloat';
+import LocalStorageMethods from '../../../utils/localStorage';
 
 export default function OrderDetails() {
   const dispatch = useDispatch();
@@ -50,36 +47,6 @@ export default function OrderDetails() {
   return (
     <ClassicLayout id="order-details">
       <Styled>
-        <div>
-          {
-            order
-            && (
-              <>
-                <span>
-                  { Number(orderId) }
-                </span>
-                <span>
-                  Fulana Pereira
-                </span>
-                <span>
-                  { formatDate(order.saleDate) }
-                </span>
-                <span>
-                  { order.status }
-                </span>
-              </>
-            )
-          }
-
-          <button
-            type="button"
-            disabled={ order && order.status !== 'Em trânsito' }
-            onClick={ handleMarkAsDelivered }
-          >
-            Mark as Delivered
-          </button>
-        </div>
-
         {
           order && (
             <Table
@@ -90,9 +57,15 @@ export default function OrderDetails() {
                   subTotal: formatFloat(p.subTotal),
                 }))
               }
-              caption={ `Order #${orderId}` }
               cols={ ['Name', 'Quantity', 'Unit Value', 'Sub-total'] }
+              controls={ [{
+                disabled: order && order.status !== 'Em trânsito',
+                handleOnClick: handleMarkAsDelivered,
+                label: 'Mark as Delivered',
+              }] }
+              labels={ [order.status] }
               sum={ formatFloat(order.totalPrice) }
+              title={ `Order #${orderId}` }
             />
           )
         }

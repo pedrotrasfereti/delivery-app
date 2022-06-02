@@ -9,13 +9,56 @@ import TableFooter from '../TableFooter';
 /* Styled */
 import Styled from './Styled';
 
-export default function Table({ body, caption, cols, sum, deleteItem }) {
+export default function Table({
+  body,
+  cols,
+  controls,
+  deleteItem,
+  labels,
+  sum,
+  title,
+}) {
   return (
     <Styled>
-      <caption>{ caption }</caption>
+      <caption>
+        <div className="Container">
+          {
+            labels.length > 0 && (
+              <div className="Labels">
+                {
+                  labels.map((label, index) => (
+                    <span key={ `${label}-${index}` }>{ label }</span>
+                  ))
+                }
+              </div>
+            )
+          }
+
+          <span className="Caption">{ title }</span>
+
+          {
+            controls.length > 0 && (
+              <div className="Controls">
+                {
+                  controls.map(({ label, handleOnClick, disabled }, index) => (
+                    <button
+                      key={ `${label}-${index}` }
+                      type="button"
+                      disabled={ disabled }
+                      onClick={ () => handleOnClick() }
+                    >
+                      { label }
+                    </button>
+                  ))
+                }
+              </div>
+            )
+          }
+        </div>
+      </caption>
 
       <thead>
-        <tr>
+        <tr className="Headings">
           <td id="item-column">
             <Label>Item</Label>
           </td>
@@ -47,14 +90,22 @@ Table.propTypes = {
     quantity: PropTypes.number,
     subTotal: PropTypes.string,
   })).isRequired,
-  caption: PropTypes.string,
   cols: PropTypes.arrayOf(PropTypes.string).isRequired,
+  controls: PropTypes.arrayOf(PropTypes.shape({
+    disabled: PropTypes.bool,
+    handleOnClick: PropTypes.func,
+    label: PropTypes.string,
+  })),
   deleteItem: PropTypes.bool,
+  labels: PropTypes.arrayOf(PropTypes.string),
   sum: PropTypes.string,
+  title: PropTypes.string,
 };
 
 Table.defaultProps = {
-  caption: '',
+  controls: [],
   deleteItem: false,
+  labels: [],
   sum: '',
+  title: '',
 };

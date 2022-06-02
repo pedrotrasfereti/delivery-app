@@ -86,7 +86,7 @@ const Products = () => {
       <SideBar />
 
       {
-        products.length && <ProductCards products={ products } />
+        products.length > 0 && <ProductCards products={ products } />
       }
 
       <CheckoutBtn />

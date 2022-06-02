@@ -12,20 +12,35 @@ export default styled('table', {
   width: '62.5rem',
 
   '& caption': {
-    backgroundColor: '$loContrast',
-    borderRadius: '1rem 1rem 0 0',
-    boxShadow,
-    fontFamily: '$sans',
-    fontSize: '$4',
-    fontWeight: '$6',
-    padding: '$3 0',
+    '& .Container': {
+      alignItems: 'center',
+      backgroundColor: '$loContrast',
+      borderRadius: '1rem 1rem 0 0',
+      boxShadow,
+      display: 'flex',
+      justifyContent: 'space-around',
+      padding: '$3 0',
+
+      '& .Caption': {
+        fontFamily: '$sans',
+        fontSize: '$4',
+        fontWeight: '$6',
+      },
+
+      '& .Controls, .Labels': {
+        display: 'flex',
+        fontFamily: '$sans',
+        fontSize: '$3',
+        gap: '$3',
+      },
+    },
   },
 
   '& thead': {
     border: '0',
     borderRadius: '1rem',
 
-    '& tr td': {
+    '& .Headings td': {
       backgroundColor: '$gray300',
       padding: '$2 $3',
       textAlign: 'center',

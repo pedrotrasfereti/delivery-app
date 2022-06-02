@@ -28,10 +28,10 @@ export default function Checkout() {
               subTotal: formatFloat(p.subTotal),
             }))
           }
-          caption="My order"
           cols={ ['Name', 'Quantity', 'Unit Value', 'Sub-total', 'Remove Item'] }
-          sum={ formatFloat(totalPrice) }
           deleteItem
+          sum={ formatFloat(totalPrice) }
+          title="My order"
         />
         <CheckoutForm />
       </Styled>
