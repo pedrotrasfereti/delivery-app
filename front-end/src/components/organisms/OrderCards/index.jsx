@@ -10,6 +10,7 @@ import Styled from './Styled';
 /* Utils */
 import formatDate from '../../../utils/formatDate';
 import generateTimeline from '../../../utils/generateTimeline';
+import LocalStorageMethods from '../../../utils/localStorage';
 
 export default function OrderCards({ orders }) {
   const timeline = generateTimeline(orders);
@@ -24,12 +25,23 @@ export default function OrderCards({ orders }) {
     setFilteredOrders(filtered);
   }, [orders, selectedDate]);
 
+  // Get Title
+  const getTitle = () => {
+    const user = LocalStorageMethods.getParsedItem('user');
+
+    if (user) {
+      return user.role === 'seller' ? 'All orders' : 'My orders';
+    }
+
+    return '';
+  };
+
   // Conditional Style
   const getDateClassName = (date) => (date === selectedDate ? 'Date Selected' : 'Date');
 
   return (
     <Styled id="order-cards">
-      <h2>My orders</h2>
+      <h2>{ getTitle() }</h2>
 
       <div className="Container">
         <div className="Timeline">
