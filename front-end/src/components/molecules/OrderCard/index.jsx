@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 /* Utils */
 import formatFloat from '../../../utils/formatFloat';
+import LocalStorageMethods from '../../../utils/localStorage';
 
 /* Styles */
 import Styled from './Styled';
@@ -12,6 +13,15 @@ export default function OrderCard({ order }) {
   const { id, status, totalPrice } = order;
 
   const navigate = useNavigate();
+
+  const to = () => {
+    const user = LocalStorageMethods.getParsedItem('user');
+
+    if (user) {
+      return user.role === 'seller'
+        ? `/seller/orders/${id}` : `/customer/orders/${id}`;
+    }
+  };
 
   // Conditional Styles
   const dotColorMap = {
@@ -30,7 +40,7 @@ export default function OrderCard({ order }) {
     <Styled
       key={ id }
       type="button"
-      onClick={ () => navigate(`/customer/orders/${id}`) }
+      onClick={ () => navigate(to()) }
       css={ extraStyles }
     >
       <h3 className="OrderId">
