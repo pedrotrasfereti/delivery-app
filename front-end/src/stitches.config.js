@@ -24,7 +24,7 @@ export const {
       tertiary: 'hsl(166, 95%, 22%)',
       quaternary: 'hsl(264, 67%, 31%)',
       quinary: 'hsl(348, 83%, 47%)',
-      senary: 'hsl(45, 99%, 47%)',
+      senary: 'hsl(44, 82%, 47%)',
 
       /* feedback colors */
       error: '$quinary',
