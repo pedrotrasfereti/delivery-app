@@ -17,6 +17,7 @@ api.use(express.json());
 api.use('/images', express.static(path.join(__dirname, '../../public')));
 
 // routes
+api.get('/', (_req, res) => res.send('Delivery App API!'));
 api.use('/register', userRouter);
 api.use('/login', loginRouter);
 api.use('/customer', validateUserToken('customer'), customerRouter);

@@ -16,8 +16,8 @@ const options = {
   // database: 
   //   `${process.env.MYSQL_DB_NAME || 'delivery-app'}${suffix[environment] || suffix.test}`,
   database: 'heroku_505f68b2a2b6b45',
-  username: process.env.MYSQL_USER || 'root',
-  password: process.env.MYSQL_PASSWORD || 'password',
+  username: process.env.MYSQL_USER || 'b23dcc0e8f1d81',
+  password: process.env.MYSQL_PASSWORD || '21404c14',
   dialect: 'mysql',
   dialectOptions: {
     timezone: 'Z',
