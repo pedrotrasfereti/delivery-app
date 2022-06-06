@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const instanceApi = axios.create({
-  baseURL: 'https://delivery-app-back-end-pedrotrasfereti.vercel.app/',
+  baseURL: 'https://delivery-app-x.herokuapp.com/',
 });
 
 const authenticateUser = (token) => {
