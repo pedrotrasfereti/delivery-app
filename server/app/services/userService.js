@@ -11,7 +11,7 @@ module.exports = {
       const token = JwtMethods.jwtSign({ id, email, role });
       return { id, name, email, role, token };
     } catch (error) {
-      const err = new Error('User already exist');
+      const err = new Error('User already exists');
       err.name = 'conflict';
       throw err;
     }

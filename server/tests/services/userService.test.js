@@ -11,14 +11,14 @@ describe('Tests userService', () => {
       sinon.restore();
     })
 
-    describe('When user already exist', () => {
-      it('Should throw error message "User already Exist', async () => {
+    describe('When user already exists', () => {
+      it('Should throw error message "User already Exists', async () => {
         const errorStub = sinon.stub(userModel, "create").rejects(new Error());
         try {
           await userService.create(userMock)
           sinon.assert.calledWith(errorStub, userMock);
         } catch (error) {
-          expect(error.message).to.equal("User already exist");
+          expect(error.message).to.equal("User already exists");
           expect(error.name).to.equal("conflict");
         }
       })
