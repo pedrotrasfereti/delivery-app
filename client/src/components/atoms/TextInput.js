@@ -28,6 +28,6 @@ export default styled('input', {
 
   '@bp3': {
     fontSize: '$2',
-    padding: '.7rem .9rem',
+    padding: '$btnPaddingMobile',
   },
 });
