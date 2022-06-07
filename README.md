@@ -20,7 +20,7 @@ Here you can find information about the project's development, such as which tec
 This full-stack application was developed during my time at [Trybe](https://www.betrybe.com/) to practice the lessons learned on both front-end and back-end modules. It was created in collaboration with group partners:
 
 * [Enio Andrade](https://github.com/enioandrade92/)
-* [Emanoel Mattos](https://github.com/manupulation/)
+* [Emanoel Mattos](https://github.com/manupilation/)
 * [Matheus Pormanhani](https://github.com/matheuspor/)
 * [João Vitor](https://github.com/joaosantosp/)
 
