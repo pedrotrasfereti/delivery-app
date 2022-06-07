@@ -23,6 +23,10 @@ export default styled('button', {
     filter: 'brightness(92%)',
   },
 
+  '@bp3': {
+    padding: '$btnPaddingMobile',
+  },
+
   variants: {
     inactive: {
       true: {
