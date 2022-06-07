@@ -67,7 +67,7 @@ A list of all endpoints and supported methods.
 
 ---
 
-**Note**: The following endpoints require an `Authorization` header with a valid login token as it's value; the user making the request must have the role "customer".
+> **Note**: The following endpoints require an `Authorization` header with a valid login token as it's value; the user making the request must have the role "customer".
 
 ### `/customer/products`
 
@@ -111,7 +111,7 @@ A list of all endpoints and supported methods.
 
 ---
 
-**Note**: The following endpoints require an `Authorization` header with a valid login token as it's value; the user making the request must have the role "seller".
+> **Note**: The following endpoints require an `Authorization` header with a valid login token as it's value; the user making the request must have the role "seller".
 
 ### `/seller/orders`
 
@@ -146,7 +146,7 @@ A list of all endpoints and supported methods.
 
 ### Tables
 
-The MySQL schema will contain three tables: **products**, **sales**, **salesproducts**, **users**.
+The MySQL schema will contain four tables: **products**, **sales**, **salesproducts**, **users**.
 
 <br />
 
