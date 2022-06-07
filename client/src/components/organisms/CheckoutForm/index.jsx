@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 /* State */
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearProducts } from '../../../redux/features/productsSlice';
 
 /* Children */
 import { Button, Select, TextInput } from '../../atoms';
@@ -14,6 +15,7 @@ import { getAllSellers, createSale } from '../../../services/request';
 import Styled from './Styled';
 
 export default function CheckoutForm() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   // State
@@ -73,8 +75,13 @@ export default function CheckoutForm() {
         quantity,
       }));
 
+      // Clear Cart
+      dispatch(clearProducts());
+
+      // Create Sale
       const { id: orderId } = await createSale(token, { sale, products });
 
+      // Redirect to Order Details
       navigate(`/customer/orders/${orderId}`);
     } catch (err) {
       console.log(err);
