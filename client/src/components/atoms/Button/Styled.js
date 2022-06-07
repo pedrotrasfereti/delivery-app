@@ -42,9 +42,6 @@ export default styled('button', {
           fontFamily: '$sans',
           fontSize: '$2',
           fontWeight: '$6',
-        },
-
-        '&:hover>a': {
           textDecorationLine: 'underline',
         },
       },
