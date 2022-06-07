@@ -6,10 +6,17 @@ export default styled('main', {
   flexFlow: 'column nowrap',
 
   '& .Empty': {
-    color: '$textDark',
-    fontFamily: '$sans2',
-    fontSize: '$4',
-    fontWeight: '$1',
-    padding: '$5 0',
+    margin: 'auto 0',
+
+    '& h2': {
+      color: '$gray700',
+      fontFamily: '$sans',
+      fontSize: '$5',
+      fontWeight: '$3',
+
+      '@bp3': {
+        fontSize: '$4',
+      },
+    },
   },
 });
