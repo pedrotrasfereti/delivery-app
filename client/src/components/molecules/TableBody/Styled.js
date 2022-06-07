@@ -35,7 +35,7 @@ export default styled('tbody', {
       appearance: 'none',
       background: 'transparent',
       border: '0',
-      color: '$quintenary',
+      color: '$quinary',
       cursor: 'pointer',
       fontSize: '$5',
       outline: '0',
