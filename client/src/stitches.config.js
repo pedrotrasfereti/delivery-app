@@ -58,6 +58,7 @@ export const {
       7: '128px',
 
       btnPadding: '.8rem 1rem',
+      btnPaddingMobile: '.7rem .9rem',
     },
     fontSizes: {
       1: '12px',
