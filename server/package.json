@@ -1,5 +1,5 @@
 {
-  "name": "delivery-app-back-end",
+  "name": "delivery-app-server",
   "version": "0.1.0",
   "description": "Back-end do projeto App de Delivery",
   "main": "./api/server.js",
