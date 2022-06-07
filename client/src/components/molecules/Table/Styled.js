@@ -18,6 +18,7 @@ export default styled('table', {
       borderRadius: '1rem 1rem 0 0',
       boxShadow,
       display: 'flex',
+      justifyContent: 'space-around',
       padding: '$3 0',
 
       '& .Caption': {
@@ -30,13 +31,14 @@ export default styled('table', {
         display: 'flex',
         fontFamily: '$sans',
         fontSize: '$3',
-        flex: '1',
         gap: '$3',
+
+        '@bp3': {
+          fontSize: '$2',
+        },
       },
 
       '& .Labels': {
-        marginLeft: '3rem',
-
         '& .Label': {
           display: 'flex',
           gap: '$1',
@@ -44,6 +46,10 @@ export default styled('table', {
           '& .TagIcon': {
             color: '$gray800',
             fontSize: '$4',
+
+            '@bp3': {
+              fontSize: '$3',
+            },
           },
 
           '& span': {
@@ -55,7 +61,6 @@ export default styled('table', {
       },
 
       '& .Controls': {
-        marginRight: '3rem',
         justifyContent: 'flex-end',
 
         '& .Control': {
@@ -74,6 +79,11 @@ export default styled('table', {
             backgroundColor: '$secondary',
             cursor: 'default',
             opacity: '.8',
+          },
+
+          '@bp3': {
+            padding: '.6rem .9rem',
+            fontSize: '$1',
           },
         },
       },
