@@ -43,12 +43,12 @@ export default function CheckoutBtn() {
         { showTotal ? 'Total:' : 'Checkout' }
       </span>
       {
-        (showTotal && totalPrice) && (
+        (showTotal && totalPrice) ? (
           <span className="TotalPrice">
             $
             { formatFloat(totalPrice) }
           </span>
-        )
+        ) : null
       }
       <CartIcon className="CartIcon" />
     </Styled>
