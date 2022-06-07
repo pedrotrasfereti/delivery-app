@@ -205,6 +205,10 @@ export default styled('aside', {
           fontWeight: '$4 !important',
         },
 
+        '&::after': {
+          display: 'none',
+        },
+
         '&::before': {
           display: 'none',
         },
