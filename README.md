@@ -31,7 +31,8 @@ This full-stack application was developed during my time at [Trybe](https://www.
   <img
     src="assets/demonstration.gif"
     alt="Demonstration"
-    width="250px"
+    width="580px"
+    height="397px"
   />
 
 </div>
