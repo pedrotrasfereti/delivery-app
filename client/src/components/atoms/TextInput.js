@@ -25,4 +25,9 @@ export default styled('input', {
       'inset 0 1px 2px rgba(0, 0, 0, .39), 0 0 0 .15rem rgba(5, 108, 249, .5)',
     outline: '0',
   },
+
+  '@bp3': {
+    fontSize: '$2',
+    padding: '.7rem .9rem',
+  },
 });
