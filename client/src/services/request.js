@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const instanceApi = axios.create({
-  baseURL: 'https://delivery-app-x.herokuapp.com/',
+  baseURL: `http://localhost:${process.env.REACT_APP_BACKEND_PORT || '3001'}`,
 });
 
 const authenticateUser = (token) => {
