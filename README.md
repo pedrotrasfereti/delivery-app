@@ -109,35 +109,38 @@ A list of all endpoints and supported methods.
 
 <br />
 
-### `/customer/checkout`
+---
 
-* **POST** - Creates a new order/sale.
-   * **Body (required)**:
-     ```
-     {
-        "products": [
-          {
-            "productId": "1",
-            "quantity": "4"
-          },
-          {
-            "productId": "2",
-            "quantity": "1"
-          }
-        ],
-        "sale": {
-          "userId": "1",
-          "sellerId": "2",
-          "totalPrice": "5.99",
-          "deliveryAddress": "Main Street",
-          "deliveryNumber": "1234"
-        }
-      }
-     ```
+**Note**: The following endpoints require an `Authorization` header with a valid login token as it's value; the user making the request must have the role "seller".
+
+### `/seller/orders`
+
+* **GET** - Returns all orders.
    * **Responses**:
-     * `201 Createed` - A new order/sale.
+     * `200 OK` - An array of orders.
      * `401 Unauthorized` - "Token not found".
-     * `422 Unprocessable Entity` - "{some_field} is required".
+
+<br />
+
+### `/seller/orders/:id`
+
+* **GET** - Returns a single order.
+   * **Responses**:
+     * `200 OK` - An order.
+     * `401 Unauthorized` - "Token not found".
+     * `404 Not Found` - "Order not found".
+
+* **PATCH** - Update an existing order status.
+    * **Body (required)**:
+      ```
+      {
+        "status": "new_order_status"
+      }
+      ```
+   * **Responses**:
+     * `200 OK` - An array of orders.
+     * `401 Unauthorized` - "Token not found".
+     * `422 Unprocessable Entity` - "\"status\" is required" | "\"status\" must be one of [Preparando, Em Trânsito, Entregue]"
 
 <br />
 
