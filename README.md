@@ -24,69 +24,126 @@ This full-stack application was developed during my time at [Trybe](https://www.
 
 ---
 
-### Endpoints
+## Endpoints
 
-<!-- A list of all endpoints and supported methods.
+A list of all endpoints and supported methods.
 
-* **/products** - Using the `POST` HTTP method, allows the user to create a product with the following JSON structure:
-```
-{
-  "name": "product_name",
-  "quantity": "product_quantity"
-}
-```
+### `/register`
 
-The user may also list all products using the `GET` HTTP method;
+* **GET** - Lists all users with role "seller".
+    * **Responses**:
+      * `200 OK` - An array of sellers.
 
-<br />
-
-* **/products/:id**
-
-  * Using the `PUT` HTTP method, allows the user to edit a product with the provided `id` param and the following JSON structure:
-  ```
-  {
-    "name": "new_product_name",
-    "quantity": "new_product_quantity"
-  }
-  ```
-
-  * The owner of the post may also delete a product using the `DELETE` HTTP method.
+* **POST** - Creates a new user with role "customer".
+    * **Body (required)**:
+      ```
+      {
+        "name": "John Doe",
+        "email": "johndoe@example.com",
+        "password": "some_strong_password"
+      }
+      ```
+    * **Responses**:
+      * `201 Created` - The created user.
+      * `409 Conflict` - "User already exists".
 
 <br />
 
-* **/sales** - Using the `POST` HTTP method, allows the user to create (multiple) sales with the following JSON structure:
-```
-[
-  {
-    "product_id": "product_id",
-    "quantity": "product_quantity",
-  }
-]
-```
+### `/login`
 
-The user may also list all sales using the `GET` HTTP method;
+* **POST** - Creates a new user with role "customer".
+    * **Body (required)**:
+      ```
+      {
+        "email": "johndoe@example.com",
+        "password": "some_strong_password"
+      }
+      ```
+    * **Responses**:
+      * `200 OK` - The user and login token.
+      * `404 Not Found` - "Invalid email or password".
 
 <br />
 
-* **/sales/:id**
+---
 
-  * Using the `PUT` HTTP method, allows the user to edit a sale with the provided `id` param and the following JSON structure:
-  ```
-  [
-    {
-      "product_id": "id",
-      "quantity": "new_quantity"
-    }
-  ]
-  ```
+**Note**: The following endpoints require an `Authorization` header with a valid login token as it's value; the user making the request must have the role "customer".
 
-  * The owner of the post may also delete a sale using the `DELETE` HTTP method. -->
+### `/customer/products`
+
+* **GET** - Returns all products.
+   * **Responses**:
+     * `200 OK` - An array of products.
+     * `401 Unauthorized` - "Token not found".
+
+<br />
+
+### `/customer/orders`
+
+* **GET** - Returns all orders.
+   * **Responses**:
+     * `200 OK` - An array of orders.
+     * `401 Unauthorized` - "Token not found".
+
+<br />
+
+### `/customer/orders/:id`
+
+* **GET** - Returns a single order.
+   * **Responses**:
+     * `200 OK` - An order.
+     * `401 Unauthorized` - "Token not found".
+     * `404 Not Found` - "Order not found".
+
+* **PATCH** - Update an existing order status.
+    * **Body (required)**:
+      ```
+      {
+        "status": "new_order_status"
+      }
+      ```
+   * **Responses**:
+     * `200 OK` - An array of orders.
+     * `401 Unauthorized` - "Token not found".
+     * `422 Unprocessable Entity` - "\"status\" is required" | "\"status\" must be one of [Preparando, Em Trânsito, Entregue]"
+
+<br />
+
+### `/customer/checkout`
+
+* **POST** - Creates a new order/sale.
+   * **Body (required)**:
+     ```
+     {
+        "products": [
+          {
+            "productId": "1",
+            "quantity": "4"
+          },
+          {
+            "productId": "2",
+            "quantity": "1"
+          }
+        ],
+        "sale": {
+          "userId": "1",
+          "sellerId": "2",
+          "totalPrice": "5.99",
+          "deliveryAddress": "Main Street",
+          "deliveryNumber": "1234"
+        }
+      }
+     ```
+   * **Responses**:
+     * `201 Createed` - A new order/sale.
+     * `401 Unauthorized` - "Token not found".
+     * `422 Unprocessable Entity` - "{some_field} is required".
 
 <br />
 
 ### Tables
 
-<!-- The MySQL schema will contain three tables: **products**, **sales** and **sales_products**. -->
+The MySQL schema will contain three tables: **products**, **sales**, **salesproducts**, **users**.
 
 <br />
 
@@ -145,7 +202,7 @@ To get a local copy up and running follow these simple example steps.
 5. Start the server
    ```sh
    cd server/
-   npm start
+   npm run dev
    ```
 6. Start the client app
    ```sh
@@ -176,7 +233,6 @@ List of resources I find helpful and would like to give credit to:
 * [SonarCloud](https://sonarcloud.io/) - clean code
 * [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) - design system
 * [Img Shields](https://shields.io) - docs
-* [SwaggerHub](https://swagger.io/tools/swaggerhub/) - docs
 * [Dotenv](https://www.npmjs.com/package/dotenv) - development
 * [Nodemon](https://nodemon.io/) - development
 * [PedroTech](https://www.youtube.com/watch?v=lwOsI8LtVEQ) - heroku tutorial
