@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 /* State */
 import { useDispatch } from 'react-redux';
 import { clearProducts } from '../../../redux/features/productsSlice';
-import { clearCart } from '../../../redux/features/checkoutSlice';
 import { clearUser } from '../../../redux/features/userSlice';
 
 /* Styles */
@@ -42,11 +41,10 @@ export default function NavBar({ iconbar }) {
 
   // Logout
   const logout = () => {
-    LocalStorageMethods.deleteItem('user');
     LocalStorageMethods.deleteItem('products');
+    LocalStorageMethods.deleteItem('user');
 
     dispatch(clearProducts());
-    dispatch(clearCart());
     dispatch(clearUser());
   };
 

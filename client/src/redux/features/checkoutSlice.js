@@ -9,9 +9,6 @@ export const checkoutSlice = createSlice({
   name: 'checkout',
   initialState,
   reducers: {
-    clearCart: (state) => {
-      state.cart = [];
-    },
     removeItem: (state, action) => {
       const targetId = action.payload;
 
@@ -29,7 +26,6 @@ export const checkoutSlice = createSlice({
 });
 
 export const {
-  clearCart,
   removeItem,
   setCart,
   updateTotalPrice,
