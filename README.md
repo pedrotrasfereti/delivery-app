@@ -17,8 +17,14 @@
 Welcome to the _GitHub repository_ of my **Delivery App**!
 Here you can find information about the project's development, such as which technologies were used, how to install and run the project, usage and more.
 
-This full-stack application was developed during my time at [Trybe](https://www.betrybe.com/) to practice the lessons learned on both front-end and back-end modules.
-<!-- The API is a sales management system, where you can create, view, delete and update products and sales. -->
+This full-stack application was developed during my time at [Trybe](https://www.betrybe.com/) to practice the lessons learned on both front-end and back-end modules. It was created in collaboration with group partners:
+
+* [Enio Andrade](https://github.com/enioandrade92/)
+* [Emanoel Mattos](https://github.com/manupulation/)
+* [Matheus Pormanhani](https://github.com/matheuspor/)
+* [João Vitor](https://github.com/joaosantosp/)
+
+This API is a sales management system, where you can create, view, delete and update sales. Customers can add products to the cart, place an order on checkout, see all orders and mark any order as "delivered". Sellers can also see all orders and mark any as "preparing" or "dispatched".
 
 <br>
 
@@ -146,7 +152,7 @@ A list of all endpoints and supported methods.
 
 ### Tables
 
-The MySQL schema will contain four tables: **products**, **sales**, **salesproducts**, **users**.
+The MySQL schema will contain four tables: **products**, **sales**, **salesproducts** and **users**.
 
 <br />
 
