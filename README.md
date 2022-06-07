@@ -20,9 +20,22 @@ Here you can find information about the project's development, such as which tec
 This full-stack application was developed during my time at [Trybe](https://www.betrybe.com/) to practice the lessons learned on both front-end and back-end modules. It was created in collaboration with group partners:
 
 * [Enio Andrade](https://github.com/enioandrade92/)
-* [Emanoel Mattos](https://github.com/manupulation/)
+* [Emanoel Mattos](https://github.com/manupilation/)
 * [Matheus Pormanhani](https://github.com/matheuspor/)
 * [João Vitor](https://github.com/joaosantosp/)
+
+<br />
+
+<div align="center">
+
+  <img
+    src="assets/demonstration.gif"
+    alt="Demonstration"
+    width="580px"
+    height="397px"
+  />
+
+</div>
 
 This API is a sales management system, where you can create, view, delete and update sales. Customers can add products to the cart, place an order on checkout, see all orders and mark any order as "delivered". Sellers can also see all orders and mark any as "preparing" or "dispatched".
 
