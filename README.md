@@ -24,6 +24,9 @@ This full-stack application was developed during my time at [Trybe](https://www.
 * [Matheus Pormanhani](https://github.com/matheuspor/)
 * [João Vitor](https://github.com/joaosantosp/)
 
+
+The API is a sales management system, where you can create, view, delete and update sales. Customers can add products to the cart, place an order at checkout, see all orders and mark any as "delivered". Sellers can also see all orders and mark any as "preparing" or "dispatched".
+
 <br />
 
 <div align="center">
@@ -37,11 +40,14 @@ This full-stack application was developed during my time at [Trybe](https://www.
 
 </div>
 
-This API is a sales management system, where you can create, view, delete and update sales. Customers can add products to the cart, place an order at checkout, see all orders and mark any as "delivered". Sellers can also see all orders and mark any as "preparing" or "dispatched".
+> **P.S.:** Feel free to report any bugs or suggest ideas by creating an **Issue**, or collaborate by creating a **Pull Request** from our existing [development branch](https://github.com/pedrotrasfereti/delivery-app/pull/2)!
 
 <br />
 
-<!-- ACCOMPLISHMENTS -->
+<!-- ACHIEVEMENTS -->
+
+## Achievements
+
 During the development we were able to:
 
 * Create a RESTful Web API using **Node.js** and **Express**;
@@ -56,10 +62,6 @@ During the development we were able to:
 * Create and manage state *slices* using **Redux Toolkit**;
 * Fetch and save data directly using *Toolkit's* **createAsyncThunk**;
 * Use the **localStorage** Web API to persist data;
-
-<br />
-
-> **P.S.:** Feel free to report any bugs or suggest ideas by creating an **Issue**, or collaborate by creating a **Pull Request** from our existing [development branch](https://github.com/pedrotrasfereti/delivery-app/pull/2)!
 
 <br>
 
