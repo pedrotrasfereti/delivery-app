@@ -1,10 +1,13 @@
 /* Assets */
 import {
   BsFillBagFill as BagIcon,
-  BsFillBasketFill as BasketIcon,
   BsDoorClosedFill as DoorClosedIcon,
   BsPersonFill as PersonIcon,
 } from 'react-icons/bs';
+
+import {
+  MdReceipt as ReceiptIcon,
+} from 'react-icons/md';
 
 export default function navLinksMap(username) {
   return ({
@@ -13,13 +16,13 @@ export default function navLinksMap(username) {
         dataTestId: 'customer_products__element-navbar-link-products',
         name: 'Products',
         to: '/customer/products',
-        icon: BasketIcon,
+        icon: BagIcon,
       },
       {
         dataTestId: 'customer_products__element-navbar-link-orders',
         name: 'My orders',
         to: '/customer/orders',
-        icon: BagIcon,
+        icon: ReceiptIcon,
       },
       {
         dataTestId: 'customer_products__element-navbar-user-full-name',
@@ -39,7 +42,7 @@ export default function navLinksMap(username) {
         dataTestId: 'customer_products__element-navbar-link-orders',
         name: 'Sales',
         to: '/seller/orders',
-        icon: BasketIcon,
+        icon: ReceiptIcon,
       },
       {
         dataTestId: 'customer_products__element-navbar-user-full-name',
