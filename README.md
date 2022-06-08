@@ -206,6 +206,8 @@ List of major frameworks/libraries used to bootstrap this project:
 * [Axios](https://axios-http.com/)
 * [Node.js](https://nodejs.org/en/)
 * [Express.js](https://expressjs.com/)
+* [Chai](https://www.chaijs.com/)
+* [Sinon](https://sinonjs.org/)
 * [Sequelize](https://sequelize.org/)
 * [MySQL](https://www.mysql.com/)
 * [Joi](https://joi.dev/)
