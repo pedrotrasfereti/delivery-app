@@ -39,6 +39,10 @@ This full-stack application was developed during my time at [Trybe](https://www.
 
 This API is a sales management system, where you can create, view, delete and update sales. Customers can add products to the cart, place an order at checkout, see all orders and mark any as "delivered". Sellers can also see all orders and mark any as "preparing" or "dispatched".
 
+<br />
+
+> **P.S.:** Feel free to report any bugs or suggest ideas by creating an **Issue**, or collaborate by creating a **Pull Request** from our exisitng [development branch](https://github.com/pedrotrasfereti/delivery-app/pull/2)!
+
 <br>
 
 ---
