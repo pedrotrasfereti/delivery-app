@@ -41,7 +41,25 @@ This API is a sales management system, where you can create, view, delete and up
 
 <br />
 
-> **P.S.:** Feel free to report any bugs or suggest ideas by creating an **Issue**, or collaborate by creating a **Pull Request** from our exisitng [development branch](https://github.com/pedrotrasfereti/delivery-app/pull/2)!
+<!-- ACCOMPLISHMENTS -->
+During the development we were able to:
+
+* Create a RESTful Web API using **Node.js** and **Express**;
+* Serve static files using Express;
+* Manage a SQL database using **Sequelize**;
+* Create validations for our API endpoints using **Joi**;
+* Authenticate users using **JWT**;
+* Create a design system from scratch using **Stitches**;
+* Organize our React components into *atomic* categories (Atomic Design);
+* Make requests to our API using **Axios**;
+* Manage the application's state using **React-Redux**;
+* Create and manage state *slices* using **Redux Toolkit**;
+* Fetch and save data directly using *Toolkit's* **createAsyncThunk**;
+* Use the **localStorage** Web API to persist data;
+
+<br />
+
+> **P.S.:** Feel free to report any bugs or suggest ideas by creating an **Issue**, or collaborate by creating a **Pull Request** from our existing [development branch](https://github.com/pedrotrasfereti/delivery-app/pull/2)!
 
 <br>
 
@@ -189,6 +207,7 @@ List of major frameworks/libraries used to bootstrap this project:
 * [Sequelize](https://sequelize.org/)
 * [MySQL](https://www.mysql.com/)
 * [Joi](https://joi.dev/)
+* [JWT](https://jwt.io/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
