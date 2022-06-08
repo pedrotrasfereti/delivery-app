@@ -24,6 +24,9 @@ This full-stack application was developed during my time at [Trybe](https://www.
 * [Matheus Pormanhani](https://github.com/matheuspor/)
 * [João Vitor](https://github.com/joaosantosp/)
 
+
+The API is a sales management system, where you can create, view, delete and update sales. Customers can add products to the cart, place an order at checkout, see all orders and mark any as "delivered". Sellers can also see all orders and mark any as "preparing" or "dispatched".
+
 <br />
 
 <div align="center">
@@ -37,7 +40,28 @@ This full-stack application was developed during my time at [Trybe](https://www.
 
 </div>
 
-This API is a sales management system, where you can create, view, delete and update sales. Customers can add products to the cart, place an order on checkout, see all orders and mark any order as "delivered". Sellers can also see all orders and mark any as "preparing" or "dispatched".
+> **P.S.:** Feel free to report any bugs or suggest ideas by creating an **Issue**, or collaborate by creating a **Pull Request** from our existing [development branch](https://github.com/pedrotrasfereti/delivery-app/pull/2)!
+
+<br />
+
+<!-- ACHIEVEMENTS -->
+
+## Achievements
+
+During the development we were able to:
+
+* Create a RESTful Web API using **Node.js** and **Express**;
+* Serve static files using Express;
+* Manage a SQL database using **Sequelize**;
+* Create validations for our API endpoints using **Joi**;
+* Authenticate users using **JWT**;
+* Create a design system from scratch using **Stitches**;
+* Organize our React components into *atomic* categories (Atomic Design);
+* Make requests to our API using **Axios**;
+* Manage the application's state using **React-Redux**;
+* Create and manage state *slices* using **Redux Toolkit**;
+* Fetch and save data directly using *Toolkit's* **createAsyncThunk**;
+* Use the **localStorage** Web API to persist data;
 
 <br>
 
@@ -182,9 +206,12 @@ List of major frameworks/libraries used to bootstrap this project:
 * [Axios](https://axios-http.com/)
 * [Node.js](https://nodejs.org/en/)
 * [Express.js](https://expressjs.com/)
+* [Chai](https://www.chaijs.com/)
+* [Sinon](https://sinonjs.org/)
 * [Sequelize](https://sequelize.org/)
 * [MySQL](https://www.mysql.com/)
 * [Joi](https://joi.dev/)
+* [JWT](https://jwt.io/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
