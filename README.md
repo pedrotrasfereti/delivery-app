@@ -12,7 +12,7 @@
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 <!-- ABOUT THE PROJECT -->
-## Full-Stack Delivery App using React and Express
+## Full Stack Delivery App using React and Express
 
 Welcome to the _GitHub repository_ of my **Delivery App**!
 Here you can find information about the project's development, such as which technologies were used, how to install and run the project, usage and more.
