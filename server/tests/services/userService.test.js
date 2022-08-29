@@ -12,7 +12,7 @@ describe('Tests userService', () => {
     })
 
     describe('When user already exists', () => {
-      it('Should throw error message "User already Exists', async () => {
+      it('Should throw error message "user already exists', async () => {
         const errorStub = sinon.stub(userModel, "create").rejects(new Error());
         try {
           await userService.create(userMock)
