@@ -6,6 +6,7 @@ const salesproductsModel = require('../../app/models/salesproductsModel');
 const userModel = require('../../app/models/userModel');
 const { userMock, saleMockDatavalues } = require('../mocks/Database');
 const { createSalePayload } = require('../mocks/Request');
+const { includeOption, findOneQuery } = require('../mocks/Utils');
 
 describe("Testing sales model", () => {
   const { sale, products } = createSalePayload;
@@ -35,7 +36,7 @@ describe("Testing sales model", () => {
       const findAllStub = sinon.stub(Sales, "findAll").resolves([saleMock])
       const sales = await salesModel.getSales(id)
 
-      sinon.assert.calledWith(findAllStub, { where: { userId: id }, raw: true });
+      sinon.assert.calledWith(findAllStub, { where: { userId: id }, include: includeOption });
       expect(sales).to.be.a("array");
       expect(sales).to.be.deep.equal([saleMock]);
     })
@@ -46,24 +47,13 @@ describe("Testing sales model", () => {
       const getSalesBySellerStub = sinon.stub(Sales, "findAll").resolves([saleMock])
       const sales = await salesModel.getSalesBySeller(id)
 
-      sinon.assert.calledWith(getSalesBySellerStub, { where: { sellerId: id }, raw: true });
+      sinon.assert.calledWith(getSalesBySellerStub, { where: { sellerId: id }, include: includeOption });
       expect(sales).to.be.a("array");
       expect(sales).to.be.deep.equal([saleMock]);
     })
   })
 
   describe("Testing getSale method", () => {
-    const findOneQuery = {
-      where: { id },
-      include: [{
-        model: Products,
-        as: 'products',
-        through: {
-          attributes: ['quantity'],
-          as: 'productQuantity',
-        },
-      }],
-    }
     it("Return one sale", async () => {
       const findOneSaleStub = sinon.stub(Sales, "findOne").resolves(saleMockDatavalues)
       const getUserByIdStub = sinon.stub(userModel, "getById").resolves(userMock)
