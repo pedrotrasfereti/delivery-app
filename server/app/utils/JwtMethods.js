@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
-const fs = require('fs');
+require('dotenv').config();
 
-const JWT_SECRET = fs.readFileSync('./jwt.evaluation.key', 'utf-8');
+const JWT_SECRET = process.env.JWT_SECRET;
 
 class JwtMethods {
   static jwtSign(payload) {

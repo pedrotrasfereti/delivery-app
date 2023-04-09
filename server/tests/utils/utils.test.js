@@ -4,9 +4,9 @@ const jwt = require('jsonwebtoken');
 const { JwtMethods } = require('../../app/utils/JwtMethods');
 const { HashPassMethods } = require('../../app/utils/HashPassMethods');
 const { jwtPayload, fakeToken } = require("../mocks/Utils");
+require('dotenv').config();
 
-const fs = require('fs');
-const JWT_SECRET = fs.readFileSync('./jwt.evaluation.key', 'utf-8');
+const JWT_SECRET = process.env.JWT_SECRET;
 
 const { expect } = chai;
 
