@@ -31,12 +31,11 @@
     "dotenv": "16.0.0",
     "jest": "27.5.1",
     "jest-puppeteer": "6.1.0",
-    "jsonwebtoken": "8.5.1",
-    "moment": "2.29.1",
+    "jsonwebtoken": "^9.0.0",
+    "moment": "^2.29.4",
     "mysql2": "2.3.3",
     "pm2": "5.2.0",
     "puppeteer": "13.5.1",
-    "sequelize": "6.17.0",
     "sequelize-cli": "6.4.1"
   },
   "jest": {
@@ -48,5 +47,9 @@
       "__TESTDESC__": true,
       "__TESTFILE__": true
     }
+  },
+  "dependencies": {
+    "sequelize": "^6.30.0",
+    "uuid": "^9.0.0"
   }
 }
