@@ -1,14 +1,14 @@
-const jwt =  require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 const { Products } = require('../../database/models');
 require('dotenv').config();
 
-const JWT_SECRET = process.env.JWT_SECRET;
+const { JWT_SECRET } = process.env;
 const id = 1;
 
 const jwtPayload = {
   email: 'Tiradentes@maieiou.com',
   role: 'customer',
-}
+};
 
 const fakeToken = jwt.sign(jwtPayload, JWT_SECRET, {
   expiresIn: '5h',
@@ -34,11 +34,11 @@ const findOneQuery = {
       as: 'quantity',
     },
   }],
-}
+};
 
 module.exports = {
   jwtPayload,
   fakeToken,
   includeOption,
   findOneQuery,
-}
+};
