@@ -1,10 +1,19 @@
-require('dotenv').config();
+const dotenv = require('dotenv');
+dotenv.config();
 
-const { DELIVEREE_MAIL, DELIVEREE_PASS } = process.env;
+const {
+  DELIVEREE_MAIL,
+  GMAIL_CLIENTID,
+  GMAIL_CLIENTSECRET,
+  GMAIL_REFRESHTOKEN,
+} = process.env;
 
 module.exports = {
   host: "smtp.gmail.com",
-  port: 587,
+  port: 465,
   user: DELIVEREE_MAIL,
-  pass: DELIVEREE_PASS,
+  secure: true,
+  cliendId: GMAIL_CLIENTID,
+  clientSecret: GMAIL_CLIENTSECRET,
+  refreshToken: GMAIL_REFRESHTOKEN,
 };
