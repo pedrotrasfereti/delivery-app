@@ -1,15 +1,34 @@
+const dotenv = require('dotenv');
+dotenv.config();
+
 const nodemailer = require('nodemailer');
-const { host, port, user, pass } = require('../mail/config');
+const {
+  host,
+  port,
+  user,
+  secure,
+  cliendId,
+  clientSecret,
+  refreshToken,
+} = require('../mail/config');
+const { GoogleAuth } = require('../auth/googleoAuth');
+
+const acessToken = new GoogleAuth().getAcessToken();
 
 class TransportMethods {
   constructor() {
     this.transporter = nodemailer.createTransport({
       host,
       port,
-      secure: false,
+      secure,
       auth: {
+        type: "OAuth2",
         user,
-        pass,
+        clientId: cliendId,
+        clientSecret,
+        refreshToken,
+        accessToken: process.env.GMAIL_ACESSTOKEN,
+        acessToken,
       },
       tls: {
         rejectUnauthorized: false,
@@ -18,12 +37,14 @@ class TransportMethods {
   }
 
   async runMail(text, subject, email) {
-    const mailSend = this.transporter.sendMail({
-      text,
-      subject,
+    const mailSend = await this.transporter.sendMail({
       from: "Deliveree App <appdeliveree@gmail.com>",
       to: email,
-    })
+      text,
+      subject,
+      html: "<b>Hello world?</b>"
+    });
+    console.log(mailSend);
   }
 }
 
