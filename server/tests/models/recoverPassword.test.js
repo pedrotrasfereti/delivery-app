@@ -5,7 +5,7 @@ const { HashPassMethods } = require('../../app/utils/HashPassMethods');
 const { Users } = require('../../database/models');
 const { userMock } = require('../mocks/Database');
 const resetPassModel = require('../../app/models/resetPasswordModel');
-const { resetPasswordUserData } = require('../mocks/resetEmail');
+const { resetPasswordUserData } = require('../mocks/resetPass');
 
 describe("Testing recover password model", function () {
   let transport;
