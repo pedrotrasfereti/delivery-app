@@ -17,7 +17,7 @@ describe("Testing recover password model", function () {
     sinon.restore();
   });
 
-  describe("Testing recover method", function () {
+  describe("Testing recover method if is a sucess", function () {
     it('resetPassword return User object', async function () {
       const findUserStub = sinon.stub(Users, 'findOne').resolves(userMock);
       const resetPassStub = sinon.stub(Users, 'update').resolves(userMock);
@@ -44,4 +44,19 @@ describe("Testing recover password model", function () {
     });
   });
 
+  describe("Testing recover method if something is wrong", function () {
+    it('resetPassword return null if User is invalid', async function () {
+      const findUserStub = sinon.stub(Users, 'findOne').resolves(null);
+
+      const resetPass = await resetPassModel.resetPassword(resetPasswordUserData);
+
+      sinon.assert.calledWith(findUserStub, {
+          where: { email: resetPasswordUserData.email },
+          raw: true,
+      },
+    );
+
+      expect(resetPass).to.be.null
+    });
+  });
 });
