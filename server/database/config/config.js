@@ -1,11 +1,11 @@
 require('dotenv').config();
 
 const options = {
-  host: process.env.HOSTNAME || process.env.HOST,
-  port: process.env.PORT || '3306',
+  host: process.env.DB_HOSTNAME || process.env.DB_HOST,
+  port: process.env.DB_PORT || '3306',
   database: process.env.DB_NAME,
-  username: process.env.USER,
-  password: process.env.PASSWORD,
+  username: process.env.DB_USERNAME,
+  password: process.env.DB_PASSWORD,
   dialect: 'mysql',
   dialectOptions: {
     timezone: 'Z',
