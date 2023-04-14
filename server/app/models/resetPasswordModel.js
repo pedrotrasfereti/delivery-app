@@ -1,5 +1,7 @@
 const { Users } = require('../../database/models');
 const { HashPassMethods } = require('../utils/HashPassMethods');
+const {TransportMethods} = require('../utils/Transportmailer');
+const { writeHTMLBody } = require('../mail/textMail');
 
 module.exports = {
   async resetPassword(data) {
@@ -20,5 +22,11 @@ module.exports = {
     });
 
     return resetPass;
+  },
+
+  async sendResetEmail(email, url, token) {
+    const transporter = new TransportMethods();
+
+    await transporter.runMail(email, writeHTMLBody(url, token));
   }
 }
