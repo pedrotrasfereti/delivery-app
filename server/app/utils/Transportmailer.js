@@ -36,15 +36,14 @@ class TransportMethods {
     });
   }
 
-  async runMail(text, subject, email) {
+  async runMail(email, html) {
     const mailSend = await this.transporter.sendMail({
       from: "Deliveree App <appdeliveree@gmail.com>",
       to: email,
-      text,
-      subject,
-      html: "<b>Hello world?</b>"
+      text: "Deliveree team",
+      subject: "Deliveree - Reset password",
+      html: html
     });
-    console.log(mailSend);
   }
 }
 
