@@ -28,5 +28,7 @@ module.exports = {
     const transporter = new TransportMethods();
 
     await transporter.runMail(email, writeHTMLBody(url, token));
+
+    return 'ok';
   }
 }
