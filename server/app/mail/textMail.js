@@ -1,9 +1,9 @@
 module.exports = {
-  writeHTMLBody(url, user, token) {
+  writeHTMLBody(url, token) {
     return (`
       <main>
         <div>
-          <h1>Greetings from the Deliveree team, ${user}!</h1>
+          <h1>Greetings from the Deliveree team!</h1>
         </div> 
         <br>
         <div>
