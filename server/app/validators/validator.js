@@ -45,6 +45,15 @@ const updateSaleSchema = Joi.object({
   status: Joi.string().valid('Preparando', 'Em Trânsito', 'Entregue').required(),
 });
 
+const resetPassDataSchema = Joi.object({
+  email: Joi.string().email().required().messages({
+    'any.required': 'Email is required',
+  }),
+  newPass: Joi.string().min(6).required().messages({
+    'any.required': 'New password is required',
+  }),
+});
+
 module.exports = {
   async login(value) {
     try {
@@ -86,6 +95,18 @@ module.exports = {
     } catch (error) {
       const err = new Error(error.message);
       err.name = 'joi';
+      throw err;
+    }
+  },
+
+  async resetPass({email, newPass}) {
+    try {
+      const result = await resetPassDataSchema.validateAsync({email, newPass});
+      return result;
+    } catch (error) {
+      const err = new Error(error.message);
+      err.name = 'joi';
+      err.message = error.message
       throw err;
     }
   },
