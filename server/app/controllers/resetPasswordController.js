@@ -3,10 +3,17 @@ const validator = require('../validators/validator');
 
 module.exports = {
   async resetPassword(req, res) {
-    const {email, newPass} = req.body
-    await validator.resetPass({email, newPass});
+    const {newPass} = req.body
+    await validator.resetPass({newPass});
     const resetPassword = await resetPassService.resetPassword(req.body)
 
     res.status(201).json('ok');
+  },
+
+  async sendResetEmail(req, res) {
+    const {email, url} = req.body;
+    const sendEmail = await resetPassService.sendResetEmail(email, url);
+
+    res.status(200).json({confirm: sendEmail});
   }
 }
