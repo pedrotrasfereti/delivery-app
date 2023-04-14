@@ -5,5 +5,6 @@ const resetPassController = require('../../app/controllers/resetPasswordControll
 const resetPassRouter = Router();
 
 resetPassRouter.post('/password', rescue(resetPassController.resetPassword));
+resetPassRouter.post('/sendmail', rescue(resetPassController.sendResetEmail));
 
 module.exports = resetPassRouter;
