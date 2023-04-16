@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const instanceApi = axios.create({
-  baseURL: 'https://delivery-app-x.herokuapp.com/',
+  baseURL: import.meta.env.VITE_BASEURL,
 });
 
 const authenticateUser = (token) => {
