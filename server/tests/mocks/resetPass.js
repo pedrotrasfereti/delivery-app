@@ -5,11 +5,9 @@ const resetPasswordUserData = {
 
 const resetPassWithoutNewPass = {
   email: 'test@gmail.com',
-  newPass: 'password',
 };
 
 const resetPassWithoutEmail = {
-  email: 'test@gmail.com',
   newPass: 'password',
 };
 
