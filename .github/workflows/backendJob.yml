@@ -1,0 +1,31 @@
+name: "Github Run Tests Back-end"
+on: ["push", 'pull_request']
+
+jobs:
+  test:
+    name: 'Node.js v${{ matrix.node }}'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node:
+          - 14
+          - 16
+          - 18
+    steps:
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '${{ matrix.node }}'
+      - uses: actions/checkout@v2
+      - name: 'Cache node_modules'
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-v${{ matrix.node }}-${{ hashFiles('**/package.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-v${{ matrix.node }}-
+      - name: Install Dependencies
+        run: npm install
+      - name: Tests backend
+        run: npm run test
+        env:
+            JWT_SECRET: ${{ secrets.JWT_SECRET }}
