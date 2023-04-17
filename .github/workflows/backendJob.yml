@@ -3,7 +3,7 @@ on: ["push", 'pull_request']
 
 jobs:
   test:
-    name: "Tests Back-end"
+    name: 'Node.js v${{ matrix.node }}'
     runs-on: ubuntu-latest
     strategy:
       matrix:
