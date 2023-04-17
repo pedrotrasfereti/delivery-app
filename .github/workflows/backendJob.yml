@@ -3,7 +3,7 @@ on: ["push", 'pull_request']
 
 jobs:
   test:
-    name: 'Node.js v${{ matrix.node }}'
+    name: "Tests Back-end"
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -24,7 +24,7 @@ jobs:
       - name: Get in server dir
         run: cd server
       - name: Install Dependencies
-        run: cd npm install
+        run: npm install
       - name: Tests backend
         run: npm run test
         env:
