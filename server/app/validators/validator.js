@@ -99,14 +99,14 @@ module.exports = {
     }
   },
 
-  async resetPass({email, newPass}) {
+  async resetPass({ email, newPass }) {
     try {
-      const result = await resetPassDataSchema.validateAsync({email, newPass});
+      const result = await resetPassDataSchema.validateAsync({ email, newPass });
       return result;
     } catch (error) {
       const err = new Error(error.message);
       err.name = 'joi';
-      err.message = error.message
+      err.message = error.message;
       throw err;
     }
   },

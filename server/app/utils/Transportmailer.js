@@ -1,4 +1,5 @@
 const dotenv = require('dotenv');
+
 dotenv.config();
 
 const nodemailer = require('nodemailer');
@@ -22,7 +23,7 @@ class TransportMethods {
       port,
       secure,
       auth: {
-        type: "OAuth2",
+        type: 'OAuth2',
         user,
         clientId: cliendId,
         clientSecret,
@@ -32,17 +33,17 @@ class TransportMethods {
       },
       tls: {
         rejectUnauthorized: false,
-      }
+      },
     });
   }
 
   async runMail(email, html) {
-    const mailSend = await this.transporter.sendMail({
-      from: "Deliveree App <appdeliveree@gmail.com>",
+    await this.transporter.sendMail({
+      from: 'Deliveree App <appdeliveree@gmail.com>',
       to: email,
-      text: "Deliveree team",
-      subject: "Deliveree - Reset password",
-      html: html
+      text: 'Deliveree team',
+      subject: 'Deliveree - Reset password',
+      html,
     });
   }
 }

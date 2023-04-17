@@ -33,7 +33,6 @@ describe('Tests resetPasswordService', function () {
     it('User token is expired', async function () {
       const jwtStub = sinon.stub(JwtMethods, 'verifyToken').returns(false);
 
-
       try {
          await recoverPassService.resetPassword({
           ...resetPasswordUserData,
@@ -50,7 +49,7 @@ describe('Tests resetPasswordService', function () {
 
       try {
         await recoverPassService.resetPassword(resetPasswordUserData);
-        sinon.assert.calledWith(jwtStub, "");
+        sinon.assert.calledWith(jwtStub, '');
       } catch (error) {
         expect(error.message).equal('Token not found');
       }
@@ -76,7 +75,7 @@ describe('Tests resetPasswordService', function () {
         token,
       });
 
-      sinon.assert.calledWith(jwtStub, token );
+      sinon.assert.calledWith(jwtStub, token);
       sinon.assert.calledWith(recoverPassStub, resetPasswordUserData);
 
       expect(resetPass).to.be.a('object');
@@ -85,4 +84,4 @@ describe('Tests resetPasswordService', function () {
       expect(resetPass).to.have.a.property('email');
     });
   });
-})
+});

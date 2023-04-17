@@ -7,7 +7,7 @@ const { userMock } = require('../mocks/Database');
 const resetPassModel = require('../../app/models/resetPasswordModel');
 const { resetPasswordUserData } = require('../mocks/resetPass');
 
-describe("Testing recover password model", function () {
+describe('Testing recover password model', function () {
   let transport;
   beforeEach(function () {
     transport = new TransportMethods();
@@ -17,7 +17,7 @@ describe("Testing recover password model", function () {
     sinon.restore();
   });
 
-  describe("Testing recover method if is a sucess", function () {
+  describe('Testing recover method if is a sucess', function () {
     it('resetPassword return User object', async function () {
       const findUserStub = sinon.stub(Users, 'findOne').resolves(userMock);
       const resetPassStub = sinon.stub(Users, 'update').resolves(userMock);
@@ -27,15 +27,13 @@ describe("Testing recover password model", function () {
       sinon.assert.calledWith(findUserStub, {
           where: { email: resetPasswordUserData.email },
           raw: true,
-      },
-    );
+      });
       sinon.assert.calledWith(resetPassStub, {
           password: HashPassMethods.encryptPass(resetPasswordUserData.newPass),
         }, {
           where: { email: resetPasswordUserData.email },
           raw: true,
-        },
-      );
+        });
 
         expect(resetPass).to.be.a('object');
         expect(resetPass).to.have.a.property('id');
@@ -44,7 +42,7 @@ describe("Testing recover password model", function () {
     });
   });
 
-  describe("Testing recover method if something is wrong", function () {
+  describe('Testing recover method if something is wrong', function () {
     it('resetPassword return null if User is invalid', async function () {
       const findUserStub = sinon.stub(Users, 'findOne').resolves(null);
 
@@ -53,10 +51,9 @@ describe("Testing recover password model", function () {
       sinon.assert.calledWith(findUserStub, {
           where: { email: resetPasswordUserData.email },
           raw: true,
-      },
-    );
+      });
 
-      expect(resetPass).to.be.null
+      expect(resetPass).to.be.null;
     });
   });
 });

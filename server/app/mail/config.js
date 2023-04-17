@@ -1,4 +1,5 @@
 const dotenv = require('dotenv');
+
 dotenv.config();
 
 const {
@@ -9,7 +10,7 @@ const {
 } = process.env;
 
 module.exports = {
-  host: "smtp.gmail.com",
+  host: 'smtp.gmail.com',
   port: 465,
   user: DELIVEREE_MAIL,
   secure: true,

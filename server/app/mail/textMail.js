@@ -22,5 +22,5 @@ module.exports = {
         <footer>It is not necessary to reply this email.</footer>
       </main>
     `);
-  }
-}
+  },
+};

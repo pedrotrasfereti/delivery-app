@@ -1,6 +1,6 @@
 const { Users } = require('../../database/models');
 const { HashPassMethods } = require('../utils/HashPassMethods');
-const {TransportMethods} = require('../utils/Transportmailer');
+const { TransportMethods } = require('../utils/Transportmailer');
 const { writeHTMLBody } = require('../mail/textMail');
 
 module.exports = {
@@ -10,7 +10,7 @@ module.exports = {
       raw: true,
     });
 
-    if(!findUser) return null;
+    if (!findUser) return null;
 
     const resetPass = await Users.update({
       password: HashPassMethods.encryptPass(data.newPass),
@@ -30,5 +30,5 @@ module.exports = {
     await transporter.runMail(email, writeHTMLBody(url, token));
 
     return 'ok';
-  }
-}
+  },
+};

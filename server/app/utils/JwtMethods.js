@@ -16,7 +16,7 @@ class JwtMethods {
   static jwtResetPass(payload) {
     const sign = jwt.sign(payload, JWT_SECRET, {
       expiresIn: '1h',
-      algorithm: "HS256"
+      algorithm: 'HS256',
     });
 
     return sign;
