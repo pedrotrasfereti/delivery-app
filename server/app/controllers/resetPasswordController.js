@@ -3,8 +3,7 @@ const validator = require('../validators/validator');
 
 module.exports = {
   async resetPassword(req, res) {
-    const { newPass } = req.body;
-    await validator.resetPass({ newPass });
+    await validator.resetPass(req.body);
     await resetPassService.resetPassword(req.body);
 
     res.status(201).json('ok');
