@@ -3,7 +3,7 @@ const sinon = require('sinon');
 const recoverPassService = require('../../app/services/resetPasswordService');
 const recoverPassModel = require('../../app/models/resetPasswordModel');
 const { JwtMethods } = require('../../app/utils/JwtMethods');
-const { resetPasswordUserData } = require('../mocks/resetPass');
+const { resetPasswordUserData, resetPassWithoutEmail } = require('../mocks/resetPass');
 const { userMock } = require('../mocks/Database');
 
 describe('Tests resetPasswordService', function () {
@@ -19,14 +19,14 @@ describe('Tests resetPasswordService', function () {
 
     it('User does not exist', async function () {
       const jwtStub = sinon.stub(JwtMethods, 'verifyToken').returns(true);
-      const recoverPassStub = sinon.stub(recoverPassModel, 'resetPassword').resolves(null);
+      const recoverPassModelStub = sinon.stub(recoverPassModel, 'resetPassword').resolves(null);
       const resetPass = await recoverPassService.resetPassword({
         ...resetPasswordUserData,
         token,
       });
       
       sinon.assert.calledWith(jwtStub, token);
-      sinon.assert.calledWith(recoverPassStub, resetPasswordUserData);
+      sinon.assert.calledWith(recoverPassModelStub, {...resetPasswordUserData});
       expect(resetPass).to.be.null;
     });
 
