@@ -2,10 +2,9 @@ const resetPasswordModel = require('../models/resetPasswordModel');
 const { JwtMethods } = require('../utils/JwtMethods');
 
 module.exports = {
-  async resetPassword({ token = '', newPass }) {
+  async resetPassword({ token = '', newPass, email }) {
     if (token === '') throw new Error('Token not found');
     const verifyToken = JwtMethods.verifyToken(token);
-    const { email } = JwtMethods.decodeToken(token);
 
     if (!verifyToken) throw new Error('Token invalid or expired');
 
