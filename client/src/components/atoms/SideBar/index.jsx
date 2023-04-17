@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 /* Children */
 import { BsArrowUp as ArrowUp } from 'react-icons/bs';
@@ -7,14 +7,16 @@ import { BsArrowUp as ArrowUp } from 'react-icons/bs';
 import Styled from './Styled';
 
 export default function SideBar() {
+  const [active, setActive] = useState(false);
+
   return (
     <Styled>
-      <header>
+      <header onClick={() => setActive(!active)}>
         <h3>Categories</h3>
-        <ArrowUp className="Icon" />
+        <ArrowUp className={`Icon ${active ? 'active' : 'disabled'}`} />
       </header>
 
-      <ul className="Categories">
+      <ul className={`Categories ${active ? 'active' : 'disabled'}`}>
         <li id="beverages" className="Selected">
           <span>Beverages</span>
         </li>
