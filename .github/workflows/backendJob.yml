@@ -1,5 +1,5 @@
 name: "Github Run Tests Back-end"
-on: ["push", 'pull_request']
+on: [push, pull_request]
 
 jobs:
   test:
