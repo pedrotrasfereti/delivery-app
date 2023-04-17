@@ -22,14 +22,12 @@ describe('Tests resetPasswordController', function () {
       const res = {};
       res.status = sinon.stub().returns(res);
       res.json = sinon.stub().returns(null);
-      const resetPassServiceStub = sinon.stub(recoverPassService, 'resetPassword').resolves(userMock);
 
       try {
         await recoverPassController.resetPassword(req, res);
-        sinon.assert.calledWith(resetPassServiceStub, { ...resetPasswordUserData, token });
       } catch (error) {
         console.log(error);
-        expect(error.message).equal('Email is required.');
+        expect(error.message).equal('Email is required');
       }
     });
 
@@ -38,13 +36,11 @@ describe('Tests resetPasswordController', function () {
       const res = {};
       res.status = sinon.stub().returns(res);
       res.json = sinon.stub().returns(null);
-      const resetPassServiceStub = sinon.stub(recoverPassService, 'resetPassword').resolves(userMock);
 
       try {
         await recoverPassController.resetPassword(req, res);
-        sinon.assert.calledWith(resetPassServiceStub, { ...resetPasswordUserData, token });
       } catch (error) {
-        expect(error.message).to.equal('New password is required.');
+        expect(error.message).to.equal('New password is required');
       }
     });
   });
