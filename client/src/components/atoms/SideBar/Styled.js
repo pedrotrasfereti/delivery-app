@@ -52,25 +52,25 @@ export default styled('aside', {
 
     '& svg.Icon.active': {
       transform: 'rotate(0)',
-      transition: 'transform ease .3s'
+      transition: 'transform ease .3s',
     },
 
     '& svg.Icon.disabled': {
       transform: 'rotate(180deg)',
-      transition: 'transform ease .3s'
+      transition: 'transform ease .3s',
     },
   },
 
   '& ul.Categories.active': {
     opacity: '1',
     transform: 'translateY:(-20px)',
-    transition: '.3s ease'
+    transition: '.3s ease',
   },
 
   '& ul.Categories.disabled': {
     opacity: '0',
     transform: 'translateY:(0)',
-    transition: '.3s ease'
+    transition: '.3s ease',
   },
 
   '& .Categories': {
