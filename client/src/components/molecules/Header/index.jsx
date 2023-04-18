@@ -23,6 +23,7 @@ export default function Header() {
     '/',
     '/login',
     '/register',
+    '/lostPassword'
   ];
 
   const shouldRender = !excludeRoutes.includes(pathname);
