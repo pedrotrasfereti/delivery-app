@@ -10,3 +10,4 @@ export { default as NavBar } from './NavBar';
 export { default as Select } from './Select';
 export { default as SideBar } from './SideBar';
 export { default as Teaser } from './Teaser';
+export { default as ResetPassForm } from './ResetPassForm';

@@ -19,6 +19,7 @@ import {
   Products,
   Register,
   Splash,
+  LostPass,
 } from '../components/pages';
 
 function AppRoutes() {
@@ -35,6 +36,7 @@ function AppRoutes() {
         <Route path="/customer/checkout" element={ <Checkout /> } />
         <Route path="/customer/products" element={ <Products /> } />
         <Route path="/account" element={ <Account /> } />
+        <Route path="/lostPassword" element={ <LostPass /> } />
         <Route path="/register" element={ <Register /> } />
         <Route path="/login" element={ <Login /> } />
         <Route path="/" element={ <Splash /> } />
