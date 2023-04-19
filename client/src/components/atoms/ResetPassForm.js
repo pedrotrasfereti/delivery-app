@@ -36,6 +36,19 @@ const ResetPassForm = () => {
       >
         Enviar
       </Button>
+
+      <HorizontalRule />
+
+      <span className="form__link-message">
+        Already have an account?
+        <Button
+          id="login-btn"
+          type="button"
+          link
+        >
+          <Link to="/login">Sign in</Link>
+        </Button>
+      </span>
     </form>
   );
 };
