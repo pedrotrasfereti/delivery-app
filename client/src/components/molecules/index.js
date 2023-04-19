@@ -4,3 +4,4 @@ export { default as OrderCard } from './OrderCard';
 export { default as ProductCard } from './ProductCard';
 export { default as Table } from './Table';
 export { default as TextInputLabel } from './TextInputLabel';
+export { default as SuccessMessageBox } from './SuccessMessageBox';
