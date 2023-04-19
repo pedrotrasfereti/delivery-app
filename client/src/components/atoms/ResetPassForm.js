@@ -1,22 +1,38 @@
 import React, { useState } from 'react';
-import Label from './Label';
-import TextInput from './TextInput';
-import Button from './Button';
+
 import emailRegex from '../../utils/constants/emailRegex';
+import { HorizontalRule, Button, Label, TextInput } from '.';
+import { Link, useNavigate } from 'react-router-dom';
+import { sendResetEmail } from '../../services/request';
+import { ErrorMessageBox, SuccessMessageBox } from '../molecules';
 
 const ResetPassForm = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
+  const [sent, setSent] = useState(false);
+  const [error, setError] = useState(false);
   const [invalidMail, setInvalidMail] = useState(true);
 
-  function submitResetPass(event) {
+  async function submitResetPass(event) {
     event.preventDefault();
+    const localResetPassUrl = window.location.href.replace('/lostPassword', '/resetPassword');
+    const data = await sendResetEmail(email, localResetPassUrl);
+
+    if(data.confirm === 'ok') {
+      setSent(true);
+      setTimeout(() => {
+        navigate('/login');
+      }, 3000);
+    } else {
+      setError(true);
+    }
   }
 
   function onChangeEmailInput(target) {
     setEmail(target.value);
     const testEmail = emailRegex.test(email);
 
-    if (testEmail) setInvalidMail(false);
+    testEmail ? setInvalidMail(false) : setInvalidMail(true);
   }
 
   return (
@@ -24,14 +40,15 @@ const ResetPassForm = () => {
       <Label>
         Email address:
         <TextInput
-          type="text"
+          type="email"
           value={ email }
           onChange={ ({ target }) => onChangeEmailInput(target) }
+          onBlur={ ({ target }) => onChangeEmailInput(target) }
         />
       </Label>
       <Button
         type="submit"
-        handleOnClick={ ({ target }) => submitResetPass(target) }
+        handleOnClick={submitResetPass}
         disabled={ invalidMail }
       >
         Enviar
