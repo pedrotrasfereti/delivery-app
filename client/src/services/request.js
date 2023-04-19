@@ -67,6 +67,12 @@ const updateOrder = async (token, role, orderId, body) => {
   return data;
 };
 
+const sendResetEmail = async (email, url) => {
+  const { data } = await instanceApi.post('/reset/sendmail', { email, url });
+
+  return data;
+};
+
 export {
   createSale,
   getAllOrders,
@@ -76,4 +82,5 @@ export {
   loginRequest,
   registerRequest,
   updateOrder,
+  sendResetEmail,
 };
