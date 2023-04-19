@@ -46,6 +46,19 @@ const ResetPassForm = () => {
           onBlur={ ({ target }) => onChangeEmailInput(target) }
         />
       </Label>
+
+      { error && <ErrorMessageBox 
+          id='send-email-error'
+          dataTestId='send-email-error'
+          message="Ocorreu algum erro. Tente novamente mais tarde."
+        ></ErrorMessageBox> 
+      }
+
+      { sent && <SuccessMessageBox
+          id='sent-email'
+          message="Email enviado!"
+        ></SuccessMessageBox> 
+      }
       <Button
         type="submit"
         handleOnClick={submitResetPass}
