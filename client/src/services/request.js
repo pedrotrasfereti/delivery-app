@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const instanceApi = axios.create({
-  baseURL: import.meta.env.VITE_BASEURL,
+  baseURL: import.meta.env.VITE_BASE_BACKEND_URL,
 });
 
 const authenticateUser = (token) => {
