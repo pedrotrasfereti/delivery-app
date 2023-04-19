@@ -4,7 +4,7 @@ const makeUsers = (sequelize, DataTypes) => {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
     },
     name: {
       allowNull: false,
@@ -18,11 +18,11 @@ const makeUsers = (sequelize, DataTypes) => {
     },
     password: {
       allowNull: false,
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     role: {
       allowNull: false,
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
   }, {
     timestamps: false,
@@ -31,14 +31,15 @@ const makeUsers = (sequelize, DataTypes) => {
 
   Users.associate = (models) => {
     models.Users.hasMany(models.Sales, {
-      foreignKey: 'userId', as: 'user'
+      foreignKey: 'userId', as: 'user',
     });
     models.Users.hasMany(
       models.Sales, {
-      foreignKey: 'sellerId', as: 'seller'
-    });
+      foreignKey: 'sellerId', as: 'seller',
+    },
+);
   };
   return Users;
-}
+};
 
 module.exports = makeUsers;

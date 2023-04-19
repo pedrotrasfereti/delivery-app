@@ -4,20 +4,20 @@ const makeProducts = (sequelize, DataTypes) => {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
     },
     name: {
       allowNull: false,
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     price: {
       allowNull: false,
-      type: DataTypes.DECIMAL(10, 2)
+      type: DataTypes.DECIMAL(10, 2),
     },
     urlImage: {
       allowNull: false,
       type: DataTypes.STRING,
-    }   
+    },   
   }, {
     timestamps: false,
     tableName: 'products',

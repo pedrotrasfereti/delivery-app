@@ -4,13 +4,13 @@ const makeSales = (sequelize, DataTypes) => {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
     },
     userId: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
     },
     sellerId: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
     },
     totalPrice: {
       allowNull: false,
@@ -18,19 +18,19 @@ const makeSales = (sequelize, DataTypes) => {
     },
     deliveryAddress: {
       allowNull: false,
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     deliveryNumber: {
       allowNull: false,
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     saleDate: {
       allowNull: false,
-      type: DataTypes.DATE
+      type: DataTypes.DATE,
     },
     status: {
       allowNull: false,
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
   }, {
     timestamps: false,

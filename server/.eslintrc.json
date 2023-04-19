@@ -1,4 +1,8 @@
 {
   "root": true,
-  "extends": ["trybe-backend"]
+  "extends": ["trybe-backend"],
+  "rules": {
+    "camelcase": ["error", {"properties": "never"}],
+    "max-lines-per-function": ["error", 25]
+  }
 }

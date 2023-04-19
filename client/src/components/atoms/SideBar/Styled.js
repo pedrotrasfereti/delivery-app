@@ -36,6 +36,7 @@ export default styled('aside', {
     gap: '$2',
     padding: '.75rem 1.5rem',
     borderBottom: '1px solid lightgray',
+    cursor: 'pointer',
 
     '& h3': {
       color: '$textDark',
@@ -48,6 +49,28 @@ export default styled('aside', {
       color: '$gray800',
       fontSize: '$4',
     },
+
+    '& svg.Icon.active': {
+      transform: 'rotate(0)',
+      transition: 'transform ease .3s',
+    },
+
+    '& svg.Icon.disabled': {
+      transform: 'rotate(180deg)',
+      transition: 'transform ease .3s',
+    },
+  },
+
+  '& ul.Categories.active': {
+    opacity: '1',
+    transform: 'translateY:(-20px)',
+    transition: '.3s ease',
+  },
+
+  '& ul.Categories.disabled': {
+    opacity: '0',
+    transform: 'translateY:(0)',
+    transition: '.3s ease',
   },
 
   '& .Categories': {

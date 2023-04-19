@@ -9,10 +9,10 @@
   "engineStrict": true,
   "private": true,
   "scripts": {
-    "db:reset": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
+    "db:start": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
     "start": "node .",
     "dev": "nodemon .",
-    "test": "mocha src/tests/**/*$NAME*.test.js --exit",
+    "test": "mocha tests/**/*$NAME*.test.js --exit",
     "test:coverage": "nyc --all npm run test",
     "test:coverage:json": "nyc --all --reporter=json-summary npm run test",
     "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json ."
@@ -25,20 +25,22 @@
     "dotenv": "16.0.0",
     "express": "4.17.3",
     "express-rescue": "1.1.31",
+    "googleapis": "^116.0.0",
     "joi": "^17.6.0",
-    "jsonwebtoken": "8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "md5": "2.3.0",
     "multer": "1.4.4",
     "mysql2": "2.3.3",
-    "sequelize": "6.17.0",
-    "socket.io": "4.4.1"
+    "nodemailer": "^6.9.1",
+    "sequelize": "^6.30.0",
+    "socket.io": "^4.6.1"
   },
   "devDependencies": {
     "chai": "4.3.6",
     "chai-http": "4.3.0",
     "eslint-config-trybe-backend": "1.0.4",
     "mocha": "9.2.2",
-    "nodemon": "2.0.15",
+    "nodemon": "^2.0.22",
     "nyc": "15.1.0",
     "sequelize-cli": "6.4.1",
     "sinon": "13.0.1"

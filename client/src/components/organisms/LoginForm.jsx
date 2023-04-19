@@ -161,6 +161,14 @@ export default function LoginForm() {
             <Link to="/register">Sign up</Link>
           </Button>
         </span>
+        <span className="form__link-message">
+          <Button
+            type="button"
+            link
+          >
+            <Link to="/lostPassword">Forgot your password?</Link>
+          </Button>
+        </span>
       </div>
     </Form>
   );
