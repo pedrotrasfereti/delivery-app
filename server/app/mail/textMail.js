@@ -8,7 +8,7 @@ module.exports = {
         <br>
         <div>
           <p>Follow the next link to recover your password. It's simple and fast:</p>
-          <a>${url + token}</a>
+          <a>${url + '/' + token}</a>
           <br>
         </div>
         <br>
