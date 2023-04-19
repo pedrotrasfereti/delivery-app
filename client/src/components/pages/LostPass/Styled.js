@@ -37,16 +37,16 @@ export const ContentWrapper = styled('div', {
       width: '100%',
       gap: '$2',
     },
-  },
 
-  '&>.form__link-message': {
-    display: 'flex',
-    flexFlow: 'row',
-    gap: '$2',
-    alignItems: 'center',
-    color: '$textDark',
-    fontWeight: '$5',
-    fontFamily: '$sans',
+    '&>.form__link-message': {
+      display: 'flex',
+      flexFlow: 'row',
+      gap: '$2',
+      alignItems: 'center',
+      color: '$textDark',
+      fontWeight: '$5',
+      fontFamily: '$sans',
+    },
   },
 });
 
