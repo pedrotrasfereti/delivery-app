@@ -28,6 +28,7 @@ export const {
 
       /* feedback colors */
       error: '$quinary',
+      success: '$tertiary',
 
       /* neutral colors */
       gray800: 'hsl(0, 0%, 26%)',

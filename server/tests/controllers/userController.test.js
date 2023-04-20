@@ -4,16 +4,16 @@ const userController = require('../../app/controllers/userController');
 const userService = require('../../app/services/userService');
 const { createUserPayload } = require('../mocks/Request');
 
-describe('Tests userController', () => {
-  afterEach(() => {
+describe('Tests userController', function () {
+  afterEach(function () {
     sinon.restore();
   });
 
-  describe('When user fields are correct', () => {
+  describe('When user fields are correct', function () {
     const req = { body: createUserPayload };
-    const res = {}
+    const res = {};
 
-    it('Return status 200 with the created user', async () => {
+    it('Return status 200 with the created user', async function () {
       const createUserStub = sinon.stub(userService, 'create').resolves(createUserPayload);
       res.status = sinon.stub().returns(res);
       res.json = sinon.stub().returns(null);
@@ -25,10 +25,10 @@ describe('Tests userController', () => {
     });
   });
 
-  describe('When the password is invalid', () => {
-    it('Returns error message when no password is inserted', async () => {
+  describe('When the password is invalid', function () {
+    it('Returns error message when no password is inserted', async function () {
       const req = { body: { name: createUserPayload.name, email: createUserPayload.email } };
-      const res = {}
+      const res = {};
 
       try {
         await userController.create(req, res);
@@ -37,22 +37,22 @@ describe('Tests userController', () => {
       }
     });
 
-    it('Returns error message when the password length is invalid', async () => {
+    it('Returns error message when the password length is invalid', async function () {
       const req = { body: { name: createUserPayload.name, email: createUserPayload.email, password: '123' } };
-      const res = {}
+      const res = {};
 
       try {
         await userController.create(req, res);
       } catch (err) {
         expect(err.message).to.equal('"password" length must be at least 6 characters long');
       }
-    })
-  })
+    });
+  });
 
-  describe('When the email is invalid', () => {
-    it('Returns error message when no email is inserted', async () => {
+  describe('When the email is invalid', function () {
+    it('Returns error message when no email is inserted', async function () {
       const req = { body: { name: createUserPayload.name, password: createUserPayload.password } };
-      const res = {}
+      const res = {};
 
       try {
         await userController.create(req, res);
@@ -61,22 +61,22 @@ describe('Tests userController', () => {
       }
     });
 
-    it('Returns error message when the email is invalid', async () => {
+    it('Returns error message when the email is invalid', async function () {
       const req = { body: { name: createUserPayload.name, email: 'test@testcom', password: createUserPayload.password } };
-      const res = {}
+      const res = {};
 
       try {
         await userController.create(req, res);
       } catch (err) {
         expect(err.message).to.equal('"email" must be a valid email');
       }
-    })
-  })
+    });
+  });
 
-  describe('When the name is invalid', () => {
-    it('Returns error message when no name is inserted', async () => {
+  describe('When the name is invalid', function () {
+    it('Returns error message when no name is inserted', async function () {
       const req = { body: { email: createUserPayload.email, password: createUserPayload.password } };
-      const res = {}
+      const res = {};
 
       try {
         await userController.create(req, res);
@@ -85,15 +85,15 @@ describe('Tests userController', () => {
       }
     });
 
-    it('Returns error message when the name length is invalid', async () => {
+    it('Returns error message when the name length is invalid', async function () {
       const req = { body: { name: '12', email: createUserPayload.email, password: createUserPayload.password } };
-      const res = {}
+      const res = {};
 
       try {
         await userController.create(req, res);
       } catch (err) {
         expect(err.message).to.equal('"name" length must be at least 3 characters long');
       }
-    })
-  })
+    });
+  });
 });

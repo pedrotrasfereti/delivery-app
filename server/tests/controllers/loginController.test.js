@@ -5,17 +5,16 @@ const loginService = require('../../app/services/loginService');
 const { userMock } = require('../mocks/Database');
 const { loginUserPayload } = require('../mocks/Request');
 
-describe('Tests loginController', () => {
-
-  afterEach(() => {
+describe('Tests loginController', function () {
+  afterEach(function () {
     sinon.restore();
   });
 
-  describe('When user fields are correct', () => {
+  describe('When user fields are correct', function () {
     const req = { body: loginUserPayload };
-    const res = {}
+    const res = {};
 
-    it('Return status 200 with the user', async () => {
+    it('Return status 200 with the user', async function () {
       const loginStub = sinon.stub(loginService, 'login').resolves(userMock);
       res.status = sinon.stub().returns(res);
       res.json = sinon.stub().returns(null);
@@ -28,10 +27,10 @@ describe('Tests loginController', () => {
     });
   });
 
-  describe('When the password is invalid', () => {
-    it('Returns error message when no password is inserted', async () => {
+  describe('When the password is invalid', function () {
+    it('Returns error message when no password is inserted', async function () {
       const req = { body: { name: loginUserPayload.name, email: loginUserPayload.email } };
-      const res = {}
+      const res = {};
 
       try {
         await loginController.login(req, res);
@@ -40,22 +39,22 @@ describe('Tests loginController', () => {
       }
     });
 
-    it('Returns error message when the password length is invalid', async () => {
+    it('Returns error message when the password length is invalid', async function () {
       const req = { body: { name: loginUserPayload.name, email: loginUserPayload.email, password: '123' } };
-      const res = {}
+      const res = {};
 
       try {
         await loginController.login(req, res);
       } catch (err) {
         expect(err.message).to.equal('"password" length must be at least 6 characters long');
       }
-    })
-  })
+    });
+  });
 
-  describe('When the email is invalid', () => {
-    it('Returns error message when no email is inserted', async () => {
+  describe('When the email is invalid', function () {
+    it('Returns error message when no email is inserted', async function () {
       const req = { body: { name: loginUserPayload.name, password: loginUserPayload.password } };
-      const res = {}
+      const res = {};
 
       try {
         await loginController.login(req, res);
@@ -64,16 +63,15 @@ describe('Tests loginController', () => {
       }
     });
 
-    it('Returns error message when the email is invalid', async () => {
+    it('Returns error message when the email is invalid', async function () {
       const req = { body: { name: loginUserPayload.name, email: 'test@testcom', password: loginUserPayload.password } };
-      const res = {}
+      const res = {};
 
       try {
         await loginController.login(req, res);
       } catch (err) {
         expect(err.message).to.equal('"email" must be a valid email');
       }
-    })
-  })
-
+    });
+  });
 });

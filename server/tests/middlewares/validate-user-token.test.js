@@ -1,35 +1,34 @@
-const sinon = require("sinon");
+const sinon = require('sinon');
 const { expect } = require('chai');
-const { validateUserToken } = require("../../api/middlewares/validate-user-token");
-const { JwtMethods } = require("../../app/utils/JwtMethods");
+const { validateUserToken } = require('../../api/middlewares/validate-user-token');
+const { JwtMethods } = require('../../app/utils/JwtMethods');
 
-describe('Tests validateUserToken', () => {
-
-  afterEach(() => {
+describe('Tests validateUserToken', function () {
+  afterEach(function () {
     sinon.restore();
-  })
+  });
 
-  describe('When token is not found', () => {
+  describe('When token is not found', function () {
     const req = { headers: { authorization: null } };
     const res = {};
     const next = sinon.stub();
 
-    it('Returns status 401 with an error message', async () => {
+    it('Returns status 401 with an error message', async function () {
       res.status = sinon.stub().returns(res);
       res.json = sinon.stub().returns(null);
 
       await validateUserToken('customer')(req, res, next);
       expect((res.status).calledWith(401)).to.equal(true);
       expect((res.json).calledWith({ error: 'Token not found' })).to.equal(true);
-    })
-  })
+    });
+  });
 
-  describe('When token is invalid', () => {
+  describe('When token is invalid', function () {
     const req = { headers: { authorization: 'invalidToken' } };
     const res = {};
     const next = sinon.stub();
 
-    it('Returns status 401 with an error message', async () => {
+    it('Returns status 401 with an error message', async function () {
       const verifyTokenStub = sinon.stub(JwtMethods, 'verifyToken').rejects(new Error());
       res.status = sinon.stub().returns(res);
       res.json = sinon.stub().returns(null);
@@ -41,15 +40,15 @@ describe('Tests validateUserToken', () => {
         expect((res.status).calledWith(401)).to.equal(true);
         expect((res.json).calledWith({ error: 'Token invalid or expired' })).to.equal(true);
       }
-    })
-  })
+    });
+  });
 
-  describe('When the verified role is different than the token\'s role', () => {
+  describe('When the verified role is different than the token\'s role', function () {
     const req = { headers: { authorization: 'validToken' } };
     const res = {};
     const next = sinon.stub();
 
-    it('Returns status 401 with an error message', async () => {
+    it('Returns status 401 with an error message', async function () {
       const verifyTokenStub = sinon.stub(JwtMethods, 'verifyToken').returns({ role: 'seller' });
       res.status = sinon.stub().returns(res);
       res.json = sinon.stub().returns(null);
@@ -61,15 +60,15 @@ describe('Tests validateUserToken', () => {
         expect((res.status).calledWith(401)).to.equal(true);
         expect((res.json).calledWith({ error: 'Token invalid or expired' })).to.equal(true);
       }
-    })
-  })
+    });
+  });
 
-  describe('When token is valid', () => {
+  describe('When token is valid', function () {
     const req = { headers: { authorization: 'validToken' } };
     const res = {};
     const next = sinon.stub();
 
-    it('Calls next() method', async () => {
+    it('Calls next() method', async function () {
       const verifyTokenStub = sinon.stub(JwtMethods, 'verifyToken').returns({ role: 'customer' });
       res.status = sinon.stub().returns(res);
       res.json = sinon.stub().returns(null);
@@ -79,6 +78,6 @@ describe('Tests validateUserToken', () => {
       sinon.assert.calledWith(verifyTokenStub, 'validToken');
       sinon.assert.called(next);
       expect(req.user).to.contain({ role: 'customer' });
-    })
-  })
-})
+    });
+  });
+});
