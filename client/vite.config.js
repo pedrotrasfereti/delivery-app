@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite';
-import fs from 'fs';
+import fs from 'fs/promises';
 import react from '@vitejs/plugin-react';
 import svgrPlugin from 'vite-plugin-svgr';
 
