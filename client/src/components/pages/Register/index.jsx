@@ -26,6 +26,10 @@ export default function Register() {
       id="register-page"
       css={ extraStyles }
     >
+      <MetaHead
+        title="Create my account"
+        description="Create your account! It's simple and fast!"
+      />
       <ContentWrapper id="form-content">
         <h1 id="title">Sign Up to Deliveree</h1>
 

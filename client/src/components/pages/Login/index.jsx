@@ -14,6 +14,10 @@ import { ContentWrapper, DecorOne, DecorTwo } from './Styled';
 export default function Login() {
   return (
     <DuoGeneric>
+      <MetaHead
+        title="Welcome"
+        description="Welcome to deliveree's shop. The best and greatest delivery app!"
+      />
       <Teaser image={ DeliveryMan }>
         <DecorOne />
         <DecorTwo />
