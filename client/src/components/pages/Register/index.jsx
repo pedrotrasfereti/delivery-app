@@ -10,6 +10,7 @@ import { RegisterForm } from '../../organisms';
 /* Styles */
 import { DuoGeneric } from '../../templates';
 import { ContentWrapper, DecorOne, DecorTwo } from './Styled';
+import MetaHead from '../../helper/MetaHead';
 
 const extraStyles = {
   // Place form content at the bottom and teaser at the top

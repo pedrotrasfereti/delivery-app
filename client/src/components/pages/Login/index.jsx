@@ -10,6 +10,7 @@ import { LoginForm } from '../../organisms';
 /* Styles */
 import { DuoGeneric } from '../../templates';
 import { ContentWrapper, DecorOne, DecorTwo } from './Styled';
+import MetaHead from '../../helper/MetaHead';
 
 export default function Login() {
   return (
