@@ -1,10 +1,10 @@
 const userMock = {
-  id: "5",
-  name: "testuser",
-  email: "test@gmail.com",
-  role: "customer",
-  token: "testToken",
-}
+  id: '5',
+  name: 'testuser',
+  email: 'test@gmail.com',
+  role: 'customer',
+  token: 'testToken',
+};
 
 const saleMockDatavalues = {
   dataValues: {
@@ -12,10 +12,10 @@ const saleMockDatavalues = {
     userId: 3,
     sellerId: 2,
     totalPrice: 20.35,
-    deliveryAddress: "antonio marcos da cruz",
-    deliveryNumber: "571",
-    saleDate: "2020-05-02T00:00:00.000Z",
-    status: "Pendente",
+    deliveryAddress: 'antonio marcos da cruz',
+    deliveryNumber: '571',
+    saleDate: '2020-05-02T00:00:00.000Z',
+    status: 'Pendente',
   },
 };
 
@@ -37,6 +37,6 @@ const salesProductsMock = [{
   saleId: 1,
   productId: 2,
   quantity: 5,
-}]
+}];
 
 module.exports = { userMock, saleMockDatavalues, productsMock, salesProductsMock };

@@ -23,6 +23,10 @@ export default styled('button', {
     filter: 'brightness(92%)',
   },
 
+  '&:disabled,button[disabled]': {
+    backgroundColor: '$gray500',
+  },
+
   '@bp3': {
     padding: '$btnPaddingMobile',
   },

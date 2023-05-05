@@ -1,12 +1,21 @@
 const jwt = require('jsonwebtoken');
-const fs = require('fs');
+require('dotenv').config();
 
-const JWT_SECRET = fs.readFileSync('./jwt.evaluation.key', 'utf-8');
+const { JWT_SECRET } = process.env;
 
 class JwtMethods {
   static jwtSign(payload) {
     const sign = jwt.sign(payload, JWT_SECRET, {
       expiresIn: '5h',
+      algorithm: 'HS256',
+    });
+
+    return sign;
+  }
+
+  static jwtResetPass(payload) {
+    const sign = jwt.sign(payload, JWT_SECRET, {
+      expiresIn: '1h',
       algorithm: 'HS256',
     });
 

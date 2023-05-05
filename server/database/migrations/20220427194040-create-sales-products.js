@@ -1,4 +1,3 @@
-'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('salesProducts', {
@@ -19,11 +18,11 @@ module.exports = {
         onDelete: 'CASCADE',
       },
       quantity: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
     }, { timestamps: false });
   },
   async down(queryInterface) {
     await queryInterface.dropTable('salesProducts');
-  }
+  },
 };

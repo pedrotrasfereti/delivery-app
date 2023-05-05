@@ -22,6 +22,7 @@ export default function NavBar({ iconbar }) {
     '/',
     '/login',
     '/register',
+    '/lostPassword',
   ];
 
   const shouldRender = !excludeRoutes.includes(pathname);

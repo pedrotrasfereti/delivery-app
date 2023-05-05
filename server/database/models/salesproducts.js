@@ -2,7 +2,7 @@ const makeSalesProducts = (sequelize, DataTypes) => {
   const SalesProducts = sequelize.define('SalesProducts', {
     quantity: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
     },
   }, {
     timestamps: false,
@@ -17,7 +17,7 @@ const makeSalesProducts = (sequelize, DataTypes) => {
       through: SalesProducts,
       foreignKey: 'saleId',
       otherKey: 'productId',
-    }
+    },
     );
     models.Products.belongsToMany(
       models.Sales, {
@@ -25,10 +25,10 @@ const makeSalesProducts = (sequelize, DataTypes) => {
       through: SalesProducts,
       foreignKey: 'productId',
       otherKey: 'saleId',
-    }
+    },
     );
   };
   return SalesProducts;
-}
+};
 
 module.exports = makeSalesProducts;

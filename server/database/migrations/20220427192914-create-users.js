@@ -5,7 +5,7 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       name: {
         allowNull: false,
@@ -17,17 +17,17 @@ module.exports = {
         type: Sequelize.STRING,
         unique: true,
       },
-      password:{
+      password: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       role: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
-    }, { timestamps: false});
+    }, { timestamps: false });
   },
   async down(queryInterface) {
     await queryInterface.dropTable('users');
-  }
+  },
 };
